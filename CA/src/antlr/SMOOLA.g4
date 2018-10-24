@@ -1,14 +1,40 @@
 grammar SMOOLA;
 
-COMPERATOR_EXP: EXPRESSION COMPARATOR_BINARY EXPRESSION;
+comparator_exp: expression COMPARATOR_BINARY expression;
 
-ARITHMATIC_EXP: EXPRESSION COMPARATOR_BINARY EXPRESSION ;
+arithmethic_exp: expression ARITHMETIC_BINARY expression
+              | SUB expression;
 
-LOGICAL_EXP: EXPRESSION LOGICAL_BINARY EXPRESSION | LO  EXPRESSION ;
+logical_exp: expression LOGICAL_BINARY expression
+           | LOGICAL_UNARY expression ;
+
+condition: '('expression')';
+
+while_expression: WHILE condition '{'body'}';
+
+if_expression: IF condition THEN ('{'body'}'| line) (ELSE ('{'body'}' | line) | ); 
+
+line: (expression |
+      | while_expression
+      | if_expression)';';
+
+expression: '('expression')'
+          | comparator_exp
+          | arithmethic_exp
+          | logical_exp
+          | IDENTIFIER
+          | INT
+          | LOGICAL_VAL;
+
+body: (line)* | '{'body'}';
 
 
+var_dec: VAR IDENTIFIER ':' TYPE;
+//PROGRAM: MAIN_CLASS
 
-EXPRESSION: COMPERATOR_EXP | ARITHMATIC_EXP | IDENTIFIER | INT;
+TYPE: BOOLEAN | STRING | INT | ARRAY | IDENTIFIER;
+
+ARRAY: 'int[]';
 
 BOOLEAN: 'boolean'
     {System.out.println("boolean")};
@@ -42,6 +68,8 @@ THIS: 'this';
 FALSE: 'false';
 
 TRUE: 'true';
+
+LOGICAL_VAL: TRUE | FALSE;
 
 WHILE: 'while'
      {System.out.println("Loop:While")};
@@ -91,7 +119,7 @@ LOGICAL_BINARY: OR | AND;
 
 COMPARATOR_BINARY: EQUAL | NOTEQUAL | LESSTHAN | GRATERTHAN;
 
-ARITHMATIC_BINARY: ADD | SUB | MUL | DIV;
+ARITHMETIC_BINARY: ADD | SUB | MUL | DIV;
 
 //grammar SMOOLA;
 //
