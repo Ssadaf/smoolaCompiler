@@ -1,38 +1,81 @@
 grammar SMOOLA;
 
-comparator_exp: expression COMPARATOR_BINARY expression;
+program: main_class (usual_class)*;
 
-arithmethic_exp: expression ARITHMETIC_BINARY expression
-              | SUB expression;
+main_class: CLASS IDENTIFIER '{' main_method '}';
 
-logical_exp: expression LOGICAL_BINARY expression
-           | LOGICAL_UNARY expression ;
+main_method: DEF 'main' '(' ')' ':' 'int' '{' method_body '}';
+
+usual_class: CLASS IDENTIFIER ( (EXTENDS IDENTIFIER) | ) '{' var_dec* method* '}';
+
+comparator_exp: expression comparator_binary expression;
+
+arithmethic_exp: mult_expr ( (SUB | ADD) mult_expr )*;
+
+logical_exp: and_expr( OR and_expr )*;
 
 condition: '('expression')';
 
 while_expression: WHILE condition '{'body'}';
 
-if_expression: IF condition THEN ('{'body'}'| line) (ELSE ('{'body'}' | line) | ); 
-
-line: (expression |
-      | while_expression
-      | if_expression)';';
+if_expression: IF condition THEN ('{'body'}'| line) (ELSE ('{'body'}' | line) | );
 
 expression: '('expression')'
           | comparator_exp
           | arithmethic_exp
           | logical_exp
+          | logical_val
+          | string
           | IDENTIFIER
-          | INT
-          | LOGICAL_VAL;
+          | INT;
 
-body: (line)* | '{'body'}';
+line: (expression
+      | while_expression
+      | if_expression
+      | comment
+      | )';';
 
+body: (line)* 
+      | '{'body'}';
 
-var_dec: VAR IDENTIFIER ':' TYPE;
-//PROGRAM: MAIN_CLASS
+method_body: body RETURN expression ';' ;
 
-TYPE: BOOLEAN | STRING | INT | ARRAY | IDENTIFIER;
+method: DEF IDENTIFIER  '(' ((argument (',' argument)*) | ) ')' ':' type '{'var_dec* method_body'}';
+
+argument: IDENTIFIER ':' type;
+
+var_dec: VAR IDENTIFIER ':' type ';' ;
+
+//logical_unary: NOT;
+//
+//logical_binary: OR | AND;
+//
+//comparator_binary: EQUAL | NOTEQUAL | LESSTHAN | GRATERTHAN;
+//
+//arithmetic_binary: ADD | SUB | MUL | DIV;
+
+type: BOOLEAN 
+    | STRING 
+    | INT 
+    | ARRAY 
+    | IDENTIFIER;
+
+logical_val: TRUE 
+           | FALSE;
+
+comment: '#'~('\r' | '\n')*;
+
+string: '"'~('\r' | '\n' | '"' )'"';
+
+mult_expr: atom_arith_expr ( ( MUL | DIV ) atom_arith_expr )*;
+
+atom_arith_expr: (SUB | )(IDENTIFIER | INT | '(' arithmethic_exp ')');
+
+and_expr: atom_logical_expr ( AND atom_logical_expr )*;
+
+atom_logical_expr: (NOT| ) (IDENTIFIER | logical_val | '(' logical_exp ')');
+
+NUMBER: ('-' | '+' | ) [0-9]+;
 
 ARRAY: 'int[]';
 
@@ -68,8 +111,6 @@ THIS: 'this';
 FALSE: 'false';
 
 TRUE: 'true';
-
-LOGICAL_VAL: TRUE | FALSE;
 
 WHILE: 'while'
      {System.out.println("Loop:While")};
@@ -107,19 +148,9 @@ GRATERTHAN: '>';
 
 ASSIGN: '=';
 
-NUMBER: [0-9]+;
-
 WHITESPACE: [ \t\r\n] -> skip;
 
-COMMENT: '#'~('\r' | '\n')*;
 
-LOGICAL_UNARY: NOT;
-
-LOGICAL_BINARY: OR | AND;
-
-COMPARATOR_BINARY: EQUAL | NOTEQUAL | LESSTHAN | GRATERTHAN;
-
-ARITHMETIC_BINARY: ADD | SUB | MUL | DIV;
 
 //grammar SMOOLA;
 //
