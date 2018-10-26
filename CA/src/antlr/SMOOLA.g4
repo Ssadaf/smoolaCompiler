@@ -2,31 +2,35 @@ grammar SMOOLA;
 
 program: main_class (usual_class)* EOF;
 
-main_class: CLASS IDENTIFIER '{' main_method '}';
+main_class: comment* CLASS IDENTIFIER '{' main_method '}';
 
-main_method: METHOD 'main' '(' ')' ':' 'int' '{' method_body '}';
+main_method: comment* METHOD 'main' '(' ')' ':' 'int' comment* '{' method_body '}'comment*;
 
-usual_class: CLASS IDENTIFIER ( (EXTENDS IDENTIFIER) | ) '{' var_dec* method* '}';
+usual_class: comment* CLASS IDENTIFIER ( (EXTENDS IDENTIFIER) | ) '{'( (comment | var_dec)* (comment | method)* )'}';
 
 arithmethic_exp: mult_expr ( (SUB | ADD) mult_expr )*;
 
 condition: '('expression')';
 
-while_expression: WHILE condition '{' body '}';
+while_expression: comment* WHILE condition comment* '{' body '}'comment*;
 
-if_expression: IF condition THEN ('{'body'}'| line) (ELSE ('{'body'}' | line) | );
+if_expression: comment* IF condition THEN comment* ('{'body'}'| line) comment* (ELSE ('{'body'}' | line) | )comment*;
+
+array_element: IDENTIFIER '[' arithmethic_exp ']';
+
+assignment: (IDENTIFIER | array_element) ('=' (expression))+;
+
+instanciation: IDENTIFIER '=' NEW IDENTIFIER '('( ( expression (',' expression )*) | )')';
 
 expression:('('expression')'
-          | equal_exp
-          | arithmethic_exp
           | logical_exp
-          | logical_val
-          | string
-          | IDENTIFIER
-          | NUMBER) expression
+          | string) expression
+          | instanciation
           | ;
 
 line: expression ';'
+      | assignment ';'
+      | instanciation ';'
       | while_expression
       | if_expression
       | comment
@@ -35,14 +39,13 @@ line: expression ';'
 body: (line)*
       | '{'body'}';
 
-method_body: body RETURN expression ';' ;
+method_body: body RETURN expression ';' comment*;
 
-method: METHOD IDENTIFIER  '(' ((argument (',' argument)*) | ) ')' ':' type '{'var_dec* method_body'}';
+method: comment* METHOD IDENTIFIER  '(' ((argument (',' argument)*) | ) ')' ':' type comment* '{' (comment | var_dec)* method_body'}' comment*;
 
 argument: IDENTIFIER ':' type;
 
 var_dec: VAR IDENTIFIER ':' type ';' ;
-
 
 type: BOOLEAN 
     | STRING 
@@ -52,8 +55,6 @@ type: BOOLEAN
 
 logical_val: TRUE 
            | FALSE;
-
-comment: '#'~('\r' | '\n')*;
 
 string: '"'~('\r' | '\n' | '"' )'"';
 
@@ -70,11 +71,15 @@ mult_expr: atom_arith_expr ( ( MUL | DIV ) atom_arith_expr )*;
 
 atom_bool_exp: logical_val | '(' logical_exp ')';
 
-atom_arith_expr: (SUB | )(IDENTIFIER | NUMBER | '(' arithmethic_exp ')');
+atom_arith_expr: (SUB | )(IDENTIFIER | array_element | NUMBER | '(' arithmethic_exp ')');
 
 and_expr: (equal_exp) ( AND ( equal_exp) )*;
 
-atom_logical_expr: (NOT| ) (IDENTIFIER | logical_val | '(' logical_exp ')');
+atom_logical_expr: (NOT| ) (IDENTIFIER | array_element | logical_val | '(' logical_exp ')');
+
+comment: COMMENT;
+
+COMMENT: '#'~[\r\n]*;
 
 NUMBER: ('-' | ) [0-9]+;
 
