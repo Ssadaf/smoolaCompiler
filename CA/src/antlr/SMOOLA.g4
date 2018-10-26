@@ -23,13 +23,13 @@ assignment: (IDENTIFIER | array_element) ('=' (expression))+;
 instanciation: IDENTIFIER '=' NEW IDENTIFIER '('( ( expression (',' expression )*) | )')';
 
 expression:('('expression')'
+          | assignment
           | logical_exp
-          | string) expression
           | instanciation
+          | string) expression
           | ;
 
 line: expression ';'
-      | assignment ';'
       | instanciation ';'
       | while_expression
       | if_expression
