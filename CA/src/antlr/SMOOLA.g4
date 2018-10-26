@@ -67,13 +67,21 @@ comment: '#'~('\r' | '\n')*;
 
 string: '"'~('\r' | '\n' | '"' )'"';
 
-less_grt_atom: ( '('expression')' | IDENTIFIER | INT | arithmethic_exp ) ( );
+comparator_atom: ( '(' IDENTIFIER | INT | arithmethic_exp ')'
+             | IDENTIFIER
+             | INT
+             | arithmethic_exp )
+              ( (GRATERTHAN | LESSTHAN)
+              ( '(' IDENTIFIER | INT | arithmethic_exp ')' | IDENTIFIER | INT | arithmethic_exp ))*;
+
+equal_exp: (comparator_atom| logical_val |( '(' comparator_atom | logical_val | logical_exp ')') )
+           ( (EQUAL | NOTEQUAL) (comparator_atom| logical_val |( '(' comparator_atom | logical_val | logical_exp ')') ) )*;
 
 mult_expr: atom_arith_expr ( ( MUL | DIV ) atom_arith_expr )*;
 
 atom_arith_expr: (SUB | )(IDENTIFIER | INT | '(' arithmethic_exp ')');
 
-and_expr: atom_logical_expr ( AND atom_logical_expr )*;
+and_expr: ( atom_logical_expr | equal_exp ) ( AND atom_logical_expr ( atom_logical_expr | equal_exp ) )*;
 
 atom_logical_expr: (NOT| ) (IDENTIFIER | logical_val | '(' logical_exp ')');
 
