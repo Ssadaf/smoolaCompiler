@@ -1,12 +1,12 @@
 grammar SMOOLA;
 
-program: main_class (usual_class)*;
+//program: main_class (usual_class)* EOF;
 
-main_class: CLASS IDENTIFIER '{' main_method '}';
+//main_class: CLASS IDENTIFIER '{' main_method '}';
 
-main_method: DEF 'main' '(' ')' ':' 'int' '{' method_body '}';
+//main_method: DEF 'main' '(' ')' ':' 'int' '{' method_body '}';
 
-usual_class: CLASS IDENTIFIER ( (EXTENDS IDENTIFIER) | ) '{' var_dec* method* '}';
+//usual_class: CLASS IDENTIFIER ( (EXTENDS IDENTIFIER) | ) '{' var_dec* method* '}';
 
 comparator_exp: expression comparator_binary expression;
 
@@ -14,11 +14,11 @@ arithmethic_exp: mult_expr ( (SUB | ADD) mult_expr )*;
 
 logical_exp: and_expr( OR and_expr )*;
 
-condition: '('expression')';
+//condition: '('expression')';
 
-while_expression: WHILE condition '{'body'}';
-
-if_expression: IF condition THEN ('{'body'}'| line) (ELSE ('{'body'}' | line) | );
+//while_expression: WHILE condition '{'body'}';
+//
+//if_expression: IF condition THEN ('{'body'}'| line) (ELSE ('{'body'}' | line) | );
 
 expression: '('expression')'
           | comparator_exp
@@ -29,18 +29,18 @@ expression: '('expression')'
           | IDENTIFIER
           | INT;
 
-line: (expression
-      | while_expression
-      | if_expression
-      | comment
-      | )';';
+//line: (expression
+//      | while_expression
+//      | if_expression
+//      | comment
+//      | )';';
 
-body: (line)* 
-      | '{'body'}';
+//body: (line)*
+//      | '{'body'}';
 
-method_body: body RETURN expression ';' ;
+//method_body: body RETURN expression ';' ;
 
-method: DEF IDENTIFIER  '(' ((argument (',' argument)*) | ) ')' ':' type '{'var_dec* method_body'}';
+//method: DEF IDENTIFIER  '(' ((argument (',' argument)*) | ) ')' ':' type '{'var_dec* method_body'}';
 
 argument: IDENTIFIER ':' type;
 
@@ -50,7 +50,7 @@ var_dec: VAR IDENTIFIER ':' type ';' ;
 //
 //logical_binary: OR | AND;
 //
-//comparator_binary: EQUAL | NOTEQUAL | LESSTHAN | GRATERTHAN;
+comparator_binary: EQUAL | NOTEQUAL | LESSTHAN | GRATERTHAN;
 //
 //arithmetic_binary: ADD | SUB | MUL | DIV;
 
