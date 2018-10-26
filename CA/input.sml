@@ -1,1 +1,4 @@
-2 + 3 * 4
+class​ ​MainClass​{ def ​main​(): ​int​ {
+     writeln(new Math().factorial(5));
+​return​ 0; }
+}
