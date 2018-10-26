@@ -48,6 +48,16 @@ public interface SMOOLAListener extends ParseTreeListener {
 	 */
 	void exitUsual_class(SMOOLAParser.Usual_classContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link SMOOLAParser#main_arithmethic_exp}.
+	 * @param ctx the parse tree
+	 */
+	void enterMain_arithmethic_exp(SMOOLAParser.Main_arithmethic_expContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SMOOLAParser#main_arithmethic_exp}.
+	 * @param ctx the parse tree
+	 */
+	void exitMain_arithmethic_exp(SMOOLAParser.Main_arithmethic_expContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link SMOOLAParser#arithmethic_exp}.
 	 * @param ctx the parse tree
 	 */
@@ -68,6 +78,16 @@ public interface SMOOLAListener extends ParseTreeListener {
 	 */
 	void exitCondition(SMOOLAParser.ConditionContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link SMOOLAParser#main_condition}.
+	 * @param ctx the parse tree
+	 */
+	void enterMain_condition(SMOOLAParser.Main_conditionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SMOOLAParser#main_condition}.
+	 * @param ctx the parse tree
+	 */
+	void exitMain_condition(SMOOLAParser.Main_conditionContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link SMOOLAParser#while_expression}.
 	 * @param ctx the parse tree
 	 */
@@ -78,6 +98,16 @@ public interface SMOOLAListener extends ParseTreeListener {
 	 */
 	void exitWhile_expression(SMOOLAParser.While_expressionContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link SMOOLAParser#main_while_expression}.
+	 * @param ctx the parse tree
+	 */
+	void enterMain_while_expression(SMOOLAParser.Main_while_expressionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SMOOLAParser#main_while_expression}.
+	 * @param ctx the parse tree
+	 */
+	void exitMain_while_expression(SMOOLAParser.Main_while_expressionContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link SMOOLAParser#if_expression}.
 	 * @param ctx the parse tree
 	 */
@@ -87,6 +117,16 @@ public interface SMOOLAListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitIf_expression(SMOOLAParser.If_expressionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SMOOLAParser#main_if_expression}.
+	 * @param ctx the parse tree
+	 */
+	void enterMain_if_expression(SMOOLAParser.Main_if_expressionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SMOOLAParser#main_if_expression}.
+	 * @param ctx the parse tree
+	 */
+	void exitMain_if_expression(SMOOLAParser.Main_if_expressionContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link SMOOLAParser#array_element}.
 	 * @param ctx the parse tree
@@ -107,6 +147,16 @@ public interface SMOOLAListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitAssignment(SMOOLAParser.AssignmentContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SMOOLAParser#main_assignment}.
+	 * @param ctx the parse tree
+	 */
+	void enterMain_assignment(SMOOLAParser.Main_assignmentContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SMOOLAParser#main_assignment}.
+	 * @param ctx the parse tree
+	 */
+	void exitMain_assignment(SMOOLAParser.Main_assignmentContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link SMOOLAParser#instanciation}.
 	 * @param ctx the parse tree
@@ -147,6 +197,46 @@ public interface SMOOLAListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitMethod_call(SMOOLAParser.Method_callContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SMOOLAParser#main_writeln_call}.
+	 * @param ctx the parse tree
+	 */
+	void enterMain_writeln_call(SMOOLAParser.Main_writeln_callContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SMOOLAParser#main_writeln_call}.
+	 * @param ctx the parse tree
+	 */
+	void exitMain_writeln_call(SMOOLAParser.Main_writeln_callContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SMOOLAParser#writeln_call}.
+	 * @param ctx the parse tree
+	 */
+	void enterWriteln_call(SMOOLAParser.Writeln_callContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SMOOLAParser#writeln_call}.
+	 * @param ctx the parse tree
+	 */
+	void exitWriteln_call(SMOOLAParser.Writeln_callContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SMOOLAParser#main_expression}.
+	 * @param ctx the parse tree
+	 */
+	void enterMain_expression(SMOOLAParser.Main_expressionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SMOOLAParser#main_expression}.
+	 * @param ctx the parse tree
+	 */
+	void exitMain_expression(SMOOLAParser.Main_expressionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SMOOLAParser#main_line}.
+	 * @param ctx the parse tree
+	 */
+	void enterMain_line(SMOOLAParser.Main_lineContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SMOOLAParser#main_line}.
+	 * @param ctx the parse tree
+	 */
+	void exitMain_line(SMOOLAParser.Main_lineContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link SMOOLAParser#expression}.
 	 * @param ctx the parse tree
@@ -268,6 +358,16 @@ public interface SMOOLAListener extends ParseTreeListener {
 	 */
 	void exitString(SMOOLAParser.StringContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link SMOOLAParser#main_comparator_atom}.
+	 * @param ctx the parse tree
+	 */
+	void enterMain_comparator_atom(SMOOLAParser.Main_comparator_atomContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SMOOLAParser#main_comparator_atom}.
+	 * @param ctx the parse tree
+	 */
+	void exitMain_comparator_atom(SMOOLAParser.Main_comparator_atomContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link SMOOLAParser#comparator_atom}.
 	 * @param ctx the parse tree
 	 */
@@ -288,6 +388,16 @@ public interface SMOOLAListener extends ParseTreeListener {
 	 */
 	void exitLogical_exp(SMOOLAParser.Logical_expContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link SMOOLAParser#main_logical_exp}.
+	 * @param ctx the parse tree
+	 */
+	void enterMain_logical_exp(SMOOLAParser.Main_logical_expContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SMOOLAParser#main_logical_exp}.
+	 * @param ctx the parse tree
+	 */
+	void exitMain_logical_exp(SMOOLAParser.Main_logical_expContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link SMOOLAParser#equal_exp}.
 	 * @param ctx the parse tree
 	 */
@@ -297,6 +407,16 @@ public interface SMOOLAListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitEqual_exp(SMOOLAParser.Equal_expContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SMOOLAParser#main_equal_exp}.
+	 * @param ctx the parse tree
+	 */
+	void enterMain_equal_exp(SMOOLAParser.Main_equal_expContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SMOOLAParser#main_equal_exp}.
+	 * @param ctx the parse tree
+	 */
+	void exitMain_equal_exp(SMOOLAParser.Main_equal_expContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link SMOOLAParser#mult_expr}.
 	 * @param ctx the parse tree
@@ -308,6 +428,16 @@ public interface SMOOLAListener extends ParseTreeListener {
 	 */
 	void exitMult_expr(SMOOLAParser.Mult_exprContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link SMOOLAParser#main_mult_expr}.
+	 * @param ctx the parse tree
+	 */
+	void enterMain_mult_expr(SMOOLAParser.Main_mult_exprContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SMOOLAParser#main_mult_expr}.
+	 * @param ctx the parse tree
+	 */
+	void exitMain_mult_expr(SMOOLAParser.Main_mult_exprContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link SMOOLAParser#atom_bool_exp}.
 	 * @param ctx the parse tree
 	 */
@@ -317,6 +447,26 @@ public interface SMOOLAListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitAtom_bool_exp(SMOOLAParser.Atom_bool_expContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SMOOLAParser#main_atom_bool_exp}.
+	 * @param ctx the parse tree
+	 */
+	void enterMain_atom_bool_exp(SMOOLAParser.Main_atom_bool_expContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SMOOLAParser#main_atom_bool_exp}.
+	 * @param ctx the parse tree
+	 */
+	void exitMain_atom_bool_exp(SMOOLAParser.Main_atom_bool_expContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SMOOLAParser#main_atom_arith_expr}.
+	 * @param ctx the parse tree
+	 */
+	void enterMain_atom_arith_expr(SMOOLAParser.Main_atom_arith_exprContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SMOOLAParser#main_atom_arith_expr}.
+	 * @param ctx the parse tree
+	 */
+	void exitMain_atom_arith_expr(SMOOLAParser.Main_atom_arith_exprContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link SMOOLAParser#atom_arith_expr}.
 	 * @param ctx the parse tree
@@ -337,6 +487,26 @@ public interface SMOOLAListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitAnd_expr(SMOOLAParser.And_exprContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SMOOLAParser#main_and_expr}.
+	 * @param ctx the parse tree
+	 */
+	void enterMain_and_expr(SMOOLAParser.Main_and_exprContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SMOOLAParser#main_and_expr}.
+	 * @param ctx the parse tree
+	 */
+	void exitMain_and_expr(SMOOLAParser.Main_and_exprContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SMOOLAParser#main_atom_logical_expr}.
+	 * @param ctx the parse tree
+	 */
+	void enterMain_atom_logical_expr(SMOOLAParser.Main_atom_logical_exprContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SMOOLAParser#main_atom_logical_expr}.
+	 * @param ctx the parse tree
+	 */
+	void exitMain_atom_logical_expr(SMOOLAParser.Main_atom_logical_exprContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link SMOOLAParser#atom_logical_expr}.
 	 * @param ctx the parse tree
