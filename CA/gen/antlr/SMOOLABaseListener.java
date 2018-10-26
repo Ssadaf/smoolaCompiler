@@ -112,6 +112,78 @@ public class SMOOLABaseListener implements SMOOLAListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterArray_element(SMOOLAParser.Array_elementContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitArray_element(SMOOLAParser.Array_elementContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterAssignment(SMOOLAParser.AssignmentContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitAssignment(SMOOLAParser.AssignmentContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterInstanciation(SMOOLAParser.InstanciationContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitInstanciation(SMOOLAParser.InstanciationContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterNew_array(SMOOLAParser.New_arrayContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitNew_array(SMOOLAParser.New_arrayContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterArray_length(SMOOLAParser.Array_lengthContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitArray_length(SMOOLAParser.Array_lengthContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterMethod_call(SMOOLAParser.Method_callContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitMethod_call(SMOOLAParser.Method_callContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterExpression(SMOOLAParser.ExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -148,6 +220,18 @@ public class SMOOLABaseListener implements SMOOLAListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterMain_body(SMOOLAParser.Main_bodyContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitMain_body(SMOOLAParser.Main_bodyContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterMethod_body(SMOOLAParser.Method_bodyContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -155,6 +239,18 @@ public class SMOOLABaseListener implements SMOOLAListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitMethod_body(SMOOLAParser.Method_bodyContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterMain_method_body(SMOOLAParser.Main_method_bodyContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitMain_method_body(SMOOLAParser.Main_method_bodyContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -215,18 +311,6 @@ public class SMOOLABaseListener implements SMOOLAListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitLogical_val(SMOOLAParser.Logical_valContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterComment(SMOOLAParser.CommentContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitComment(SMOOLAParser.CommentContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -335,6 +419,18 @@ public class SMOOLABaseListener implements SMOOLAListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitAtom_logical_expr(SMOOLAParser.Atom_logical_exprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterComment(SMOOLAParser.CommentContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitComment(SMOOLAParser.CommentContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

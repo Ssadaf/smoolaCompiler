@@ -4,7 +4,7 @@ program: main_class (usual_class)* EOF;
 
 main_class: comment* CLASS IDENTIFIER '{' main_method '}';
 
-main_method: comment* METHOD 'main' '(' ')' ':' 'int' comment* '{' method_body '}'comment*;
+main_method: comment* METHOD 'main' '(' ')' ':' 'int' comment* '{' main_method_body '}'comment*;
 
 usual_class: comment* CLASS IDENTIFIER ( (EXTENDS IDENTIFIER) | ) '{'( (comment | var_dec)* (comment | method)* )'}';
 
@@ -18,9 +18,17 @@ if_expression: comment* IF condition THEN comment* ('{'body'}'| line) comment* (
 
 array_element: IDENTIFIER '[' arithmethic_exp ']';
 
-assignment: (IDENTIFIER | array_element) ('=' (expression))+;
+assignment: (IDENTIFIER | array_element) ('=' (expression | method_call | new_array))+;
 
-instanciation: IDENTIFIER '=' NEW IDENTIFIER '('( ( expression (',' expression )*) | )')';
+instanciation: (IDENTIFIER | array_element) '=' NEW (IDENTIFIER '('( ( expression (',' expression )*) | )')');
+
+new_array: NEW INT '[' NUMBER ']';
+
+array_length: IDENTIFIER '.' LENGTH;
+
+method_call: ( NEW (IDENTIFIER '('( ( expression (',' expression )*) | )')') | IDENTIFIER ) '.' IDENTIFIER '('( ( expression (',' expression )*) | )')';
+
+writeln_call: WRITELN '(' (NUMBER | string | IDENTIFIER) ')';
 
 expression:('('expression')'
           | assignment
@@ -30,16 +38,22 @@ expression:('('expression')'
           | ;
 
 line: expression ';'
-      | instanciation ';'
       | while_expression
       | if_expression
       | comment
+      | writeln_call ';'
       |';';
 
 body: (line)*
       | '{'body'}';
 
+
+main_body: (line | method_call)*
+      | '{'body'}';
+
 method_body: body RETURN expression ';' comment*;
+
+main_method_body: main_body RETURN (expression | method_call) ';' comment*;
 
 method: comment* METHOD IDENTIFIER  '(' ((argument (',' argument)*) | ) ')' ':' type comment* '{' (comment | var_dec)* method_body'}' comment*;
 
@@ -71,7 +85,7 @@ mult_expr: atom_arith_expr ( ( MUL | DIV ) atom_arith_expr )*;
 
 atom_bool_exp: logical_val | '(' logical_exp ')';
 
-atom_arith_expr: (SUB | )(IDENTIFIER | array_element | NUMBER | '(' arithmethic_exp ')');
+atom_arith_expr: (SUB | )(IDENTIFIER | array_element | NUMBER | array_length |'(' arithmethic_exp ')');
 
 and_expr: (equal_exp) ( AND ( equal_exp) )*;
 
@@ -82,6 +96,8 @@ comment: COMMENT;
 COMMENT: '#'~[\r\n]*;
 
 NUMBER: ('-' | ) [0-9]+;
+
+LENGTH: 'length';
 
 ARRAY: 'int[]';
 

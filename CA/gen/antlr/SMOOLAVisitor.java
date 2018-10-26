@@ -59,6 +59,42 @@ public interface SMOOLAVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitIf_expression(SMOOLAParser.If_expressionContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link SMOOLAParser#array_element}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitArray_element(SMOOLAParser.Array_elementContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link SMOOLAParser#assignment}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitAssignment(SMOOLAParser.AssignmentContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link SMOOLAParser#instanciation}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitInstanciation(SMOOLAParser.InstanciationContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link SMOOLAParser#new_array}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitNew_array(SMOOLAParser.New_arrayContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link SMOOLAParser#array_length}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitArray_length(SMOOLAParser.Array_lengthContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link SMOOLAParser#method_call}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitMethod_call(SMOOLAParser.Method_callContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link SMOOLAParser#expression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -77,11 +113,23 @@ public interface SMOOLAVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitBody(SMOOLAParser.BodyContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link SMOOLAParser#main_body}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitMain_body(SMOOLAParser.Main_bodyContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link SMOOLAParser#method_body}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitMethod_body(SMOOLAParser.Method_bodyContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link SMOOLAParser#main_method_body}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitMain_method_body(SMOOLAParser.Main_method_bodyContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link SMOOLAParser#method}.
 	 * @param ctx the parse tree
@@ -112,12 +160,6 @@ public interface SMOOLAVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitLogical_val(SMOOLAParser.Logical_valContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link SMOOLAParser#comment}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitComment(SMOOLAParser.CommentContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link SMOOLAParser#string}.
 	 * @param ctx the parse tree
@@ -172,4 +214,10 @@ public interface SMOOLAVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitAtom_logical_expr(SMOOLAParser.Atom_logical_exprContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link SMOOLAParser#comment}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitComment(SMOOLAParser.CommentContext ctx);
 }
