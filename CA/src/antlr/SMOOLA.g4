@@ -10,11 +10,11 @@ grammar SMOOLA;
 
 arithmethic_exp: mult_expr ( (SUB | ADD) mult_expr )*;
 
-//condition: '('expression')';
+condition: '('expression')';
 
-//while_expression: WHILE condition '{'body'}';
-//
-//if_expression: IF condition THEN ('{'body'}'| line) (ELSE ('{'body'}' | line) | );
+while_expression: WHILE condition '{'body'}';
+
+if_expression: IF condition THEN ('{'body'}'| line) (ELSE ('{'body'}' | line) | );
 
 expression:('('expression')'
           | equal_exp
@@ -26,14 +26,14 @@ expression:('('expression')'
           | NUMBER) expression
           | ;
 
-//line: (expression
-//      | while_expression
-//      | if_expression
-//      | comment
-//      | )';';
+line: (expression
+      | while_expression
+      | if_expression
+      | comment
+      | )';';
 
-//body: (line)*
-//      | '{'body'}';
+body: (line)*
+      | '{'body'}';
 
 //method_body: body RETURN expression ';' ;
 
@@ -43,13 +43,6 @@ argument: IDENTIFIER ':' type;
 
 var_dec: VAR IDENTIFIER ':' type ';' ;
 
-//logical_unary: NOT;
-//
-//logical_binary: OR | AND;
-//
-comparator_binary: EQUAL | NOTEQUAL | LESSTHAN | GRATERTHAN;
-//
-//arithmetic_binary: ADD | SUB | MUL | DIV;
 
 type: BOOLEAN 
     | STRING 
@@ -64,19 +57,18 @@ comment: '#'~('\r' | '\n')*;
 
 string: '"'~('\r' | '\n' | '"' )'"';
 
-comparator_atom: ( '(' IDENTIFIER | NUMBER | arithmethic_exp ')'
-             | arithmethic_exp )
+comparator_atom: ( arithmethic_exp )
               ( (GRATERTHAN | LESSTHAN)
-              ( '(' IDENTIFIER | NUMBER | arithmethic_exp ')' | arithmethic_exp ))*;
+              ( arithmethic_exp ))*;
 
 logical_exp: and_expr( OR and_expr )*;
 
-equal_exp: (comparator_atom | atom_logical_expr | ( '(' comparator_atom | atom_bool_exp  ')') )
-           ( (EQUAL | NOTEQUAL) (comparator_atom| atom_logical_expr |( '(' comparator_atom | atom_bool_exp ')') ) )*;
+equal_exp: (comparator_atom | atom_logical_expr | ( '(' (comparator_atom | atom_bool_exp)  ')') )
+           ( (EQUAL | NOTEQUAL) (comparator_atom| atom_logical_expr |( '(' (comparator_atom | atom_bool_exp) ')') ) )*;
 
 mult_expr: atom_arith_expr ( ( MUL | DIV ) atom_arith_expr )*;
 
-atom_bool_exp: logical_val | '(' logical_exp')';
+atom_bool_exp: logical_val | '(' logical_exp ')';
 
 atom_arith_expr: (SUB | )(IDENTIFIER | NUMBER | '(' arithmethic_exp ')');
 
@@ -158,42 +150,3 @@ GRATERTHAN: '>';
 ASSIGN: '=';
 
 WHITESPACE: [ \t\r\n] -> skip;
-
-
-
-//grammar SMOOLA;
-//
-//@members{
-//   void print(Object obj){
-//        System.out.println(obj);
-//   }
-//}
-//
-//program
-//    :    additionExp
-//    ;
-//
-//additionExp
-//    :    multiplyExp
-//         ( '+' multiplyExp
-//         | '-' multiplyExp
-//         )*
-//    ;
-//
-//
-//multiplyExp
-//    :    atomExp
-//         ( '*' atomExp
-//         | '/' atomExp
-//         )*
-//    ;
-//
-//atomExp
-//    :    num = NUMBER {print($num.text);}
-//    |    '(' additionExp ')'
-//    ;
-//
-//
-//NUMBER
-//    :    [0-9]+
-//    ;

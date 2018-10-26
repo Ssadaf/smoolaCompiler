@@ -17,11 +17,41 @@ public interface SMOOLAVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitArithmethic_exp(SMOOLAParser.Arithmethic_expContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link SMOOLAParser#condition}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitCondition(SMOOLAParser.ConditionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link SMOOLAParser#while_expression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitWhile_expression(SMOOLAParser.While_expressionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link SMOOLAParser#if_expression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitIf_expression(SMOOLAParser.If_expressionContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link SMOOLAParser#expression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitExpression(SMOOLAParser.ExpressionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link SMOOLAParser#line}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitLine(SMOOLAParser.LineContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link SMOOLAParser#body}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitBody(SMOOLAParser.BodyContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link SMOOLAParser#argument}.
 	 * @param ctx the parse tree
@@ -34,12 +64,6 @@ public interface SMOOLAVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitVar_dec(SMOOLAParser.Var_decContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link SMOOLAParser#comparator_binary}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitComparator_binary(SMOOLAParser.Comparator_binaryContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link SMOOLAParser#type}.
 	 * @param ctx the parse tree
