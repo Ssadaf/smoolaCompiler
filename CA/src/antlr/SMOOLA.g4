@@ -67,6 +67,8 @@ comment: '#'~('\r' | '\n')*;
 
 string: '"'~('\r' | '\n' | '"' )'"';
 
+less_grt_atom: ( '('expression')' | IDENTIFIER | INT | arithmethic_exp ) ( );
+
 mult_expr: atom_arith_expr ( ( MUL | DIV ) atom_arith_expr )*;
 
 atom_arith_expr: (SUB | )(IDENTIFIER | INT | '(' arithmethic_exp ')');
