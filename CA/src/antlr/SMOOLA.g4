@@ -149,4 +149,5 @@ GRATERTHAN: '>';
 
 ASSIGN: '=';
 
-WHITESPACE: [ \t\r\n] -> skip;
+WHITE_SPACE: (' ' |  '\n' | '\r' | '\t')+ -> skip;
+
