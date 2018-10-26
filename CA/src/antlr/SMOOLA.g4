@@ -65,16 +65,14 @@ comment: '#'~('\r' | '\n')*;
 string: '"'~('\r' | '\n' | '"' )'"';
 
 comparator_atom: ( '(' IDENTIFIER | NUMBER | arithmethic_exp ')'
-             | IDENTIFIER
-             | NUMBER
              | arithmethic_exp )
               ( (GRATERTHAN | LESSTHAN)
-              ( '(' IDENTIFIER | NUMBER | arithmethic_exp ')' | IDENTIFIER | NUMBER | arithmethic_exp ))*;
+              ( '(' IDENTIFIER | NUMBER | arithmethic_exp ')' | arithmethic_exp ))*;
 
 logical_exp: and_expr( OR and_expr )*;
 
-equal_exp: (comparator_atom | atom_logical_expr ( '(' comparator_atom | atom_bool_exp  ')') )
-           ( (EQUAL | NOTEQUAL) (comparator_atom| logical_val |( '(' comparator_atom | logical_val | logical_exp ')') ) )*;
+equal_exp: (comparator_atom | atom_logical_expr | ( '(' comparator_atom | atom_bool_exp  ')') )
+           ( (EQUAL | NOTEQUAL) (comparator_atom| atom_logical_expr |( '(' comparator_atom | atom_bool_exp ')') ) )*;
 
 mult_expr: atom_arith_expr ( ( MUL | DIV ) atom_arith_expr )*;
 
@@ -82,7 +80,7 @@ atom_bool_exp: logical_val | '(' logical_exp')';
 
 atom_arith_expr: (SUB | )(IDENTIFIER | NUMBER | '(' arithmethic_exp ')');
 
-and_expr: ( atom_logical_expr | equal_exp) ( AND ( atom_logical_expr | equal_exp) )*;
+and_expr: (equal_exp) ( AND ( equal_exp) )*;
 
 atom_logical_expr: (NOT| ) (IDENTIFIER | logical_val | '(' logical_exp ')');
 
