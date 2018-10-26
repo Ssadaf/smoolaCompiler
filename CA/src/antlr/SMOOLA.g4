@@ -4,7 +4,7 @@ program: main_class (usual_class)* EOF;
 
 main_class: CLASS IDENTIFIER '{' main_method '}';
 
-main_method: DEF 'main' '(' ')' ':' 'int' '{' method_body '}';
+main_method: METHOD 'main' '(' ')' ':' 'int' '{' method_body '}';
 
 usual_class: CLASS IDENTIFIER ( (EXTENDS IDENTIFIER) | ) '{' var_dec* method* '}';
 
@@ -26,18 +26,18 @@ expression:('('expression')'
           | NUMBER) expression
           | ;
 
-line: (expression
+line: expression ';'
       | while_expression
       | if_expression
       | comment
-      | )';';
+      |';';
 
 body: (line)*
       | '{'body'}';
 
 method_body: body RETURN expression ';' ;
 
-method: DEF IDENTIFIER  '(' ((argument (',' argument)*) | ) ')' ':' type '{'var_dec* method_body'}';
+method: METHOD IDENTIFIER  '(' ((argument (',' argument)*) | ) ')' ':' type '{'var_dec* method_body'}';
 
 argument: IDENTIFIER ':' type;
 
