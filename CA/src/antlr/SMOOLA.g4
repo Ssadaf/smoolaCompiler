@@ -17,14 +17,14 @@ arithmethic_exp: mult_expr ( (SUB | ADD) mult_expr )*;
 //if_expression: IF condition THEN ('{'body'}'| line) (ELSE ('{'body'}' | line) | );
 
 expression:('('expression')'
+          | equal_exp
           | arithmethic_exp
           | logical_exp
           | logical_val
           | string
           | IDENTIFIER
-          | INT) expression_helper;
-
-expression_helper: comparator_binary expression|;
+          | NUMBER) expression
+          | ;
 
 //line: (expression
 //      | while_expression
@@ -64,25 +64,25 @@ comment: '#'~('\r' | '\n')*;
 
 string: '"'~('\r' | '\n' | '"' )'"';
 
-comparator_atom: ( '(' IDENTIFIER | INT | arithmethic_exp ')'
+comparator_atom: ( '(' IDENTIFIER | NUMBER | arithmethic_exp ')'
              | IDENTIFIER
-             | INT
+             | NUMBER
              | arithmethic_exp )
               ( (GRATERTHAN | LESSTHAN)
-              ( '(' IDENTIFIER | INT | arithmethic_exp ')' | IDENTIFIER | INT | arithmethic_exp ))*;
+              ( '(' IDENTIFIER | NUMBER | arithmethic_exp ')' | IDENTIFIER | NUMBER | arithmethic_exp ))*;
 
 logical_exp: and_expr( OR and_expr )*;
 
-equal_exp: (comparator_atom| logical_val |( '(' comparator_atom | atom_bool_exp  ')') )
+equal_exp: (comparator_atom | atom_logical_expr ( '(' comparator_atom | atom_bool_exp  ')') )
            ( (EQUAL | NOTEQUAL) (comparator_atom| logical_val |( '(' comparator_atom | logical_val | logical_exp ')') ) )*;
 
 mult_expr: atom_arith_expr ( ( MUL | DIV ) atom_arith_expr )*;
 
 atom_bool_exp: logical_val | '(' logical_exp')';
 
-atom_arith_expr: (SUB | )(IDENTIFIER | INT | '(' arithmethic_exp ')');
+atom_arith_expr: (SUB | )(IDENTIFIER | NUMBER | '(' arithmethic_exp ')');
 
-and_expr: ( atom_logical_expr | equal_exp ) ( AND ( atom_logical_expr | equal_exp ) )*;
+and_expr: ( atom_logical_expr | equal_exp) ( AND ( atom_logical_expr | equal_exp) )*;
 
 atom_logical_expr: (NOT| ) (IDENTIFIER | logical_val | '(' logical_exp ')');
 

@@ -17,11 +17,11 @@ public interface SMOOLAVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitArithmethic_exp(SMOOLAParser.Arithmethic_expContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link SMOOLAParser#logical_exp}.
+	 * Visit a parse tree produced by {@link SMOOLAParser#expression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitLogical_exp(SMOOLAParser.Logical_expContext ctx);
+	T visitExpression(SMOOLAParser.ExpressionContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link SMOOLAParser#argument}.
 	 * @param ctx the parse tree
@@ -34,6 +34,12 @@ public interface SMOOLAVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitVar_dec(SMOOLAParser.Var_decContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link SMOOLAParser#comparator_binary}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitComparator_binary(SMOOLAParser.Comparator_binaryContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link SMOOLAParser#type}.
 	 * @param ctx the parse tree
@@ -59,11 +65,35 @@ public interface SMOOLAVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitString(SMOOLAParser.StringContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link SMOOLAParser#comparator_atom}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitComparator_atom(SMOOLAParser.Comparator_atomContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link SMOOLAParser#logical_exp}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitLogical_exp(SMOOLAParser.Logical_expContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link SMOOLAParser#equal_exp}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitEqual_exp(SMOOLAParser.Equal_expContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link SMOOLAParser#mult_expr}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitMult_expr(SMOOLAParser.Mult_exprContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link SMOOLAParser#atom_bool_exp}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitAtom_bool_exp(SMOOLAParser.Atom_bool_expContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link SMOOLAParser#atom_arith_expr}.
 	 * @param ctx the parse tree
