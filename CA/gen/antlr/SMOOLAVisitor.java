@@ -11,6 +11,30 @@ import org.antlr.v4.runtime.tree.ParseTreeVisitor;
  */
 public interface SMOOLAVisitor<T> extends ParseTreeVisitor<T> {
 	/**
+	 * Visit a parse tree produced by {@link SMOOLAParser#program}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitProgram(SMOOLAParser.ProgramContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link SMOOLAParser#main_class}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitMain_class(SMOOLAParser.Main_classContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link SMOOLAParser#main_method}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitMain_method(SMOOLAParser.Main_methodContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link SMOOLAParser#usual_class}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitUsual_class(SMOOLAParser.Usual_classContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link SMOOLAParser#arithmethic_exp}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -52,6 +76,18 @@ public interface SMOOLAVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitBody(SMOOLAParser.BodyContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link SMOOLAParser#method_body}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitMethod_body(SMOOLAParser.Method_bodyContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link SMOOLAParser#method}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitMethod(SMOOLAParser.MethodContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link SMOOLAParser#argument}.
 	 * @param ctx the parse tree

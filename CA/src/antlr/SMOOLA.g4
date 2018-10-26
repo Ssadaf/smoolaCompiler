@@ -1,18 +1,18 @@
 grammar SMOOLA;
 
-//program: main_class (usual_class)* EOF;
+program: main_class (usual_class)* EOF;
 
-//main_class: CLASS IDENTIFIER '{' main_method '}';
+main_class: CLASS IDENTIFIER '{' main_method '}';
 
-//main_method: DEF 'main' '(' ')' ':' 'int' '{' method_body '}';
+main_method: DEF 'main' '(' ')' ':' 'int' '{' method_body '}';
 
-//usual_class: CLASS IDENTIFIER ( (EXTENDS IDENTIFIER) | ) '{' var_dec* method* '}';
+usual_class: CLASS IDENTIFIER ( (EXTENDS IDENTIFIER) | ) '{' var_dec* method* '}';
 
 arithmethic_exp: mult_expr ( (SUB | ADD) mult_expr )*;
 
 condition: '('expression')';
 
-while_expression: WHILE condition '{'body'}';
+while_expression: WHILE condition '{' body '}';
 
 if_expression: IF condition THEN ('{'body'}'| line) (ELSE ('{'body'}' | line) | );
 
@@ -35,9 +35,9 @@ line: (expression
 body: (line)*
       | '{'body'}';
 
-//method_body: body RETURN expression ';' ;
+method_body: body RETURN expression ';' ;
 
-//method: DEF IDENTIFIER  '(' ((argument (',' argument)*) | ) ')' ':' type '{'var_dec* method_body'}';
+method: DEF IDENTIFIER  '(' ((argument (',' argument)*) | ) ')' ':' type '{'var_dec* method_body'}';
 
 argument: IDENTIFIER ':' type;
 
@@ -76,7 +76,7 @@ and_expr: (equal_exp) ( AND ( equal_exp) )*;
 
 atom_logical_expr: (NOT| ) (IDENTIFIER | logical_val | '(' logical_exp ')');
 
-NUMBER: ('-' | '+' | ) [0-9]+;
+NUMBER: ('-' | ) [0-9]+;
 
 ARRAY: 'int[]';
 
@@ -149,5 +149,9 @@ GRATERTHAN: '>';
 
 ASSIGN: '=';
 
-WHITE_SPACE: (' ' |  '\n' | '\r' | '\t')+ -> skip;
+ENTER: '\n' -> skip;
+
+WS: [ \t\r] -> skip ;
+
+
 
