@@ -2,52 +2,62 @@ grammar SMOOLA;
 
 program: main_class (usual_class)* EOF;
 
-main_class: comment* CLASS IDENTIFIER LEFT_CURL main_method RIGHT_CURL;
+array_length: IDENTIFIER DOT LENGTH;
 
-main_method: comment* METHOD IDENTIFIER LEFT_PAR RIGHT_PAR COLUMN INT comment* LEFT_CURL main_method_body RIGHT_CURL comment*;
+main_class: comment* CLASS IDENTIFIER {System.out.printf("ClassDec:%s\n", $IDENTIFIER.text);} LEFT_CURL main_method RIGHT_CURL;
 
-usual_class: comment* CLASS IDENTIFIER ( (EXTENDS IDENTIFIER) | ) LEFT_CURL( (comment | var_dec)* (comment | method)* )RIGHT_CURL;
+main_method: comment* METHOD IDENTIFIER {System.out.printf("MethodDec:%s\n", $IDENTIFIER.text);}LEFT_PAR RIGHT_PAR COLUMN INT comment* LEFT_CURL main_method_body RIGHT_CURL comment*;
 
-main_arithmethic_exp: main_mult_expr ( (SUB | ADD) main_mult_expr )*;
+usual_class: comment* CLASS IDENTIFIER {System.out.printf("ClassDec:%s", $IDENTIFIER.text);}( (EXTENDS IDENTIFIER {System.out.printf(",%s\n", $IDENTIFIER.text);}) | {System.out.printf("\n");}) LEFT_CURL( (comment | var_dec)* (comment | method)* )RIGHT_CURL;
 
-arithmethic_exp: mult_expr ( (SUB | ADD) mult_expr )*;
+main_arithmethic_exp: main_mult_expr ( ( (SUB {System.out.printf("Operator:-\n");})| (ADD {System.out.printf("Operator:+\n");})) main_mult_expr )*;
+
+arithmethic_exp: mult_expr ( ( (SUB {System.out.printf("Operator:-\n");}) | (ADD {System.out.printf("Operator:+\n");}) ) mult_expr )*;
 
 condition: LEFT_PAR expression RIGHT_PAR;
 
 main_condition: LEFT_PAR main_expression RIGHT_PAR;
 
-while_expression: comment* WHILE condition comment* LEFT_CURL body RIGHT_CURL comment*;
+while_expression: comment* WHILE {System.out.printf("Loop:While\n");}condition comment* LEFT_CURL body RIGHT_CURL comment*;
 
 main_while_expression: comment* WHILE main_condition comment* LEFT_CURL main_body RIGHT_CURL comment*;
 
-if_expression: comment* IF condition THEN comment* (LEFT_CURL body RIGHT_CURL| line) comment* (ELSE (LEFT_CURL body RIGHT_CURL | line) | )comment*;
+if_expression: comment* IF {System.out.printf("Conditional:if\n");}condition THEN comment* (LEFT_CURL body RIGHT_CURL| line) comment* (ELSE {System.out.printf("Conditional:else\n");} (LEFT_CURL body RIGHT_CURL | line) | )comment*;
 
 main_if_expression: comment* IF main_condition THEN comment* (LEFT_CURL main_body RIGHT_CURL| main_line) comment* (ELSE (LEFT_CURL main_body RIGHT_CURL | main_line) | )comment*;
 
 array_element: IDENTIFIER LEFT_BRACKET arithmethic_exp RIGHT_BRACKET;
 
-assignment: (IDENTIFIER | array_element) (ASSIGN (expression | method_call | new_array))+;
+assignment: (IDENTIFIER | array_element) ((ASSIGN {System.out.printf("Operator:=\n");}) (expression | method_call | new_array))+;
 
-main_assignment: (IDENTIFIER | array_element) (ASSIGN (main_expression | method_call | new_array))+;
+main_assignment: (IDENTIFIER | array_element) ((ASSIGN {System.out.printf("Operator:=\n");}) (main_expression | method_call | new_array))+;
 
-instanciation: (IDENTIFIER | array_element) ASSIGN NEW (IDENTIFIER LEFT_PAR( ( expression (COMMA expression )*) | )RIGHT_PAR);
+instanciation: (IDENTIFIER | array_element) (ASSIGN {System.out.printf("Operator:=\n");}) NEW (IDENTIFIER LEFT_PAR( ( expression (COMMA expression )*) | )RIGHT_PAR);
 
 new_array: NEW INT LEFT_BRACKET NUMBER RIGHT_BRACKET;
 
-array_length: IDENTIFIER DOT LENGTH;
+method_call: ( new_sth ) DOT IDENTIFIER LEFT_PAR( ( expression (COMMA expression )*) | )RIGHT_PAR;
 
-method_call: ( NEW (IDENTIFIER LEFT_PAR( ( expression (COMMA expression )*) | )RIGHT_PAR) | IDENTIFIER ) DOT IDENTIFIER LEFT_PAR( ( expression (COMMA expression )*) | )RIGHT_PAR;
+main_method_call: ( new_sth ) DOT IDENTIFIER LEFT_PAR( ( main_expression (COMMA main_expression )*) | )RIGHT_PAR;
 
-main_writeln_call: WRITELN LEFT_PAR (NUMBER | string | IDENTIFIER | method_call) RIGHT_PAR;
+new_sth: ( NEW (IDENTIFIER LEFT_PAR( ( expression (COMMA expression )*) | ) RIGHT_PAR) | IDENTIFIER )
+       | (LEFT_PAR new_sth RIGHT_PAR);
 
-writeln_call: WRITELN LEFT_PAR (NUMBER | string | IDENTIFIER) RIGHT_PAR;
+main_writeln_call: WRITELN LEFT_PAR (main_params) RIGHT_PAR;
+
+main_params: NUMBER | string | IDENTIFIER | array_length | main_method_call | LEFT_PAR main_params RIGHT_PAR;
+
+writeln_call: WRITELN LEFT_PAR (params) RIGHT_PAR;
+
+params: NUMBER | string | IDENTIFIER | array_length | method_call | LEFT_PAR params RIGHT_PAR;
 
 main_expression: (LEFT_PAR main_expression RIGHT_PAR
+               | string
                | main_assignment
                | main_logical_exp
                | instanciation
-               | method_call
-               | string) main_expression
+               | array_length
+               | main_method_call) main_expression
                | ;
 
 main_line: main_expression SEMI_COLUMN
@@ -79,15 +89,15 @@ body: (line)*
 main_body: (main_line)*
          | LEFT_CURL main_body RIGHT_CURL;
 
-method_body: body RETURN expression SEMI_COLUMN comment*;
+method_body: body RETURN (expression | method_call) SEMI_COLUMN comment*;
 
 main_method_body: main_body RETURN main_expression SEMI_COLUMN comment*;
 
-method: comment* METHOD IDENTIFIER  LEFT_PAR ((argument (COMMA argument)*) | ) RIGHT_PAR COLUMN type comment* LEFT_CURL (comment | var_dec)* method_body RIGHT_CURL comment*;
+method: comment* METHOD IDENTIFIER  {System.out.printf("MethodDec:%s", $IDENTIFIER.text);} LEFT_PAR ((argument (COMMA argument)*) | ) RIGHT_PAR {System.out.printf("\n");}COLUMN type comment* LEFT_CURL (comment | var_dec)* method_body RIGHT_CURL comment*;
 
-argument: IDENTIFIER COLUMN type;
+argument: IDENTIFIER {System.out.printf(",%s", $IDENTIFIER.text);} COLUMN type;
 
-var_dec: VAR IDENTIFIER COLUMN type SEMI_COLUMN ;
+var_dec: VAR IDENTIFIER {System.out.printf("VarDec:%s", $IDENTIFIER.text);} COLUMN type {System.out.printf(",%s\n", $type.text);} SEMI_COLUMN ;
 
 type: BOOLEAN 
     | STRING 
@@ -108,35 +118,35 @@ comparator_atom: ( arithmethic_exp )
               ( (GRATERTHAN | LESSTHAN)
               ( arithmethic_exp ))*;
 
-logical_exp: and_expr( OR and_expr )*;
+logical_exp: and_expr( (OR {System.out.printf("Operator:||\n");}) and_expr )*;
 
-main_logical_exp: main_and_expr(OR main_and_expr)*;
+main_logical_exp: main_and_expr((OR {System.out.printf("Operator:||\n");}) main_and_expr)*;
 
 equal_exp: (comparator_atom | atom_logical_expr | ( LEFT_PAR (comparator_atom | atom_bool_exp)  RIGHT_PAR) )
-           ( (EQUAL | NOTEQUAL) (comparator_atom| atom_logical_expr |( LEFT_PAR (comparator_atom | atom_bool_exp) RIGHT_PAR) ) )*;
+           ( ((EQUAL {System.out.printf("Operator:==\n");}) | (NOTEQUAL {System.out.printf("Operator:<>\n");})) (comparator_atom| atom_logical_expr |( LEFT_PAR (comparator_atom | atom_bool_exp) RIGHT_PAR) ) )*;
 
 main_equal_exp: (main_comparator_atom | main_atom_logical_expr | ( LEFT_PAR (main_comparator_atom | main_atom_bool_exp)  RIGHT_PAR) )
-                ( (EQUAL | NOTEQUAL) (main_comparator_atom| main_atom_logical_expr |( LEFT_PAR (main_comparator_atom | main_atom_bool_exp) RIGHT_PAR) ) )*;
+                ( ((EQUAL {System.out.printf("Operator:==\n");})  | (NOTEQUAL {System.out.printf("Operator:<>\n");})) (main_comparator_atom| main_atom_logical_expr |( LEFT_PAR (main_comparator_atom | main_atom_bool_exp) RIGHT_PAR) ) )*;
 
-mult_expr: atom_arith_expr ( ( MUL | DIV ) atom_arith_expr )*;
+mult_expr: atom_arith_expr ( ( (MUL {System.out.printf("Operator:*\n");}) | (DIV{System.out.printf("Operator:/\n");}) ) atom_arith_expr )*;
 
-main_mult_expr: main_atom_arith_expr ( ( MUL | DIV ) main_atom_arith_expr )*;
+main_mult_expr: main_atom_arith_expr ( ( (MUL {System.out.printf("Operator:*\n");}) | (DIV {System.out.printf("Operator:/\n");}) ) main_atom_arith_expr )*;
 
 atom_bool_exp: logical_val | LEFT_PAR logical_exp RIGHT_PAR;
 
 main_atom_bool_exp: logical_val | LEFT_PAR main_logical_exp RIGHT_PAR;
 
-main_atom_arith_expr: (SUB | )(IDENTIFIER | array_element | method_call | NUMBER | array_length |LEFT_PAR main_arithmethic_exp RIGHT_PAR);
+main_atom_arith_expr: ( (SUB {System.out.printf("Operator:-\n");}) | )(IDENTIFIER | array_element | array_length  | main_method_call | NUMBER |LEFT_PAR main_arithmethic_exp RIGHT_PAR);
 
-atom_arith_expr: (SUB | )(IDENTIFIER | array_element | NUMBER | array_length |LEFT_PAR arithmethic_exp RIGHT_PAR);
+atom_arith_expr: (SUB {{System.out.printf("Operator:-\n");}} | )(IDENTIFIER| array_length | array_element | NUMBER |LEFT_PAR arithmethic_exp RIGHT_PAR);
 
-and_expr: (equal_exp) ( AND ( equal_exp) )*;
+and_expr: (equal_exp) ( (AND {System.out.printf("Operator:&&\n");}) ( equal_exp) )*;
 
-main_and_expr: (main_equal_exp) (AND (main_equal_exp) )*;
+main_and_expr: (main_equal_exp) ((AND {System.out.printf("Operator:&&\n");}) (main_equal_exp) )*;
 
-main_atom_logical_expr: (NOT| ) (IDENTIFIER | array_element | logical_val | method_call | LEFT_PAR main_logical_exp RIGHT_PAR);
+main_atom_logical_expr: ((NOT {System.out.printf("Operator:!\n");})| ) (IDENTIFIER | array_element | logical_val | main_method_call | LEFT_PAR main_logical_exp RIGHT_PAR);
 
-atom_logical_expr: (NOT| ) (IDENTIFIER | array_element | logical_val | LEFT_PAR logical_exp RIGHT_PAR);
+atom_logical_expr: ((NOT {System.out.printf("Operator:!\n");})| ) (IDENTIFIER | array_element | logical_val | LEFT_PAR logical_exp RIGHT_PAR);
 
 comment: COMMENT;
 
@@ -146,7 +156,7 @@ LEFT_BRACKET: '[';
 
 RIGHT_BRACKET: ']';
 
-STRING_VAL: '"'~('\r' | '\n' | '"' )'"';
+STRING_VAL: '"'~('\r' | '\n' | '"' )*'"';
 
 COLUMN: ':';
 
