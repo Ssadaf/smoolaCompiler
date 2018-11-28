@@ -26,7 +26,7 @@ grammar Smoola;
                 '{' 'def' ID '(' ')' ':' 'int' '{'  statements 'return' expression ';' '}' '}'
     ;
     classDeclaration returns [ClassDeclaration syn_classDec]:
-        'class' className = ID ('extends' classParent = ID {$syn_classDec.setParentName(new Identifier($classParent.text) );} )?
+        'class' className = ID {$syn_classDec = new ClassDeclaration(new Identifier($className.text)gi, null); }('extends' classParent = ID {$syn_classDec.setParentName(new Identifier($classParent.text) );} )?
                 '{' (varDeclaration {$syn_classDec.addVarDeclaration($varDeclaration.syn_varDec);})*
                 (methodDeclaration {$syn_classDec.addMethodDeclaration($methodDeclaration.syn_methodDec);})* '}'
     ;

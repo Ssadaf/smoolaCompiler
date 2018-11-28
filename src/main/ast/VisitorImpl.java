@@ -22,15 +22,16 @@ public class VisitorImpl implements Visitor {
             System.out.println("No class exists in the program");
         program.getMainClass().accept(this);
         List <ClassDeclaration> classes = program.getClasses();
-        for (int i = 0; i < classes.size(); i++)
-            classes.get(i).accept(this);
+        if(classes != null)
+        {
+            for (int i = 0; i < classes.size(); i++)
+                classes.get(i).accept(this);
+        }
         output.add(program.toString());
     }
 
     @Override
     public void visit(ClassDeclaration classDeclaration) {
-        Identifier name = classDeclaration.getName();
-        Identifier parent = classDeclaration.getParentName();
         ArrayList<VarDeclaration> vars = classDeclaration.getVarDeclarations();
         for(int i = 0; i < vars.size(); i++)
             vars.get(i).accept(this);
@@ -38,7 +39,9 @@ public class VisitorImpl implements Visitor {
         for(int i = 0; i < meths.size(); i++)
             meths.get(i).accept(this);
         classDeclaration.getName().accept(this);
-        classDeclaration.getParentName().accept(this);
+        Identifier parent = classDeclaration.getParentName();
+        if(parent != null)
+            parent.accept(this);
         output.add(classDeclaration.toString());
     }
 
