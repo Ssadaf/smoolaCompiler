@@ -8,6 +8,7 @@ import ast.node.statement.*;
 
 
 public interface Visitor {
+    ArrayList<String> output = new ArrayList<String>();
     void visit (Program program);
 
     //Declarations
@@ -35,10 +36,5 @@ public interface Visitor {
     void visit(Conditional conditional);
     void visit(While loop);
     void visit(Write write);
-
-
-
-
-
 
 }

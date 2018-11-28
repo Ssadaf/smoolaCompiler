@@ -17,15 +17,25 @@ public class VisitorImpl implements Visitor {
 
     @Override
     public void visit(Program program) {
-//        program.getMainClass().accept(this);
-//        List <ClassDeclaration> classes = program.getClasses();
-//        for (int i = 0; i < classes.size(); i++)
-//            classes[i].accept(this);
+        if((program.getMainClass() == null) && (program.getClasses.size() == 0) )
+            System.out.println("No class exists in the program");
+        program.getMainClass().accept(this);
+        List <ClassDeclaration> classes = program.getClasses();
+        for (int i = 0; i < classes.size(); i++)
+            classes[i].accept(this);
+        output.add(program.toString());
     }
 
     @Override
     public void visit(ClassDeclaration classDeclaration) {
-        //TODO: implement appropriate visit functionality
+        Identifier name = classDeclaration.getName();
+        Identifier parent = classDeclaration.getParentName();
+        ArrayList<VarDeclaration> vars = classDeclaration.getVarDeclarations();
+        for(int i = 0; i < vars.size(); i++)
+            vars[i].accept(this);
+        ArrayList<MethodDeclaration> meths = classDeclaration.getMethodDeclarations();
+        for(int i = 0; i < meths.size(); i++)
+            meths[i].accept(this);
     }
 
     @Override
