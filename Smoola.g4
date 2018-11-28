@@ -54,7 +54,7 @@ grammar Smoola;
         'writeln(' expression ')' ';' {$syn_stmt = new Write($expression.syn_expr);}
     ;
     statementAssignment returns [Assign syn_stmt]:
-        expression ';' {$syn_stmt = new Assign($expression.syn_expr.getLeft(), $expression.syn_expr.getRight());}
+        expressionOr '=' expressionAssignment ';' {$syn_stmt = new Assign($expressionOr.syn_expr, $expressionAssignment.syn_expr);}
     ;
 
     expression returns[ Expression syn_expr]:

@@ -1,9 +1,8 @@
-package main.ast;
+package ast;
 
 import ast.node.Node;
 import ast.node.Program;
 import ast.node.declaration.ClassDeclaration;
-import ast.node.declaration.MainMethodDeclaration;
 import ast.node.declaration.MethodDeclaration;
 import ast.node.declaration.VarDeclaration;
 import ast.node.expression.*;

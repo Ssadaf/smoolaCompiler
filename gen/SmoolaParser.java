@@ -146,6 +146,11 @@ public class SmoolaParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof SmoolaListener ) ((SmoolaListener)listener).exitProgram(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof SmoolaVisitor ) return ((SmoolaVisitor<? extends T>)visitor).visitProgram(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final ProgramContext program() throws RecognitionException {
@@ -213,6 +218,11 @@ public class SmoolaParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof SmoolaListener ) ((SmoolaListener)listener).exitMainClass(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof SmoolaVisitor ) return ((SmoolaVisitor<? extends T>)visitor).visitMainClass(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -301,6 +311,11 @@ public class SmoolaParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof SmoolaListener ) ((SmoolaListener)listener).exitClassDeclaration(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof SmoolaVisitor ) return ((SmoolaVisitor<? extends T>)visitor).visitClassDeclaration(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -396,6 +411,11 @@ public class SmoolaParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof SmoolaListener ) ((SmoolaListener)listener).exitVarDeclaration(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof SmoolaVisitor ) return ((SmoolaVisitor<? extends T>)visitor).visitVarDeclaration(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final VarDeclarationContext varDeclaration() throws RecognitionException {
@@ -464,6 +484,11 @@ public class SmoolaParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof SmoolaListener ) ((SmoolaListener)listener).exitMethodDeclaration(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof SmoolaVisitor ) return ((SmoolaVisitor<? extends T>)visitor).visitMethodDeclaration(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -591,6 +616,11 @@ public class SmoolaParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof SmoolaListener ) ((SmoolaListener)listener).exitStatements(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof SmoolaVisitor ) return ((SmoolaVisitor<? extends T>)visitor).visitStatements(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final StatementsContext statements() throws RecognitionException {
@@ -662,6 +692,11 @@ public class SmoolaParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof SmoolaListener ) ((SmoolaListener)listener).exitStatement(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof SmoolaVisitor ) return ((SmoolaVisitor<? extends T>)visitor).visitStatement(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -754,6 +789,11 @@ public class SmoolaParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof SmoolaListener ) ((SmoolaListener)listener).exitStatementBlock(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof SmoolaVisitor ) return ((SmoolaVisitor<? extends T>)visitor).visitStatementBlock(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final StatementBlockContext statementBlock() throws RecognitionException {
@@ -806,6 +846,11 @@ public class SmoolaParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof SmoolaListener ) ((SmoolaListener)listener).exitStatementCondition(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof SmoolaVisitor ) return ((SmoolaVisitor<? extends T>)visitor).visitStatementCondition(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -876,6 +921,11 @@ public class SmoolaParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof SmoolaListener ) ((SmoolaListener)listener).exitStatementLoop(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof SmoolaVisitor ) return ((SmoolaVisitor<? extends T>)visitor).visitStatementLoop(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final StatementLoopContext statementLoop() throws RecognitionException {
@@ -925,6 +975,11 @@ public class SmoolaParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof SmoolaListener ) ((SmoolaListener)listener).exitStatementWrite(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof SmoolaVisitor ) return ((SmoolaVisitor<? extends T>)visitor).visitStatementWrite(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -978,6 +1033,11 @@ public class SmoolaParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof SmoolaListener ) ((SmoolaListener)listener).exitStatementAssignment(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof SmoolaVisitor ) return ((SmoolaVisitor<? extends T>)visitor).visitStatementAssignment(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final StatementAssignmentContext statementAssignment() throws RecognitionException {
@@ -1026,6 +1086,11 @@ public class SmoolaParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof SmoolaListener ) ((SmoolaListener)listener).exitExpression(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof SmoolaVisitor ) return ((SmoolaVisitor<? extends T>)visitor).visitExpression(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final ExpressionContext expression() throws RecognitionException {
@@ -1071,6 +1136,11 @@ public class SmoolaParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof SmoolaListener ) ((SmoolaListener)listener).exitExpressionAssignment(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof SmoolaVisitor ) return ((SmoolaVisitor<? extends T>)visitor).visitExpressionAssignment(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1136,6 +1206,11 @@ public class SmoolaParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof SmoolaListener ) ((SmoolaListener)listener).exitExpressionOr(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof SmoolaVisitor ) return ((SmoolaVisitor<? extends T>)visitor).visitExpressionOr(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final ExpressionOrContext expressionOr() throws RecognitionException {
@@ -1183,6 +1258,11 @@ public class SmoolaParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof SmoolaListener ) ((SmoolaListener)listener).exitExpressionOrTemp(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof SmoolaVisitor ) return ((SmoolaVisitor<? extends T>)visitor).visitExpressionOrTemp(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1252,6 +1332,11 @@ public class SmoolaParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof SmoolaListener ) ((SmoolaListener)listener).exitExpressionAnd(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof SmoolaVisitor ) return ((SmoolaVisitor<? extends T>)visitor).visitExpressionAnd(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final ExpressionAndContext expressionAnd() throws RecognitionException {
@@ -1299,6 +1384,11 @@ public class SmoolaParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof SmoolaListener ) ((SmoolaListener)listener).exitExpressionAndTemp(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof SmoolaVisitor ) return ((SmoolaVisitor<? extends T>)visitor).visitExpressionAndTemp(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1369,6 +1459,11 @@ public class SmoolaParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof SmoolaListener ) ((SmoolaListener)listener).exitExpressionEq(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof SmoolaVisitor ) return ((SmoolaVisitor<? extends T>)visitor).visitExpressionEq(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final ExpressionEqContext expressionEq() throws RecognitionException {
@@ -1417,6 +1512,11 @@ public class SmoolaParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof SmoolaListener ) ((SmoolaListener)listener).exitExpressionEqTemp(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof SmoolaVisitor ) return ((SmoolaVisitor<? extends T>)visitor).visitExpressionEqTemp(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1507,6 +1607,11 @@ public class SmoolaParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof SmoolaListener ) ((SmoolaListener)listener).exitExpressionCmp(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof SmoolaVisitor ) return ((SmoolaVisitor<? extends T>)visitor).visitExpressionCmp(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final ExpressionCmpContext expressionCmp() throws RecognitionException {
@@ -1555,6 +1660,11 @@ public class SmoolaParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof SmoolaListener ) ((SmoolaListener)listener).exitExpressionCmpTemp(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof SmoolaVisitor ) return ((SmoolaVisitor<? extends T>)visitor).visitExpressionCmpTemp(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1647,6 +1757,11 @@ public class SmoolaParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof SmoolaListener ) ((SmoolaListener)listener).exitExpressionAdd(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof SmoolaVisitor ) return ((SmoolaVisitor<? extends T>)visitor).visitExpressionAdd(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final ExpressionAddContext expressionAdd() throws RecognitionException {
@@ -1695,6 +1810,11 @@ public class SmoolaParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof SmoolaListener ) ((SmoolaListener)listener).exitExpressionAddTemp(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof SmoolaVisitor ) return ((SmoolaVisitor<? extends T>)visitor).visitExpressionAddTemp(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1789,6 +1909,11 @@ public class SmoolaParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof SmoolaListener ) ((SmoolaListener)listener).exitExpressionMult(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof SmoolaVisitor ) return ((SmoolaVisitor<? extends T>)visitor).visitExpressionMult(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final ExpressionMultContext expressionMult() throws RecognitionException {
@@ -1837,6 +1962,11 @@ public class SmoolaParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof SmoolaListener ) ((SmoolaListener)listener).exitExpressionMultTemp(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof SmoolaVisitor ) return ((SmoolaVisitor<? extends T>)visitor).visitExpressionMultTemp(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1933,6 +2063,11 @@ public class SmoolaParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof SmoolaListener ) ((SmoolaListener)listener).exitExpressionUnary(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof SmoolaVisitor ) return ((SmoolaVisitor<? extends T>)visitor).visitExpressionUnary(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final ExpressionUnaryContext expressionUnary() throws RecognitionException {
@@ -2024,6 +2159,11 @@ public class SmoolaParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof SmoolaListener ) ((SmoolaListener)listener).exitExpressionMem(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof SmoolaVisitor ) return ((SmoolaVisitor<? extends T>)visitor).visitExpressionMem(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final ExpressionMemContext expressionMem() throws RecognitionException {
@@ -2067,6 +2207,11 @@ public class SmoolaParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof SmoolaListener ) ((SmoolaListener)listener).exitExpressionMemTemp(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof SmoolaVisitor ) return ((SmoolaVisitor<? extends T>)visitor).visitExpressionMemTemp(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -2146,6 +2291,11 @@ public class SmoolaParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof SmoolaListener ) ((SmoolaListener)listener).exitExpressionMethods(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof SmoolaVisitor ) return ((SmoolaVisitor<? extends T>)visitor).visitExpressionMethods(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final ExpressionMethodsContext expressionMethods() throws RecognitionException {
@@ -2200,6 +2350,11 @@ public class SmoolaParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof SmoolaListener ) ((SmoolaListener)listener).exitExpressionMethodsTemp(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof SmoolaVisitor ) return ((SmoolaVisitor<? extends T>)visitor).visitExpressionMethodsTemp(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -2336,6 +2491,11 @@ public class SmoolaParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof SmoolaListener ) ((SmoolaListener)listener).exitExpressionOther(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof SmoolaVisitor ) return ((SmoolaVisitor<? extends T>)visitor).visitExpressionOther(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -2477,6 +2637,11 @@ public class SmoolaParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof SmoolaListener ) ((SmoolaListener)listener).exitType(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof SmoolaVisitor ) return ((SmoolaVisitor<? extends T>)visitor).visitType(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 

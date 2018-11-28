@@ -1,4 +1,4 @@
-package ast.node.declaration;
+package main.ast.node.declaration;
 
 import ast.Visitor;
 import ast.node.expression.Identifier;

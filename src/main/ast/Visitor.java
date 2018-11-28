@@ -1,4 +1,4 @@
-package main.ast;
+package ast;
 
 import ast.node.Program;
 import ast.node.declaration.*;
