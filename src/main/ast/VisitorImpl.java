@@ -1,4 +1,4 @@
-package ast;
+package main.ast;
 
 import ast.node.Node;
 import ast.node.Program;
@@ -12,15 +12,16 @@ import ast.node.expression.Value.IntValue;
 import ast.node.expression.Value.StringValue;
 import ast.node.statement.*;
 
+import java.util.List;
+
 public class VisitorImpl implements Visitor {
-    @Override
-    public void visit(Node node) {
-        //TODO: implement appropriate visit functionality
-    }
 
     @Override
     public void visit(Program program) {
-        //TODO: implement appropriate visit functionality
+//        program.getMainClass().accept(this);
+//        List <ClassDeclaration> classes = program.getClasses();
+//        for (int i = 0; i < classes.size(); i++)
+//            classes[i].accept(this);
     }
 
     @Override
@@ -30,11 +31,6 @@ public class VisitorImpl implements Visitor {
 
     @Override
     public void visit(MethodDeclaration methodDeclaration) {
-        //TODO: implement appropriate visit functionality
-    }
-
-    @Override
-    public void visit(MainMethodDeclaration mainMethodDeclaration) {
         //TODO: implement appropriate visit functionality
     }
 
