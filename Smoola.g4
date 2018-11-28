@@ -68,7 +68,7 @@ grammar Smoola;
     ;
     statementWrite returns [Write syn_stmt]:
         'writeln(' expression ')' ';' {$syn_stmt = new Write($expression.syn_expr);
-        $syn_stm.setLine($ctx.start.getLine());}
+        $syn_stmt.setLine($ctx.start.getLine());}
     ;
     statementAssignment returns [Assign syn_stmt]:
         expressionOr '=' expressionAssignment ';' {$syn_stmt = new Assign($expressionOr.syn_expr, $expressionAssignment.syn_expr);
@@ -119,7 +119,7 @@ grammar Smoola;
 		$expressionCmp.syn_expr :
 		(new BinaryExpression($expressionCmp.syn_expr, $expressionEqTemp.syn_expr, ($expressionEqTemp.syn_op == "==" ? BinaryOperator.eq : BinaryOperator.neq)) );
 		if($expressionEqTemp.syn_expr == null)
-    		 $sys_expr.setLine($ctx.start.getLine());
+    		 $syn_expr.setLine($ctx.start.getLine());
 		 }
 	;
     expressionEqTemp returns [Expression syn_expr, String syn_op]:

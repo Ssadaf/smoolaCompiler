@@ -156,6 +156,7 @@ public class SmoolaParser extends Parser {
 			enterOuterAlt(_localctx, 1);
 			{
 			Program prog = new Program();
+			         prog.setLine(_localctx.start.getLine());
 			setState(67);
 			((ProgramContext)_localctx).mainClass = mainClass();
 			prog.setMainClass(((ProgramContext)_localctx).mainClass.syn_classDec);
@@ -227,6 +228,7 @@ public class SmoolaParser extends Parser {
 			setState(80);
 			((MainClassContext)_localctx).className = match(ID);
 			((MainClassContext)_localctx).syn_classDec =  new ClassDeclaration(new Identifier((((MainClassContext)_localctx).className!=null?((MainClassContext)_localctx).className.getText():null)), null);
+			                _localctx.syn_classDec.setLine(_localctx.start.getLine());
 			setState(82);
 			match(T__1);
 			setState(83);
@@ -316,6 +318,7 @@ public class SmoolaParser extends Parser {
 			setState(98);
 			((ClassDeclarationContext)_localctx).className = match(ID);
 			((ClassDeclarationContext)_localctx).syn_classDec =  new ClassDeclaration(new Identifier((((ClassDeclarationContext)_localctx).className!=null?((ClassDeclarationContext)_localctx).className.getText():null)), null);
+			                _localctx.syn_classDec.setLine(_localctx.start.getLine());
 			setState(103);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
@@ -413,6 +416,7 @@ public class SmoolaParser extends Parser {
 			setState(127);
 			((VarDeclarationContext)_localctx).type = type();
 			((VarDeclarationContext)_localctx).syn_varDec =  new VarDeclaration(new Identifier((((VarDeclarationContext)_localctx).varName!=null?((VarDeclarationContext)_localctx).varName.getText():null)), ((VarDeclarationContext)_localctx).type.syn_type);
+			        _localctx.syn_varDec.setLine(_localctx.start.getLine());
 			setState(129);
 			match(T__8);
 			}
@@ -479,6 +483,7 @@ public class SmoolaParser extends Parser {
 			setState(132);
 			((MethodDeclarationContext)_localctx).methodName = match(ID);
 			((MethodDeclarationContext)_localctx).syn_methodDec =  new MethodDeclaration(new Identifier((((MethodDeclarationContext)_localctx).methodName!=null?((MethodDeclarationContext)_localctx).methodName.getText():null)) );
+			        _localctx.syn_methodDec.setLine(_localctx.start.getLine());
 			setState(151);
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,5,_ctx) ) {
@@ -601,6 +606,7 @@ public class SmoolaParser extends Parser {
 			enterOuterAlt(_localctx, 1);
 			{
 			((StatementsContext)_localctx).syn_stmt =  new Block();
+			        _localctx.syn_stmt.setLine(_localctx.start.getLine());
 			setState(174);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
@@ -828,6 +834,7 @@ public class SmoolaParser extends Parser {
 			setState(204);
 			((StatementConditionContext)_localctx).statement = statement();
 			((StatementConditionContext)_localctx).syn_stmt =  new Conditional(((StatementConditionContext)_localctx).expression.syn_expr, ((StatementConditionContext)_localctx).statement.syn_stmt);
+			        _localctx.syn_stmt.setLine(_localctx.start.getLine());
 			setState(208);
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,9,_ctx) ) {
@@ -895,6 +902,7 @@ public class SmoolaParser extends Parser {
 			setState(216);
 			((StatementLoopContext)_localctx).statement = statement();
 			((StatementLoopContext)_localctx).syn_stmt =  new While(((StatementLoopContext)_localctx).expression.syn_expr, ((StatementLoopContext)_localctx).statement.syn_stmt);
+			        _localctx.syn_stmt.setLine(_localctx.start.getLine());
 			}
 		}
 		catch (RecognitionException re) {
@@ -943,6 +951,7 @@ public class SmoolaParser extends Parser {
 			setState(222);
 			match(T__8);
 			((StatementWriteContext)_localctx).syn_stmt =  new Write(((StatementWriteContext)_localctx).expression.syn_expr);
+			        _localctx.syn_stmt.setLine(_localctx.start.getLine());
 			}
 		}
 		catch (RecognitionException re) {
@@ -995,6 +1004,7 @@ public class SmoolaParser extends Parser {
 			setState(228);
 			match(T__8);
 			((StatementAssignmentContext)_localctx).syn_stmt =  new Assign(((StatementAssignmentContext)_localctx).expressionOr.syn_expr, ((StatementAssignmentContext)_localctx).expressionAssignment.syn_expr);
+			        _localctx.syn_stmt.setLine(_localctx.start.getLine());
 			}
 		}
 		catch (RecognitionException re) {
@@ -1090,7 +1100,8 @@ public class SmoolaParser extends Parser {
 				match(T__18);
 				setState(236);
 				((ExpressionAssignmentContext)_localctx).expressionAssignment = expressionAssignment();
-				((ExpressionAssignmentContext)_localctx).syn_expr =  new BinaryExpression(((ExpressionAssignmentContext)_localctx).expressionOr.syn_expr, ((ExpressionAssignmentContext)_localctx).expressionAssignment.syn_expr, BinaryOperator.assign); 
+				((ExpressionAssignmentContext)_localctx).syn_expr =  new BinaryExpression(((ExpressionAssignmentContext)_localctx).expressionOr.syn_expr, ((ExpressionAssignmentContext)_localctx).expressionAssignment.syn_expr, BinaryOperator.assign);
+						_localctx.syn_expr.setLine(_localctx.start.getLine());
 				}
 				break;
 			case 2:
@@ -1148,7 +1159,11 @@ public class SmoolaParser extends Parser {
 			((ExpressionOrContext)_localctx).expressionAnd = expressionAnd();
 			setState(245);
 			((ExpressionOrContext)_localctx).expressionOrTemp = expressionOrTemp();
-			((ExpressionOrContext)_localctx).syn_expr =  (((ExpressionOrContext)_localctx).expressionOrTemp.syn_expr == null) ? ((ExpressionOrContext)_localctx).expressionAnd.syn_expr : new BinaryExpression(((ExpressionOrContext)_localctx).expressionAnd.syn_expr, ((ExpressionOrContext)_localctx).expressionOrTemp.syn_expr, BinaryOperator.or); 
+			((ExpressionOrContext)_localctx).syn_expr =  (((ExpressionOrContext)_localctx).expressionOrTemp.syn_expr == null) ?
+					((ExpressionOrContext)_localctx).expressionAnd.syn_expr :
+					new BinaryExpression(((ExpressionOrContext)_localctx).expressionAnd.syn_expr, ((ExpressionOrContext)_localctx).expressionOrTemp.syn_expr, BinaryOperator.or);
+					if(((ExpressionOrContext)_localctx).expressionOrTemp.syn_expr != null)
+					    _localctx.syn_expr.setLine(_localctx.start.getLine());
 			}
 		}
 		catch (RecognitionException re) {
@@ -1202,7 +1217,11 @@ public class SmoolaParser extends Parser {
 				((ExpressionOrTempContext)_localctx).expressionAnd = expressionAnd();
 				setState(250);
 				((ExpressionOrTempContext)_localctx).expressionOrTemp = expressionOrTemp();
-				((ExpressionOrTempContext)_localctx).syn_expr =  (((ExpressionOrTempContext)_localctx).expressionOrTemp.syn_expr == null) ? (((ExpressionOrTempContext)_localctx).expressionAnd.syn_expr) : (new BinaryExpression(((ExpressionOrTempContext)_localctx).expressionAnd.syn_expr, ((ExpressionOrTempContext)_localctx).expressionOrTemp.syn_expr, BinaryOperator.or));
+				((ExpressionOrTempContext)_localctx).syn_expr =  (((ExpressionOrTempContext)_localctx).expressionOrTemp.syn_expr == null) ?
+						(((ExpressionOrTempContext)_localctx).expressionAnd.syn_expr) :
+						(new BinaryExpression(((ExpressionOrTempContext)_localctx).expressionAnd.syn_expr, ((ExpressionOrTempContext)_localctx).expressionOrTemp.syn_expr, BinaryOperator.or));
+						if(((ExpressionOrTempContext)_localctx).expressionOrTemp.syn_expr == null)
+						    _localctx.syn_expr.setLine(_localctx.start.getLine());
 				}
 				break;
 			case T__4:
@@ -1264,7 +1283,12 @@ public class SmoolaParser extends Parser {
 			((ExpressionAndContext)_localctx).expressionEq = expressionEq();
 			setState(257);
 			((ExpressionAndContext)_localctx).expressionAndTemp = expressionAndTemp();
-			((ExpressionAndContext)_localctx).syn_expr =  (((ExpressionAndContext)_localctx).expressionAndTemp.syn_expr == null) ? ((ExpressionAndContext)_localctx).expressionEq.syn_expr : new BinaryExpression(((ExpressionAndContext)_localctx).expressionEq.syn_expr, ((ExpressionAndContext)_localctx).expressionAndTemp.syn_expr, BinaryOperator.and);
+			((ExpressionAndContext)_localctx).syn_expr =  (((ExpressionAndContext)_localctx).expressionAndTemp.syn_expr == null) ?
+					 ((ExpressionAndContext)_localctx).expressionEq.syn_expr :
+					 (new BinaryExpression(((ExpressionAndContext)_localctx).expressionEq.syn_expr, ((ExpressionAndContext)_localctx).expressionAndTemp.syn_expr, BinaryOperator.and));
+					 if(((ExpressionAndContext)_localctx).expressionAndTemp.syn_expr == null)
+					    _localctx.syn_expr.setLine(_localctx.start.getLine());
+					 
 			}
 		}
 		catch (RecognitionException re) {
@@ -1318,7 +1342,12 @@ public class SmoolaParser extends Parser {
 				((ExpressionAndTempContext)_localctx).expressionEq = expressionEq();
 				setState(262);
 				((ExpressionAndTempContext)_localctx).expressionAndTemp = expressionAndTemp();
-				((ExpressionAndTempContext)_localctx).syn_expr =  (((ExpressionAndTempContext)_localctx).expressionAndTemp.syn_expr == null) ? (((ExpressionAndTempContext)_localctx).expressionEq.syn_expr) : (new BinaryExpression(((ExpressionAndTempContext)_localctx).expressionEq.syn_expr, ((ExpressionAndTempContext)_localctx).expressionAndTemp.syn_expr, BinaryOperator.and));
+				((ExpressionAndTempContext)_localctx).syn_expr =  (((ExpressionAndTempContext)_localctx).expressionAndTemp.syn_expr == null) ?
+						(((ExpressionAndTempContext)_localctx).expressionEq.syn_expr) :
+						(new BinaryExpression(((ExpressionAndTempContext)_localctx).expressionEq.syn_expr, ((ExpressionAndTempContext)_localctx).expressionAndTemp.syn_expr, BinaryOperator.and));
+						if(((ExpressionAndTempContext)_localctx).expressionAndTemp.syn_expr == null)
+				    		_localctx.syn_expr.setLine(_localctx.start.getLine());
+						
 				}
 				break;
 			case T__4:
@@ -1381,7 +1410,12 @@ public class SmoolaParser extends Parser {
 			((ExpressionEqContext)_localctx).expressionCmp = expressionCmp();
 			setState(269);
 			((ExpressionEqContext)_localctx).expressionEqTemp = expressionEqTemp();
-			((ExpressionEqContext)_localctx).syn_expr =  (((ExpressionEqContext)_localctx).expressionEqTemp.syn_expr == null) ? ((ExpressionEqContext)_localctx).expressionCmp.syn_expr : new BinaryExpression(((ExpressionEqContext)_localctx).expressionCmp.syn_expr, ((ExpressionEqContext)_localctx).expressionEqTemp.syn_expr, (((ExpressionEqContext)_localctx).expressionEqTemp.syn_op == "==" ? BinaryOperator.eq : BinaryOperator.neq));
+			((ExpressionEqContext)_localctx).syn_expr =  (((ExpressionEqContext)_localctx).expressionEqTemp.syn_expr == null) ?
+					((ExpressionEqContext)_localctx).expressionCmp.syn_expr :
+					(new BinaryExpression(((ExpressionEqContext)_localctx).expressionCmp.syn_expr, ((ExpressionEqContext)_localctx).expressionEqTemp.syn_expr, (((ExpressionEqContext)_localctx).expressionEqTemp.syn_op == "==" ? BinaryOperator.eq : BinaryOperator.neq)) );
+					if(((ExpressionEqContext)_localctx).expressionEqTemp.syn_expr == null)
+			    		 _localctx.syn_expr.setLine(_localctx.start.getLine());
+					 
 			}
 		}
 		catch (RecognitionException re) {
@@ -1455,7 +1489,11 @@ public class SmoolaParser extends Parser {
 				((ExpressionEqTempContext)_localctx).expressionCmp = expressionCmp();
 				setState(279);
 				((ExpressionEqTempContext)_localctx).expressionEqTemp = expressionEqTemp();
-				((ExpressionEqTempContext)_localctx).syn_expr =  (((ExpressionEqTempContext)_localctx).expressionEqTemp.syn_expr == null) ? (((ExpressionEqTempContext)_localctx).expressionCmp.syn_expr) : (new BinaryExpression(((ExpressionEqTempContext)_localctx).expressionCmp.syn_expr, ((ExpressionEqTempContext)_localctx).expressionEqTemp.syn_expr, (((ExpressionEqTempContext)_localctx).expressionEqTemp.syn_op == "==" ? BinaryOperator.eq : BinaryOperator.neq)));
+				((ExpressionEqTempContext)_localctx).syn_expr =  (((ExpressionEqTempContext)_localctx).expressionEqTemp.syn_expr == null) ?
+						(((ExpressionEqTempContext)_localctx).expressionCmp.syn_expr) :
+						(new BinaryExpression(((ExpressionEqTempContext)_localctx).expressionCmp.syn_expr, ((ExpressionEqTempContext)_localctx).expressionEqTemp.syn_expr, (((ExpressionEqTempContext)_localctx).expressionEqTemp.syn_op == "==" ? BinaryOperator.eq : BinaryOperator.neq)) );
+						if(((ExpressionEqTempContext)_localctx).expressionEqTemp.syn_expr != null)
+						    _localctx.syn_expr.setLine(_localctx.start.getLine());
 				}
 				break;
 			case T__4:
@@ -1519,7 +1557,11 @@ public class SmoolaParser extends Parser {
 			((ExpressionCmpContext)_localctx).expressionAdd = expressionAdd();
 			setState(286);
 			((ExpressionCmpContext)_localctx).expressionCmpTemp = expressionCmpTemp();
-			((ExpressionCmpContext)_localctx).syn_expr =  (((ExpressionCmpContext)_localctx).expressionCmpTemp.syn_expr == null) ? ((ExpressionCmpContext)_localctx).expressionAdd.syn_expr : new BinaryExpression(((ExpressionCmpContext)_localctx).expressionAdd.syn_expr, ((ExpressionCmpContext)_localctx).expressionCmpTemp.syn_expr, (((ExpressionCmpContext)_localctx).expressionCmpTemp.syn_op == "<" ? BinaryOperator.lt : BinaryOperator.gt));
+			((ExpressionCmpContext)_localctx).syn_expr =  (((ExpressionCmpContext)_localctx).expressionCmpTemp.syn_expr == null) ?
+					((ExpressionCmpContext)_localctx).expressionAdd.syn_expr :
+					(new BinaryExpression(((ExpressionCmpContext)_localctx).expressionAdd.syn_expr, ((ExpressionCmpContext)_localctx).expressionCmpTemp.syn_expr, (((ExpressionCmpContext)_localctx).expressionCmpTemp.syn_op == "<" ? BinaryOperator.lt : BinaryOperator.gt)) );
+					if(((ExpressionCmpContext)_localctx).expressionCmpTemp.syn_expr != null)
+					    _localctx.syn_expr.setLine(_localctx.start.getLine());
 			}
 		}
 		catch (RecognitionException re) {
@@ -1593,7 +1635,12 @@ public class SmoolaParser extends Parser {
 				((ExpressionCmpTempContext)_localctx).expressionAdd = expressionAdd();
 				setState(296);
 				((ExpressionCmpTempContext)_localctx).expressionCmpTemp = expressionCmpTemp();
-				((ExpressionCmpTempContext)_localctx).syn_expr =  (((ExpressionCmpTempContext)_localctx).expressionCmpTemp.syn_expr == null) ? (((ExpressionCmpTempContext)_localctx).expressionAdd.syn_expr) : (new BinaryExpression(((ExpressionCmpTempContext)_localctx).expressionAdd.syn_expr, ((ExpressionCmpTempContext)_localctx).expressionCmpTemp.syn_expr, (((ExpressionCmpTempContext)_localctx).expressionCmpTemp.syn_op == "<" ? BinaryOperator.lt : BinaryOperator.gt)));
+				((ExpressionCmpTempContext)_localctx).syn_expr =  (((ExpressionCmpTempContext)_localctx).expressionCmpTemp.syn_expr == null) ?
+						(((ExpressionCmpTempContext)_localctx).expressionAdd.syn_expr) :
+						(new BinaryExpression(((ExpressionCmpTempContext)_localctx).expressionAdd.syn_expr, ((ExpressionCmpTempContext)_localctx).expressionCmpTemp.syn_expr, (((ExpressionCmpTempContext)_localctx).expressionCmpTemp.syn_op == "<" ? BinaryOperator.lt : BinaryOperator.gt)));
+				        if(((ExpressionCmpTempContext)_localctx).expressionCmpTemp.syn_expr != null)
+				            _localctx.syn_expr.setLine(_localctx.start.getLine());
+						
 				}
 				break;
 			case T__4:
@@ -1659,7 +1706,11 @@ public class SmoolaParser extends Parser {
 			((ExpressionAddContext)_localctx).expressionMult = expressionMult();
 			setState(303);
 			((ExpressionAddContext)_localctx).expressionAddTemp = expressionAddTemp();
-			((ExpressionAddContext)_localctx).syn_expr =  (((ExpressionAddContext)_localctx).expressionAddTemp.syn_expr == null) ? ((ExpressionAddContext)_localctx).expressionMult.syn_expr : new BinaryExpression(((ExpressionAddContext)_localctx).expressionMult.syn_expr, ((ExpressionAddContext)_localctx).expressionAddTemp.syn_expr, (((ExpressionAddContext)_localctx).expressionAddTemp.syn_op == "+" ? BinaryOperator.add : BinaryOperator.sub));
+			((ExpressionAddContext)_localctx).syn_expr =  (((ExpressionAddContext)_localctx).expressionAddTemp.syn_expr == null) ?
+					((ExpressionAddContext)_localctx).expressionMult.syn_expr :
+					(new BinaryExpression(((ExpressionAddContext)_localctx).expressionMult.syn_expr, ((ExpressionAddContext)_localctx).expressionAddTemp.syn_expr, (((ExpressionAddContext)_localctx).expressionAddTemp.syn_op == "+" ? BinaryOperator.add : BinaryOperator.sub)) );
+					if(((ExpressionAddContext)_localctx).expressionAddTemp.syn_expr != null)
+					    _localctx.syn_expr.setLine(_localctx.start.getLine());
 			}
 		}
 		catch (RecognitionException re) {
@@ -1733,7 +1784,9 @@ public class SmoolaParser extends Parser {
 				((ExpressionAddTempContext)_localctx).expressionMult = expressionMult();
 				setState(313);
 				((ExpressionAddTempContext)_localctx).expressionAddTemp = expressionAddTemp();
-				((ExpressionAddTempContext)_localctx).syn_expr =  (((ExpressionAddTempContext)_localctx).expressionAddTemp.syn_expr == null) ? (((ExpressionAddTempContext)_localctx).expressionMult.syn_expr) : (new BinaryExpression(((ExpressionAddTempContext)_localctx).expressionMult.syn_expr, ((ExpressionAddTempContext)_localctx).expressionAddTemp.syn_expr, (((ExpressionAddTempContext)_localctx).expressionAddTemp.syn_op == "+" ? BinaryOperator.add : BinaryOperator.sub)));
+				((ExpressionAddTempContext)_localctx).syn_expr =  (((ExpressionAddTempContext)_localctx).expressionAddTemp.syn_expr == null) ? (((ExpressionAddTempContext)_localctx).expressionMult.syn_expr) : (new BinaryExpression(((ExpressionAddTempContext)_localctx).expressionMult.syn_expr, ((ExpressionAddTempContext)_localctx).expressionAddTemp.syn_expr, (((ExpressionAddTempContext)_localctx).expressionAddTemp.syn_op == "+" ? BinaryOperator.add : BinaryOperator.sub)) );
+						if(((ExpressionAddTempContext)_localctx).expressionAddTemp.syn_expr != null)
+						    _localctx.syn_expr.setLine(_localctx.start.getline());
 				}
 				break;
 			case T__4:
@@ -1801,7 +1854,11 @@ public class SmoolaParser extends Parser {
 			((ExpressionMultContext)_localctx).expressionUnary = expressionUnary();
 			setState(320);
 			((ExpressionMultContext)_localctx).expressionMultTemp = expressionMultTemp();
-			((ExpressionMultContext)_localctx).syn_expr =  (((ExpressionMultContext)_localctx).expressionMultTemp.syn_expr == null) ? ((ExpressionMultContext)_localctx).expressionUnary.syn_expr : new BinaryExpression(((ExpressionMultContext)_localctx).expressionUnary.syn_expr, ((ExpressionMultContext)_localctx).expressionMultTemp.syn_expr, (((ExpressionMultContext)_localctx).expressionMultTemp.syn_op == "*") ? BinaryOperator.mult: BinaryOperator.div);
+			((ExpressionMultContext)_localctx).syn_expr =  (((ExpressionMultContext)_localctx).expressionMultTemp.syn_expr == null) ?
+					((ExpressionMultContext)_localctx).expressionUnary.syn_expr :
+					(new BinaryExpression(((ExpressionMultContext)_localctx).expressionUnary.syn_expr, ((ExpressionMultContext)_localctx).expressionMultTemp.syn_expr, (((ExpressionMultContext)_localctx).expressionMultTemp.syn_op == "*") ? BinaryOperator.mult: BinaryOperator.div));
+					if(((ExpressionMultContext)_localctx).expressionMultTemp.syn_expr != null)
+					    _localctx.syn_expr.setLine(_localctx.start.getLine());
 			}
 		}
 		catch (RecognitionException re) {
@@ -1875,7 +1932,11 @@ public class SmoolaParser extends Parser {
 				((ExpressionMultTempContext)_localctx).expressionUnary = expressionUnary();
 				setState(330);
 				((ExpressionMultTempContext)_localctx).expressionMultTemp = expressionMultTemp();
-				((ExpressionMultTempContext)_localctx).syn_expr =  (((ExpressionMultTempContext)_localctx).expressionMultTemp.syn_expr == null) ? (((ExpressionMultTempContext)_localctx).expressionUnary.syn_expr) : (new BinaryExpression(((ExpressionMultTempContext)_localctx).expressionUnary.syn_expr, ((ExpressionMultTempContext)_localctx).expressionMultTemp.syn_expr, (((ExpressionMultTempContext)_localctx).expressionMultTemp.syn_op == "*" ? BinaryOperator.mult : BinaryOperator.div)));
+				((ExpressionMultTempContext)_localctx).syn_expr =  (((ExpressionMultTempContext)_localctx).expressionMultTemp.syn_expr == null) ?
+						(((ExpressionMultTempContext)_localctx).expressionUnary.syn_expr) :
+						(new BinaryExpression(((ExpressionMultTempContext)_localctx).expressionUnary.syn_expr, ((ExpressionMultTempContext)_localctx).expressionMultTemp.syn_expr, (((ExpressionMultTempContext)_localctx).expressionMultTemp.syn_op == "*" ? BinaryOperator.mult : BinaryOperator.div)) );
+						if(((ExpressionMultTempContext)_localctx).expressionMultTemp.syn_expr != null)
+						    _localctx.syn_expr.setLine(_localctx.start.getLine());
 				}
 				break;
 			case T__4:
@@ -1970,6 +2031,7 @@ public class SmoolaParser extends Parser {
 				setState(343);
 				((ExpressionUnaryContext)_localctx).expressionUnary = expressionUnary();
 				((ExpressionUnaryContext)_localctx).syn_expr =  new UnaryExpression(op, ((ExpressionUnaryContext)_localctx).expressionUnary.syn_expr);
+						_localctx.syn_expr.setLine(_localctx.start.getLine());
 				}
 				break;
 			case T__3:
@@ -2036,7 +2098,9 @@ public class SmoolaParser extends Parser {
 			((ExpressionMemContext)_localctx).expressionMethods = expressionMethods();
 			setState(352);
 			((ExpressionMemContext)_localctx).expressionMemTemp = expressionMemTemp();
-			 ((ExpressionMemContext)_localctx).syn_expr =  (((ExpressionMemContext)_localctx).expressionMemTemp.syn_expr == null) ? ((ExpressionMemContext)_localctx).expressionMethods.syn_expr :  new ArrayCall(((ExpressionMemContext)_localctx).expressionMethods.syn_expr, ((ExpressionMemContext)_localctx).expressionMemTemp.syn_expr);
+			 ((ExpressionMemContext)_localctx).syn_expr =  (((ExpressionMemContext)_localctx).expressionMemTemp.syn_expr == null) ? ((ExpressionMemContext)_localctx).expressionMethods.syn_expr :  (new ArrayCall(((ExpressionMemContext)_localctx).expressionMethods.syn_expr, ((ExpressionMemContext)_localctx).expressionMemTemp.syn_expr));
+					        if(((ExpressionMemContext)_localctx).expressionMemTemp.syn_expr != null)
+					            _localctx.syn_expr.setLine(_localctx.start.getLine());
 			}
 		}
 		catch (RecognitionException re) {
@@ -2087,6 +2151,7 @@ public class SmoolaParser extends Parser {
 				setState(357);
 				match(T__31);
 				((ExpressionMemTempContext)_localctx).syn_expr =  ((ExpressionMemTempContext)_localctx).expression.syn_expr;
+						        _localctx.syn_expr.setLine(_localctx.start.getLine());
 				}
 				break;
 			case T__4:
@@ -2159,6 +2224,7 @@ public class SmoolaParser extends Parser {
 			setState(364);
 			((ExpressionMethodsContext)_localctx).expressionMethodsTemp = expressionMethodsTemp(((ExpressionMethodsContext)_localctx).expressionOther.syn_expr);
 			((ExpressionMethodsContext)_localctx).syn_expr =  ((ExpressionMethodsContext)_localctx).expressionMethodsTemp.syn_expr;
+				            _localctx.syn_expr.setLine(_localctx.start.getLine());
 			}
 		}
 		catch (RecognitionException re) {
@@ -2272,7 +2338,7 @@ public class SmoolaParser extends Parser {
 				}
 				setState(390);
 				((ExpressionMethodsTempContext)_localctx).expressionMethodsTemp = expressionMethodsTemp(instanceTillNow);
-				((ExpressionMethodsTempContext)_localctx).syn_expr =  ((ExpressionMethodsTempContext)_localctx).expressionMethodsTemp.syn_expr;
+				((ExpressionMethodsTempContext)_localctx).syn_expr =  ((ExpressionMethodsTempContext)_localctx).expressionMethodsTemp.syn_expr; _localctx.syn_expr.setLine(_localctx.start.getLine());
 				}
 				break;
 			case T__4:
@@ -2351,7 +2417,8 @@ public class SmoolaParser extends Parser {
 				{
 				setState(396);
 				((ExpressionOtherContext)_localctx).val = match(CONST_NUM);
-				 ((ExpressionOtherContext)_localctx).syn_expr =  new IntValue( (((ExpressionOtherContext)_localctx).val!=null?Integer.valueOf(((ExpressionOtherContext)_localctx).val.getText()):0), new IntType() ); 
+				 ((ExpressionOtherContext)_localctx).syn_expr =  new IntValue( (((ExpressionOtherContext)_localctx).val!=null?Integer.valueOf(((ExpressionOtherContext)_localctx).val.getText()):0), new IntType() );
+						        _localctx.syn_expr.setLine(_localctx.start.getLine());
 				}
 				break;
 			case 2:
@@ -2359,7 +2426,8 @@ public class SmoolaParser extends Parser {
 				{
 				setState(398);
 				((ExpressionOtherContext)_localctx).val = match(CONST_STR);
-				 ((ExpressionOtherContext)_localctx).syn_expr =  new StringValue( (((ExpressionOtherContext)_localctx).val!=null?((ExpressionOtherContext)_localctx).val.getText():null), new StringType() ); 
+				 ((ExpressionOtherContext)_localctx).syn_expr =  new StringValue( (((ExpressionOtherContext)_localctx).val!=null?((ExpressionOtherContext)_localctx).val.getText():null), new StringType() );
+				                _localctx.syn_expr.setLine(_localctx.start.getLine());
 				}
 				break;
 			case 3:
@@ -2375,7 +2443,8 @@ public class SmoolaParser extends Parser {
 				((ExpressionOtherContext)_localctx).size = match(CONST_NUM);
 				setState(404);
 				match(T__31);
-				NewArray newArr = new NewArray(); newArr.setExpression(new IntValue( (((ExpressionOtherContext)_localctx).size!=null?Integer.valueOf(((ExpressionOtherContext)_localctx).size.getText()):0), new IntType() )); ((ExpressionOtherContext)_localctx).syn_expr =  newArr;
+				NewArray newArr = new NewArray(); newArr.setExpression(new IntValue( (((ExpressionOtherContext)_localctx).size!=null?Integer.valueOf(((ExpressionOtherContext)_localctx).size.getText()):0), new IntType() ));
+				                ((ExpressionOtherContext)_localctx).syn_expr =  newArr; _localctx.syn_expr.setLine(_localctx.start.getLine());
 				}
 				break;
 			case 4:
@@ -2389,7 +2458,8 @@ public class SmoolaParser extends Parser {
 				match(T__3);
 				setState(409);
 				match(T__4);
-				 ((ExpressionOtherContext)_localctx).syn_expr =  new NewClass( new Identifier((((ExpressionOtherContext)_localctx).className!=null?((ExpressionOtherContext)_localctx).className.getText():null)) ); 
+				 ((ExpressionOtherContext)_localctx).syn_expr =  new NewClass( new Identifier((((ExpressionOtherContext)_localctx).className!=null?((ExpressionOtherContext)_localctx).className.getText():null)) );
+				                _localctx.syn_expr.setLine(_localctx.start.getLine());
 				}
 				break;
 			case 5:
@@ -2397,7 +2467,8 @@ public class SmoolaParser extends Parser {
 				{
 				setState(411);
 				match(T__35);
-				 ((ExpressionOtherContext)_localctx).syn_expr =  new This(); 
+				 ((ExpressionOtherContext)_localctx).syn_expr =  new This();
+				                _localctx.syn_expr.setLine(_localctx.start.getLine());
 				}
 				break;
 			case 6:
@@ -2405,7 +2476,8 @@ public class SmoolaParser extends Parser {
 				{
 				setState(413);
 				match(T__36);
-				 ((ExpressionOtherContext)_localctx).syn_expr =  new BooleanValue( true, new BooleanType() ); 
+				 ((ExpressionOtherContext)_localctx).syn_expr =  new BooleanValue( true, new BooleanType() );
+				                _localctx.syn_expr.setLine(_localctx.start.getLine());
 				}
 				break;
 			case 7:
@@ -2413,7 +2485,8 @@ public class SmoolaParser extends Parser {
 				{
 				setState(415);
 				match(T__37);
-				 ((ExpressionOtherContext)_localctx).syn_expr =  new BooleanValue( false, new BooleanType() ); 
+				 ((ExpressionOtherContext)_localctx).syn_expr =  new BooleanValue( false, new BooleanType() );
+				                _localctx.syn_expr.setLine(_localctx.start.getLine());
 				}
 				break;
 			case 8:
@@ -2421,7 +2494,8 @@ public class SmoolaParser extends Parser {
 				{
 				setState(417);
 				((ExpressionOtherContext)_localctx).iden = match(ID);
-				 ((ExpressionOtherContext)_localctx).syn_expr =  new Identifier((((ExpressionOtherContext)_localctx).iden!=null?((ExpressionOtherContext)_localctx).iden.getText():null)); 
+				 ((ExpressionOtherContext)_localctx).syn_expr =  new Identifier((((ExpressionOtherContext)_localctx).iden!=null?((ExpressionOtherContext)_localctx).iden.getText():null));
+				                _localctx.syn_expr.setLine(_localctx.start.getLine());
 				}
 				break;
 			case 9:
@@ -2435,7 +2509,8 @@ public class SmoolaParser extends Parser {
 				((ExpressionOtherContext)_localctx).expression = expression();
 				setState(422);
 				match(T__31);
-				 ((ExpressionOtherContext)_localctx).syn_expr =  new ArrayCall( new Identifier((((ExpressionOtherContext)_localctx).arrayName!=null?((ExpressionOtherContext)_localctx).arrayName.getText():null)), ((ExpressionOtherContext)_localctx).expression.syn_expr); 
+				 ((ExpressionOtherContext)_localctx).syn_expr =  new ArrayCall( new Identifier((((ExpressionOtherContext)_localctx).arrayName!=null?((ExpressionOtherContext)_localctx).arrayName.getText():null)), ((ExpressionOtherContext)_localctx).expression.syn_expr);
+				                _localctx.syn_expr.setLine(_localctx.start.getLine());
 				}
 				break;
 			case 10:
@@ -2492,7 +2567,8 @@ public class SmoolaParser extends Parser {
 				{
 				setState(432);
 				match(T__6);
-				 ((TypeContext)_localctx).syn_type =  new IntType(); 
+				 ((TypeContext)_localctx).syn_type =  new IntType();
+					        _localctx.syn_type.setLine(_localctx.start.getLine());
 				}
 				break;
 			case 2:
@@ -2500,7 +2576,8 @@ public class SmoolaParser extends Parser {
 				{
 				setState(434);
 				match(T__38);
-				 ((TypeContext)_localctx).syn_type =  new BooleanType(); 
+				 ((TypeContext)_localctx).syn_type =  new BooleanType();
+					        _localctx.syn_type.setLine(_localctx.start.getLine());
 				}
 				break;
 			case 3:
@@ -2508,7 +2585,8 @@ public class SmoolaParser extends Parser {
 				{
 				setState(436);
 				match(T__39);
-				 ((TypeContext)_localctx).syn_type =  new StringType(); 
+				 ((TypeContext)_localctx).syn_type =  new StringType();
+					        _localctx.syn_type.setLine(_localctx.start.getLine());
 				}
 				break;
 			case 4:
@@ -2520,7 +2598,8 @@ public class SmoolaParser extends Parser {
 				match(T__30);
 				setState(440);
 				match(T__31);
-				 ((TypeContext)_localctx).syn_type =  new ArrayType(); 
+				 ((TypeContext)_localctx).syn_type =  new ArrayType();
+					        _localctx.syn_type.setLine(_localctx.start.getLine());
 				}
 				break;
 			case 5:
@@ -2528,7 +2607,8 @@ public class SmoolaParser extends Parser {
 				{
 				setState(442);
 				match(ID);
-				 ((TypeContext)_localctx).syn_type =  new UserDefinedType(); 
+				 ((TypeContext)_localctx).syn_type =  new UserDefinedType();
+				    	     _localctx.syn_type.setLine(_localctx.start.getLine());
 				}
 				break;
 			}
