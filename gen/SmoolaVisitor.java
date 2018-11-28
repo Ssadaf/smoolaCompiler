@@ -1,6 +1,6 @@
 // Generated from /home/sadaf/Documents/Compiler/smoolaCompiler/Smoola.g4 by ANTLR 4.7
 
-    import ast.*;
+    import ;
     import ast.node.*;
     import ast.node.declaration.*;
     import ast.node.expression.*;

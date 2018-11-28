@@ -6,6 +6,8 @@ import ast.node.expression.*;
 import ast.node.expression.Value.*;
 import ast.node.statement.*;
 
+import java.util.ArrayList;
+
 
 public interface Visitor {
     ArrayList<String> output = new ArrayList<String>();

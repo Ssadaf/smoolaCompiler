@@ -12,17 +12,18 @@ import ast.node.expression.Value.StringValue;
 import ast.node.statement.*;
 
 import java.util.List;
+import java.util.ArrayList;
 
 public class VisitorImpl implements Visitor {
 
     @Override
     public void visit(Program program) {
-        if((program.getMainClass() == null) && (program.getClasses.size() == 0) )
+        if((program.getMainClass() == null) && (program.getClasses().size() == 0) )
             System.out.println("No class exists in the program");
         program.getMainClass().accept(this);
         List <ClassDeclaration> classes = program.getClasses();
         for (int i = 0; i < classes.size(); i++)
-            classes[i].accept(this);
+            classes.get(i).accept(this);
         output.add(program.toString());
     }
 
@@ -32,10 +33,10 @@ public class VisitorImpl implements Visitor {
         Identifier parent = classDeclaration.getParentName();
         ArrayList<VarDeclaration> vars = classDeclaration.getVarDeclarations();
         for(int i = 0; i < vars.size(); i++)
-            vars[i].accept(this);
+            vars.get(i).accept(this);
         ArrayList<MethodDeclaration> meths = classDeclaration.getMethodDeclarations();
         for(int i = 0; i < meths.size(); i++)
-            meths[i].accept(this);
+            meths.get(i).accept(this);
         classDeclaration.getName().accept(this);
         classDeclaration.getParentName().accept(this);
         output.add(classDeclaration.toString());
@@ -48,13 +49,13 @@ public class VisitorImpl implements Visitor {
         methodDeclaration.getName().accept(this);
         ArrayList<VarDeclaration> args = methodDeclaration.getArgs();
         for(int i = 0; i < args.size(); i++)
-            args[i].accept(this);
+            args.get(i).accept(this);
         ArrayList<Statement> body = methodDeclaration.getBody();
         for(int i = 0; i < body.size(); i++)
-            body[i].accept(this);
+            body.get(i).accept(this);
         ArrayList<VarDeclaration> localVars = methodDeclaration.getLocalVars();
         for(int i = 0; i < localVars.size(); i++)
-            localVars[i].accept(this);
+            localVars.get(i).accept(this);
         output.add(methodDeclaration.toString());
 
     }
@@ -85,7 +86,6 @@ public class VisitorImpl implements Visitor {
     @Override
     public void visit(Identifier identifier) {
         //TODO: implement appropriate visit functionality
-        identifier.getName().accept(this);
         output.add(identifier.toString());
     }
 
@@ -103,7 +103,7 @@ public class VisitorImpl implements Visitor {
         methodCall.getMethodName().accept(this);
         ArrayList<Expression> args = methodCall.getArgs();
         for(int i = 0; i < args.size(); i++)
-            args[i].accept(this);
+            args.get(i).accept(this);
         output.add(methodCall.toString());
     }
 
@@ -165,7 +165,7 @@ public class VisitorImpl implements Visitor {
         //TODO: implement appropriate visit functionality
         ArrayList<Statement> body = block.getBody();
         for(int i = 0; i < body.size(); i++)
-            body[i].accept(this);
+            body.get(i).accept(this);
         output.add(block.toString());
     }
 
@@ -181,8 +181,8 @@ public class VisitorImpl implements Visitor {
     @Override
     public void visit(While loop) {
         //TODO: implement appropriate visit functionality
-        conditional.getCondition().accept(this);
-        conditional.getBody().accept(this);
+        loop.getCondition().accept(this);
+        loop.getBody().accept(this);
         output.add(loop.toString());
     }
 

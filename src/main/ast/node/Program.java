@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import ast.node.declaration.ClassDeclaration;
 import java.util.List;
 
-public class Program {
+public class Program{
     private ArrayList<ClassDeclaration> classes = new ArrayList<>();
     private ClassDeclaration mainClass;
 

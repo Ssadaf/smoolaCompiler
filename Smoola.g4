@@ -15,8 +15,7 @@ grammar Smoola;
 }
 
     program:
-        {Program prog = new Program();
-         prog.setLine($ctx.start.getLine());}
+        {Program prog = new Program();}
          mainClass{prog.setMainClass($mainClass.syn_classDec);}
          (classDeclaration{prog.addClass($classDeclaration.syn_classDec);})* EOF
     ;
@@ -27,9 +26,7 @@ grammar Smoola;
                 '{' 'def' ID '(' ')' ':' 'int' '{'  statements 'return' expression ';' '}' '}'
     ;
     classDeclaration returns [ClassDeclaration syn_classDec]:
-        'class' className = ID {$syn_classDec = new ClassDeclaration(new Identifier($className.text), null);
-                $syn_classDec.setLine($ctx.start.getLine());}
-                ('extends' classParent = ID {$syn_classDec.setParentName(new Identifier($classParent.text) );} )?
+        'class' className = ID ('extends' classParent = ID {$syn_classDec.setParentName(new Identifier($classParent.text) );} )?
                 '{' (varDeclaration {$syn_classDec.addVarDeclaration($varDeclaration.syn_varDec);})*
                 (methodDeclaration {$syn_classDec.addMethodDeclaration($methodDeclaration.syn_methodDec);})* '}'
     ;
@@ -69,6 +66,7 @@ grammar Smoola;
     statementWrite returns [Write syn_stmt]:
         'writeln(' expression ')' ';' {$syn_stmt = new Write($expression.syn_expr);
         $syn_stmt.setLine($ctx.start.getLine());}
+
     ;
     statementAssignment returns [Assign syn_stmt]:
         expressionOr '=' expressionAssignment ';' {$syn_stmt = new Assign($expressionOr.syn_expr, $expressionAssignment.syn_expr);
@@ -159,7 +157,7 @@ grammar Smoola;
 		('+' {$syn_op = "+";}| '-' {$syn_op = "-";})
 		expressionMult expressionAddTemp {$syn_expr = ($expressionAddTemp.syn_expr == null) ? ($expressionMult.syn_expr) : (new BinaryExpression($expressionMult.syn_expr, $expressionAddTemp.syn_expr, ($expressionAddTemp.syn_op == "+" ? BinaryOperator.add : BinaryOperator.sub)) );
 		if($expressionAddTemp.syn_expr != null)
-		    $syn_expr.setLine($ctx.start.getline());}
+		    $syn_expr.setLine($ctx.start.getLine());}
 	    | {$syn_expr = null; $syn_op = "";}
 	;
 
@@ -204,7 +202,7 @@ grammar Smoola;
 	            $syn_expr.setLine($ctx.start.getLine());}
 	;
 	expressionMethodsTemp [Expression inh_instance] returns[Expression syn_expr]:
-	    {Expression instanceTillNow;}
+	       {Expression instanceTillNow = new MethodCall(null, null);}
 	    '.' (methodName = ID {instanceTillNow = new MethodCall($inh_instance, new Identifier($methodName.text));}
 	    '(' ')' | methodName = ID '(' (expression (',' expression)*) ')' {instanceTillNow = new MethodCall($inh_instance, new Identifier($methodName.text));} | 'length' {instanceTillNow = new Length($inh_instance);} ) expressionMethodsTemp[instanceTillNow]
 	            {$syn_expr = $expressionMethodsTemp.syn_expr; $syn_expr.setLine($ctx.start.getLine());}
@@ -232,16 +230,11 @@ grammar Smoola;
         |	'(' expression ')' { $syn_expr = $expression.syn_expr; }
 	;
 	type returns [Type syn_type]:
-	    'int' { $syn_type = new IntType();
-	        $syn_type.setLine($ctx.start.getLine());}
-	    |'boolean' { $syn_type = new BooleanType();
-	        $syn_type.setLine($ctx.start.getLine());}
-	    |'string' { $syn_type = new StringType();
-	        $syn_type.setLine($ctx.start.getLine());}
-	    |'int' '[' ']' { $syn_type = new ArrayType();
-	        $syn_type.setLine($ctx.start.getLine());}
-	    |ID { $syn_type = new UserDefinedType();
-    	     $syn_type.setLine($ctx.start.getLine());}
+	    'int' { $syn_type = new IntType();}
+	    |'boolean' { $syn_type = new BooleanType();}
+	    |'string' { $syn_type = new StringType();}
+	    |'int' '[' ']' { $syn_type = new ArrayType();}
+	    |ID { $syn_type = new UserDefinedType();}
 	;
     CONST_NUM:
 		[0-9]+
