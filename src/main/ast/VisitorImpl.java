@@ -20,7 +20,9 @@ public class VisitorImpl implements Visitor {
     public void visit(Program program) {
         if((program.getMainClass() == null) && (program.getClasses().size() == 0) )
             System.out.println("No class exists in the program");
-        program.getMainClass().accept(this);
+        ClassDeclaration mainClass = program.getMainClass();
+        if(mainClass != null)
+            mainClass.accept(this);
         List <ClassDeclaration> classes = program.getClasses();
         if(classes != null)
         {

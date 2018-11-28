@@ -155,7 +155,11 @@ public class SmoolaParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			Program prog = new Program();
+
+			            Program prog = new Program();
+			            VisitorImpl visitor = new VisitorImpl();
+			            prog.accept(visitor);
+			        
 			setState(67);
 			((ProgramContext)_localctx).mainClass = mainClass();
 			prog.setMainClass(((ProgramContext)_localctx).mainClass.syn_classDec);

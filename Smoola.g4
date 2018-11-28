@@ -15,7 +15,11 @@ grammar Smoola;
 }
 
     program:
-        {Program prog = new Program();}
+        {
+            Program prog = new Program();
+            VisitorImpl visitor = new VisitorImpl();
+            prog.accept(visitor);
+        }
          mainClass{prog.setMainClass($mainClass.syn_classDec);}
          (classDeclaration{prog.addClass($classDeclaration.syn_classDec);})* EOF
     ;
@@ -26,7 +30,7 @@ grammar Smoola;
                 '{' 'def' ID '(' ')' ':' 'int' '{'  statements 'return' expression ';' '}' '}'
     ;
     classDeclaration returns [ClassDeclaration syn_classDec]:
-        'class' className = ID {$syn_classDec = new ClassDeclaration(new Identifier($className.text)gi, null); }('extends' classParent = ID {$syn_classDec.setParentName(new Identifier($classParent.text) );} )?
+        'class' className = ID {$syn_classDec = new ClassDeclaration(new Identifier($className.text), null); }('extends' classParent = ID {$syn_classDec.setParentName(new Identifier($classParent.text) );} )?
                 '{' (varDeclaration {$syn_classDec.addVarDeclaration($varDeclaration.syn_varDec);})*
                 (methodDeclaration {$syn_classDec.addMethodDeclaration($methodDeclaration.syn_methodDec);})* '}'
     ;
@@ -203,8 +207,9 @@ grammar Smoola;
 	;
 	expressionMethodsTemp [Expression inh_instance] returns[Expression syn_expr]:
 	       {Expression instanceTillNow = new MethodCall(null, null);}
-	    '.' (methodName = ID {instanceTillNow = new MethodCall($inh_instance, new Identifier($methodName.text));}
-	    '(' ')' | methodName = ID '(' (expression (',' expression)*) ')' {instanceTillNow = new MethodCall($inh_instance, new Identifier($methodName.text));} | 'length' {instanceTillNow = new Length($inh_instance);} ) expressionMethodsTemp[instanceTillNow]
+	    '.' (methodName = ID {instanceTillNow = new MethodCall($inh_instance, new Identifier($methodName.text));} '(' ')'
+	    | methodName = ID '(' (expression (',' expression)*) ')' {instanceTillNow = new MethodCall($inh_instance, new Identifier($methodName.text));} | 'length' {instanceTillNow = new Length($inh_instance);} )
+	        expressionMethodsTemp[instanceTillNow]
 	            {$syn_expr = $expressionMethodsTemp.syn_expr; $syn_expr.setLine($ctx.start.getLine());}
 	    | {$syn_expr = $inh_instance; }
 	;
