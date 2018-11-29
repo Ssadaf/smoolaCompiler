@@ -33,3 +33,7 @@ class SecondClass {
     }
 
 }
+class next
+{
+    def b(c:int, d : int) : int
+}
