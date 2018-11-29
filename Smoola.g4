@@ -85,104 +85,73 @@ grammar Smoola;
 	    |	expressionOr {$syn_expr = $expressionOr.syn_expr;}
 	;
     expressionOr returns [Expression syn_expr]:
-		expressionAnd expressionOrTemp {$syn_expr = ($expressionOrTemp.syn_expr == null) ?
-		$expressionAnd.syn_expr :
-		new BinaryExpression($expressionAnd.syn_expr, $expressionOrTemp.syn_expr, BinaryOperator.or);
-		if($expressionOrTemp.syn_expr != null)
-		    $syn_expr.setLine($ctx.start.getLine());}
+		expressionAnd expressionOrTemp[$expressionAnd.syn_expr] {$syn_expr = $expressionOrTemp.syn_expr;}
 	;
     expressionOrTemp [Expression inh_expr] returns [Expression syn_expr]:
 		'||' expressionAnd {Expression exprTillNow = new BinaryExpression($inh_expr, $expressionAnd.syn_expr, BinaryOperator.or);
-		                       $exprTillNow.setLine($ctx.start.getLine());}
-	    expressionOrTemp[$exprTillNow] {$syn_expr = $expressionOrTemp.syn_expr;}
+		                     exprTillNow.setLine($ctx.start.getLine());}
+	    expressionOrTemp[exprTillNow] {$syn_expr = $expressionOrTemp.syn_expr;}
 	    | {$syn_expr = inh_expr;}
 	;
     expressionAnd returns [Expression syn_expr]:
-		expressionEq expressionAndTemp {$syn_expr = ($expressionAndTemp.syn_expr == null) ?
-		 $expressionEq.syn_expr :
-		 (new BinaryExpression($expressionEq.syn_expr, $expressionAndTemp.syn_expr, BinaryOperator.and));
-		 if($expressionAndTemp.syn_expr == null)
-		    $syn_expr.setLine($ctx.start.getLine());
-		 }
+		expressionEq expressionAndTemp[$expressionEq.syn_expr] {$syn_expr = $expressionAndTemp.syn_expr;}
 	;
-    expressionAndTemp returns[Expression syn_expr]:
-		'&&' expressionEq expressionAndTemp {$syn_expr = ($expressionAndTemp.syn_expr == null) ?
-		($expressionEq.syn_expr) :
-		(new BinaryExpression($expressionEq.syn_expr, $expressionAndTemp.syn_expr, BinaryOperator.and));
-		if($expressionAndTemp.syn_expr == null)
-    		$syn_expr.setLine($ctx.start.getLine());
-		}
-	    | {$syn_expr = null;}
+    expressionAndTemp[Expression inh_expr] returns[Expression syn_expr]:
+		'&&' expressionEq{Expression exprTillNow = new BinaryExpression($inh_expr, $expressionEq.syn_expr, BinaryOperator.and);
+		    exprTillNow.setLine($ctx.start.getLine());}
+		    expressionAndTemp[exprTillNow] {$syn_expr = $expressionAndTemp.syn_expr;}
+	    | {$syn_expr = $inh_expr;}
 	;
     expressionEq returns [Expression syn_expr]:
-		expressionCmp expressionEqTemp {$syn_expr = ($expressionEqTemp.syn_expr == null) ?
-		$expressionCmp.syn_expr :
-		(new BinaryExpression($expressionCmp.syn_expr, $expressionEqTemp.syn_expr, ($expressionEqTemp.syn_op == "==" ? BinaryOperator.eq : BinaryOperator.neq)) );
-		if($expressionEqTemp.syn_expr == null)
-    		 $syn_expr.setLine($ctx.start.getLine());
-		 }
+		expressionCmp expressionEqTemp[$expressionCmp.syn_expr] {$syn_expr = $expressionEqTemp.syn_expr;}
 	;
-    expressionEqTemp returns [Expression syn_expr, String syn_op]:
-		('==' {$syn_op = "==";}| '<>'{$syn_op = "<>";}) expressionCmp expressionEqTemp {$syn_expr = ($expressionEqTemp.syn_expr == null) ?
-		($expressionCmp.syn_expr) :
-		(new BinaryExpression($expressionCmp.syn_expr, $expressionEqTemp.syn_expr, ($expressionEqTemp.syn_op == "==" ? BinaryOperator.eq : BinaryOperator.neq)) );
-		if($expressionEqTemp.syn_expr != null)
-		    $syn_expr.setLine($ctx.start.getLine());}
-	    | {$syn_expr = null; $syn_op = "";}
+    expressionEqTemp[Expression inh_expr] returns [Expression syn_expr]:
+        {BinaryOperator op;}
+		('==' {op = BinaryOperator.eq;}| '<>'{op = BinaryOperator.neq;}) expressionCmp {Expression exprTillNow = new BinaryExpression($inh_expr, $expressionCmp.syn_expr, op);
+		    exprTillNow.setLine($ctx.start.getLine());}
+		    expressionEqTemp[exprTillNow] {$syn_expr = $expressionEqTemp.syn_expr;}
+	    | {$syn_expr = $inh_expr;}
 	;
     expressionCmp returns [Expression syn_expr]:
-		expressionAdd expressionCmpTemp {$syn_expr = ($expressionCmpTemp.syn_expr == null) ?
-		$expressionAdd.syn_expr :
-		(new BinaryExpression($expressionAdd.syn_expr, $expressionCmpTemp.syn_expr, ($expressionCmpTemp.syn_op == "<" ? BinaryOperator.lt : BinaryOperator.gt)) );
-		if($expressionCmpTemp.syn_expr != null)
-		    $syn_expr.setLine($ctx.start.getLine());}
+		expressionAdd expressionCmpTemp[$expressionAdd.syn_expr] {$syn_expr = $expressionCmpTemp.syn_expr;}
 	;
-    expressionCmpTemp returns [Expression syn_expr, String syn_op]:
-		('<' {$syn_op = "<";}| '>' {$syn_op = ">";}) expressionAdd expressionCmpTemp {$syn_expr = ($expressionCmpTemp.syn_expr == null) ?
-		($expressionAdd.syn_expr) :
-		(new BinaryExpression($expressionAdd.syn_expr, $expressionCmpTemp.syn_expr, ($expressionCmpTemp.syn_op == "<" ? BinaryOperator.lt : BinaryOperator.gt)));
-        if($expressionCmpTemp.syn_expr != null)
-            $syn_expr.setLine($ctx.start.getLine());
-		}
-	    | {$syn_expr = null; $syn_op = "";}
+    expressionCmpTemp[Expression inh_expr] returns [Expression syn_expr]:
+        {BinaryOperator op;}
+		('<' {op = BinaryOperator.lt;}| '>' {op = BinaryOperator.gt;}) expressionAdd {Expression exprTillNow = new BinaryExpression($inh_expr, $expressionAdd.syn_expr, op);
+		    exprTillNow.setLine($ctx.start.getLine());}
+		    expressionCmpTemp[exprTillNow] {$syn_expr = $expressionCmpTemp.syn_expr;}
+	    | {$syn_expr = $inh_expr;}
 	;
 
     expressionAdd returns [Expression syn_expr]:
-		expressionMult expressionAddTemp {$syn_expr = ($expressionAddTemp.syn_expr == null) ?
-		$expressionMult.syn_expr :
-		(new BinaryExpression($expressionMult.syn_expr, $expressionAddTemp.syn_expr, ($expressionAddTemp.syn_op == "+" ? BinaryOperator.add : BinaryOperator.sub)) );
-		if($expressionAddTemp.syn_expr != null)
-		    $syn_expr.setLine($ctx.start.getLine());}
+		expressionMult expressionAddTemp[$expressionMult.syn_expr] {$syn_expr = $expressionAddTemp.syn_expr;}
 	;
 
-    expressionAddTemp returns [Expression syn_expr, String syn_op]:
-		('+' {$syn_op = "+";}| '-' {$syn_op = "-";})
-		expressionMult expressionAddTemp {$syn_expr = ($expressionAddTemp.syn_expr == null) ? ($expressionMult.syn_expr) : (new BinaryExpression($expressionMult.syn_expr, $expressionAddTemp.syn_expr, ($expressionAddTemp.syn_op == "+" ? BinaryOperator.add : BinaryOperator.sub)) );
-		if($expressionAddTemp.syn_expr != null)
-		    $syn_expr.setLine($ctx.start.getLine());}
-	    | {$syn_expr = null; $syn_op = "";}
+    expressionAddTemp[Expression inh_expr] returns [Expression syn_expr]:
+        {BinaryOperator op;}
+		('+' {op = BinaryOperator.add;}| '-' {op = BinaryOperator.sub;})
+		expressionMult{Expression exprTillNow = new BinaryExpression($inh_expr, $expressionMult.syn_expr, op);
+                       exprTillNow.setLine($ctx.start.getLine());}
+                       expressionAddTemp[exprTillNow] {$syn_expr = $expressionAddTemp.syn_expr;}
+	    | {$syn_expr = $inh_expr;}
 	;
 
     expressionMult returns [Expression syn_expr]:
-		expressionUnary expressionMultTemp {$syn_expr = ($expressionMultTemp.syn_expr == null) ?
-		$expressionUnary.syn_expr :
-		(new BinaryExpression($expressionUnary.syn_expr, $expressionMultTemp.syn_expr, ($expressionMultTemp.syn_op == "*") ? BinaryOperator.mult: BinaryOperator.div));
-		if($expressionMultTemp.syn_expr != null)
-		    $syn_expr.setLine($ctx.start.getLine());}
+		expressionUnary expressionMultTemp[$expressionUnary.syn_expr] {$syn_expr = $expressionMultTemp.syn_expr;}
 	;
 
-    expressionMultTemp returns [Expression syn_expr, String syn_op]:
-		('*' {$syn_op = "*";}| '/' {$syn_op = "/";}) expressionUnary expressionMultTemp
-		{$syn_expr = ($expressionMultTemp.syn_expr == null) ?
-		($expressionUnary.syn_expr) :
-		(new BinaryExpression($expressionUnary.syn_expr, $expressionMultTemp.syn_expr, ($expressionMultTemp.syn_op == "*" ? BinaryOperator.mult : BinaryOperator.div)) );
-		if($expressionMultTemp.syn_expr != null)
-		    $syn_expr.setLine($ctx.start.getLine());}
-	    | {$syn_expr = null; $syn_op = "";}
+    expressionMultTemp[Expression inh_expr] returns [Expression syn_expr, String syn_op]:
+        {BinaryOperator op;}
+		('*' {op = BinaryOperator.mult;}| '/' {op = BinaryOperator.div;})
+		expressionUnary{Expression exprTillNow = new BinaryExpression($inh_expr, $expressionUnary.syn_expr, op);
+                        exprTillNow.setLine($ctx.start.getLine());} expressionMultTemp[exprTillNow]
+		{$syn_expr = $expressionMultTemp.syn_expr;}
+	    | {$syn_expr = inh_expr;}
 	;
 
     expressionUnary returns [Expression syn_expr]:
-		{UnaryOperator op; } ('!' {op = UnaryOperator.not;}| '-' {op = UnaryOperator.minus;}) expressionUnary
+		{UnaryOperator op; }
+		('!' {op = UnaryOperator.not;}| '-' {op = UnaryOperator.minus;}) expressionUnary
 		{$syn_expr = new UnaryExpression(op, $expressionUnary.syn_expr);
 		$syn_expr.setLine($ctx.start.getLine());}
 	    |	expressionMem {$syn_expr = $expressionMem.syn_expr;}
