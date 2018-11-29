@@ -18,6 +18,7 @@ public class VisitorImpl implements Visitor {
 
     @Override
     public void visit(Program program) {
+        output.add(program.toString());
         if((program.getMainClass() == null) && (program.getClasses().size() == 0) )
             System.out.println("No class exists in the program");
         ClassDeclaration mainClass = program.getMainClass();
@@ -29,63 +30,63 @@ public class VisitorImpl implements Visitor {
             for (int i = 0; i < classes.size(); i++)
                 classes.get(i).accept(this);
         }
-        output.add(program.toString());
+        for(int i = 0; i < output.size(); i++)
+            System.out.println(output.get(i));
     }
 
     @Override
     public void visit(ClassDeclaration classDeclaration) {
+        output.add(classDeclaration.toString());
+        classDeclaration.getName().accept(this);
+        Identifier parent = classDeclaration.getParentName();
+        if(parent != null)
+            parent.accept(this);
         ArrayList<VarDeclaration> vars = classDeclaration.getVarDeclarations();
         for(int i = 0; i < vars.size(); i++)
             vars.get(i).accept(this);
         ArrayList<MethodDeclaration> meths = classDeclaration.getMethodDeclarations();
         for(int i = 0; i < meths.size(); i++)
             meths.get(i).accept(this);
-        classDeclaration.getName().accept(this);
-        Identifier parent = classDeclaration.getParentName();
-        if(parent != null)
-            parent.accept(this);
-        output.add(classDeclaration.toString());
     }
 
     @Override
     public void visit(MethodDeclaration methodDeclaration) {
         //TODO: implement appropriate visit functionality
-        methodDeclaration.getReturnValue().accept(this);
+        output.add(methodDeclaration.toString());
         methodDeclaration.getName().accept(this);
         ArrayList<VarDeclaration> args = methodDeclaration.getArgs();
         for(int i = 0; i < args.size(); i++)
             args.get(i).accept(this);
-        ArrayList<Statement> body = methodDeclaration.getBody();
-        for(int i = 0; i < body.size(); i++)
-            body.get(i).accept(this);
         ArrayList<VarDeclaration> localVars = methodDeclaration.getLocalVars();
         for(int i = 0; i < localVars.size(); i++)
             localVars.get(i).accept(this);
-        output.add(methodDeclaration.toString());
-
+        ArrayList<Statement> body = methodDeclaration.getBody();
+        for(int i = 0; i < body.size(); i++)
+            body.get(i).accept(this);
+        methodDeclaration.getReturnValue().accept(this);
     }
 
     @Override
     public void visit(VarDeclaration varDeclaration) {
+        output.add(varDeclaration.toString());
         //TODO: implement appropriate visit functionality
         varDeclaration.getIdentifier().accept(this);
-        output.add(varDeclaration.toString());
     }
 
     @Override
     public void visit(ArrayCall arrayCall) {
+        output.add(arrayCall.toString());
         //TODO: implement appropriate visit functionality
         arrayCall.getInstance().accept(this);
         arrayCall.getIndex().accept(this);
-        output.add(arrayCall.toString());
     }
 
     @Override
     public void visit(BinaryExpression binaryExpression) {
+        output.add(binaryExpression.toString());
         //TODO: implement appropriate visit functionality
         binaryExpression.getLeft().accept(this);
         binaryExpression.getRight().accept(this);
-        output.add(binaryExpression.toString());
     }
 
     @Override
@@ -96,34 +97,34 @@ public class VisitorImpl implements Visitor {
 
     @Override
     public void visit(Length length) {
+        output.add(length.toString());
         //TODO: implement appropriate visit functionality
         length.getExpression().accept(this);
-        output.add(length.toString());
     }
 
     @Override
     public void visit(MethodCall methodCall) {
+        output.add(methodCall.toString());
         //TODO: implement appropriate visit functionality
         methodCall.getInstance().accept(this);
         methodCall.getMethodName().accept(this);
         ArrayList<Expression> args = methodCall.getArgs();
         for(int i = 0; i < args.size(); i++)
             args.get(i).accept(this);
-        output.add(methodCall.toString());
     }
 
     @Override
     public void visit(NewArray newArray) {
+        output.add(newArray.toString());
         //TODO: implement appropriate visit functionality
         newArray.getExpression().accept(this);
-        output.add(newArray.toString());
     }
 
     @Override
     public void visit(NewClass newClass) {
+        output.add(newClass.toString());
         //TODO: implement appropriate visit functionality
         newClass.getClassName().accept(this);
-        output.add(newClass.toString());
     }
 
     @Override
@@ -134,9 +135,9 @@ public class VisitorImpl implements Visitor {
 
     @Override
     public void visit(UnaryExpression unaryExpression) {
+        output.add(unaryExpression.toString());
         //TODO: implement appropriate visit functionality
         unaryExpression.getValue().accept(this);
-        output.add(unaryExpression.toString());
     }
 
     @Override
@@ -159,42 +160,42 @@ public class VisitorImpl implements Visitor {
 
     @Override
     public void visit(Assign assign) {
+        output.add(assign.toString());
         //TODO: implement appropriate visit functionality
         assign.getlValue().accept(this);
         assign.getrValue().accept(this);
-        output.add(assign.toString());
     }
 
     @Override
     public void visit(Block block) {
+        output.add(block.toString());
         //TODO: implement appropriate visit functionality
         ArrayList<Statement> body = block.getBody();
         for(int i = 0; i < body.size(); i++)
             body.get(i).accept(this);
-        output.add(block.toString());
     }
 
     @Override
     public void visit(Conditional conditional) {
+        output.add(conditional.toString());
         //TODO: implement appropriate visit functionality
         conditional.getExpression().accept(this);
         conditional.getConsequenceBody().accept(this);
         conditional.getAlternativeBody().accept(this);
-        output.add(conditional.toString());
     }
 
     @Override
     public void visit(While loop) {
+        output.add(loop.toString());
         //TODO: implement appropriate visit functionality
         loop.getCondition().accept(this);
         loop.getBody().accept(this);
-        output.add(loop.toString());
     }
 
     @Override
     public void visit(Write write) {
+        output.add(write.toString());
         //TODO: implement appropriate visit functionality
         write.getArg().accept(this);
-        output.add(write.toString());
     }
 }

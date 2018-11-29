@@ -15,10 +15,8 @@ grammar Smoola;
 }
 
     program:
-        {
-            Program prog = new Program();
-            VisitorImpl visitor = new VisitorImpl();
-        }
+        {Program prog = new Program();
+         VisitorImpl visitor = new VisitorImpl();}
          mainClass{prog.setMainClass($mainClass.syn_classDec);}
          (classDeclaration{prog.addClass($classDeclaration.syn_classDec);})* EOF
          {prog.accept(visitor);}
@@ -43,8 +41,8 @@ grammar Smoola;
     ;
     methodDeclaration returns [MethodDeclaration syn_methodDec]:
         'def' {$syn_methodDec = new MethodDeclaration(new Identifier(null)); $syn_methodDec.setLine($ctx.start.getLine());}
-         methodName = ID {$syn_methodDec.setName(new Identifier($methodName.text));} ('(' ')' | ('(' ID {$syn_methodDec.setName(new Identifier($methodName.text));}':'
-         type (',' argName = ID ':' type {$syn_methodDec.addArg(new VarDeclaration(new Identifier($argName.text), $type.syn_type));})* ')')) ':' type {$syn_methodDec.setReturnType($type.syn_type);}'{'
+         methodName = ID {$syn_methodDec.setName(new Identifier($methodName.text));} ('(' ')' | ('(' argName = ID {$syn_methodDec.setName(new Identifier($methodName.text));}':'
+         type{$syn_methodDec.addArg(new VarDeclaration(new Identifier($argName.text), $type.syn_type));} (',' argName = ID ':' type {$syn_methodDec.addArg(new VarDeclaration(new Identifier($argName.text), $type.syn_type));})* ')')) ':' type {$syn_methodDec.setReturnType($type.syn_type);}'{'
          (varDeclaration{$syn_methodDec.addLocalVar($varDeclaration.syn_varDec);})*
          statements{ArrayList<Statement> allStatements = $statements.syn_stmt.getBody(); for(int i = 0; i < allStatements.size(); i++)
          {$syn_methodDec.addStatement(allStatements.get(i));} }
@@ -181,8 +179,9 @@ grammar Smoola;
 	;
 	expressionMethodsTemp [Expression inh_instance] returns[Expression syn_expr]:
 	       {Expression instanceTillNow = new MethodCall(null, null);}
-	    '.' (methodName = ID {instanceTillNow = new MethodCall($inh_instance, new Identifier($methodName.text));} '(' ')'
-	    | methodName = ID '(' (expression (',' expression)*) ')' {instanceTillNow = new MethodCall($inh_instance, new Identifier($methodName.text));} | 'length' {instanceTillNow = new Length($inh_instance);} )
+	       {MethodCall methodCallTillNow = new MethodCall(null, null);}
+	    '.' (methodName = ID {methodCallTillNow = new MethodCall($inh_instance, new Identifier($methodName.text));} '(' ')' {instanceTillNow = methodCallTillNow;}
+	    | methodName = ID {methodCallTillNow = new MethodCall($inh_instance, new Identifier($methodName.text));} '(' (expression {methodCallTillNow.addArg($expression.syn_expr);}(',' expression {methodCallTillNow.addArg($expression.syn_expr);})*) ')' {instanceTillNow = methodCallTillNow;}| 'length' {instanceTillNow = new Length($inh_instance);} )
 	        expressionMethodsTemp[instanceTillNow]
 	            {$syn_expr = $expressionMethodsTemp.syn_expr; $syn_expr.setLine($ctx.start.getLine());}
 	    | {$syn_expr = $inh_instance; }
