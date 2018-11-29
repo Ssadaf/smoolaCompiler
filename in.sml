@@ -2,8 +2,8 @@ class MainClass
 {
     def main() : int {
         writeln(Second.main());
-        a.length;
-        a + 3;
+        x = f.length;
+        a + 3 = 4;
         a = 12 = 34;
         return 0;
     }
@@ -26,14 +26,16 @@ class SecondClass {
             }
             else
             {
-                s=arr.length;
+                arr.length;
             }
         }
             return 1;
     }
-
 }
-class next
-{
-    def b(c:int, d : int) : int
+
+class next {
+ def b (c:int, d:int, e:int) : int
+ {
+    return c - e.k()[5];
+ }
 }
