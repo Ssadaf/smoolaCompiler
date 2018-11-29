@@ -1115,7 +1115,7 @@ public class SmoolaParser extends Parser {
 				match(T__18);
 				setState(252);
 				((ExpressionAssignmentContext)_localctx).expressionAssignment = expressionAssignment();
-				((ExpressionAssignmentContext)_localctx).syn_expr =  new BinaryExpression(((ExpressionAssignmentContext)_localctx).expressionOr.syn_expr, ((ExpressionAssignmentContext)_localctx).expressionAssignment.syn_expr, BinaryOperator.assign);
+				((ExpressionAssignmentContext)_localctx).syn_expr =  new BinaryExpression(((ExpressionAssignmentContext)_localctx).expressionOr.syn_expr, ((((ExpressionAssignmentContext)_localctx).expressionAssignment.syn_expr.getRight() == null)? ((ExpressionAssignmentContext)_localctx).expressionAssignment.syn_expr.getLeft() : ((ExpressionAssignmentContext)_localctx).expressionAssignment.syn_expr), BinaryOperator.assign);
 						_localctx.syn_expr.setLine(_localctx.start.getLine());
 				}
 				break;

@@ -86,7 +86,7 @@ grammar Smoola;
 		expressionAssignment {$syn_expr = ($expressionAssignment.syn_expr.getRight() == null ? $expressionAssignment.syn_expr.getLeft() : $expressionAssignment.syn_expr);}
 	;
     expressionAssignment returns [ BinaryExpression syn_expr]:
-		expressionOr '=' expressionAssignment {$syn_expr = new BinaryExpression($expressionOr.syn_expr, $expressionAssignment.syn_expr, BinaryOperator.assign);
+		expressionOr '=' expressionAssignment {$syn_expr = new BinaryExpression($expressionOr.syn_expr, (($expressionAssignment.syn_expr.getRight() == null)? $expressionAssignment.syn_expr.getLeft() : $expressionAssignment.syn_expr), BinaryOperator.assign);
 		$syn_expr.setLine($ctx.start.getLine());}
 	    |	expressionOr {$syn_expr = new BinaryExpression($expressionOr.syn_expr, null, null);}
 	;
