@@ -91,13 +91,11 @@ grammar Smoola;
 		if($expressionOrTemp.syn_expr != null)
 		    $syn_expr.setLine($ctx.start.getLine());}
 	;
-    expressionOrTemp returns [Expression syn_expr]:
-		'||' expressionAnd  expressionOrTemp {$syn_expr = ($expressionOrTemp.syn_expr == null) ?
-		($expressionAnd.syn_expr) :
-		(new BinaryExpression($expressionAnd.syn_expr, $expressionOrTemp.syn_expr, BinaryOperator.or));
-		if($expressionOrTemp.syn_expr == null)
-		    $syn_expr.setLine($ctx.start.getLine());}
-	    | {$syn_expr = null;}
+    expressionOrTemp [Expression inh_expr] returns [Expression syn_expr]:
+		'||' expressionAnd {Expression exprTillNow = new BinaryExpression($inh_expr, $expressionAnd.syn_expr, BinaryOperator.or);
+		                       $exprTillNow.setLine($ctx.start.getLine());}
+	    expressionOrTemp[$exprTillNow] {$syn_expr = $expressionOrTemp.syn_expr;}
+	    | {$syn_expr = inh_expr;}
 	;
     expressionAnd returns [Expression syn_expr]:
 		expressionEq expressionAndTemp {$syn_expr = ($expressionAndTemp.syn_expr == null) ?
