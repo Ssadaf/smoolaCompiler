@@ -83,6 +83,8 @@ public class VisitorImpl implements Visitor {
 
     @Override
     public void visit(BinaryExpression binaryExpression) {
+        if( binaryExpression.getRight() == null )
+            return;
         output.add(binaryExpression.toString());
         //TODO: implement appropriate visit functionality
         binaryExpression.getLeft().accept(this);

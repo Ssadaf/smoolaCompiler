@@ -78,17 +78,17 @@ grammar Smoola;
         $syn_stmt.setLine($ctx.start.getLine());}
 
     ;
-    statementAssignment returns [Assign syn_stmt]:
-        expressionOr '=' expressionAssignment ';' {$syn_stmt = new Assign($expressionOr.syn_expr, $expressionAssignment.syn_expr);
+    statementAssignment returns [Statement syn_stmt]:
+        expressionAssignment ';' {$syn_stmt = ($expressionAssignment.syn_expr.getRight() == null ? new Statement() :(new Assign($expressionAssignment.syn_expr.getLeft(), $expressionAssignment.syn_expr.getRight())));
         $syn_stmt.setLine($ctx.start.getLine());}
     ;
     expression returns[ Expression syn_expr]:
-		expressionAssignment {$syn_expr = $expressionAssignment.syn_expr;}
+		expressionAssignment {$syn_expr = ($expressionAssignment.syn_expr.getRight() == null ? $expressionAssignment.syn_expr.getLeft() : $expressionAssignment.syn_expr);}
 	;
-    expressionAssignment returns [ Expression syn_expr]:
+    expressionAssignment returns [ BinaryExpression syn_expr]:
 		expressionOr '=' expressionAssignment {$syn_expr = new BinaryExpression($expressionOr.syn_expr, $expressionAssignment.syn_expr, BinaryOperator.assign);
 		$syn_expr.setLine($ctx.start.getLine());}
-	    |	expressionOr {$syn_expr = $expressionOr.syn_expr;}
+	    |	expressionOr {$syn_expr = new BinaryExpression($expressionOr.syn_expr, null, null);}
 	;
     expressionOr returns [Expression syn_expr]:
 		expressionAnd expressionOrTemp[$expressionAnd.syn_expr] {$syn_expr = $expressionOrTemp.syn_expr;}
