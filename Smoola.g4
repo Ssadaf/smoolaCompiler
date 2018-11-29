@@ -24,9 +24,9 @@ grammar Smoola;
     mainClass returns [ClassDeclaration syn_classDec]:
         // name should be checked later
         'class' className = ID {$syn_classDec = new ClassDeclaration(new Identifier($className.text), null);
-                $syn_classDec.setLine($ctx.start.getLine());}
-                {MethodDeclaration mainMethod = new MethodDeclaration(new Identifier(null)); mainMethod.setLine($ctx.start.getLine());}
-                '{' 'def' methodName = ID {mainMethod.setName(new Identifier($methodName.text));}'(' ')' ':' 'int' {mainMethod.setReturnType(new IntType());} '{'
+                $syn_classDec.setLine($className.getLine());}
+                {MethodDeclaration mainMethod = new MethodDeclaration(new Identifier(null));}
+                '{' 'def' methodName = ID {mainMethod.setLine($methodName.getLine()); mainMethod.setName(new Identifier($methodName.text));}'(' ')' ':' 'int' {mainMethod.setReturnType(new IntType());} '{'
                 statements {ArrayList<Statement> allStatements = $statements.syn_stmt.getBody(); for(int i = 0; i < allStatements.size(); i++) {mainMethod.addStatement(allStatements.get(i));} }
                 'return' expression {mainMethod.setReturnValue($expression.syn_expr);} ';' '}''}' {$syn_classDec.addMethodDeclaration(mainMethod); }
     ;
@@ -34,14 +34,15 @@ grammar Smoola;
         'class' className = ID {$syn_classDec = new ClassDeclaration(new Identifier($className.text), null); }('extends' classParent = ID {$syn_classDec.setParentName(new Identifier($classParent.text) );} )?
                 '{' (varDeclaration {$syn_classDec.addVarDeclaration($varDeclaration.syn_varDec);})*
                 (methodDeclaration {$syn_classDec.addMethodDeclaration($methodDeclaration.syn_methodDec);})* '}'
+                {$syn_classDec.setLine($className.getLine())}
     ;
     varDeclaration returns [VarDeclaration syn_varDec]:
         'var' varName = ID ':' type {$syn_varDec = new VarDeclaration(new Identifier($varName.text), $type.syn_type);
-        $syn_varDec.setLine($ctx.start.getLine());} ';'
+        $syn_varDec.setLine($varName.getLine());} ';'
     ;
     methodDeclaration returns [MethodDeclaration syn_methodDec]:
-        'def' {$syn_methodDec = new MethodDeclaration(new Identifier(null)); $syn_methodDec.setLine($ctx.start.getLine());}
-         methodName = ID {$syn_methodDec.setName(new Identifier($methodName.text));} ('(' ')' | ('(' argName = ID {$syn_methodDec.setName(new Identifier($methodName.text));}':'
+        'def' {$syn_methodDec = new MethodDeclaration(new Identifier(null));}
+         methodName = ID {$syn_methodDec.setLine($methodName.getLine()); $syn_methodDec.setName(new Identifier($methodName.text));} ('(' ')' | ('(' argName = ID {$syn_methodDec.setName(new Identifier($methodName.text));}':'
          type{$syn_methodDec.addArg(new VarDeclaration(new Identifier($argName.text), $type.syn_type));} (',' argName = ID ':' type {$syn_methodDec.addArg(new VarDeclaration(new Identifier($argName.text), $type.syn_type));})* ')')) ':' type {$syn_methodDec.setReturnType($type.syn_type);}'{'
          (varDeclaration{$syn_methodDec.addLocalVar($varDeclaration.syn_varDec);})*
          statements{ArrayList<Statement> allStatements = $statements.syn_stmt.getBody(); for(int i = 0; i < allStatements.size(); i++)
