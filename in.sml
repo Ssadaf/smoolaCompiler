@@ -36,8 +36,6 @@ class SecondClass {
         }
             return 1;
     }
-
-
 }
 
 class next {
