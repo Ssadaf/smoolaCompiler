@@ -2,7 +2,7 @@ class MainClass
 {
     def main() : int {
         writeln(Second.main());
-        farzad.length = 2;
+        z.length = 2;
         a + 3 = 4;
         a = 12 = 34;
         return 0;
