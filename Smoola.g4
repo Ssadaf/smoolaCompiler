@@ -34,7 +34,7 @@ grammar Smoola;
         'class' className = ID {$syn_classDec = new ClassDeclaration(new Identifier($className.text), null); }('extends' classParent = ID {$syn_classDec.setParentName(new Identifier($classParent.text) );} )?
                 '{' (varDeclaration {$syn_classDec.addVarDeclaration($varDeclaration.syn_varDec);})*
                 (methodDeclaration {$syn_classDec.addMethodDeclaration($methodDeclaration.syn_methodDec);})* '}'
-                {$syn_classDec.setLine($className.getLine())}
+                {$syn_classDec.setLine($className.getLine());}
     ;
     varDeclaration returns [VarDeclaration syn_varDec]:
         'var' varName = ID ':' type {$syn_varDec = new VarDeclaration(new Identifier($varName.text), $type.syn_type);
