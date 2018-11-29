@@ -11,9 +11,14 @@ class MainClass
 class SecondClass {
     var test1 : int[];
     var test2 : string;
+    var test1 : string;
     def foo2( c : int) : int {
         return 1;
     }
+    def foo2( c : int) : int {
+
+             return 1;
+         }
     def foo1( c : int, b : string , a : boolean, x : int[]) : int {
 
         a = v + 3 || 12 && 65 * 78 / 43 ;

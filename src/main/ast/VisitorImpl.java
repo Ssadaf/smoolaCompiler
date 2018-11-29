@@ -39,9 +39,9 @@ public class VisitorImpl implements Visitor {
             for (int i = 0; i < classes.size(); i++)
                 classes.get(i).accept(this);
         }
-        for(int i = 0; i < output.size(); i++)
-            System.out.println(output.get(i));
-        SymbolTable.pop();
+//        for(int i = 0; i < output.size(); i++)
+//            System.out.println(output.get(i));
+//        SymbolTable.pop();
     }
 
     @Override
@@ -49,16 +49,16 @@ public class VisitorImpl implements Visitor {
         output.add(classDeclaration.toString());
         SymbolTableClassItem currClass;
         try{
-            currClass = new SymbolTableClassItem(classDeclaration.getName().getName()));
+            currClass = new SymbolTableClassItem(classDeclaration.getName().getName());
             SymbolTable.top.put(currClass);
         }catch(ItemAlreadyExistsException err){
             int num = 1;
             System.out.println("Line:" +classDeclaration.getLine() + ":Redefinition of class " + classDeclaration.getName().getName());
             while(true){
                 try{
-                    currClass = new SymbolTableClassItem("Temporary-" + classDeclaration.getName().getName() + num ));
+                    currClass = new SymbolTableClassItem("Temporary-" + classDeclaration.getName().getName() + num );
                     SymbolTable.top.put(currClass);
-                }catch(ItemAlreadyExistsException secErr){num++;}
+                }catch(ItemAlreadyExistsException secErr){num++; continue;}
                 break;
             }
         }
@@ -100,12 +100,13 @@ public class VisitorImpl implements Visitor {
                 try {
                     currMethod = new SymbolTableMethodItem(("Temporary-" + methodDeclaration.getName().getName() + num), argTypes);
                     SymbolTable.top.put(currMethod);
-                } catch (ItemAlreadyExistsException secErr) {
-                    num++;
-                }
+                } catch (ItemAlreadyExistsException secErr) {num++; continue;}
                 break;
             }
         }
+        SymbolTable currSymbolTable = new SymbolTable(SymbolTable.top);
+        SymbolTable.push(currSymbolTable);
+
         methodDeclaration.getName().accept(this);
         for(int i = 0; i < args.size(); i++)
             args.get(i).accept(this);
@@ -117,13 +118,28 @@ public class VisitorImpl implements Visitor {
             body.get(i).accept(this);
         methodDeclaration.getReturnValue().accept(this);
 
-        SymbolTable.pop();
+       SymbolTable.pop();
     }
 
     @Override
     public void visit(VarDeclaration varDeclaration) {
         output.add(varDeclaration.toString());
         //TODO: implement appropriate visit functionality
+        SymbolTableClassItem currVar;
+        try{
+            currVar = new SymbolTableClassItem(varDeclaration.getIdentifier().getName());
+            SymbolTable.top.put(currVar);
+        }catch(ItemAlreadyExistsException err){
+            int num = 1;
+            System.out.println("Line:" + varDeclaration.getLine() + ":Redefinition of variable " + varDeclaration.getIdentifier().getName());
+            while(true){
+                try{
+                    currVar = new SymbolTableClassItem("Temporary-" + varDeclaration.getIdentifier().getName() + num );
+                    SymbolTable.top.put(currVar);
+                }catch(ItemAlreadyExistsException secErr){num++; continue;}
+                break;
+            }
+        }
         varDeclaration.getIdentifier().accept(this);
     }
 
