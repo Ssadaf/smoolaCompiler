@@ -1,24 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-<<<<<<< HEAD
     <bookmark url="file://$PROJECT_DIR$/src/main/ast/VisitorImpl.java" line="47" />
-  </component>
-  <component name="ChangeListManager">
-    <list default="true" id="ae5c788d-9d2e-41cc-8043-ccfbc100ab68" name="Default" comment="" />
-=======
-    <bookmark url="file://$PROJECT_DIR$/src/main/ast/VisitorImpl.java" line="54" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ae5c788d-9d2e-41cc-8043-ccfbc100ab68" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Smoola.g4" beforeDir="false" afterPath="$PROJECT_DIR$/Smoola.g4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/in.sml" beforeDir="false" afterPath="$PROJECT_DIR$/in.sml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/SmoolaLexer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/SmoolaLexer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/ast/Visitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/ast/Visitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/ast/VisitorImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/ast/VisitorImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/ast/DuplicateMethodHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/ast/DuplicateMethodHandler.java" afterDir="false" />
     </list>
->>>>>>> 93b5c05cd1990b5c80e661ce53f4bf65674e37bf
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -73,73 +63,28 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
-<<<<<<< HEAD
       <file leaf-file-name="VisitorImpl.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/ast/VisitorImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="231">
-              <caret line="76" column="12" lean-forward="true" selection-start-line="76" selection-start-column="12" selection-end-line="76" selection-end-column="31" />
-=======
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Smoola.g4">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="784">
-              <caret line="222" column="37" lean-forward="true" selection-start-line="222" selection-start-column="37" selection-end-line="222" selection-end-column="37" />
-              <folding>
-                <element signature="e#17#351#1" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/ast/Visitor.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="83">
-              <caret line="14" column="28" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="28" />
->>>>>>> 93b5c05cd1990b5c80e661ce53f4bf65674e37bf
+            <state relative-caret-position="1824">
+              <caret line="76" column="12" selection-start-line="76" selection-start-column="12" selection-end-line="76" selection-end-column="26" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#6297#6298#0" expanded="true" />
-                <element signature="e#6346#6347#0" expanded="true" />
-                <element signature="e#7532#7533#0" expanded="true" />
-                <element signature="e#7579#7580#0" expanded="true" />
-                <element signature="e#7813#7814#0" expanded="true" />
-                <element signature="e#7857#7858#0" expanded="true" />
-                <element signature="e#7912#7913#0" expanded="true" />
-                <element signature="e#7956#7957#0" expanded="true" />
-                <element signature="e#8014#8015#0" expanded="true" />
-                <element signature="e#8058#8059#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-<<<<<<< HEAD
       <file leaf-file-name="MethodDeclaration.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/ast/node/declaration/MethodDeclaration.java">
           <provider selected="true" editor-type-id="text-editor" />
-=======
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/SmoolaParser.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="14981">
-              <caret line="1117" selection-start-line="1117" selection-end-line="1117" />
-            </state>
-          </provider>
->>>>>>> 93b5c05cd1990b5c80e661ce53f4bf65674e37bf
         </entry>
       </file>
       <file leaf-file-name="Visitor.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/ast/Visitor.java">
           <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-            <state relative-caret-position="168">
+            <state relative-caret-position="336">
               <caret line="14" column="75" selection-start-line="14" selection-start-column="75" selection-end-line="14" selection-end-column="75" />
-=======
-            <state relative-caret-position="173">
-              <caret line="44" column="26" selection-start-line="44" selection-start-column="26" selection-end-line="44" selection-end-column="26" />
->>>>>>> 93b5c05cd1990b5c80e661ce53f4bf65674e37bf
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#299#307#0" expanded="true" />
@@ -151,14 +96,8 @@
       <file leaf-file-name="DuplicateMethodHandler.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/ast/DuplicateMethodHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
-              <folding>
-                <element signature="e#179#180#0" expanded="true" />
-                <element signature="e#247#248#0" expanded="true" />
-                <element signature="e#271#272#0" expanded="true" />
-                <element signature="e#313#314#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="246">
+              <caret line="22" column="20" selection-start-line="22" selection-start-column="20" selection-end-line="22" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -171,7 +110,7 @@
       <file leaf-file-name="SymbolTable.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/symbolTable/SymbolTable.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="528">
+            <state relative-caret-position="888">
               <caret line="41" column="13" selection-start-line="41" selection-start-column="8" selection-end-line="41" selection-end-column="13" />
             </state>
           </provider>
@@ -180,14 +119,8 @@
       <file leaf-file-name="DuplicateMethodInfo.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/ast/DuplicateMethodInfo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="543">
+            <state relative-caret-position="576">
               <caret line="28" column="5" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
-              <folding>
-                <element signature="e#454#455#0" expanded="true" />
-                <element signature="e#486#487#0" expanded="true" />
-                <element signature="e#536#537#0" expanded="true" />
-                <element signature="e#567#568#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -195,9 +128,8 @@
       <file leaf-file-name="ClassDeclaration.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/ast/node/declaration/ClassDeclaration.java">
           <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-            <state relative-caret-position="391">
-              <caret line="23" column="4" lean-forward="true" selection-start-line="23" selection-start-column="4" selection-end-line="23" selection-end-column="4" />
+            <state relative-caret-position="408">
+              <caret line="23" column="4" selection-start-line="23" selection-start-column="4" selection-end-line="23" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -207,10 +139,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="96">
               <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-=======
-            <state relative-caret-position="-359">
-              <caret line="4" column="24" selection-start-line="4" selection-start-column="24" selection-end-line="4" selection-end-column="24" />
->>>>>>> 93b5c05cd1990b5c80e661ce53f4bf65674e37bf
             </state>
           </provider>
         </entry>
@@ -266,12 +194,7 @@
         <option value="$PROJECT_DIR$/src/main/ast/node/Program.java" />
         <option value="$PROJECT_DIR$/src/main/ast/node/expression/BinaryExpression.java" />
         <option value="$PROJECT_DIR$/in.sml" />
-<<<<<<< HEAD
         <option value="$PROJECT_DIR$/src/main/ast/duplicateMethodInfo.java" />
-=======
-        <option value="$PROJECT_DIR$/Smoola.g4" />
-        <option value="$PROJECT_DIR$/src/main/ast/Visitor.java" />
->>>>>>> 93b5c05cd1990b5c80e661ce53f4bf65674e37bf
         <option value="$PROJECT_DIR$/src/main/ast/VisitorImpl.java" />
         <option value="$PROJECT_DIR$/src/main/ast/Visitor.java" />
         <option value="$PROJECT_DIR$/src/main/ast/node/declaration/ClassDeclaration.java" />
@@ -286,10 +209,11 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="y" value="23" />
-    <option name="width" value="1440" />
-    <option name="height" value="824" />
+  <component name="ProjectFrameBounds" extendedState="1">
+    <option name="x" value="75" />
+    <option name="y" value="34" />
+    <option name="width" value="1853" />
+    <option name="height" value="1048" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -297,7 +221,7 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
-      <pane id="Scope" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -335,7 +259,7 @@
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -450,67 +374,45 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="-4" width="1855" height="1084" extended-state="6" />
+    <frame x="75" y="34" width="1853" height="1048" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="bottom" id="TODO" order="8" weight="0.329235" />
-      <window_info anchor="bottom" id="Tool Output" order="10" weight="0.3267671" />
-      <window_info anchor="bottom" id="Messages" order="19" weight="0.3267671" />
+      <window_info anchor="bottom" id="TODO" order="9" weight="0.329235" />
+      <window_info anchor="bottom" id="Tool Output" order="11" weight="0.32786885" />
+      <window_info active="true" anchor="bottom" id="Messages" order="19" visible="true" weight="0.32648125" />
       <window_info anchor="right" id="Palette&#9;" order="6" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="bottom" id="Event Log" order="14" side_tool="true" />
+      <window_info anchor="bottom" id="Event Log" order="15" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="7" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.24797219" />
-      <window_info anchor="bottom" id="Version Control" order="16" weight="0.329235" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="12" visible="true" weight="0.23522596" />
+      <window_info anchor="bottom" id="Run" order="3" weight="0.431694" />
+      <window_info anchor="bottom" id="Version Control" order="17" weight="0.329235" />
+      <window_info anchor="bottom" id="Terminal" order="13" weight="0.32786885" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="Designer" order="3" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.8317308" visible="true" weight="0.18130946" />
-      <window_info anchor="bottom" id="ANTLR Preview" order="21" weight="0.3267671" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.8317308" visible="true" weight="0.18039216" />
+      <window_info anchor="bottom" id="ANTLR Preview" order="18" weight="0.32786885" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="4" />
       <window_info anchor="right" id="Theme Preview" order="5" />
-      <window_info anchor="bottom" id="Debug" order="4" weight="0.4" />
+      <window_info anchor="bottom" id="Debug" order="5" weight="0.4" />
       <window_info id="Favorites" order="6" sideWeight="0.16826923" side_tool="true" weight="0.17310444" />
+      <window_info anchor="bottom" id="Inspection" order="7" weight="0.4" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="6" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.8317308" visible="true" weight="0.17739628" />
-      <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info id="Favorites" order="6" sideWeight="0.16826923" side_tool="true" weight="0.17310444" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="Event Log" order="15" side_tool="true" />
-      <window_info anchor="bottom" id="Tool Output" order="11" weight="0.32786885" />
-      <window_info anchor="bottom" id="Terminal" order="13" weight="0.32786885" />
-      <window_info anchor="right" id="Palette&#9;" order="6" />
-      <window_info anchor="right" id="Maven Projects" order="7" />
       <window_info anchor="bottom" id="Database Changes" order="20" show_stripe_button="false" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info id="Image Layers" order="2" />
-      <window_info anchor="right" id="Theme Preview" order="5" />
-      <window_info anchor="right" id="Database" order="8" />
-      <window_info id="Capture Tool" order="5" />
-      <window_info anchor="bottom" id="Version Control" order="17" weight="0.329235" />
-      <window_info anchor="bottom" id="Debug" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="9" weight="0.329235" />
-      <window_info anchor="bottom" id="Inspection" order="7" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="6" weight="0.25" />
-      <window_info id="UI Designer" order="4" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="3" visible="true" weight="0.431694" />
-      <window_info anchor="bottom" id="ANTLR Preview" order="18" weight="0.32786885" />
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info id="Designer" order="3" />
+      <window_info anchor="right" id="Database" order="8" />
     </layout>
     <layout-to-restore>
       <window_info id="Designer" order="3" />
       <window_info anchor="right" id="Palette" order="3" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.431694" />
       <window_info id="Image Layers" order="2" />
-      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.431694" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="4" />
@@ -523,18 +425,19 @@
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.32786885" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.8317308" visible="true" weight="0.17739628" />
       <window_info anchor="bottom" id="Database Changes" order="13" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="10" weight="0.329235" />
       <window_info anchor="right" id="Maven Projects" order="7" />
       <window_info anchor="bottom" id="ANTLR Preview" order="11" weight="0.32786885" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.8317308" visible="true" weight="0.17739628" />
       <window_info anchor="right" id="Database" order="8" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.329235" />
       <window_info anchor="right" id="Palette&#9;" order="6" />
       <window_info anchor="right" id="Theme Preview" order="5" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
     </layout-to-restore>
   </component>
@@ -545,12 +448,20 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/main/ast/DuplicateMethodHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/ast/Visitor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="12" lean-forward="true" selection-start-column="12" selection-end-column="12" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#299#307#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -601,9 +512,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1230">
           <caret line="82" column="27" selection-start-line="82" selection-start-column="27" selection-end-line="82" selection-end-column="27" />
-          <folding>
-            <element signature="e#17#351#1" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -631,16 +539,6 @@
           <caret line="86" selection-start-line="86" selection-end-line="86" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#6297#6298#0" expanded="true" />
-            <element signature="e#6346#6347#0" expanded="true" />
-            <element signature="e#7532#7533#0" expanded="true" />
-            <element signature="e#7579#7580#0" expanded="true" />
-            <element signature="e#7813#7814#0" expanded="true" />
-            <element signature="e#7857#7858#0" expanded="true" />
-            <element signature="e#7912#7913#0" expanded="true" />
-            <element signature="e#7956#7957#0" expanded="true" />
-            <element signature="e#8014#8015#0" expanded="true" />
-            <element signature="e#8058#8059#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -715,7 +613,6 @@
         </state>
       </provider>
     </entry>
-<<<<<<< HEAD
     <entry file="jar:///usr/local/lib/antlr-4.7.1-complete.jar!/org/antlr/v4/gui/TestRig.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="388">
@@ -724,9 +621,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/ast/node/declaration/Declaration.java">
-=======
-    <entry file="file://$PROJECT_DIR$/src/main/ast/node/expression/BinaryExpression.java">
->>>>>>> 93b5c05cd1990b5c80e661ce53f4bf65674e37bf
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="5" column="22" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
@@ -782,7 +676,6 @@
         </state>
       </provider>
     </entry>
-<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/main/ast/node/expression/Value/IntValue.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -812,9 +705,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="284">
           <caret line="218" column="8" selection-start-line="218" selection-start-column="8" selection-end-line="218" selection-end-column="8" />
-          <folding>
-            <element signature="e#17#351#1" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -822,41 +712,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="96">
           <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-=======
-    <entry file="file://$PROJECT_DIR$/src/main/ast/node/expression/Value/Value.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="6" column="22" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/in.sml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-359">
-          <caret line="4" column="24" selection-start-line="4" selection-start-column="24" selection-end-line="4" selection-end-column="24" />
->>>>>>> 93b5c05cd1990b5c80e661ce53f4bf65674e37bf
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/ast/node/expression/Value/IntValue.java">
       <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
         <state relative-caret-position="24">
           <caret line="377" column="100" selection-start-line="377" selection-start-column="100" selection-end-line="377" selection-end-column="100" />
-=======
-        <state relative-caret-position="150">
-          <caret line="11" column="5" lean-forward="true" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Smoola.g4">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="784">
-          <caret line="222" column="37" lean-forward="true" selection-start-line="222" selection-start-column="37" selection-end-line="222" selection-end-column="37" />
-          <folding>
-            <element signature="e#17#351#1" expanded="true" />
-          </folding>
->>>>>>> 93b5c05cd1990b5c80e661ce53f4bf65674e37bf
         </state>
       </provider>
     </entry>
@@ -869,20 +731,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/ast/node/Program.java">
       <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
         <state relative-caret-position="480">
           <caret line="33" selection-start-line="33" selection-end-line="33" />
-=======
-        <state relative-caret-position="83">
-          <caret line="14" column="28" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="28" />
->>>>>>> 93b5c05cd1990b5c80e661ce53f4bf65674e37bf
           <folding>
             <element signature="e#790#791#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/in.sml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="684">
@@ -905,14 +761,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/symbolTable/SymbolTable.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="528">
+        <state relative-caret-position="888">
           <caret line="41" column="13" selection-start-line="41" selection-start-column="8" selection-end-line="41" selection-end-column="13" />
-=======
-    <entry file="file://$PROJECT_DIR$/src/main/SmoolaParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="14981">
-          <caret line="1117" selection-start-line="1117" selection-end-line="1117" />
->>>>>>> 93b5c05cd1990b5c80e661ce53f4bf65674e37bf
         </state>
       </provider>
     </entry>
@@ -925,7 +775,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/ast/Visitor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
+        <state relative-caret-position="336">
           <caret line="14" column="75" selection-start-line="14" selection-start-column="75" selection-end-line="14" selection-end-column="75" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -939,59 +789,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/ast/VisitorImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-        <state relative-caret-position="231">
-          <caret line="76" column="12" lean-forward="true" selection-start-line="76" selection-start-column="12" selection-end-line="76" selection-end-column="31" />
-=======
-        <state relative-caret-position="173">
-          <caret line="44" column="26" selection-start-line="44" selection-start-column="26" selection-end-line="44" selection-end-column="26" />
->>>>>>> 93b5c05cd1990b5c80e661ce53f4bf65674e37bf
+        <state relative-caret-position="1824">
+          <caret line="76" column="12" selection-start-line="76" selection-start-column="12" selection-end-line="76" selection-end-column="26" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#6297#6298#0" expanded="true" />
-            <element signature="e#6346#6347#0" expanded="true" />
-            <element signature="e#7532#7533#0" expanded="true" />
-            <element signature="e#7579#7580#0" expanded="true" />
-            <element signature="e#7813#7814#0" expanded="true" />
-            <element signature="e#7857#7858#0" expanded="true" />
-            <element signature="e#7912#7913#0" expanded="true" />
-            <element signature="e#7956#7957#0" expanded="true" />
-            <element signature="e#8014#8015#0" expanded="true" />
-            <element signature="e#8058#8059#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/ast/node/declaration/ClassDeclaration.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" column="4" lean-forward="true" selection-start-line="23" selection-start-column="4" selection-end-line="23" selection-end-column="4" />
+        <state relative-caret-position="408">
+          <caret line="23" column="4" selection-start-line="23" selection-start-column="4" selection-end-line="23" selection-end-column="4" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/ast/DuplicateMethodInfo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="543">
+        <state relative-caret-position="576">
           <caret line="28" column="5" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
-          <folding>
-            <element signature="e#454#455#0" expanded="true" />
-            <element signature="e#486#487#0" expanded="true" />
-            <element signature="e#536#537#0" expanded="true" />
-            <element signature="e#567#568#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/ast/DuplicateMethodHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
-          <folding>
-            <element signature="e#179#180#0" expanded="true" />
-            <element signature="e#247#248#0" expanded="true" />
-            <element signature="e#271#272#0" expanded="true" />
-            <element signature="e#313#314#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="246">
+          <caret line="22" column="20" selection-start-line="22" selection-start-column="20" selection-end-line="22" selection-end-column="20" />
         </state>
       </provider>
     </entry>

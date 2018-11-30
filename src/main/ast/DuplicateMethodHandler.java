@@ -14,13 +14,12 @@ public class DuplicateMethodHandler {
     }
 
     public boolean checkDuplication(String methodName, String parent){
-        String checkingParent;
         String checkingParent = parent;
 
         for (int i = 0; i < dupMethodInfo.size(); ++i) {
             if((dupMethodInfo.get(i).getMethodName() == methodName) && (dupMethodInfo.get(i).getClassName() == parent))
                 return false;
         }
-
+        return true;
     }
 }
