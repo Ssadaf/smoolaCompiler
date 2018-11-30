@@ -4,20 +4,7 @@
     <bookmark url="file://$PROJECT_DIR$/src/main/ast/VisitorImpl.java" line="47" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ae5c788d-9d2e-41cc-8043-ccfbc100ab68" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/ast/DuplicateMethodHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/ast/DuplicateMethodInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/in.sml" beforeDir="false" afterPath="$PROJECT_DIR$/in.sml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/SmoolaBaseListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/SmoolaBaseListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/SmoolaLexer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/SmoolaLexer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/SmoolaListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/SmoolaListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/SmoolaParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/SmoolaParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/ast/Visitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/ast/Visitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/ast/VisitorImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/ast/VisitorImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/ast/node/declaration/ClassDeclaration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/ast/node/declaration/ClassDeclaration.java" afterDir="false" />
-    </list>
+    <list default="true" id="ae5c788d-9d2e-41cc-8043-ccfbc100ab68" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -113,8 +100,8 @@
       <file leaf-file-name="DuplicateMethodHandler.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/ast/DuplicateMethodHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="23" lean-forward="true" selection-start-line="18" selection-end-line="23" />
+            <state relative-caret-position="336">
+              <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
               <folding>
                 <element signature="e#179#180#0" expanded="true" />
                 <element signature="e#247#248#0" expanded="true" />
@@ -409,7 +396,7 @@
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="8" weight="0.329235" />
       <window_info anchor="bottom" id="Tool Output" order="10" weight="0.3267671" />
-      <window_info active="true" anchor="bottom" id="Messages" order="19" visible="true" weight="0.3267671" />
+      <window_info anchor="bottom" id="Messages" order="19" weight="0.3267671" />
       <window_info anchor="right" id="Palette&#9;" order="6" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
@@ -417,7 +404,7 @@
       <window_info anchor="right" id="Maven Projects" order="7" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.24797219" />
       <window_info anchor="bottom" id="Version Control" order="16" weight="0.329235" />
-      <window_info anchor="bottom" id="Terminal" order="12" weight="0.14600232" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="12" visible="true" weight="0.23522596" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="Designer" order="3" />
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.8317308" visible="true" weight="0.18130946" />
@@ -894,8 +881,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/ast/DuplicateMethodHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="23" lean-forward="true" selection-start-line="18" selection-end-line="23" />
+        <state relative-caret-position="336">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
           <folding>
             <element signature="e#179#180#0" expanded="true" />
             <element signature="e#247#248#0" expanded="true" />
