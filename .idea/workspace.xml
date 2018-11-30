@@ -1,19 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/src/main/ast/VisitorImpl.java" line="49" />
+    <bookmark url="file://$PROJECT_DIR$/src/main/ast/VisitorImpl.java" line="54" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ae5c788d-9d2e-41cc-8043-ccfbc100ab68" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/in.sml" beforeDir="false" afterPath="$PROJECT_DIR$/in.sml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/SmoolaBaseListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/SmoolaBaseListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/SmoolaLexer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/SmoolaLexer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/SmoolaListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/SmoolaListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/SmoolaParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/SmoolaParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/ast/DuplicateMethodHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/ast/DuplicateMethodHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/ast/DuplicateMethodInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/ast/DuplicateMethodInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/ast/Visitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/ast/Visitor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/ast/VisitorImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/ast/VisitorImpl.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -37,14 +29,14 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="g4" value="2104" />
-          <entry key="java" value="2444" />
+          <entry key="java" value="2469" />
           <entry key="sml" value="378" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="ANTLR v4 grammar file" value="2104" />
-          <entry key="JAVA" value="2444" />
+          <entry key="JAVA" value="2469" />
           <entry key="PLAIN_TEXT" value="378" />
         </counts>
       </usages-collector>
@@ -102,11 +94,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/ast/VisitorImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="125" selection-start-line="125" selection-end-line="125" selection-end-column="31" />
+            <state relative-caret-position="183">
+              <caret line="44" column="84" selection-start-line="44" selection-start-column="84" selection-end-line="44" selection-end-column="84" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#6955#6956#0" expanded="true" />
@@ -172,10 +164,10 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/in.sml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
+            <state relative-caret-position="765">
               <caret line="51" column="1" selection-start-line="51" selection-start-column="1" selection-end-line="51" selection-end-column="1" />
             </state>
           </provider>
@@ -241,9 +233,9 @@
         <option value="$PROJECT_DIR$/Smoola.g4" />
         <option value="$PROJECT_DIR$/src/main/ast/DuplicateMethodInfo.java" />
         <option value="$PROJECT_DIR$/src/main/ast/Visitor.java" />
-        <option value="$PROJECT_DIR$/src/main/ast/VisitorImpl.java" />
         <option value="$PROJECT_DIR$/src/main/ast/DuplicateMethodHandler.java" />
         <option value="$PROJECT_DIR$/in.sml" />
+        <option value="$PROJECT_DIR$/src/main/ast/VisitorImpl.java" />
       </list>
     </option>
   </component>
@@ -307,7 +299,7 @@
     <property name="$PROJECT_DIR$/Smoola.g4::/output-dir" value="$PROJECT_DIR$/src/main" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543582374799" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543583130545" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
@@ -371,12 +363,12 @@
       <workItem from="1543468296459" duration="14470000" />
       <workItem from="1543511735683" duration="132000" />
       <workItem from="1543557286287" duration="2939000" />
-      <workItem from="1543575235844" duration="7051000" />
+      <workItem from="1543575235844" duration="7930000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="30569000" />
+    <option name="totallyTimeSpent" value="31448000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -391,7 +383,7 @@
     <frame x="0" y="23" width="1440" height="824" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.8317308" visible="true" weight="0.18168813" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.8317308" visible="true" weight="0.18168813" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -400,13 +392,13 @@
       <window_info id="Favorites" order="6" sideWeight="0.16826923" side_tool="true" weight="0.17310444" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.4125683" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.4125683" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.329235" />
       <window_info anchor="bottom" id="Tool Output" order="7" weight="0.32786885" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32786885" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.32786885" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="10" weight="0.329235" />
       <window_info anchor="bottom" id="ANTLR Preview" order="11" weight="0.32786885" />
@@ -680,23 +672,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/ast/VisitorImpl.java">
+    <entry file="file://$PROJECT_DIR$/in.sml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="125" selection-start-line="125" selection-end-line="125" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#6955#6956#0" expanded="true" />
-            <element signature="e#7004#7005#0" expanded="true" />
-            <element signature="e#8190#8191#0" expanded="true" />
-            <element signature="e#8237#8238#0" expanded="true" />
-            <element signature="e#8471#8472#0" expanded="true" />
-            <element signature="e#8515#8516#0" expanded="true" />
-            <element signature="e#8570#8571#0" expanded="true" />
-            <element signature="e#8614#8615#0" expanded="true" />
-            <element signature="e#8672#8673#0" expanded="true" />
-            <element signature="e#8716#8717#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="765">
+          <caret line="51" column="1" selection-start-line="51" selection-start-column="1" selection-end-line="51" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -717,10 +696,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/in.sml">
+    <entry file="file://$PROJECT_DIR$/src/main/ast/VisitorImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="51" column="1" selection-start-line="51" selection-start-column="1" selection-end-line="51" selection-end-column="1" />
+        <state relative-caret-position="183">
+          <caret line="44" column="84" selection-start-line="44" selection-start-column="84" selection-end-line="44" selection-end-column="84" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#6955#6956#0" expanded="true" />
+            <element signature="e#7004#7005#0" expanded="true" />
+            <element signature="e#8190#8191#0" expanded="true" />
+            <element signature="e#8237#8238#0" expanded="true" />
+            <element signature="e#8471#8472#0" expanded="true" />
+            <element signature="e#8515#8516#0" expanded="true" />
+            <element signature="e#8570#8571#0" expanded="true" />
+            <element signature="e#8614#8615#0" expanded="true" />
+            <element signature="e#8672#8673#0" expanded="true" />
+            <element signature="e#8716#8717#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
