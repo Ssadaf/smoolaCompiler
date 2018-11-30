@@ -1,5 +1,6 @@
 package ast;
 
+import ast.Type.PrimitiveType.IntType;
 import ast.node.Node;
 import ast.node.Program;
 import ast.node.declaration.ClassDeclaration;
@@ -189,6 +190,13 @@ public class VisitorImpl implements Visitor {
     public void visit(NewArray newArray) {
         output.add(newArray.toString());
         //TODO: implement appropriate visit functionality
+        IntValue index = (IntValue)newArray.getExpression();
+        int const_index = index.getConstant();
+        if(const_index <= 0)
+        {
+            System.out.println("Line:" + newArray.getLine() + ":Array length should not be zero or negative");
+            newArray.setExpression(new IntValue(0, new IntType()));
+        }
         newArray.getExpression().accept(this);
     }
 

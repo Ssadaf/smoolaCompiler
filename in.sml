@@ -16,7 +16,8 @@ class SecondClass {
         return 1;
     }
     def foo2( c : int) : int {
-
+             test1 = new int[0];
+             test1 = new int[-1];
              return 1;
          }
     def foo1( c : int, b : string , a : boolean, x : int[]) : int {
