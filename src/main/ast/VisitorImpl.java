@@ -25,6 +25,8 @@ import java.util.ArrayList;
 
 public class VisitorImpl implements Visitor {
 
+    boolean hasDuplication = false;
+    boolean hasError = false;
 
     @Override
     public void visit(Program program) {
@@ -42,7 +44,7 @@ public class VisitorImpl implements Visitor {
             for (int i = 0; i < classes.size(); i++)
                 classes.get(i).accept(this);
         }
-        if(errors.size() == 0)
+        if(hasError == false)
         {
             for(int i = 0; i < output.size(); i++)
                 System.out.println(output.get(i));
@@ -60,7 +62,7 @@ public class VisitorImpl implements Visitor {
         }catch(ItemAlreadyExistsException err){
             int num = 1;
             System.out.println("Line:" +classDeclaration.getLine() + ":Redefinition of class " + classDeclaration.getName().getName());
-            errors.add("Error");
+            hasError = true;
             while(true){
                 try{
                     currClass = new SymbolTableClassItem("Temporary-" + classDeclaration.getName().getName() + num );
@@ -80,9 +82,12 @@ public class VisitorImpl implements Visitor {
         for(int i = 0; i < vars.size(); i++)
             vars.get(i).accept(this);
         ArrayList<MethodDeclaration> meths = classDeclaration.getMethodDeclarations();
+        duplicateHandler.addRelation(classDeclaration.getName(), classDeclaration.getParentName());
         for(int i = 0; i < meths.size(); i++) {
+            hasDuplication = false;
+            DuplicateMethodInfo currMethInfo = new DuplicateMethodInfo(meths.get(i).getName(), classDeclaration.getName());
+            hasDuplication = duplicateHandler.checkDuplication(currMethInfo);
             meths.get(i).accept(this);
-            DuplicateMethodInfo currMethInfo = new DuplicateMethodInfo(meths.get(i).getName(), classDeclaration.getName(), classDeclaration.getParentName());
         }
 
         SymbolTable.pop();
@@ -100,12 +105,14 @@ public class VisitorImpl implements Visitor {
             argTypes.add(args.get(i).getType());
         }
         try{
+            if(hasDuplication)
+                throw new ItemAlreadyExistsException();
             currMethod = new SymbolTableMethodItem(methodDeclaration.getName().getName(), argTypes);
             SymbolTable.top.put(currMethod);
         }catch (ItemAlreadyExistsException err){
             int num =1;
             System.out.println("Line:" +methodDeclaration.getLine() + ":Redefinition of method " + methodDeclaration.getName().getName());
-            errors.add("Error");
+            hasError = true;
 
             while(true) {
                 try {
@@ -115,6 +122,8 @@ public class VisitorImpl implements Visitor {
                 break;
             }
         }
+
+        hasDuplication = false;
         SymbolTable currSymbolTable = new SymbolTable(SymbolTable.top);
         SymbolTable.push(currSymbolTable);
 
@@ -142,7 +151,7 @@ public class VisitorImpl implements Visitor {
         }catch(ItemAlreadyExistsException err){
             int num = 1;
             System.out.println("Line:" + varDeclaration.getLine() + ":Redefinition of variable " + varDeclaration.getIdentifier().getName());
-            errors.add("Error");
+            hasError = true;
             while(true){
                 try{
                     currVar = new SymbolTableClassItem("Temporary-" + varDeclaration.getIdentifier().getName() + num );
@@ -196,7 +205,7 @@ public class VisitorImpl implements Visitor {
         output.add(newArray.toString());
         IntValue index = (IntValue)newArray.getExpression();
         int const_index = index.getConstant();
-        if(const_index <= 0)
+        if(const_index == 0)
         {
             System.out.println("Line:" + newArray.getLine() + ":Array length should not be zero or negative");
             newArray.setExpression(new IntValue(0, new IntType()));

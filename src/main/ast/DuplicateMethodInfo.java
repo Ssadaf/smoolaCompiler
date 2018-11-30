@@ -5,12 +5,10 @@ import ast.node.expression.Identifier;
 public class DuplicateMethodInfo {
     private Identifier methodName;
     private Identifier className;
-    private Identifier parentName;
 
-    public DuplicateMethodInfo(Identifier methodName, Identifier className, Identifier parentName){
+    public DuplicateMethodInfo(Identifier methodName, Identifier className){
         this.methodName = methodName;
         this.className = className;
-        this.parentName = parentName;
     }
 
     public String getMethodName(){
@@ -21,10 +19,4 @@ public class DuplicateMethodInfo {
         return className.getName();
     }
 
-    public String getParentName(){
-        if(parentName == null)
-            return "";
-        else
-            return parentName.getName();
-    }
 }

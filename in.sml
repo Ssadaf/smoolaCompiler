@@ -2,7 +2,7 @@ class MainClass
 {
     def main() : int {
         writeln(Second.main());
-        x = new int[-2];
+        x = new int[2];
         x = f.length;
         a + 3 = 4;
         x = 3;
@@ -10,13 +10,24 @@ class MainClass
         return 0;
     }
 }
-class SecondClass {
+
+class next extends SecondClass{
+ def b (c:int, d:int, e:int) : int
+ {
+    x = -2;
+    return c - e.k()[5];
+ }
+     def foo2( c : int) : int {
+              test1 = new int[10];
+              return 1;
+          }
+}
+
+
+class SecondClass extends ThirdClass{
     var test1 : int[];
     var test2 : string;
     var test1 : string;
-    def foo2( c : int) : int {
-        return 1;
-    }
     def foo2( c : int) : int {
              test1 = new int[0];
              return 1;
@@ -40,10 +51,14 @@ class SecondClass {
     }
 }
 
-class next {
+class ThirdClass {
  def b (c:int, d:int, e:int) : int
  {
     x = -2;
     return c - e.k()[5];
  }
+     def foo2( c : int) : int {
+              test1 = new int[10];
+              return 1;
+          }
 }

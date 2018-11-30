@@ -13,7 +13,6 @@ import java.util.ArrayList;
 public interface Visitor {
     ArrayList<String> output = new ArrayList<String>();
     DuplicateMethodHandler duplicateHandler = new DuplicateMethodHandler();
-    ArrayList<String> errors = new ArrayList<String>();
 
     void visit (Program program);
 
