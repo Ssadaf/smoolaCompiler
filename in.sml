@@ -25,6 +25,7 @@ class next extends SecondClass{
 
 
 class SecondClass extends ThirdClass{
+    var common : int[];
     var test1 : int[];
     var test2 : string;
     var test1 : string;
@@ -52,6 +53,7 @@ class SecondClass extends ThirdClass{
 }
 
 class ThirdClass {
+ var common : int[];
  def b (c:int, d:int, e:int) : int
  {
     x = -2;

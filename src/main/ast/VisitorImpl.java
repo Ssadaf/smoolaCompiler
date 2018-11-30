@@ -25,8 +25,9 @@ import java.util.ArrayList;
 
 public class VisitorImpl implements Visitor {
 
-    boolean hasDuplication = false;
-    boolean hasError = false;
+    private boolean hasMethodDuplication = false;
+    private boolean hasVariableDuplication = false;
+    private boolean hasError = false;
 
     @Override
     public void visit(Program program) {
@@ -36,8 +37,10 @@ public class VisitorImpl implements Visitor {
         if((program.getMainClass() == null) && (program.getClasses().size() == 0) )
             System.out.println("No class exists in the program");
         ClassDeclaration mainClass = program.getMainClass();
-        if(mainClass != null)
+        if(mainClass != null){
             mainClass.accept(this);
+            duplicateHandler.addRelation(mainClass.getName(), mainClass.getParentName());
+        }
         List <ClassDeclaration> classes = program.getClasses();
         if(classes != null)
         {
@@ -49,7 +52,7 @@ public class VisitorImpl implements Visitor {
             for (int i = 0; i < classes.size(); i++)
                 classes.get(i).accept(this);
         }
-        if(hasError == false)
+        if(!hasError)
         {
             for(int i = 0; i < output.size(); i++)
                 System.out.println(output.get(i));
@@ -83,14 +86,20 @@ public class VisitorImpl implements Visitor {
         Identifier parent = classDeclaration.getParentName();
         if(parent != null)
             parent.accept(this);
+
         ArrayList<VarDeclaration> vars = classDeclaration.getVarDeclarations();
-        for(int i = 0; i < vars.size(); i++)
+        for(int i = 0; i < vars.size(); i++) {
+            hasVariableDuplication = false;
+            DuplicateVariableInfo currVarInfo = new DuplicateVariableInfo(vars.get(i).getIdentifier(), classDeclaration.getName());
+            hasVariableDuplication = duplicateHandler.checkVariableDuplication(currVarInfo);
             vars.get(i).accept(this);
+        }
+
         ArrayList<MethodDeclaration> meths = classDeclaration.getMethodDeclarations();
         for(int i = 0; i < meths.size(); i++) {
-            hasDuplication = false;
+            hasMethodDuplication = false;
             DuplicateMethodInfo currMethInfo = new DuplicateMethodInfo(meths.get(i).getName(), classDeclaration.getName());
-            hasDuplication = duplicateHandler.checkDuplication(currMethInfo);
+            hasMethodDuplication = duplicateHandler.checkMethodDuplication(currMethInfo);
             meths.get(i).accept(this);
         }
 
@@ -105,11 +114,10 @@ public class VisitorImpl implements Visitor {
 
         ArrayList<VarDeclaration> args = methodDeclaration.getArgs();
         ArrayList<Type> argTypes = new ArrayList<Type>();
-        for(int i = 0; i < args.size(); ++i){
+        for(int i = 0; i < args.size(); ++i)
             argTypes.add(args.get(i).getType());
-        }
         try{
-            if(hasDuplication)
+            if(hasMethodDuplication)
                 throw new ItemAlreadyExistsException();
             currMethod = new SymbolTableMethodItem(methodDeclaration.getName().getName(), argTypes);
             SymbolTable.top.put(currMethod);
@@ -127,7 +135,7 @@ public class VisitorImpl implements Visitor {
             }
         }
 
-        hasDuplication = false;
+        hasMethodDuplication = false;
         SymbolTable currSymbolTable = new SymbolTable(SymbolTable.top);
         SymbolTable.push(currSymbolTable);
 
@@ -150,6 +158,8 @@ public class VisitorImpl implements Visitor {
         output.add(varDeclaration.toString());
         SymbolTableClassItem currVar;
         try{
+            if(hasVariableDuplication)
+                throw new ItemAlreadyExistsException();
             currVar = new SymbolTableClassItem(varDeclaration.getIdentifier().getName());
             SymbolTable.top.put(currVar);
         }catch(ItemAlreadyExistsException err){
@@ -164,6 +174,7 @@ public class VisitorImpl implements Visitor {
                 break;
             }
         }
+        hasVariableDuplication = false;
         varDeclaration.getIdentifier().accept(this);
     }
 

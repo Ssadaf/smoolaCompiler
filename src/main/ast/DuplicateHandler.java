@@ -5,13 +5,10 @@ import ast.node.expression.Identifier;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class DuplicateMethodHandler {
-    private ArrayList<DuplicateMethodInfo> dupMethodInfo;
+public class DuplicateHandler {
+    private ArrayList<DuplicateMethodInfo> dupMethodInfo = new ArrayList<DuplicateMethodInfo>();;
+    private ArrayList<DuplicateVariableInfo> dupVarInfo = new ArrayList<DuplicateVariableInfo>();;
     private HashMap<String, String> relation = new HashMap<String, String>();
-
-    public DuplicateMethodHandler(){
-        dupMethodInfo = new ArrayList<DuplicateMethodInfo>();
-    }
 
     public void addRelation(Identifier child, Identifier parent)
     {
@@ -46,11 +43,7 @@ public class DuplicateMethodHandler {
         return (checkRelationIsParent(first, second) || checkRelationIsParent(second, first));
     }
 
-    public void addItem(DuplicateMethodInfo newItem){
-        dupMethodInfo.add(newItem);
-    }
-
-    public boolean checkDuplication(DuplicateMethodInfo newItem)
+    public boolean checkMethodDuplication(DuplicateMethodInfo newItem)
     {
         for(int i = 0; i < dupMethodInfo.size(); i++)
         {
@@ -58,12 +51,29 @@ public class DuplicateMethodHandler {
             {
                 if(hasRelation(dupMethodInfo.get(i).getClassName(), newItem.getClassName()))
                 {
-                    addItem(newItem);
+                    dupMethodInfo.add(newItem);
                     return true;
                 }
             }
         }
-        addItem(newItem);
+        dupMethodInfo.add(newItem);
+        return false;
+    }
+
+    public boolean checkVariableDuplication(DuplicateVariableInfo newItem)
+    {
+        for(int i = 0; i < dupVarInfo.size(); i++)
+        {
+            if(dupVarInfo.get(i).getVarName().equals(newItem.getVarName()))
+            {
+                if(hasRelation(dupVarInfo.get(i).getClassName(), newItem.getClassName()))
+                {
+                    dupVarInfo.add(newItem);
+                    return true;
+                }
+            }
+        }
+        dupVarInfo.add(newItem);
         return false;
     }
 }

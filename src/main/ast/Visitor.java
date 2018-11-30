@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 public interface Visitor {
     ArrayList<String> output = new ArrayList<String>();
-    DuplicateMethodHandler duplicateHandler = new DuplicateMethodHandler();
+    DuplicateHandler duplicateHandler = new DuplicateHandler();
 
     void visit (Program program);
 
