@@ -2,6 +2,7 @@ package ast.node.declaration;
 
 import ast.Visitor;
 import ast.node.expression.Identifier;
+import symbolTable.SymbolTable;
 
 import java.util.ArrayList;
 

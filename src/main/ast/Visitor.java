@@ -12,6 +12,9 @@ import java.util.ArrayList;
 
 public interface Visitor {
     ArrayList<String> output = new ArrayList<String>();
+    DuplicateMethodHandler duplicateHandler = new DuplicateMethodHandler();
+    boolean errOccured = new Boolean(false);
+
     void visit (Program program);
 
     //Declarations
