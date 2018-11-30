@@ -12,6 +12,8 @@ import java.util.ArrayList;
 
 public interface Visitor {
     ArrayList<String> output = new ArrayList<String>();
+    ArrayList<String> errors = new ArrayList<String>();
+
     void visit (Program program);
 
     //Declarations

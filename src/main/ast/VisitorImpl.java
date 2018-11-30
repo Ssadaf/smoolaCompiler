@@ -22,7 +22,9 @@ import ast.Type.*;
 import java.util.List;
 import java.util.ArrayList;
 
+
 public class VisitorImpl implements Visitor {
+
 
     @Override
     public void visit(Program program) {
@@ -40,8 +42,11 @@ public class VisitorImpl implements Visitor {
             for (int i = 0; i < classes.size(); i++)
                 classes.get(i).accept(this);
         }
-//        for(int i = 0; i < output.size(); i++)
-//            System.out.println(output.get(i));
+        if(errors.size() == 0)
+        {
+            for(int i = 0; i < output.size(); i++)
+                System.out.println(output.get(i));
+        }
 //        SymbolTable.pop();
     }
 
@@ -55,6 +60,7 @@ public class VisitorImpl implements Visitor {
         }catch(ItemAlreadyExistsException err){
             int num = 1;
             System.out.println("Line:" +classDeclaration.getLine() + ":Redefinition of class " + classDeclaration.getName().getName());
+            errors.add("Error");
             while(true){
                 try{
                     currClass = new SymbolTableClassItem("Temporary-" + classDeclaration.getName().getName() + num );
@@ -97,6 +103,8 @@ public class VisitorImpl implements Visitor {
         }catch (ItemAlreadyExistsException err){
             int num =1;
             System.out.println("Line:" +methodDeclaration.getLine() + ":Redefinition of method " + methodDeclaration.getName().getName());
+            errors.add("Error");
+
             while(true) {
                 try {
                     currMethod = new SymbolTableMethodItem(("Temporary-" + methodDeclaration.getName().getName() + num), argTypes);
@@ -133,6 +141,7 @@ public class VisitorImpl implements Visitor {
         }catch(ItemAlreadyExistsException err){
             int num = 1;
             System.out.println("Line:" + varDeclaration.getLine() + ":Redefinition of variable " + varDeclaration.getIdentifier().getName());
+            errors.add("Error");
             while(true){
                 try{
                     currVar = new SymbolTableClassItem("Temporary-" + varDeclaration.getIdentifier().getName() + num );

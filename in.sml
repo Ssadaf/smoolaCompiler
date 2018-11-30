@@ -2,8 +2,10 @@ class MainClass
 {
     def main() : int {
         writeln(Second.main());
+        x = new int[-2];
         x = f.length;
         a + 3 = 4;
+        x = 3;
         a = 12 = 34;
         return 0;
     }
@@ -17,7 +19,6 @@ class SecondClass {
     }
     def foo2( c : int) : int {
              test1 = new int[0];
-             test1 = new int[-1];
              return 1;
          }
     def foo1( c : int, b : string , a : boolean, x : int[]) : int {
@@ -42,6 +43,7 @@ class SecondClass {
 class next {
  def b (c:int, d:int, e:int) : int
  {
+    x = -2;
     return c - e.k()[5];
  }
 }
