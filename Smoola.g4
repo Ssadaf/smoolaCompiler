@@ -216,7 +216,7 @@ grammar Smoola;
 	    |ID { $syn_type = new UserDefinedType();}
 	;
     CONST_NUM:
-		[0-9]+
+		('-'| )[0-9]+
 	;
 
     CONST_STR:

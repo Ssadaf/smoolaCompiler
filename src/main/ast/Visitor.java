@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public interface Visitor {
     ArrayList<String> output = new ArrayList<String>();
     DuplicateMethodHandler duplicateHandler = new DuplicateMethodHandler();
-    boolean errOccured = new Boolean(false);
+    ArrayList<String> errors = new ArrayList<String>();
 
     void visit (Program program);
 
