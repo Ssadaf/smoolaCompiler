@@ -1,66 +1,24 @@
-class MainClass
-{
+class b {
     def main() : int {
-        writeln(Second.main());
-        x = new int[2];
-        x = f.length;
-        a + 3 = 4;
-        x = 3;
-        a = 12 = 34;
-        return 0;
+        return arr[009+i];
     }
 }
 
-class next extends SecondClass{
- def b (c:int, d:int, e:int) : int
- {
-    x = -2;
-    return c - e.k()[5];
- }
-     def foo2( c : int) : int {
-              test1 = new int[10];
-              return 1;
-          }
+class IDENTIFIER {
+    def min() : int {
+        return new SecondMain().main();
+    }
 }
 
 
-class SecondClass extends ThirdClass{
-    var common : int[];
-    var test1 : int[];
-    var test2 : string;
-    var test1 : string;
-    def foo2( c : int) : int {
-             test1 = new int[0];
-             return 1;
-         }
-    def foo1( c : int, b : string , a : boolean, x : int[]) : int {
-
-        a = v + 3 || 12 && 65 * 78 / 43 ;
-        b = !x && x;
-        while(a <> b)
-        {
-            if(-c == 2) then
-            {
-                writeln(x.add(a, b));
-            }
-            else
-            {
-                arr.length;
-            }
+class Math{
+    var i: int;
+    def factorial(f: int): int{
+        var j: int;
+        j=1;
+        while(f<>0){
+            j=j*f;
         }
-            return 1;
+        return j;
     }
-}
-
-class ThirdClass {
- var common : int[];
- def b (c:int, d:int, e:int) : int
- {
-    x = -2;
-    return c - e.k()[5];
- }
-     def foo2( c : int) : int {
-              test1 = new int[10];
-              return 1;
-          }
 }

@@ -42,11 +42,11 @@ public class VisitorImpl implements Visitor {
             duplicateHandler.addRelation(mainClass.getName(), mainClass.getParentName());
         }
         List <ClassDeclaration> classes = program.getClasses();
-        if(classes != null)
-        {
-            for (int i = 0; i < classes.size(); i++)
-                duplicateHandler.addRelation(classes.get(i).getName(), classes.get(i).getParentName());
-        }
+//        if(classes != null)
+//        {
+//            for (int i = 0; i < classes.size(); i++)
+//                duplicateHandler.addRelation(classes.get(i).getName(), classes.get(i).getParentName());
+//        }
         if(classes != null)
         {
             for (int i = 0; i < classes.size(); i++)
@@ -96,6 +96,7 @@ public class VisitorImpl implements Visitor {
         }
 
         ArrayList<MethodDeclaration> meths = classDeclaration.getMethodDeclarations();
+        duplicateHandler.addRelation(classDeclaration.getName(), classDeclaration.getParentName());
         for(int i = 0; i < meths.size(); i++) {
             hasMethodDuplication = false;
             DuplicateMethodInfo currMethInfo = new DuplicateMethodInfo(meths.get(i).getName(), classDeclaration.getName());
