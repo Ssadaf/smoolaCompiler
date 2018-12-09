@@ -30,6 +30,11 @@ public class VisitorImpl implements Visitor {
     private boolean hasError = false;
 
     @Override
+    public void visit(MethodCallInMain methodCallInMain) {
+        //TODO: implement appropriate visit functionality
+    }
+
+    @Override
     public void visit(Program program) {
         output.add(program.toString());
         SymbolTable currSymTable = new SymbolTable();
