@@ -12,7 +12,7 @@ public class DuplicateHandler {
 
     public void addRelation(Identifier child, Identifier parent)
     {
-        if(parent == null)
+        if(parent.getName() == "Object")
             relation.put(child.getName(), "");
         else
             relation.put(child.getName(), parent.getName());

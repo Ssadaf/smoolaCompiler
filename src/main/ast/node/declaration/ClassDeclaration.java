@@ -14,7 +14,10 @@ public class ClassDeclaration extends Declaration{
 
     public ClassDeclaration(Identifier name, Identifier parentName) {
         this.name = name;
-        this.parentName = parentName;
+        if(parentName == null)
+            this.parentName = new Identifier("Object");
+        else
+            this.parentName = parentName;
     }
 
     public Identifier getName() {

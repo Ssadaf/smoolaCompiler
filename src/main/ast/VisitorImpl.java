@@ -5,6 +5,7 @@ import ast.node.Node;
 import ast.node.Program;
 import ast.node.declaration.ClassDeclaration;
 import ast.node.declaration.MethodDeclaration;
+import ast.node.declaration.ObjectDeclaration;
 import ast.node.declaration.VarDeclaration;
 import ast.node.expression.*;
 import ast.node.expression.Value.BooleanValue;
@@ -42,6 +43,8 @@ public class VisitorImpl implements Visitor {
         if((program.getMainClass() == null) && (program.getClasses().size() == 0) )
             System.out.println("No class exists in the program");
         ClassDeclaration mainClass = program.getMainClass();
+        ObjectDeclaration objectClass = new ObjectDeclaration(new Identifier("Object"), null);
+//        objectClass.accept(this);
         if(mainClass != null){
             mainClass.accept(this);
             duplicateHandler.addRelation(mainClass.getName(), mainClass.getParentName());
