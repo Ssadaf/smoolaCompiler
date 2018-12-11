@@ -1,7 +1,7 @@
 package ast;
 
 import ast.Type.PrimitiveType.IntType;
-import ast.node.Node;
+import ast.Type.Type;
 import ast.node.Program;
 import ast.node.declaration.ClassDeclaration;
 import ast.node.declaration.MethodDeclaration;
@@ -12,26 +12,16 @@ import ast.node.expression.Value.BooleanValue;
 import ast.node.expression.Value.IntValue;
 import ast.node.expression.Value.StringValue;
 import ast.node.statement.*;
+import symbolTable.ItemAlreadyExistsException;
 import symbolTable.SymbolTable;
-import symbolTable.SymbolTableVariableItemBase;
 import symbolTable.SymbolTableClassItem;
 import symbolTable.SymbolTableMethodItem;
-import symbolTable.ItemAlreadyExistsException;
-import symbolTable.ItemNotFoundException;
-import ast.Type.*;
 
-import java.util.HashMap;
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
-
-public class VisitorImpl implements Visitor {
-
-    private boolean hasMethodDuplication = false;
-    private boolean hasVariableDuplication = false;
+public class TypeCheckerVisitor implements Visitor{
     private boolean hasError = false;
-    private HashMap<String, SymbolTable> classSymbolTables;
-    private HashMap <String, SymbolTable> methodSymbolTables;
 
     @Override
     public void visit(MethodCallInMain methodCallInMain) {
@@ -40,44 +30,21 @@ public class VisitorImpl implements Visitor {
 
     @Override
     public void visit(Program program) {
-        output.add(program.toString());
-        SymbolTable currSymTable = new SymbolTable();
-        SymbolTable.push(currSymTable);
-        if((program.getMainClass() == null) && (program.getClasses().size() == 0) )
-            System.out.println("No class exists in the program");
-        ClassDeclaration mainClass = program.getMainClass();
-        ObjectDeclaration objectClass = new ObjectDeclaration(new Identifier("Object"), null);
-//        objectClass.accept(this);
         if(mainClass != null){
             mainClass.accept(this);
-            duplicateHandler.addRelation(mainClass.getName(), mainClass.getParentName());
+//            duplicateHandler.addRelation(mainClass.getName(), mainClass.getParentName());
         }
-        List <ClassDeclaration> classes = program.getClasses();
-//        if(classes != null)
-////        {
-////            for (int i = 0; i < classes.size(); i++)
-////                duplicateHandler.addRelation(classes.get(i).getName(), classes.get(i).getParentName());
-////        }
+        List<ClassDeclaration> classes = program.getClasses();
         if(classes != null)
         {
             for (int i = 0; i < classes.size(); i++)
                 classes.get(i).accept(this);
         }
-
-        program.setClassSymbolTable(classSymbolTables);
-        program.setMethodSymbolTable(methodSymbolTables);
-
-        if(!hasError)
-        {
-            for(int i = 0; i < output.size(); i++)
-                System.out.println(output.get(i));
-        }
-        SymbolTable.pop();
     }
 
     @Override
     public void visit(ClassDeclaration classDeclaration) {
-        output.add(classDeclaration.toString());
+//        output.add(classDeclaration.toString());
         SymbolTableClassItem currClass;
         try{
             currClass = new SymbolTableClassItem(classDeclaration.getName().getName());
@@ -119,14 +86,12 @@ public class VisitorImpl implements Visitor {
             meths.get(i).accept(this);
         }
 
-        classSymbolTables.put(classDeclaration.getName().toString(), SymbolTable.top);
-
         SymbolTable.pop();
     }
 
     @Override
     public void visit(MethodDeclaration methodDeclaration) {
-        output.add(methodDeclaration.toString());
+//        output.add(methodDeclaration.toString());
 
         SymbolTableMethodItem currMethod;
 
@@ -168,14 +133,12 @@ public class VisitorImpl implements Visitor {
             body.get(i).accept(this);
         methodDeclaration.getReturnValue().accept(this);
 
-        methodSymbolTables.put(methodDeclaration.getName().toString(), SymbolTable.top);
-
         SymbolTable.pop();
     }
 
     @Override
     public void visit(VarDeclaration varDeclaration) {
-        output.add(varDeclaration.toString());
+//        output.add(varDeclaration.toString());
         SymbolTableClassItem currVar;
         try{
             if(hasVariableDuplication)
@@ -200,7 +163,7 @@ public class VisitorImpl implements Visitor {
 
     @Override
     public void visit(ArrayCall arrayCall) {
-        output.add(arrayCall.toString());
+//        output.add(arrayCall.toString());
         arrayCall.getInstance().accept(this);
         arrayCall.getIndex().accept(this);
     }
@@ -209,25 +172,25 @@ public class VisitorImpl implements Visitor {
     public void visit(BinaryExpression binaryExpression) {
         if( binaryExpression.getRight() == null )
             return;
-        output.add(binaryExpression.toString());
+//        output.add(binaryExpression.toString());
         binaryExpression.getLeft().accept(this);
         binaryExpression.getRight().accept(this);
     }
 
     @Override
     public void visit(Identifier identifier) {
-        output.add(identifier.toString());
+//        output.add(identifier.toString());
     }
 
     @Override
     public void visit(Length length) {
-        output.add(length.toString());
+//        output.add(length.toString());
         length.getExpression().accept(this);
     }
 
     @Override
     public void visit(MethodCall methodCall) {
-        output.add(methodCall.toString());
+//        output.add(methodCall.toString());
         methodCall.getInstance().accept(this);
         methodCall.getMethodName().accept(this);
         ArrayList<Expression> args = methodCall.getArgs();
@@ -237,7 +200,7 @@ public class VisitorImpl implements Visitor {
 
     @Override
     public void visit(NewArray newArray) {
-        output.add(newArray.toString());
+//        output.add(newArray.toString());
         IntValue index = (IntValue)newArray.getExpression();
         int const_index = index.getConstant();
         if(const_index == 0)
@@ -250,46 +213,46 @@ public class VisitorImpl implements Visitor {
 
     @Override
     public void visit(NewClass newClass) {
-        output.add(newClass.toString());
+//        output.add(newClass.toString());
         newClass.getClassName().accept(this);
     }
 
     @Override
     public void visit(This instance) {
-        output.add(instance.toString());
+//        output.add(instance.toString());
     }
 
     @Override
     public void visit(UnaryExpression unaryExpression) {
-        output.add(unaryExpression.toString());
+//        output.add(unaryExpression.toString());
         unaryExpression.getValue().accept(this);
     }
 
     @Override
     public void visit(BooleanValue value) {
-        output.add(value.toString());
+//        output.add(value.toString());
     }
 
     @Override
     public void visit(IntValue value) {
-        output.add(value.toString());
+//        output.add(value.toString());
     }
 
     @Override
     public void visit(StringValue value) {
-        output.add(value.toString());
+//        output.add(value.toString());
     }
 
     @Override
     public void visit(Assign assign) {
-        output.add(assign.toString());
+//        output.add(assign.toString());
         assign.getlValue().accept(this);
         assign.getrValue().accept(this);
     }
 
     @Override
     public void visit(Block block) {
-        output.add(block.toString());
+//        output.add(block.toString());
         ArrayList<Statement> body = block.getBody();
         for(int i = 0; i < body.size(); i++)
             body.get(i).accept(this);
@@ -297,7 +260,7 @@ public class VisitorImpl implements Visitor {
 
     @Override
     public void visit(Conditional conditional) {
-        output.add(conditional.toString());
+//        output.add(conditional.toString());
         conditional.getExpression().accept(this);
         conditional.getConsequenceBody().accept(this);
         conditional.getAlternativeBody().accept(this);
@@ -305,14 +268,15 @@ public class VisitorImpl implements Visitor {
 
     @Override
     public void visit(While loop) {
-        output.add(loop.toString());
+//        output.add(loop.toString());
         loop.getCondition().accept(this);
         loop.getBody().accept(this);
     }
 
     @Override
     public void visit(Write write) {
-        output.add(write.toString());
+//        output.add(write.toString());
         write.getArg().accept(this);
     }
+
 }

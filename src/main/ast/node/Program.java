@@ -3,11 +3,17 @@ package ast.node;
 import ast.Visitor;
 import java.util.ArrayList;
 import ast.node.declaration.ClassDeclaration;
+import symbolTable.SymbolTable;
+
+import java.util.HashMap;
 import java.util.List;
 
 public class Program{
     private ArrayList<ClassDeclaration> classes = new ArrayList<>();
     private ClassDeclaration mainClass;
+
+    private HashMap <String, SymbolTable> classSymbolTables;
+    private HashMap <String, SymbolTable> methodSymbolTables;
 
     public ClassDeclaration getMainClass() {
         return mainClass;
@@ -32,5 +38,13 @@ public class Program{
 
     public void accept(Visitor visitor) {
         visitor.visit(this);
+    }
+
+    public void setClassSymbolTable(HashMap <String, SymbolTable> cSymbolTables) {
+        classSymbolTables = cSymbolTables;
+    }
+
+    public void setMethodSymbolTable(HashMap <String, SymbolTable> mSymbolTables) {
+        methodSymbolTables = mSymbolTables;
     }
 }
