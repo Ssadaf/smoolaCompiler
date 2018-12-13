@@ -1,5 +1,7 @@
 package ast.node;
 
+import ast.Type.Type;
+import ast.Type.UserDefinedType.UserDefinedType;
 import ast.Visitor;
 import java.util.ArrayList;
 import ast.node.declaration.ClassDeclaration;
@@ -14,6 +16,7 @@ public class Program{
 
     private HashMap <String, SymbolTable> classSymbolTables;
     private HashMap <String, SymbolTable> methodSymbolTables;
+    private HashMap <String, ClassDeclaration> classDecs;
 
     public ClassDeclaration getMainClass() {
         return mainClass;
@@ -46,5 +49,12 @@ public class Program{
 
     public void setMethodSymbolTable(HashMap <String, SymbolTable> mSymbolTables) {
         methodSymbolTables = mSymbolTables;
+    }
+
+    public void setClassDecs(HashMap <String, ClassDeclaration> classes){
+        classDecs = classes;
+    }
+    public HashMap <String, ClassDeclaration> getClassDecs(){
+        return classDecs;
     }
 }

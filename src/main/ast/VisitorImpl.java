@@ -1,6 +1,7 @@
 package ast;
 
 import ast.Type.PrimitiveType.IntType;
+import ast.Type.UserDefinedType.UserDefinedType;
 import ast.node.Node;
 import ast.node.Program;
 import ast.node.declaration.ClassDeclaration;
@@ -31,8 +32,9 @@ public class VisitorImpl implements Visitor {
     private boolean hasMethodDuplication = false;
     private boolean hasVariableDuplication = false;
     private boolean hasError = false;
-    private HashMap<String, SymbolTable> classSymbolTables = new HashMap<String, SymbolTable>();
+    private HashMap <String, SymbolTable> classSymbolTables = new HashMap<String, SymbolTable>();
     private HashMap <String, SymbolTable> methodSymbolTables = new HashMap<String, SymbolTable>();
+    private HashMap <String, ClassDeclaration> classDecs = new HashMap<String, ClassDeclaration>();
 
     private void updateClass(String classToCheck, Map<String, String> relation){
         String parentOfClassToCheck = relation.get(classToCheck);
@@ -93,6 +95,7 @@ public class VisitorImpl implements Visitor {
         if((program.getMainClass() == null) && (program.getClasses().size() == 0) )
             System.out.println("No class exists in the program");
         ClassDeclaration mainClass = program.getMainClass();
+        classDecs.put(program.getMainClass().getName().toString(), mainClass);
         ObjectDeclaration objectClass = new ObjectDeclaration(new Identifier("Object"), null);
 //        objectClass.accept(this);
         if(mainClass != null){
@@ -113,6 +116,7 @@ public class VisitorImpl implements Visitor {
 
         program.setClassSymbolTable(classSymbolTables);
         program.setMethodSymbolTable(methodSymbolTables);
+        program.setClassDecs(classDecs);
 
         createCompleteSymbolTable(program);
 
@@ -127,6 +131,7 @@ public class VisitorImpl implements Visitor {
     public void visit(ClassDeclaration classDeclaration) {
         output.add(classDeclaration.toString());
         SymbolTableClassItem currClass;
+
         try{
             currClass = new SymbolTableClassItem(classDeclaration.getName().getName());
             SymbolTable.top.put(currClass);
@@ -144,6 +149,7 @@ public class VisitorImpl implements Visitor {
         }
         SymbolTable currSymbolTable = new SymbolTable(SymbolTable.top);
         SymbolTable.push(currSymbolTable);
+        classDecs.put(classDeclaration.getName().toString(), classDeclaration);
 
         classDeclaration.getName().accept(this);
         Identifier parent = classDeclaration.getParentName();

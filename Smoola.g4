@@ -14,12 +14,10 @@ grammar Smoola;
     import ast.Type.UserDefinedType.*;
 }
 
-    program:
-        {Program prog = new Program();
-         VisitorImpl visitor = new VisitorImpl();}
-         mainClass{prog.setMainClass($mainClass.syn_classDec);}
-         (classDeclaration{prog.addClass($classDeclaration.syn_classDec);})* EOF
-         {prog.accept(visitor);}
+    program returns [Program prog]:
+        {$prog = new Program();}
+         mainClass{$prog.setMainClass($mainClass.syn_classDec);}
+         (classDeclaration{$prog.addClass($classDeclaration.syn_classDec);})* EOF
     ;
     mainClass returns [ClassDeclaration syn_classDec]:
         // name should be checked later

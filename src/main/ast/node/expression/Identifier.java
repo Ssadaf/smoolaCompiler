@@ -1,6 +1,9 @@
 package ast.node.expression;
 
+import ast.Type.Type;
 import ast.Visitor;
+import symbolTable.SymbolTable;
+import symbolTable.SymbolTableVariableItemBase;
 
 public class Identifier extends Expression {
     private String name;
@@ -24,5 +27,10 @@ public class Identifier extends Expression {
     @Override
     public void accept(Visitor visitor) {
         visitor.visit(this);
+    }
+
+    @Override
+    public Type typeCheck(SymbolTable symTable) {
+        return ((SymbolTableVariableItemBase)symTable.getInCurrentScope(name)).getType();
     }
 }

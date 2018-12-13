@@ -2,6 +2,7 @@ package ast;
 
 import ast.Type.PrimitiveType.IntType;
 import ast.Type.Type;
+import ast.Type.UserDefinedType.UserDefinedType;
 import ast.node.Program;
 import ast.node.declaration.ClassDeclaration;
 import ast.node.declaration.MethodDeclaration;
@@ -18,10 +19,13 @@ import symbolTable.SymbolTableClassItem;
 import symbolTable.SymbolTableMethodItem;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class TypeCheckVisitorImpl implements Visitor{
     private boolean hasError = false;
+    private HashMap<String, ClassDeclaration> classDecs;
+    private UserDefinedType currClassType = new UserDefinedType();
 
     @Override
     public void visit(MethodCallInMain methodCallInMain) {
@@ -30,7 +34,9 @@ public class TypeCheckVisitorImpl implements Visitor{
 
     @Override
     public void visit(Program program) {
+        classDecs = program.getClassDecs();
         ClassDeclaration mainClass = program.getMainClass();
+        currClassType.setClassDeclaration(mainClass);
         if(mainClass != null){
             mainClass.accept(this);
         }
@@ -44,6 +50,7 @@ public class TypeCheckVisitorImpl implements Visitor{
 
     @Override
     public void visit(ClassDeclaration classDeclaration) {
+        currClassType.setClassDeclaration(classDeclaration);
         classDeclaration.getName().accept(this);
         Identifier parent = classDeclaration.getParentName();
         if(parent != null)
@@ -84,6 +91,10 @@ public class TypeCheckVisitorImpl implements Visitor{
 
     @Override
     public void visit(VarDeclaration varDeclaration) {
+        if(varDeclaration.getType().toString().equals(new UserDefinedType().toString())) {
+            UserDefinedType varType = (UserDefinedType) varDeclaration.getType();
+            varType.setClassDeclaration(classDecs.get(varType.getClassDeclaration().toString()));
+        }
         varDeclaration.getIdentifier().accept(this);
     }
 

@@ -1,7 +1,11 @@
 package ast.node.expression;
 
+import ast.Type.NoType;
 import ast.Type.Type;
+import ast.Type.TypeError;
+import ast.Type.UserDefinedType.UserDefinedType;
 import ast.Visitor;
+import symbolTable.SymbolTable;
 
 import java.util.ArrayList;
 
@@ -48,4 +52,18 @@ public class MethodCall extends Expression {
     public void accept(Visitor visitor) {
         visitor.visit(this);
     }
+
+//    @Override
+//    public Type typeCheck(SymbolTable symTable) {
+//        try {
+//            Type instanceType = instance.typeCheck(symTable);
+//            if(!instanceType.toString().equals(new UserDefinedType().toString()))
+//                throw new TypeError("Line:" + this.getLine() +":Index of array call must be an integer");
+//
+//            return new IntType();
+//        }catch (TypeError err){
+//            System.out.println(err.getMessage());
+//            return new NoType();
+//        }
+//    }
 }
