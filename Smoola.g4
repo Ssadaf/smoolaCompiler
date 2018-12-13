@@ -38,7 +38,8 @@ grammar Smoola;
     ;
     varDeclaration returns [VarDeclaration syn_varDec]:
         'var' varName = ID ':' type {$syn_varDec = new VarDeclaration(new Identifier($varName.text), $type.syn_type);
-        $syn_varDec.setLine($varName.getLine());} ';'
+        $syn_varDec.setLine($varName.getLine());
+        } ';'
     ;
     methodDeclaration returns [MethodDeclaration syn_methodDec]:
         'def' {$syn_methodDec = new MethodDeclaration(new Identifier(null));}

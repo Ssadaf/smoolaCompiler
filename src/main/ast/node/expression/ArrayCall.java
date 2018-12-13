@@ -1,6 +1,8 @@
 package ast.node.expression;
 
 import ast.Visitor;
+import ast.Type.*;
+import symbolTable.SymbolTable;
 
 public class ArrayCall extends Expression {
     private Expression instance;
@@ -34,5 +36,9 @@ public class ArrayCall extends Expression {
     @Override
     public void accept(Visitor visitor) {
         visitor.visit(this);
+    }
+
+    public Type typeCheck(SymbolTable symTable) {
+
     }
 }
