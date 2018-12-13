@@ -25,7 +25,7 @@ grammar Smoola;
         // name should be checked later
         'class' className = ID {$syn_classDec = new ClassDeclaration(new Identifier($className.text), null);
                 $syn_classDec.setLine($className.getLine());}
-                {MethodDeclaration mainMethod = new MethodDeclaration(new Identifier(null));}
+                {MethodDeclaration mainMethod = new MethodDeclaration(new Identifier(null)); mainMethod.setClassName(new Identifier($className.text));}
                 '{' 'def' methodName = ID {mainMethod.setLine($methodName.getLine()); mainMethod.setName(new Identifier($methodName.text));}'(' ')' ':' 'int' {mainMethod.setReturnType(new IntType());} '{'
                 statements {ArrayList<Statement> allStatements = $statements.syn_stmt.getBody(); for(int i = 0; i < allStatements.size(); i++) {mainMethod.addStatement(allStatements.get(i));} }
                 'return' expression {mainMethod.setReturnValue($expression.syn_expr);} ';' '}''}' {$syn_classDec.addMethodDeclaration(mainMethod); }
@@ -33,7 +33,7 @@ grammar Smoola;
     classDeclaration returns [ClassDeclaration syn_classDec]:
         'class' className = ID {$syn_classDec = new ClassDeclaration(new Identifier($className.text), null); }('extends' classParent = ID {$syn_classDec.setParentName(new Identifier($classParent.text) );} )?
                 '{' (varDeclaration {$syn_classDec.addVarDeclaration($varDeclaration.syn_varDec);})*
-                (methodDeclaration {$syn_classDec.addMethodDeclaration($methodDeclaration.syn_methodDec);})* '}'
+                (methodDeclaration {$methodDeclaration.syn_methodDec.setClassName(new Identifier($className.text)); $syn_classDec.addMethodDeclaration($methodDeclaration.syn_methodDec);})* '}'
                 {$syn_classDec.setLine($className.getLine());}
     ;
     varDeclaration returns [VarDeclaration syn_varDec]:

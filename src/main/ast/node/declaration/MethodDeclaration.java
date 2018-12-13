@@ -11,13 +11,17 @@ import java.util.ArrayList;
 public class MethodDeclaration extends Declaration {
     private Expression returnValue;
     private Type returnType;
-    private Identifier name;
+    private Identifier name, className;
     private ArrayList<VarDeclaration> args = new ArrayList<>();
     private ArrayList<VarDeclaration> localVars = new ArrayList<>();
     private ArrayList<Statement> body = new ArrayList<>();
 
     public MethodDeclaration(Identifier name) {
         this.name = name;
+    }
+
+    public void setClassName(Identifier className) {
+        this.className = className;
     }
 
     public Expression getReturnValue() {
@@ -39,6 +43,8 @@ public class MethodDeclaration extends Declaration {
     public Identifier getName() {
         return name;
     }
+
+    public String getClassName() { return className.getName(); }
 
     public void setName(Identifier name) {
         this.name = name;

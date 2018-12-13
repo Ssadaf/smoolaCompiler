@@ -13,6 +13,10 @@ public class SymbolTableMethodItem extends SymbolTableItem {
         this.argTypes = argTypes;
     }
 
+    public String getName() {
+        return name;
+    }
+
     @Override
     public String getKey() {
         return (name + "-methodDec");

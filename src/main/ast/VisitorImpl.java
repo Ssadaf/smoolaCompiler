@@ -21,6 +21,7 @@ import symbolTable.ItemNotFoundException;
 import ast.Type.*;
 
 import java.util.HashMap;
+import java.util.Map;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -30,8 +31,53 @@ public class VisitorImpl implements Visitor {
     private boolean hasMethodDuplication = false;
     private boolean hasVariableDuplication = false;
     private boolean hasError = false;
-    private HashMap<String, SymbolTable> classSymbolTables;
-    private HashMap <String, SymbolTable> methodSymbolTables;
+    private HashMap<String, SymbolTable> classSymbolTables = new HashMap<String, SymbolTable>();
+    private HashMap <String, SymbolTable> methodSymbolTables = new HashMap<String, SymbolTable>();
+
+    private void updateClass(String classToCheck, Map<String, String> relation){
+        String parentOfClassToCheck = relation.get(classToCheck);
+        if(classSymbolTables.get(classToCheck).isUpdated == true)
+            return;
+        else if(parentOfClassToCheck == "Object") {
+            classSymbolTables.get(classToCheck).isUpdated = true;
+            return;
+        }
+        else if(classSymbolTables.get(parentOfClassToCheck).isUpdated){
+            classSymbolTables.get(classToCheck).updateSymbolTables(classSymbolTables.get(parentOfClassToCheck));
+            classSymbolTables.get(classToCheck).isUpdated = true;
+            return;
+        }
+        else {
+            updateClass(parentOfClassToCheck, relation);
+            classSymbolTables.get(classToCheck).updateSymbolTables(classSymbolTables.get(parentOfClassToCheck));
+            classSymbolTables.get(classToCheck).isUpdated = true;
+            return;
+        }
+    }
+
+    private void updateMethod(String methodName, String ClassName){
+        methodSymbolTables.get(methodName).updateSymbolTables(classSymbolTables.get(ClassName));
+    }
+
+    private void createCompleteSymbolTable(Program program){
+        Map<String, String> relation = duplicateHandler.getRelations();
+        for (String className: relation.keySet()) {
+            updateClass(className, relation);
+        }
+//        for (String key: classSymbolTables.keySet()){
+//                System.out.println("****** " + key);
+//                classSymbolTables.get(key).printAllSymbolTableItems();
+//        }
+        program.setClassSymbolTable(classSymbolTables);
+        for(String methodName:methodSymbolTables.keySet()){
+            String[] methodInfo = methodName.split("@");
+            updateMethod(methodName, methodInfo[1]);
+        }
+//        for (String key: methodSymbolTables.keySet()){
+//                System.out.println("****** " + key);
+//                methodSymbolTables.get(key).printAllSymbolTableItems();
+//        }
+    }
 
     @Override
     public void visit(MethodCallInMain methodCallInMain) {
@@ -67,9 +113,10 @@ public class VisitorImpl implements Visitor {
         program.setClassSymbolTable(classSymbolTables);
         program.setMethodSymbolTable(methodSymbolTables);
 
-        if(!hasError)
-        {
-            for(int i = 0; i < output.size(); i++)
+        createCompleteSymbolTable(program);
+
+        if(!hasError) {
+            for (int i = 0; i < output.size(); i++)
                 System.out.println(output.get(i));
         }
         SymbolTable.pop();
@@ -119,7 +166,7 @@ public class VisitorImpl implements Visitor {
             meths.get(i).accept(this);
         }
 
-        classSymbolTables.put(classDeclaration.getName().toString(), SymbolTable.top);
+        classSymbolTables.put(currClass.getName(), SymbolTable.top);
 
         SymbolTable.pop();
     }
@@ -168,7 +215,7 @@ public class VisitorImpl implements Visitor {
             body.get(i).accept(this);
         methodDeclaration.getReturnValue().accept(this);
 
-        methodSymbolTables.put(methodDeclaration.getName().toString(), SymbolTable.top);
+        methodSymbolTables.put(currMethod.getName() + "@" + methodDeclaration.getClassName(), SymbolTable.top);
 
         SymbolTable.pop();
     }

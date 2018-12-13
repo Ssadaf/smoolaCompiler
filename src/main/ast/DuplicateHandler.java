@@ -10,12 +10,14 @@ public class DuplicateHandler {
     private ArrayList<DuplicateVariableInfo> dupVarInfo = new ArrayList<DuplicateVariableInfo>();;
     private HashMap<String, String> relation = new HashMap<String, String>();
 
+
     public void addRelation(Identifier child, Identifier parent)
     {
-        if(parent.getName() == "Object")
-            relation.put(child.getName(), "");
-        else
-            relation.put(child.getName(), parent.getName());
+        relation.put(child.getName(), parent.getName());
+    }
+
+    public HashMap<String, String> getRelations(){
+        return relation;
     }
 
     public boolean checkRelationIsParent(String child, String parent)
@@ -27,7 +29,7 @@ public class DuplicateHandler {
             if(relation.containsKey(childToCheck)) {
                 parentToCheck = relation.get(childToCheck);
                 //System.out.println(parentToCheck + " " + childToCheck);
-                if(parentToCheck.equals(""))
+                if(parentToCheck.equals("Object"))
                     return false;
                 if(parentToCheck.equals(parent))
                     return true;

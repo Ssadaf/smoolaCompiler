@@ -6,6 +6,7 @@ public class SymbolTable {
 
 	SymbolTable pre;
 	HashMap<String, SymbolTableItem> items;
+	public boolean isUpdated;
 
 	// Static members region
 
@@ -23,12 +24,14 @@ public class SymbolTable {
 	// Use it in pass1 scope end
 	public static void pop() {
 		top = stack.pop();
+
 	}
 
 	// End of static members region
 
 	public SymbolTable() {
 		this(null);
+		isUpdated = false;
 	}
 
 	public SymbolTable(SymbolTable pre) {
@@ -58,5 +61,15 @@ public class SymbolTable {
 
 	public SymbolTable getPreSymbolTable() {
 		return pre;
+	}
+
+	public void updateSymbolTables(SymbolTable superior){
+		this.items.putAll(superior.items);
+	}
+
+	public void printAllSymbolTableItems(){
+		for (String key: items.keySet()) {
+			System.out.println(items.get(key).name);
+		}
 	}
 }

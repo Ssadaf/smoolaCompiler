@@ -233,7 +233,7 @@ public class SmoolaParser extends Parser {
 			((MainClassContext)_localctx).className = match(ID);
 			((MainClassContext)_localctx).syn_classDec =  new ClassDeclaration(new Identifier((((MainClassContext)_localctx).className!=null?((MainClassContext)_localctx).className.getText():null)), null);
 			                _localctx.syn_classDec.setLine(((MainClassContext)_localctx).className.getLine());
-			MethodDeclaration mainMethod = new MethodDeclaration(new Identifier(null));
+			MethodDeclaration mainMethod = new MethodDeclaration(new Identifier(null)); mainMethod.setClassName(new Identifier((((MainClassContext)_localctx).className!=null?((MainClassContext)_localctx).className.getText():null)));
 			setState(84);
 			match(T__1);
 			setState(85);
@@ -366,7 +366,7 @@ public class SmoolaParser extends Parser {
 				{
 				setState(121);
 				((ClassDeclarationContext)_localctx).methodDeclaration = methodDeclaration();
-				_localctx.syn_classDec.addMethodDeclaration(((ClassDeclarationContext)_localctx).methodDeclaration.syn_methodDec);
+				((ClassDeclarationContext)_localctx).methodDeclaration.syn_methodDec.setClassName(new Identifier((((ClassDeclarationContext)_localctx).className!=null?((ClassDeclarationContext)_localctx).className.getText():null))); _localctx.syn_classDec.addMethodDeclaration(((ClassDeclarationContext)_localctx).methodDeclaration.syn_methodDec);
 				}
 				}
 				setState(128);

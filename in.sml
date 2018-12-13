@@ -6,8 +6,8 @@ class b {
 
 
 class Test1{
-    var i: int;
-    def method(): string{
+    var i1: int;
+    def method1(): string{
         var j: string;
         j = "hello world!";
         return j;
@@ -16,7 +16,7 @@ class Test1{
 }
 
 class Test2 extends Test1{
-    var i:string;
+    var i2:string;
 
 }
 
