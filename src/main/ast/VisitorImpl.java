@@ -77,6 +77,7 @@ public class VisitorImpl implements Visitor {
 //                System.out.println("****** " + key);
 //                methodSymbolTables.get(key).printAllSymbolTableItems();
 //        }
+        program.setClassSymbolTable(methodSymbolTables);
     }
 
     @Override
