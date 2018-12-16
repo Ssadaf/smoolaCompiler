@@ -18,11 +18,23 @@ class Test1 extends h{
 
 class Test2 extends Test1{
     var i2:string;
+    var b:boolean;
+    def meth(): string{
+        while(b){
+            a = 2;
+        }
+        return 1;
+    }
 
 }
 
 class Test3 extends Test2{
-
+    var i : int;
+    def m():int{
+        if(i)then
+            b=b+2;
+        return 1;
+    }
 
 }
 

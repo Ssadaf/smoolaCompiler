@@ -1,5 +1,7 @@
 package ast;
 
+import ast.Type.NoType;
+import ast.Type.PrimitiveType.BooleanType;
 import ast.Type.PrimitiveType.IntType;
 import ast.Type.Type;
 import ast.Type.UserDefinedType.UserDefinedType;
@@ -65,7 +67,8 @@ public class TypeCheckVisitorImpl implements Visitor{
         //classDeclaration.getName().accept(this);
         Identifier parent = classDeclaration.getParentName();
         if(parent != null && parent.getName() != "Object")
-            parent.accept(this);
+            if(!SymbolTable.top.hasItem(parent.getName() + "-classDec"))
+                System.out.println("Line:" + classDeclaration.getLine() + ":class "+parent.getName() + " is not declared");
 
         ArrayList<VarDeclaration> vars = classDeclaration.getVarDeclarations();
         for(int i = 0; i < vars.size(); i++)
@@ -114,9 +117,9 @@ public class TypeCheckVisitorImpl implements Visitor{
     public void visit(VarDeclaration varDeclaration) {
 
         if(varDeclaration.getType().isUserDefined()) {
-//            System.out.println("------------setting user defiened" + varDeclaration.getIdentifier().getName() );
 
             UserDefinedType varType = (UserDefinedType) varDeclaration.getType();
+
             if(classDecs.containsKey(varType.getClassType()))
                 varType.setClassDeclaration(classDecs.get(varType.getClassType()));
             else
@@ -144,7 +147,7 @@ public class TypeCheckVisitorImpl implements Visitor{
     public void visit(Identifier identifier) {
         SymbolTable currSymbolTable = SymbolTable.top;
 //        currSymbolTable.printAllSymbolTableItems();
-        if(!currSymbolTable.hasItem(identifier.getName() + "-classDec")) {
+        if(!currSymbolTable.hasItem(identifier.getName() )) {
             System.out.println("Line:" + identifier.getLine() + ":variable " + identifier.getName() + " is not declared");
         }
     }
@@ -216,6 +219,11 @@ public class TypeCheckVisitorImpl implements Visitor{
     public void visit(Conditional conditional) {
         conditional.getExpression().accept(this);
 
+        Type expressionType = conditional.getExpression().typeCheck(SymbolTable.top);
+        if(! (expressionType.toString().equals(new BooleanType().toString()) || expressionType.toString().equals(new NoType().toString())) )
+            System.out.println("Line:" + conditional.getLine() +":condition type must be boolean");
+
+
         conditional.getConsequenceBody().accept(this);
 
         conditional.getAlternativeBody().accept(this);
@@ -224,6 +232,10 @@ public class TypeCheckVisitorImpl implements Visitor{
     @Override
     public void visit(While loop) {
         loop.getCondition().accept(this);
+
+        Type conditionType = loop.getCondition().typeCheck(SymbolTable.top);
+        if(! (conditionType.toString().equals(new BooleanType().toString()) || conditionType.toString().equals(new NoType().toString())) )
+            System.out.println("Line:" + loop.getLine() +":condition type must be boolean");
 
         loop.getBody().accept(this);
     }

@@ -32,6 +32,7 @@ public class VisitorImpl implements Visitor {
     private boolean hasMethodDuplication = false;
     private boolean hasVariableDuplication = false;
     private boolean hasError = false;
+    private int variableIndex = 1;
     private HashMap <String, SymbolTable> classSymbolTables = new HashMap<String, SymbolTable>();
     private HashMap <String, SymbolTable> methodSymbolTables = new HashMap<String, SymbolTable>();
     private HashMap <String, ClassDeclaration> classDecs = new HashMap<String, ClassDeclaration>();
@@ -95,7 +96,7 @@ public class VisitorImpl implements Visitor {
         if((program.getMainClass() == null) && (program.getClasses().size() == 0) )
             System.out.println("No class exists in the program");
         ClassDeclaration mainClass = program.getMainClass();
-        classDecs.put(program.getMainClass().getName().toString(), mainClass);
+        classDecs.put(program.getMainClass().getName().getName(), mainClass);
         ObjectDeclaration objectClass = new ObjectDeclaration(new Identifier("Object"), null);
 //        objectClass.accept(this);
         if(mainClass != null){
@@ -150,7 +151,7 @@ public class VisitorImpl implements Visitor {
         }
         SymbolTable currSymbolTable = new SymbolTable(SymbolTable.top);
         SymbolTable.push(currSymbolTable);
-        classDecs.put(classDeclaration.getName().toString(), classDeclaration);
+        classDecs.put(classDeclaration.getName().getName(), classDeclaration);
 
         classDeclaration.getName().accept(this);
         Identifier parent = classDeclaration.getParentName();
@@ -231,11 +232,11 @@ public class VisitorImpl implements Visitor {
     @Override
     public void visit(VarDeclaration varDeclaration) {
         output.add(varDeclaration.toString());
-        SymbolTableClassItem currVar;
+        SymbolTableVariableItemBase currVar;
         try{
             if(hasVariableDuplication)
                 throw new ItemAlreadyExistsException();
-            currVar = new SymbolTableClassItem(varDeclaration.getIdentifier().getName());
+            currVar = new SymbolTableVariableItemBase(varDeclaration.getIdentifier().getName(), varDeclaration.getType(), variableIndex);
             SymbolTable.top.put(currVar);
         }catch(ItemAlreadyExistsException err){
             int num = 1;
@@ -243,13 +244,14 @@ public class VisitorImpl implements Visitor {
             hasError = true;
             while(true){
                 try{
-                    currVar = new SymbolTableClassItem("Temporary-" + varDeclaration.getIdentifier().getName() + num );
+                    currVar = new SymbolTableVariableItemBase("Temporary-" + varDeclaration.getIdentifier().getName() + num , varDeclaration.getType(), variableIndex);
                     SymbolTable.top.put(currVar);
                 }catch(ItemAlreadyExistsException secErr){num++; continue;}
                 break;
             }
         }
         hasVariableDuplication = false;
+        variableIndex ++;
         varDeclaration.getIdentifier().accept(this);
     }
 
