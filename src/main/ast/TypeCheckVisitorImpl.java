@@ -82,7 +82,7 @@ public class TypeCheckVisitorImpl implements Visitor{
     public void visit(MethodDeclaration methodDeclaration) {
         ArrayList<VarDeclaration> args = methodDeclaration.getArgs();
 
-        System.out.println("pushing symb table" + methodDeclaration.getName().getName() + "@" + methodDeclaration.getClassName());
+//       System.out.println("pushing symb table" + methodDeclaration.getName().getName() + "@" + methodDeclaration.getClassName());
 
         SymbolTable.push(methodSymbolTables.get(methodDeclaration.getName().getName() + "@" + methodDeclaration.getClassName()));
 

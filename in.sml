@@ -5,7 +5,7 @@ class b {
 }
 
 
-class Test1{
+class Test1 extends h{
     var i1: int;
     def method1(): string{
         var j: string;

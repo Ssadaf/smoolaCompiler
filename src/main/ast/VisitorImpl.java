@@ -36,11 +36,11 @@ public class VisitorImpl implements Visitor {
     private HashMap <String, SymbolTable> methodSymbolTables = new HashMap<String, SymbolTable>();
     private HashMap <String, ClassDeclaration> classDecs = new HashMap<String, ClassDeclaration>();
 
-    private void updateClass(String classToCheck, Map<String, String> relation){
+    private void updateClass(String classToCheck, Map<String, String> relation) {
         String parentOfClassToCheck = relation.get(classToCheck);
-        if(classSymbolTables.get(classToCheck).isUpdated == true)
+       if (classSymbolTables.get(classToCheck).isUpdated == true)
             return;
-        else if(parentOfClassToCheck == "Object") {
+        else if (parentOfClassToCheck == "Object" || !classSymbolTables.containsKey(parentOfClassToCheck)) {
             classSymbolTables.get(classToCheck).updateSymbolTables(SymbolTable.top);
             classSymbolTables.get(classToCheck).isUpdated = true;
             return;
