@@ -12,9 +12,9 @@ public class UserDefinedType extends Type {
         return classDeclaration;
     }
 
-    public void setClasstype(String classtype) { this.classType = classType; }
+    public void setClassType(String classtype) { this.classType = classType; }
 
-    public String getClasstype() { return classType; }
+    public String getClassType() { return classType; }
 
     public void setClassDeclaration(ClassDeclaration classDeclaration) {
         this.classDeclaration = classDeclaration;

@@ -13,7 +13,7 @@ import ast.node.expression.Value.BooleanValue;
 import ast.node.expression.Value.IntValue;
 import ast.node.expression.Value.StringValue;
 import ast.node.statement.*;
-import sun.jvm.hotspot.debugger.cdbg.Sym;
+//import sun.jvm.hotspot.debugger.cdbg.Sym;
 import symbolTable.ItemAlreadyExistsException;
 import symbolTable.SymbolTable;
 import symbolTable.SymbolTableClassItem;
@@ -117,10 +117,10 @@ public class TypeCheckVisitorImpl implements Visitor{
             //System.out.println("------------setting user defiened" + varDeclaration.getIdentifier().getName());
 
             UserDefinedType varType = (UserDefinedType) varDeclaration.getType();
-            if(classDecs.containsKey(varType.getClasstype()))
-                varType.setClassDeclaration(classDecs.get(varType.getClasstype()));
+            if(classDecs.containsKey(varType.getClassType()))
+                varType.setClassDeclaration(classDecs.get(varType.getClassType()));
             else
-                System.out.println("Line:" + varDeclaration.getLine() + ":class " + varType.getClasstype() + " is not declared" );
+                System.out.println("Line:" + varDeclaration.getLine() + ":class " + varType.getClassType() + " is not declared" );
         }
         //varDeclaration.getIdentifier().accept(this);
     }
