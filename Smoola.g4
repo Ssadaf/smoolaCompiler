@@ -30,7 +30,7 @@ grammar Smoola;
                 'return' expression {mainMethod.setReturnValue($expression.syn_expr);} ';' '}''}' {$syn_classDec.addMethodDeclaration(mainMethod); }
     ;
     classDeclaration returns [ClassDeclaration syn_classDec]:
-        'class' className = ID {$syn_classDec = new ClassDeclaration(new Identifier($className.text), null); }('extends' classParent = ID {$syn_classDec.setParentName(new Identifier($classParent.text) );} )?
+        'class' className = ID {$syn_classDec = new ClassDeclaration(new Identifier($className.text), null); }('extends' classParent = ID {$syn_classDec.setParentName(new Identifier($classParent.text) );  $syn_classDec.getParentName().setLine($className.getLine());} )?
                 '{' (varDeclaration {$syn_classDec.addVarDeclaration($varDeclaration.syn_varDec);})*
                 (methodDeclaration {$methodDeclaration.syn_methodDec.setClassName(new Identifier($className.text)); $syn_classDec.addMethodDeclaration($methodDeclaration.syn_methodDec);})* '}'
                 {$syn_classDec.setLine($className.getLine());}

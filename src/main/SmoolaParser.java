@@ -1,4 +1,4 @@
-// Generated from /home/sadaf/Documents/Compiler/smoolaCompiler/Smoola.g4 by ANTLR 4.7
+// Generated from /Users/yasaman/Desktop/smoolaCompiler/Smoola.g4 by ANTLR 4.7
 
     import ast.*;
     import ast.node.*;
@@ -337,7 +337,7 @@ public class SmoolaParser extends Parser {
 				match(T__10);
 				setState(107);
 				((ClassDeclarationContext)_localctx).classParent = match(ID);
-				_localctx.syn_classDec.setParentName(new Identifier((((ClassDeclarationContext)_localctx).classParent!=null?((ClassDeclarationContext)_localctx).classParent.getText():null)) );
+				_localctx.syn_classDec.setParentName(new Identifier((((ClassDeclarationContext)_localctx).classParent!=null?((ClassDeclarationContext)_localctx).classParent.getText():null)) );  _localctx.syn_classDec.getParentName().setLine(((ClassDeclarationContext)_localctx).className.getLine());
 				}
 			}
 
