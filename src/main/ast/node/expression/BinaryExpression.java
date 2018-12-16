@@ -62,7 +62,7 @@ public class BinaryExpression extends Expression {
 
                 Type leftType = left.typeCheck(symTable);
                 Type rightType = right.typeCheck(symTable);
-                if(( !(leftType.toString().equals(new IntType().toString()) || leftType.toString().equals(new NoType().toString())) ) || ( !(rightType.toString().equals((new IntType().toString())) || rightType.toString().equals((new NoType().toString()))) ) )
+                if(( (!leftType.toString().equals(new IntType().toString()) && !leftType.toString().equals(new NoType().toString())) ) || ( !rightType.toString().equals((new IntType().toString())) && !rightType.toString().equals((new NoType().toString())))  )
                     throw new TypeError("Line:" + this.getLine() + ":unsupported operand type for" + binaryOperator.toString());
 
                 return new IntType();
@@ -72,7 +72,7 @@ public class BinaryExpression extends Expression {
 
                 Type leftType = left.typeCheck(symTable);
                 Type rightType = right.typeCheck(symTable);
-                if( (!(leftType.toString().equals(new IntType().toString())) || leftType.toString().equals(new NoType().toString())) || (!(rightType.toString().equals((new IntType().toString()))) || rightType.toString().equals((new NoType().toString()))) )
+                if( (!leftType.toString().equals(new IntType().toString())) && !leftType.toString().equals(new NoType().toString()) || (!rightType.toString().equals((new IntType().toString()))) && !rightType.toString().equals((new NoType().toString())) )
                     throw new TypeError("Line:" + this.getLine() + ":unsupported operand type for" + binaryOperator.toString());
 
                 return new BooleanType();
@@ -81,7 +81,7 @@ public class BinaryExpression extends Expression {
 
                 Type leftType = left.typeCheck(symTable);
                 Type rightType = right.typeCheck(symTable);
-                if( (!(leftType.toString().equals(new BooleanType().toString())) || leftType.toString().equals((new NoType().toString()))) || (!(rightType.toString().equals((new IntType().toString()))) || rightType.toString().equals(new NoType().toString())) )
+                if( (!leftType.toString().equals(new BooleanType().toString())) && leftType.toString().equals((new NoType().toString())) || (!rightType.toString().equals((new IntType().toString()))) && !rightType.toString().equals(new NoType().toString()) )
                     throw new TypeError("Line:" + this.getLine() + ":unsupported operand type for" + binaryOperator.toString());
 
                 return new BooleanType();
