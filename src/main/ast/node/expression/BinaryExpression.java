@@ -61,12 +61,7 @@ public class BinaryExpression extends Expression {
                || binaryOperator.equals(BinaryOperator.mult) || binaryOperator.equals(BinaryOperator.div)){
                 Type leftType = left.typeCheck(symTable);
                 Type rightType = right.typeCheck(symTable);
-                System.out.println("****"+left.toString() + "       "+ right.toString());
-                System.out.println("****"+leftType + "       "+ rightType);
-                System.out.println("1"+leftType.toString().equals(new IntType().toString()));
-                System.out.println("2"+leftType.toString().equals(new NoType().toString()));
-                System.out.println("3"+rightType.toString().equals(new IntType().toString()));
-                System.out.println("4"+rightType.toString().equals(new NoType().toString()) );
+
                 if((!leftType.toString().equals(new IntType().toString())&& !leftType.toString().equals(new NoType().toString()))
                         || ( !rightType.toString().equals(new IntType().toString()) && !rightType.toString().equals(new NoType().toString()))  )
                     throw new TypeError("Line:" + this.getLine() + ":unsupported operand type for " + binaryOperator.toString());

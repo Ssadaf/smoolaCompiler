@@ -67,7 +67,7 @@ grammar Smoola;
     statementCondition returns [Conditional syn_stmt]:
         'if' '('expression')' 'then' statement {$syn_stmt = new Conditional($expression.syn_expr, $statement.syn_stmt);
         $syn_stmt.setLine($ctx.start.getLine());}
-        ('else' statement)? {$syn_stmt.setAlternativeBody($statement.syn_stmt);}
+        ('else' statement{$syn_stmt.setAlternativeBody($statement.syn_stmt);})?
     ;
     statementLoop returns [While syn_stmt]:
         'while' '(' expression ')' statement {$syn_stmt = new While($expression.syn_expr, $statement.syn_stmt);

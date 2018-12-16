@@ -38,8 +38,8 @@ class Test3 extends Test2{
     def m():int{
         if(i)then{
             #b=i.a();
-            b=b+2;
-            }
+            b=ss+2;
+            }else{}
         return 1;
     }
 

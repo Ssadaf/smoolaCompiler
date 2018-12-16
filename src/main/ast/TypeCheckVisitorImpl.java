@@ -65,7 +65,6 @@ public class TypeCheckVisitorImpl implements Visitor{
         currClassType.setClassDeclaration(classDeclaration);
 
         SymbolTable.push(classSymbolTables.get(classDeclaration.getName().getName()));
-        //System.out.println("pushing symb table" + classDeclaration.getName().getName());
         //classDeclaration.getName().accept(this);
         Identifier parent = classDeclaration.getParentName();
         if(parent != null && parent.getName() != "Object")
@@ -87,13 +86,8 @@ public class TypeCheckVisitorImpl implements Visitor{
     public void visit(MethodDeclaration methodDeclaration) {
         ArrayList<VarDeclaration> args = methodDeclaration.getArgs();
 
-//       System.out.println("pushing symb table" + methodDeclaration.getName().getName() + "@" + methodDeclaration.getClassName());
 
         SymbolTable.push(methodSymbolTables.get(methodDeclaration.getName().getName() + "@" + methodDeclaration.getClassName()));
-
-//        for (String key: methodSymbolTables.keySet()) {
-//            System.out.println("--- "+ key);
-//        }
 
         ArrayList<Type> argTypes = new ArrayList<Type>();
         for(int i = 0; i < args.size(); ++i)
@@ -139,10 +133,12 @@ public class TypeCheckVisitorImpl implements Visitor{
 
     @Override
     public void visit(BinaryExpression binaryExpression) {
-        binaryExpression.getLeft().accept(this);
+//        System.out.println("^^^^^"+binaryExpression.getLeft()+ "  "+binaryExpression.getBinaryOperator());
 
         if( binaryExpression.getRight() == null )
             return;
+
+        binaryExpression.getLeft().accept(this);
 
         binaryExpression.typeCheck(SymbolTable.top);
         binaryExpression.getRight().accept(this);
@@ -241,8 +237,8 @@ public class TypeCheckVisitorImpl implements Visitor{
             System.out.println("Line:" + conditional.getLine() + ":condition type must be boolean");
 
         conditional.getConsequenceBody().accept(this);
-
-        conditional.getAlternativeBody().accept(this);
+        if(conditional.getAlternativeBody() != null)
+            conditional.getAlternativeBody().accept(this);
     }
 
     @Override

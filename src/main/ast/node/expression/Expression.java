@@ -1,5 +1,6 @@
 package ast.node.expression;
 
+import ast.Type.NoType;
 import ast.Type.Type;
 import ast.Visitor;
 import ast.node.Node;
@@ -17,4 +18,6 @@ public abstract class Expression extends Node{
 
     @Override
     public void accept(Visitor visitor) {}
+
+
 }

@@ -1,7 +1,9 @@
 package ast.node.expression.Value;
 
+import ast.Type.PrimitiveType.StringType;
 import ast.Type.Type;
 import ast.Visitor;
+import symbolTable.SymbolTable;
 
 public class StringValue extends Value {
     private String constant;
@@ -27,4 +29,7 @@ public class StringValue extends Value {
     public void accept(Visitor visitor) {
         visitor.visit(this);
     }
+
+    @Override
+    public Type typeCheck(SymbolTable symbolTable){ return new StringType(); }
 }

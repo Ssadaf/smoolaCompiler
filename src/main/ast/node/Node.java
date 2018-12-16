@@ -11,5 +11,6 @@ public abstract class Node {
     public void accept(Visitor visitor) {}
     public void setLine(int l){line = l;}
     public int getLine(){return line;}
-    public Type typeCheck(SymbolTable symTable) { return new NoType(); }
+
+    public Type typeCheck(SymbolTable symTable) {return new NoType();}
 }
