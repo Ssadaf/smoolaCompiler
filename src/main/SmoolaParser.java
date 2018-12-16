@@ -2570,7 +2570,7 @@ public class SmoolaParser extends Parser {
 				{
 				setState(463);
 				match(T__6);
-				 ((TypeContext)_localctx).syn_type =  new IntType();
+				 ((TypeContext)_localctx).syn_type =  new IntType(); _localctx.syn_type.setLine(_localctx.start.getLine());
 				}
 				break;
 			case 2:
@@ -2578,7 +2578,7 @@ public class SmoolaParser extends Parser {
 				{
 				setState(465);
 				match(T__38);
-				 ((TypeContext)_localctx).syn_type =  new BooleanType();
+				 ((TypeContext)_localctx).syn_type =  new BooleanType(); _localctx.syn_type.setLine(_localctx.start.getLine());
 				}
 				break;
 			case 3:
@@ -2586,7 +2586,7 @@ public class SmoolaParser extends Parser {
 				{
 				setState(467);
 				match(T__39);
-				 ((TypeContext)_localctx).syn_type =  new StringType();
+				 ((TypeContext)_localctx).syn_type =  new StringType(); _localctx.syn_type.setLine(_localctx.start.getLine());
 				}
 				break;
 			case 4:
@@ -2598,7 +2598,7 @@ public class SmoolaParser extends Parser {
 				match(T__30);
 				setState(471);
 				match(T__31);
-				 ((TypeContext)_localctx).syn_type =  new ArrayType();
+				 ((TypeContext)_localctx).syn_type =  new ArrayType(); _localctx.syn_type.setLine(_localctx.start.getLine());
 				}
 				break;
 			case 5:
@@ -2606,7 +2606,7 @@ public class SmoolaParser extends Parser {
 				{
 				setState(473);
 				((TypeContext)_localctx).classType = match(ID);
-				 UserDefinedType temp = new UserDefinedType(); temp.setClassType((((TypeContext)_localctx).classType!=null?((TypeContext)_localctx).classType.getText():null)); ((TypeContext)_localctx).syn_type =  temp;
+				 UserDefinedType temp = new UserDefinedType(); temp.setClassType((((TypeContext)_localctx).classType!=null?((TypeContext)_localctx).classType.getText():null)); ((TypeContext)_localctx).syn_type =  temp; _localctx.syn_type.setLine(_localctx.start.getLine());
 				}
 				break;
 			}

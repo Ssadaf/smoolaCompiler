@@ -208,11 +208,11 @@ grammar Smoola;
         |	'(' expression ')' { $syn_expr = $expression.syn_expr; }
 	;
 	type returns [Type syn_type]:
-	    'int' { $syn_type = new IntType();}
-	    |'boolean' { $syn_type = new BooleanType();}
-	    |'string' { $syn_type = new StringType();}
-	    |'int' '[' ']' { $syn_type = new ArrayType();}
-	    |classType = ID { UserDefinedType temp = new UserDefinedType(); temp.setClassType($classType.text); $syn_type = temp;}
+	    'int' { $syn_type = new IntType(); $syn_type.setLine($ctx.start.getLine());}
+	    |'boolean' { $syn_type = new BooleanType(); $syn_type.setLine($ctx.start.getLine());}
+	    |'string' { $syn_type = new StringType(); $syn_type.setLine($ctx.start.getLine());}
+	    |'int' '[' ']' { $syn_type = new ArrayType(); $syn_type.setLine($ctx.start.getLine());}
+	    |classType = ID { UserDefinedType temp = new UserDefinedType(); temp.setClassType($classType.text); $syn_type = temp; $syn_type.setLine($ctx.start.getLine());}
 	;
     CONST_NUM:
 		[0-9]+
