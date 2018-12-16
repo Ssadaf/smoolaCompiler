@@ -10,6 +10,7 @@ class Test1 extends h{
     def method1(): string{
         var j: string;
         var classIns : Test2;
+        classIns = new SWS();
         j = "hello world!";
         return j;
 

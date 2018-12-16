@@ -172,16 +172,21 @@ public class TypeCheckVisitorImpl implements Visitor{
 
     @Override
     public void visit(NewArray newArray) {
-        newArray.getExpression().accept(this);
+        Type expressionType = newArray.getExpression().typeCheck(SymbolTable.top);
+        if(! expressionType.toString().equals(new IntType().toString()) && !expressionType.toString().equals(new NoType().toString()) )
+            System.out.println("Line:" + newArray.getLine() +":New Array expression type must be integer");
+
     }
 
     @Override
     public void visit(NewClass newClass) {
-        newClass.getClassName().accept(this);
+        if(!SymbolTable.top.hasItem(newClass.getClassName().getName() + "-classDec"))
+            System.out.println("Line:" + newClass.getLine() + ":class "+newClass.getClassName().getName() + " is not declared");
     }
 
     @Override
     public void visit(This instance) {
+        ////check later
     }
 
     @Override
