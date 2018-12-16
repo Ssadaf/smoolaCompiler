@@ -21,7 +21,7 @@ class Test2 extends Test1{
     var b:boolean;
     def meth(): string{
         while(b){
-            a = 2;
+            a = !c;
         }
         return 1;
     }

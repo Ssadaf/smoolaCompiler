@@ -1,5 +1,6 @@
 package ast.node.expression;
 
+import ast.Type.NoType;
 import ast.Type.Type;
 import ast.Visitor;
 import symbolTable.SymbolTable;
@@ -31,6 +32,9 @@ public class Identifier extends Expression {
 
     @Override
     public Type typeCheck(SymbolTable symTable) {
-        return ((SymbolTableVariableItemBase)symTable.getInCurrentScope(name)).getType();
+        if(symTable.hasItem(name))
+            return ((SymbolTableVariableItemBase)symTable.getInCurrentScope(name)).getType();
+        else
+            return new NoType();
     }
 }

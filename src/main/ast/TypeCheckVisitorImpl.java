@@ -185,6 +185,7 @@ public class TypeCheckVisitorImpl implements Visitor{
     @Override
     public void visit(UnaryExpression unaryExpression) {
         unaryExpression.getValue().accept(this);
+        unaryExpression.typeCheck(SymbolTable.top);
     }
 
     @Override
