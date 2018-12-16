@@ -1,8 +1,10 @@
 package ast;
 
+import ast.Type.ArrayType.ArrayType;
 import ast.Type.NoType;
 import ast.Type.PrimitiveType.BooleanType;
 import ast.Type.PrimitiveType.IntType;
+import ast.Type.PrimitiveType.StringType;
 import ast.Type.Type;
 import ast.Type.UserDefinedType.UserDefinedType;
 import ast.node.Program;
@@ -221,7 +223,7 @@ public class TypeCheckVisitorImpl implements Visitor{
         conditional.getExpression().accept(this);
 
         Type expressionType = conditional.getExpression().typeCheck(SymbolTable.top);
-        if(! (expressionType.toString().equals(new BooleanType().toString()) || expressionType.toString().equals(new NoType().toString())) )
+        if(! expressionType.toString().equals(new BooleanType().toString()) && !expressionType.toString().equals(new NoType().toString()) )
             System.out.println("Line:" + conditional.getLine() +":condition type must be boolean");
 
 
@@ -235,7 +237,7 @@ public class TypeCheckVisitorImpl implements Visitor{
         loop.getCondition().accept(this);
 
         Type conditionType = loop.getCondition().typeCheck(SymbolTable.top);
-        if(! (conditionType.toString().equals(new BooleanType().toString()) || conditionType.toString().equals(new NoType().toString())) )
+        if(! conditionType.toString().equals(new BooleanType().toString()) && !conditionType.toString().equals(new NoType().toString()) )
             System.out.println("Line:" + loop.getLine() +":condition type must be boolean");
 
         loop.getBody().accept(this);
@@ -244,6 +246,10 @@ public class TypeCheckVisitorImpl implements Visitor{
     @Override
     public void visit(Write write) {
         write.getArg().accept(this);
+
+        Type writeArgType = write.getArg().typeCheck(SymbolTable.top);
+        if(!writeArgType.toString().equals(new IntType().toString()) && !writeArgType.toString().equals(new StringType().toString()) && !writeArgType.toString().equals(new ArrayType().toString()) && !writeArgType.toString().equals(new NoType().toString()))
+            System.out.println("Line:" + write.getLine() +":unsupported type for writeln");
     }
 
 }

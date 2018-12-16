@@ -42,7 +42,9 @@ class Test4 extends Test3{
 }
 
 class Test5 extends Test4{
+           var x: int;
         def method(): string{
+                writeln(x);
                 return j;
         }
 }
