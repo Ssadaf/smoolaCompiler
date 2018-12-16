@@ -156,6 +156,9 @@ public class TypeCheckVisitorImpl implements Visitor{
 
     @Override
     public void visit(Length length) {
+        Type expressionType = length.getExpression().typeCheck(SymbolTable.top);
+        if(!expressionType.toString().equals(new ArrayType().toString()) && !expressionType.toString().equals(new NoType().toString()) )
+            System.out.println("Line:" + length.getLine() + ":length method call is only valid on arrays");
         length.getExpression().accept(this);
     }
 
