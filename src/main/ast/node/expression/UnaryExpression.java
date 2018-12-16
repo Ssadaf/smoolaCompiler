@@ -49,7 +49,7 @@ public class UnaryExpression extends Expression {
             if(unaryOperator.equals(UnaryOperator.minus)){
 
                 Type valueType = value.typeCheck(symTable);
-                if(( !(valueType.toString().equals(new IntType().toString()) || valueType.toString().equals(new NoType().toString())) ) )
+                if(( !valueType.toString().equals(new IntType().toString()) && !valueType.toString().equals(new NoType().toString()) ) )
                     throw new TypeError("Line:" + this.getLine() + ":unsupported operand type for" + unaryOperator.toString());
 
                 return new IntType();
@@ -57,7 +57,7 @@ public class UnaryExpression extends Expression {
             else if( unaryOperator.equals(UnaryOperator.not) ) {
 
                 Type valueType = value.typeCheck(symTable);
-                if( (!(valueType.toString().equals(new BooleanType().toString())) || valueType.toString().equals(new NoType().toString())) )
+                if( (!valueType.toString().equals(new BooleanType().toString())) && !valueType.toString().equals(new NoType().toString()) )
                     throw new TypeError("Line:" + this.getLine() + ":unsupported operand type for " + unaryOperator.toString());
                 return new BooleanType();
             }
