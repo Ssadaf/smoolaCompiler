@@ -55,6 +55,8 @@ public class TypeCheckVisitorImpl implements Visitor{
     }
 
     private boolean isSubType(Type sub, Type supr){
+        System.out.println(((UserDefinedType)sub).getName().getName());
+        System.out.println(((UserDefinedType)supr).getName().getName());
         if(sub.toString().equals(new NoType().toString()))
             return true;
         if(!supr.isUserDefined())
@@ -238,6 +240,10 @@ public class TypeCheckVisitorImpl implements Visitor{
 
     @Override
     public void visit(Assign assign) {
+        if(!isSubType(assign.getrValue().typeCheck(SymbolTable.top), assign.getlValue().typeCheck(SymbolTable.top))){
+            System.out.println("Line:" + assign.getLine() + ":" + "unsupported operand type for assign");
+        }
+
         assign.getlValue().accept(this);
 
         assign.getrValue().accept(this);

@@ -6,7 +6,8 @@ class b {
 
 
 class Test1 extends h{
-    var i1: int;
+    var i1: Test1;
+    var j1: Test5;
     var arr : int[];
     def method1(): string{
         var j: string;
@@ -16,6 +17,8 @@ class Test1 extends h{
         writeln(j.length);
         classIns = new SWS();
         j = "hello world!";
+        i1 = j1;
+        j1 = i1;
         return j;
 
     }
