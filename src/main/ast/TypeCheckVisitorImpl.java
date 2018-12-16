@@ -134,6 +134,7 @@ public class TypeCheckVisitorImpl implements Visitor{
     public void visit(ArrayCall arrayCall) {
         arrayCall.getInstance().accept(this);
         arrayCall.getIndex().accept(this);
+        arrayCall.typeCheck(SymbolTable.top);
     }
 
     @Override
@@ -148,7 +149,6 @@ public class TypeCheckVisitorImpl implements Visitor{
     @Override
     public void visit(Identifier identifier) {
         SymbolTable currSymbolTable = SymbolTable.top;
-//        currSymbolTable.printAllSymbolTableItems();
         if(!currSymbolTable.hasItem(identifier.getName() )) {
             System.out.println("Line:" + identifier.getLine() + ":variable " + identifier.getName() + " is not declared");
         }
@@ -231,9 +231,12 @@ public class TypeCheckVisitorImpl implements Visitor{
         conditional.getExpression().accept(this);
 
         Type expressionType = conditional.getExpression().typeCheck(SymbolTable.top);
-        if(! expressionType.toString().equals(new BooleanType().toString()) && !expressionType.toString().equals(new NoType().toString()) )
-            System.out.println("Line:" + conditional.getLine() +":condition type must be boolean");
+        if(expressionType.isUserDefined() && ((UserDefinedType)expressionType).getClassDeclaration()!=null)
+            if (!expressionType.toString().equals(new BooleanType().toString()))
+                System.out.println("Line:" + conditional.getLine() + ":condition type must be boolean");
 
+        else if (!expressionType.toString().equals(new NoType().toString()))
+            System.out.println("Line:" + conditional.getLine() + ":condition type must be boolean");
 
         conditional.getConsequenceBody().accept(this);
 

@@ -7,9 +7,11 @@ class b {
 
 class Test1 extends h{
     var i1: int;
+    var arr : int[];
     def method1(): string{
         var j: string;
         var classIns : Test2;
+        i1 = arr[2+i1];
         writeln(j.length);
         classIns = new SWS();
         j = "hello world!";
@@ -31,10 +33,12 @@ class Test2 extends Test1{
 }
 
 class Test3 extends Test2{
-    var i : int;
+    var i : Test19;
     def m():int{
-        if(i)then
+        if(i)then{
+            #b=i.a();
             b=b+2;
+            }
         return 1;
     }
 
