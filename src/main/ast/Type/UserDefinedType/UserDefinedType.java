@@ -6,10 +6,15 @@ import ast.node.expression.Identifier;
 
 public class UserDefinedType extends Type {
     private ClassDeclaration classDeclaration;
+    private String classType;
 
     public ClassDeclaration getClassDeclaration() {
         return classDeclaration;
     }
+
+    public void setClasstype(String classtype) { this.classType = classType; }
+
+    public String getClasstype() { return classType; }
 
     public void setClassDeclaration(ClassDeclaration classDeclaration) {
         this.classDeclaration = classDeclaration;
@@ -29,4 +34,7 @@ public class UserDefinedType extends Type {
     public String toString() {
         return classDeclaration.getName().getName();
     }
+
+    @Override
+    public boolean isUserDefined() {return true;}
 }

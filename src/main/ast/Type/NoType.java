@@ -5,4 +5,7 @@ public class NoType extends Type{
     public String toString() {
         return "no Type";
     }
+
+    @Override
+    public boolean isUserDefined() {return false;}
 }

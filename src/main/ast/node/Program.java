@@ -22,6 +22,14 @@ public class Program{
         return mainClass;
     }
 
+    public HashMap <String, SymbolTable> getClassSymbolTables(){
+        return classSymbolTables;
+    }
+
+    public HashMap <String, SymbolTable> getMethodSymbolTables(){
+        return methodSymbolTables;
+    }
+
     public void setMainClass(ClassDeclaration mainClass) {
         this.mainClass = mainClass;
     }

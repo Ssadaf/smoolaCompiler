@@ -8,4 +8,7 @@ public class StringType extends Type {
     public String toString() {
         return "string";
     }
+
+    @Override
+    public boolean isUserDefined() {return false;}
 }

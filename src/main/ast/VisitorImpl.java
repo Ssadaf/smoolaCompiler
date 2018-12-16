@@ -41,6 +41,7 @@ public class VisitorImpl implements Visitor {
         if(classSymbolTables.get(classToCheck).isUpdated == true)
             return;
         else if(parentOfClassToCheck == "Object") {
+            classSymbolTables.get(classToCheck).updateSymbolTables(SymbolTable.top);
             classSymbolTables.get(classToCheck).isUpdated = true;
             return;
         }
@@ -61,25 +62,24 @@ public class VisitorImpl implements Visitor {
         methodSymbolTables.get(methodName).updateSymbolTables(classSymbolTables.get(ClassName));
     }
 
-    private void createCompleteSymbolTable(Program program){
+    private Program createCompleteSymbolTable(Program program){
         Map<String, String> relation = duplicateHandler.getRelations();
         for (String className: relation.keySet()) {
             updateClass(className, relation);
         }
 //        for (String key: classSymbolTables.keySet()){
 //                System.out.println("****** " + key);
-//                classSymbolTables.get(key).printAllSymbolTableItems();
+//                program.getClassSymbolTables().get(key).printAllSymbolTableItems();
 //        }
-        program.setClassSymbolTable(classSymbolTables);
         for(String methodName:methodSymbolTables.keySet()){
             String[] methodInfo = methodName.split("@");
             updateMethod(methodName, methodInfo[1]);
         }
 //        for (String key: methodSymbolTables.keySet()){
 //                System.out.println("****** " + key);
-//                methodSymbolTables.get(key).printAllSymbolTableItems();
+//                program.getMethodSymbolTables().get(key).printAllSymbolTableItems();
 //        }
-        program.setClassSymbolTable(methodSymbolTables);
+        return program;
     }
 
     @Override
@@ -118,11 +118,12 @@ public class VisitorImpl implements Visitor {
         program.setMethodSymbolTable(methodSymbolTables);
         program.setClassDecs(classDecs);
 
-        createCompleteSymbolTable(program);
+        program.setClassSymbolTable(createCompleteSymbolTable(program).getClassSymbolTables());;
+
 
         if(!hasError) {
-            for (int i = 0; i < output.size(); i++)
-                System.out.println(output.get(i));
+            Visitor typeVisitor = new TypeCheckVisitorImpl();
+            program.accept(typeVisitor);
         }
         SymbolTable.pop();
     }
@@ -153,7 +154,7 @@ public class VisitorImpl implements Visitor {
 
         classDeclaration.getName().accept(this);
         Identifier parent = classDeclaration.getParentName();
-        if(parent != null)
+        if(parent != null && parent.getName() != "Object")
             parent.accept(this);
 
         ArrayList<VarDeclaration> vars = classDeclaration.getVarDeclarations();

@@ -13,6 +13,7 @@ import ast.node.expression.Value.BooleanValue;
 import ast.node.expression.Value.IntValue;
 import ast.node.expression.Value.StringValue;
 import ast.node.statement.*;
+import sun.jvm.hotspot.debugger.cdbg.Sym;
 import symbolTable.ItemAlreadyExistsException;
 import symbolTable.SymbolTable;
 import symbolTable.SymbolTableClassItem;
@@ -21,11 +22,13 @@ import symbolTable.SymbolTableMethodItem;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Stack;
 
 public class TypeCheckVisitorImpl implements Visitor{
     private boolean hasError = false;
     private HashMap<String, ClassDeclaration> classDecs;
     private UserDefinedType currClassType = new UserDefinedType();
+    private HashMap<String, SymbolTable> methodSymbolTables, classSymbolTables;
 
     @Override
     public void visit(MethodCallInMain methodCallInMain) {
@@ -35,8 +38,12 @@ public class TypeCheckVisitorImpl implements Visitor{
     @Override
     public void visit(Program program) {
         classDecs = program.getClassDecs();
+        methodSymbolTables = program.getMethodSymbolTables();
+        classSymbolTables  = program.getClassSymbolTables();
+
+
+
         ClassDeclaration mainClass = program.getMainClass();
-        currClassType.setClassDeclaration(mainClass);
         if(mainClass != null){
             mainClass.accept(this);
         }
@@ -46,14 +53,18 @@ public class TypeCheckVisitorImpl implements Visitor{
             for (int i = 0; i < classes.size(); i++)
                 classes.get(i).accept(this);
         }
+        SymbolTable.pop();
     }
 
     @Override
     public void visit(ClassDeclaration classDeclaration) {
         currClassType.setClassDeclaration(classDeclaration);
-        classDeclaration.getName().accept(this);
+
+        SymbolTable.push(classSymbolTables.get(classDeclaration.getName().getName()));
+        //System.out.println("pushing symb table" + classDeclaration.getName().getName());
+        //classDeclaration.getName().accept(this);
         Identifier parent = classDeclaration.getParentName();
-        if(parent != null)
+        if(parent != null && parent.getName() != "Object")
             parent.accept(this);
 
         ArrayList<VarDeclaration> vars = classDeclaration.getVarDeclarations();
@@ -63,6 +74,7 @@ public class TypeCheckVisitorImpl implements Visitor{
         ArrayList<MethodDeclaration> meths = classDeclaration.getMethodDeclarations();
         for(int i = 0; i < meths.size(); i++)
             meths.get(i).accept(this);
+        SymbolTable.pop();
 
     }
 
@@ -70,11 +82,19 @@ public class TypeCheckVisitorImpl implements Visitor{
     public void visit(MethodDeclaration methodDeclaration) {
         ArrayList<VarDeclaration> args = methodDeclaration.getArgs();
 
+        System.out.println("pushing symb table" + methodDeclaration.getName().getName() + "@" + methodDeclaration.getClassName());
+
+        SymbolTable.push(methodSymbolTables.get(methodDeclaration.getName().getName() + "@" + methodDeclaration.getClassName()));
+
+//        for (String key: methodSymbolTables.keySet()) {
+//            System.out.println("--- "+ key);
+//        }
+
         ArrayList<Type> argTypes = new ArrayList<Type>();
         for(int i = 0; i < args.size(); ++i)
             argTypes.add(args.get(i).getType());
 
-        methodDeclaration.getName().accept(this);
+        //methodDeclaration.getName().accept(this);
         for(int i = 0; i < args.size(); i++)
             args.get(i).accept(this);
 
@@ -87,21 +107,27 @@ public class TypeCheckVisitorImpl implements Visitor{
             body.get(i).accept(this);
 
         methodDeclaration.getReturnValue().accept(this);
+        SymbolTable.pop();
     }
 
     @Override
     public void visit(VarDeclaration varDeclaration) {
-        if(varDeclaration.getType().toString().equals(new UserDefinedType().toString())) {
+
+        if(varDeclaration.getType().isUserDefined()) {
+            //System.out.println("------------setting user defiened" + varDeclaration.getIdentifier().getName());
+
             UserDefinedType varType = (UserDefinedType) varDeclaration.getType();
-            varType.setClassDeclaration(classDecs.get(varType.getClassDeclaration().toString()));
+            if(classDecs.containsKey(varType.getClasstype()))
+                varType.setClassDeclaration(classDecs.get(varType.getClasstype()));
+            else
+                System.out.println("Line:" + varDeclaration.getLine() + ":class " + varType.getClasstype() + " is not declared" );
         }
-        varDeclaration.getIdentifier().accept(this);
+        //varDeclaration.getIdentifier().accept(this);
     }
 
     @Override
     public void visit(ArrayCall arrayCall) {
         arrayCall.getInstance().accept(this);
-
         arrayCall.getIndex().accept(this);
     }
 
@@ -116,6 +142,11 @@ public class TypeCheckVisitorImpl implements Visitor{
 
     @Override
     public void visit(Identifier identifier) {
+        SymbolTable currSymbolTable = SymbolTable.top;
+//        currSymbolTable.printAllSymbolTableItems();
+        if(!currSymbolTable.hasItem(identifier.getName() + "-classDec")) {
+            System.out.println("Line:" + identifier.getLine() + ":variable " + identifier.getName() + " is not declared");
+        }
     }
 
     @Override

@@ -23,6 +23,7 @@ public class SymbolTable {
 
 	// Use it in pass1 scope end
 	public static void pop() {
+//		System.out.println("----------poping symb table");
 		top = stack.pop();
 
 	}
@@ -67,9 +68,14 @@ public class SymbolTable {
 		this.items.putAll(superior.items);
 	}
 
+	public boolean hasItem(String key){
+//		printAllSymbolTableItems();
+		return items.containsKey(key);
+	}
+
 	public void printAllSymbolTableItems(){
 		for (String key: items.keySet()) {
-			System.out.println(items.get(key).name);
+			System.out.println(key + " " + items.get(key).name);
 		}
 	}
 }

@@ -1,4 +1,4 @@
-// Generated from /home/sadaf/Documents/Compiler/smoolaCompiler/Smoola.g4 by ANTLR 4.7
+// Generated from /Users/yasaman/Desktop/smoolaCompiler/Smoola.g4 by ANTLR 4.7
 
     import ast.*;
     import ast.node.*;
@@ -2542,6 +2542,7 @@ public class SmoolaParser extends Parser {
 
 	public static class TypeContext extends ParserRuleContext {
 		public Type syn_type;
+		public Token classType;
 		public TerminalNode ID() { return getToken(SmoolaParser.ID, 0); }
 		public TypeContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -2604,8 +2605,8 @@ public class SmoolaParser extends Parser {
 				enterOuterAlt(_localctx, 5);
 				{
 				setState(473);
-				match(ID);
-				 ((TypeContext)_localctx).syn_type =  new UserDefinedType();
+				((TypeContext)_localctx).classType = match(ID);
+				 UserDefinedType temp = new UserDefinedType(); temp.setClassType((((TypeContext)_localctx).classType!=null?((TypeContext)_localctx).classType.getText():null)); ((TypeContext)_localctx).syn_type =  temp;
 				}
 				break;
 			}

@@ -15,6 +15,7 @@ public interface Visitor {
     ArrayList<String> output = new ArrayList<String>();
     DuplicateHandler duplicateHandler = new DuplicateHandler();
 
+
     void visit (Program program);
 
     //Declarations

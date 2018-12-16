@@ -212,7 +212,7 @@ grammar Smoola;
 	    |'boolean' { $syn_type = new BooleanType();}
 	    |'string' { $syn_type = new StringType();}
 	    |'int' '[' ']' { $syn_type = new ArrayType();}
-	    |ID { $syn_type = new UserDefinedType();}
+	    |classType = ID { UserDefinedType temp = new UserDefinedType(); temp.setClassType($classType.text); $syn_type = temp;}
 	;
     CONST_NUM:
 		[0-9]+
