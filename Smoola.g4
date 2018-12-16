@@ -212,7 +212,7 @@ grammar Smoola;
 	    |'boolean' { $syn_type = new BooleanType(); $syn_type.setLine($ctx.start.getLine());}
 	    |'string' { $syn_type = new StringType(); $syn_type.setLine($ctx.start.getLine());}
 	    |'int' '[' ']' { $syn_type = new ArrayType(); $syn_type.setLine($ctx.start.getLine());}
-	    |classType = ID { UserDefinedType temp = new UserDefinedType(); temp.setClassType($classType.text); $syn_type = temp; $syn_type.setLine($ctx.start.getLine());}
+	    |classType = ID { UserDefinedType temp = new UserDefinedType(); temp.setClasstype($classType.text); $syn_type = temp; $syn_type.setLine($ctx.start.getLine());}
 	;
     CONST_NUM:
 		[0-9]+
