@@ -33,6 +33,33 @@ public class TypeCheckVisitorImpl implements Visitor{
     private HashMap<String, ClassDeclaration> classDecs;
     private UserDefinedType currClassType = new UserDefinedType();
     private HashMap<String, SymbolTable> methodSymbolTables, classSymbolTables;
+    private HashMap<String, String> relation = new HashMap<String, String>();
+
+    public boolean checkRelationIsParent(String child, String parent)
+    {
+        String parentToCheck;
+        String childToCheck = child;
+        while(true)
+        {
+            if(relation.containsKey(childToCheck)) {
+                parentToCheck = relation.get(childToCheck);
+                if(parentToCheck.equals("Object"))
+                    return parentToCheck.equals(parent);
+                if(parentToCheck.equals(parent))
+                    return true;
+                childToCheck = parentToCheck;
+            }
+            else
+                return false;
+        }
+    }
+
+    private boolean isSubType(Type sub, Type supr){
+        if(!supr.isUserDefined())
+            return(sub.toString() == supr.toString());
+        else
+            return checkRelationIsParent( ((UserDefinedType)sub).getName().getName(), ((UserDefinedType)supr).getName().getName());
+    }
 
     @Override
     public void visit(MethodCallInMain methodCallInMain) {
@@ -44,8 +71,7 @@ public class TypeCheckVisitorImpl implements Visitor{
         classDecs = program.getClassDecs();
         methodSymbolTables = program.getMethodSymbolTables();
         classSymbolTables  = program.getClassSymbolTables();
-
-
+        relation = program.getRelation();
 
         ClassDeclaration mainClass = program.getMainClass();
         if(mainClass != null){
@@ -65,7 +91,6 @@ public class TypeCheckVisitorImpl implements Visitor{
         currClassType.setClassDeclaration(classDeclaration);
 
         SymbolTable.push(classSymbolTables.get(classDeclaration.getName().getName()));
-        //classDeclaration.getName().accept(this);
         Identifier parent = classDeclaration.getParentName();
         if(parent != null && parent.getName() != "Object")
             if(!SymbolTable.top.hasItem(parent.getName() + "-classDec"))
@@ -79,21 +104,17 @@ public class TypeCheckVisitorImpl implements Visitor{
         for(int i = 0; i < meths.size(); i++)
             meths.get(i).accept(this);
         SymbolTable.pop();
-
     }
 
     @Override
     public void visit(MethodDeclaration methodDeclaration) {
         ArrayList<VarDeclaration> args = methodDeclaration.getArgs();
 
-
         SymbolTable.push(methodSymbolTables.get(methodDeclaration.getName().getName() + "@" + methodDeclaration.getClassName()));
 
         ArrayList<Type> argTypes = new ArrayList<Type>();
         for(int i = 0; i < args.size(); ++i)
             argTypes.add(args.get(i).getType());
-
-        //methodDeclaration.getName().accept(this);
         for(int i = 0; i < args.size(); i++)
             args.get(i).accept(this);
 

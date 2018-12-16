@@ -118,6 +118,7 @@ public class VisitorImpl implements Visitor {
         program.setClassSymbolTable(classSymbolTables);
         program.setMethodSymbolTable(methodSymbolTables);
         program.setClassDecs(classDecs);
+        program.setRelation(duplicateHandler.getRelations());
 
         program.setClassSymbolTable(createCompleteSymbolTable(program).getClassSymbolTables());;
 

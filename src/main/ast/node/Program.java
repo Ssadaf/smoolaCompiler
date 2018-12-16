@@ -17,6 +17,11 @@ public class Program{
     private HashMap <String, SymbolTable> classSymbolTables;
     private HashMap <String, SymbolTable> methodSymbolTables;
     private HashMap <String, ClassDeclaration> classDecs;
+    private HashMap<String, String> relation = new HashMap<String, String>();
+
+    public void setRelation(HashMap<String, String> relation){ this.relation = relation;}
+
+    public HashMap<String, String> getRelation(){return relation;}
 
     public ClassDeclaration getMainClass() {
         return mainClass;
