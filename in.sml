@@ -9,7 +9,7 @@ class Test1{
     var i1: int;
     def method1(): string{
         var j: string;
-        var classIns : Test1;
+        var classIns : Test2;
         j = "hello world!";
         return j;
 

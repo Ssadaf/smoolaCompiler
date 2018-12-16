@@ -114,7 +114,7 @@ public class TypeCheckVisitorImpl implements Visitor{
     public void visit(VarDeclaration varDeclaration) {
 
         if(varDeclaration.getType().isUserDefined()) {
-            //System.out.println("------------setting user defiened" + varDeclaration.getIdentifier().getName());
+//            System.out.println("------------setting user defiened" + varDeclaration.getIdentifier().getName() );
 
             UserDefinedType varType = (UserDefinedType) varDeclaration.getType();
             if(classDecs.containsKey(varType.getClassType()))
