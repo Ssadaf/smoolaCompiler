@@ -55,6 +55,8 @@ public class TypeCheckVisitorImpl implements Visitor{
     }
 
     private boolean isSubType(Type sub, Type supr){
+        if(sub.toString().equals(new NoType().toString()))
+            return true;
         if(!supr.isUserDefined())
             return(sub.toString() == supr.toString());
         else
@@ -126,6 +128,10 @@ public class TypeCheckVisitorImpl implements Visitor{
         for(int i = 0; i < body.size(); i++)
             body.get(i).accept(this);
 
+        if(!isSubType(methodDeclaration.getReturnValue().typeCheck(SymbolTable.top), methodDeclaration.getReturnType())){
+            System.out.println("Line:" + methodDeclaration.getReturnValue().getLine() + ":" + methodDeclaration.getName().getName() + " return type must be " + methodDeclaration.getReturnType().toString());
+        }
+
         methodDeclaration.getReturnValue().accept(this);
         SymbolTable.pop();
     }
@@ -154,7 +160,6 @@ public class TypeCheckVisitorImpl implements Visitor{
 
     @Override
     public void visit(BinaryExpression binaryExpression) {
-//        System.out.println("^^^^^"+binaryExpression.getLeft()+ "  "+binaryExpression.getBinaryOperator());
 
         if( binaryExpression.getRight() == null )
             return;

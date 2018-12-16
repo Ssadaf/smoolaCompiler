@@ -1,4 +1,4 @@
-// Generated from /home/sadaf/Documents/Compiler/smoolaCompiler/Smoola.g4 by ANTLR 4.7
+// Generated from /Users/yasaman/Desktop/smoolaCompiler/Smoola.g4 by ANTLR 4.7
 
     import ast.*;
     import ast.node.*;
@@ -583,7 +583,7 @@ public class SmoolaParser extends Parser {
 			((MethodDeclarationContext)_localctx).expression = expression();
 			setState(181);
 			match(T__8);
-			_localctx.syn_methodDec.setReturnValue(((MethodDeclarationContext)_localctx).expression.syn_expr);
+			_localctx.syn_methodDec.setReturnValue(((MethodDeclarationContext)_localctx).expression.syn_expr); _localctx.syn_methodDec.getReturnValue().setLine(((MethodDeclarationContext)_localctx).expression.syn_expr.getLine());
 			setState(183);
 			match(T__9);
 			}

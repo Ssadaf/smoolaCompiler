@@ -49,6 +49,7 @@ class Test4 extends Test3{
 }
 
 class Test5 extends Test4{
+         var e:int;
            var x: int;
         def method(): string{
                 writeln(x);

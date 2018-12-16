@@ -47,7 +47,7 @@ grammar Smoola;
          (varDeclaration{$syn_methodDec.addLocalVar($varDeclaration.syn_varDec);})*
          statements{ArrayList<Statement> allStatements = $statements.syn_stmt.getBody(); for(int i = 0; i < allStatements.size(); i++)
          {$syn_methodDec.addStatement(allStatements.get(i));} }
-         'return' expression ';' {$syn_methodDec.setReturnValue($expression.syn_expr);}'}'
+         'return' expression ';' {$syn_methodDec.setReturnValue($expression.syn_expr); $syn_methodDec.getReturnValue().setLine($expression.syn_expr.getLine());}'}'
     ;
     statements returns [Block syn_stmt]:
         {$syn_stmt = new Block();
