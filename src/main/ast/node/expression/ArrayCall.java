@@ -49,8 +49,7 @@ public class ArrayCall extends Expression {
             if(!indexType.toString().equals(new IntType().toString()) && !indexType.toString().equals(new NoType().toString()) )
                 throw new TypeError("Line:" + this.getLine() +":Index of array call must be an integer");
 
-            Type instanceType = index.typeCheck(symTable);
-            System.out.println("############" + instanceType.toString());
+            Type instanceType = instance.typeCheck(symTable);
             if (!instanceType.toString().equals(new ArrayType().toString()) && !instanceType.toString().equals(new NoType().toString()) )
                 throw new TypeError("Line:" + this.getLine() +":Instance of array call must be an array");
 
