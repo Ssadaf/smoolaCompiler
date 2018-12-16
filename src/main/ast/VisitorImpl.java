@@ -357,7 +357,8 @@ public class VisitorImpl implements Visitor {
         output.add(conditional.toString());
         conditional.getExpression().accept(this);
         conditional.getConsequenceBody().accept(this);
-        conditional.getAlternativeBody().accept(this);
+        if(conditional.getAlternativeBody() != null)
+            conditional.getAlternativeBody().accept(this);
     }
 
     @Override

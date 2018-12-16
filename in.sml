@@ -39,7 +39,7 @@ class Test3 extends Test2{
         if(i)then{
             #b=i.a();
             b=ss+2;
-            }else{}
+            }
         return 1;
     }
 

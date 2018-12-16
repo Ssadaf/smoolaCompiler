@@ -1,4 +1,4 @@
-// Generated from /Users/yasaman/Desktop/smoolaCompiler/Smoola.g4 by ANTLR 4.7
+// Generated from /home/sadaf/Documents/Compiler/smoolaCompiler/Smoola.g4 by ANTLR 4.7
 
     import ast.*;
     import ast.node.*;
@@ -859,7 +859,7 @@ public class SmoolaParser extends Parser {
 			((StatementConditionContext)_localctx).statement = statement();
 			((StatementConditionContext)_localctx).syn_stmt =  new Conditional(((StatementConditionContext)_localctx).expression.syn_expr, ((StatementConditionContext)_localctx).statement.syn_stmt);
 			        _localctx.syn_stmt.setLine(_localctx.start.getLine());
-			setState(225);
+			setState(227);
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,9,_ctx) ) {
 			case 1:
@@ -868,10 +868,10 @@ public class SmoolaParser extends Parser {
 				match(T__15);
 				setState(224);
 				((StatementConditionContext)_localctx).statement = statement();
+				_localctx.syn_stmt.setAlternativeBody(((StatementConditionContext)_localctx).statement.syn_stmt);
 				}
 				break;
 			}
-			_localctx.syn_stmt.setAlternativeBody(((StatementConditionContext)_localctx).statement.syn_stmt);
 			}
 		}
 		catch (RecognitionException re) {
@@ -2639,7 +2639,7 @@ public class SmoolaParser extends Parser {
 		"\f\6\16\6\u00b2\13\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\7\3\7\3\7\3\7\7"+
 		"\7\u00c0\n\7\f\7\16\7\u00c3\13\7\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3"+
 		"\b\3\b\3\b\3\b\3\b\3\b\5\b\u00d4\n\b\3\t\3\t\3\t\3\t\3\t\3\n\3\n\3\n\3"+
-		"\n\3\n\3\n\3\n\3\n\3\n\5\n\u00e4\n\n\3\n\3\n\3\13\3\13\3\13\3\13\3\13"+
+		"\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\5\n\u00e6\n\n\3\13\3\13\3\13\3\13\3\13"+
 		"\3\13\3\13\3\f\3\f\3\f\3\f\3\f\3\f\3\r\3\r\3\r\3\r\3\16\3\16\3\16\3\17"+
 		"\3\17\3\17\3\17\3\17\3\17\3\17\3\17\5\17\u0104\n\17\3\20\3\20\3\20\3\20"+
 		"\3\21\3\21\3\21\3\21\3\21\3\21\3\21\5\21\u0111\n\21\3\22\3\22\3\22\3\22"+
@@ -2704,8 +2704,8 @@ public class SmoolaParser extends Parser {
 		"\2\u00d6\u00d7\5\f\7\2\u00d7\u00d8\7\f\2\2\u00d8\u00d9\b\t\1\2\u00d9\21"+
 		"\3\2\2\2\u00da\u00db\7\20\2\2\u00db\u00dc\7\6\2\2\u00dc\u00dd\5\32\16"+
 		"\2\u00dd\u00de\7\7\2\2\u00de\u00df\7\21\2\2\u00df\u00e0\5\16\b\2\u00e0"+
-		"\u00e3\b\n\1\2\u00e1\u00e2\7\22\2\2\u00e2\u00e4\5\16\b\2\u00e3\u00e1\3"+
-		"\2\2\2\u00e3\u00e4\3\2\2\2\u00e4\u00e5\3\2\2\2\u00e5\u00e6\b\n\1\2\u00e6"+
+		"\u00e5\b\n\1\2\u00e1\u00e2\7\22\2\2\u00e2\u00e3\5\16\b\2\u00e3\u00e4\b"+
+		"\n\1\2\u00e4\u00e6\3\2\2\2\u00e5\u00e1\3\2\2\2\u00e5\u00e6\3\2\2\2\u00e6"+
 		"\23\3\2\2\2\u00e7\u00e8\7\23\2\2\u00e8\u00e9\7\6\2\2\u00e9\u00ea\5\32"+
 		"\16\2\u00ea\u00eb\7\7\2\2\u00eb\u00ec\5\16\b\2\u00ec\u00ed\b\13\1\2\u00ed"+
 		"\25\3\2\2\2\u00ee\u00ef\7\24\2\2\u00ef\u00f0\5\32\16\2\u00f0\u00f1\7\7"+
@@ -2785,7 +2785,7 @@ public class SmoolaParser extends Parser {
 		"\2\u01d9\u01da\7\"\2\2\u01da\u01de\b\"\1\2\u01db\u01dc\7.\2\2\u01dc\u01de"+
 		"\b\"\1\2\u01dd\u01d1\3\2\2\2\u01dd\u01d3\3\2\2\2\u01dd\u01d5\3\2\2\2\u01dd"+
 		"\u01d7\3\2\2\2\u01dd\u01db\3\2\2\2\u01deC\3\2\2\2\37Low\177\u00a0\u00a5"+
-		"\u00b0\u00c1\u00d3\u00e3\u0103\u0110\u011d\u0128\u0130\u013b\u0143\u014e"+
+		"\u00b0\u00c1\u00d3\u00e5\u0103\u0110\u011d\u0128\u0130\u013b\u0143\u014e"+
 		"\u0156\u0161\u0169\u0170\u0178\u0184\u019d\u01a5\u01ab\u01cf\u01dd";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
