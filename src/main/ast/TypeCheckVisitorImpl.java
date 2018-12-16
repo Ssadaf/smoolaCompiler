@@ -143,6 +143,8 @@ public class TypeCheckVisitorImpl implements Visitor{
 
         if( binaryExpression.getRight() == null )
             return;
+
+        binaryExpression.typeCheck(SymbolTable.top);
         binaryExpression.getRight().accept(this);
     }
 

@@ -12,6 +12,7 @@ class Test1 extends h{
         var j: string;
         var classIns : Test2;
         i1 = arr[2+i1];
+        writeln(arr.length);
         writeln(j.length);
         classIns = new SWS();
         j = "hello world!";
