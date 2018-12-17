@@ -55,14 +55,27 @@ public class TypeCheckVisitorImpl implements Visitor{
     }
 
     private boolean isSubType(Type sub, Type supr){
-        System.out.println(((UserDefinedType)sub).getName().getName());
-        System.out.println(((UserDefinedType)supr).getName().getName());
+//        System.out.println(((UserDefinedType)sub).getName().getName());
+//        System.out.println(((UserDefinedType)supr).getName().getName());
+
+        if(sub == null)
+            System.out.println("____________________sub is null");
+        if(supr == null)
+            System.out.println("____________________supr is null");
+
+
         if(sub.toString().equals(new NoType().toString()))
             return true;
-        if(!supr.isUserDefined())
+        else if(!supr.isUserDefined())
             return(sub.toString() == supr.toString());
+        else if(sub.isUserDefined()) {
+            System.out.println(((UserDefinedType)sub).getName());
+            System.out.println(((UserDefinedType) supr).getName());
+            return true;
+//            return checkRelationIsParent(((UserDefinedType) sub).getName().getName(), ((UserDefinedType) supr).getName().getName());
+        }
         else
-            return checkRelationIsParent( ((UserDefinedType)sub).getName().getName(), ((UserDefinedType)supr).getName().getName());
+            return false;
     }
 
     @Override
