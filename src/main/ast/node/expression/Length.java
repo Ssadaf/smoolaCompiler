@@ -38,7 +38,10 @@ public class Length extends Expression {
             Type exprType = expression.typeCheck(symTable);
             if(! exprType.toString().equals(new ArrayType().toString()) && exprType.toString().equals(new NoType()) )
                 throw new TypeError("Line:" + this.getLine() +":Length can only be called on Arrays");
-            return new IntType();
+            if(exprType.toString().equals(new NoType()))
+                return new NoType();
+            else
+                return new IntType();
         }catch (TypeError err){
             System.out.println(err.getMessage());
             return new NoType();

@@ -27,16 +27,17 @@ public class NewArray extends Expression {
     public void accept(Visitor visitor) {
         visitor.visit(this);
     }
-//    @Override
-//    public Type typeCheck(SymbolTable symTable) {
-//        try {
-//            Type exprType = expression.typeCheck(symTable);
-//            if()
-//                throw new TypeError("Line:" + this.getLine() +":variable " + + " is not declared");
-//            return new ArrayType();
-//        }catch (TypeError err){
-//            System.out.println(err.getMessage());
-//            return new NoType();
-//        }
-//    }
+    @Override
+    public Type typeCheck(SymbolTable symTable) {
+        try {
+            Type expressionType = this.getExpression().typeCheck(SymbolTable.top);
+            if(! expressionType.toString().equals(new IntType().toString()) && !expressionType.toString().equals(new NoType().toString()) )
+                throw new TypeError("Line:" + this.getLine() +":New Array expression type must be integer");
+
+            return new ArrayType();
+        }catch (TypeError err){
+            System.out.println(err.getMessage());
+            return new NoType();
+        }
+    }
 }

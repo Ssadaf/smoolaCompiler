@@ -55,24 +55,16 @@ public class TypeCheckVisitorImpl implements Visitor{
     }
 
     private boolean isSubType(Type sub, Type supr){
-//        System.out.println(((UserDefinedType)sub).getName().getName());
-//        System.out.println(((UserDefinedType)supr).getName().getName());
-
-        if(sub == null)
-            System.out.println("____________________sub is null");
-        if(supr == null)
-            System.out.println("____________________supr is null");
-
-
+//        System.out.println("SUB----- " + sub);
+//        System.out.println("SUPER----- " + supr );
+        if(supr.toString().equals(new NoType()) && !sub.toString().equals(new NoType()))
+            return false;
         if(sub.toString().equals(new NoType().toString()))
             return true;
         else if(!supr.isUserDefined())
-            return(sub.toString() == supr.toString());
+            return (sub.toString() == supr.toString());
         else if(sub.isUserDefined()) {
-            System.out.println(((UserDefinedType)sub).getName());
-            System.out.println(((UserDefinedType) supr).getName());
-            return true;
-//            return checkRelationIsParent(((UserDefinedType) sub).getName().getName(), ((UserDefinedType) supr).getName().getName());
+            return checkRelationIsParent(sub.toString(), supr.toString());
         }
         else
             return false;
@@ -147,7 +139,7 @@ public class TypeCheckVisitorImpl implements Visitor{
             System.out.println("Line:" + methodDeclaration.getReturnValue().getLine() + ":" + methodDeclaration.getName().getName() + " return type must be " + methodDeclaration.getReturnType().toString());
         }
 
-        methodDeclaration.getReturnValue().accept(this);
+        //methodDeclaration.getReturnValue().accept(this);
         SymbolTable.pop();
     }
 
@@ -168,8 +160,8 @@ public class TypeCheckVisitorImpl implements Visitor{
 
     @Override
     public void visit(ArrayCall arrayCall) {
-        arrayCall.getInstance().accept(this);
-        arrayCall.getIndex().accept(this);
+        //arrayCall.getInstance().accept(this);
+        //arrayCall.getIndex().accept(this);
         arrayCall.typeCheck(SymbolTable.top);
     }
 
@@ -179,18 +171,16 @@ public class TypeCheckVisitorImpl implements Visitor{
         if( binaryExpression.getRight() == null )
             return;
 
-        binaryExpression.getLeft().accept(this);
+        //binaryExpression.getLeft().accept(this);
 
         binaryExpression.typeCheck(SymbolTable.top);
-        binaryExpression.getRight().accept(this);
+        //binaryExpression.getRight().accept(this);
     }
 
     @Override
     public void visit(Identifier identifier) {
         SymbolTable currSymbolTable = SymbolTable.top;
-        if(!currSymbolTable.hasItem(identifier.getName() )) {
-            System.out.println("Line:" + identifier.getLine() + ":variable " + identifier.getName() + " is not declared");
-        }
+
     }
 
     @Override
@@ -198,7 +188,7 @@ public class TypeCheckVisitorImpl implements Visitor{
         Type expressionType = length.getExpression().typeCheck(SymbolTable.top);
         if(!expressionType.toString().equals(new ArrayType().toString()) && !expressionType.toString().equals(new NoType().toString()) )
             System.out.println("Line:" + length.getLine() + ":length method call is only valid on arrays");
-        length.getExpression().accept(this);
+        //length.getExpression().accept(this);
     }
 
     @Override
@@ -214,16 +204,12 @@ public class TypeCheckVisitorImpl implements Visitor{
 
     @Override
     public void visit(NewArray newArray) {
-        Type expressionType = newArray.getExpression().typeCheck(SymbolTable.top);
-        if(! expressionType.toString().equals(new IntType().toString()) && !expressionType.toString().equals(new NoType().toString()) )
-            System.out.println("Line:" + newArray.getLine() +":New Array expression type must be integer");
-
+        newArray.typeCheck(SymbolTable.top);
     }
 
     @Override
     public void visit(NewClass newClass) {
-        if(!SymbolTable.top.hasItem(newClass.getClassName().getName() + "-classDec"))
-            System.out.println("Line:" + newClass.getLine() + ":class "+newClass.getClassName().getName() + " is not declared");
+        newClass.typeCheck(SymbolTable.top);
     }
 
     @Override
@@ -233,7 +219,7 @@ public class TypeCheckVisitorImpl implements Visitor{
 
     @Override
     public void visit(UnaryExpression unaryExpression) {
-        unaryExpression.getValue().accept(this);
+        //unaryExpression.getValue().accept(this);
         unaryExpression.typeCheck(SymbolTable.top);
     }
 
@@ -256,10 +242,6 @@ public class TypeCheckVisitorImpl implements Visitor{
         if(!isSubType(assign.getrValue().typeCheck(SymbolTable.top), assign.getlValue().typeCheck(SymbolTable.top))){
             System.out.println("Line:" + assign.getLine() + ":" + "unsupported operand type for assign");
         }
-
-        assign.getlValue().accept(this);
-
-        assign.getrValue().accept(this);
     }
 
     @Override
@@ -271,7 +253,7 @@ public class TypeCheckVisitorImpl implements Visitor{
 
     @Override
     public void visit(Conditional conditional) {
-        conditional.getExpression().accept(this);
+        //conditional.getExpression().accept(this);
 
         Type expressionType = conditional.getExpression().typeCheck(SymbolTable.top);
         if(expressionType.isUserDefined() && ((UserDefinedType)expressionType).getClassDeclaration()!=null)
@@ -288,7 +270,7 @@ public class TypeCheckVisitorImpl implements Visitor{
 
     @Override
     public void visit(While loop) {
-        loop.getCondition().accept(this);
+        //loop.getCondition().accept(this);
 
         Type conditionType = loop.getCondition().typeCheck(SymbolTable.top);
         if(! conditionType.toString().equals(new BooleanType().toString()) && !conditionType.toString().equals(new NoType().toString()) )
@@ -299,7 +281,7 @@ public class TypeCheckVisitorImpl implements Visitor{
 
     @Override
     public void visit(Write write) {
-        write.getArg().accept(this);
+        //write.getArg().accept(this);
 
         Type writeArgType = write.getArg().typeCheck(SymbolTable.top);
         if(!writeArgType.toString().equals(new IntType().toString()) && !writeArgType.toString().equals(new StringType().toString()) && !writeArgType.toString().equals(new ArrayType().toString()) && !writeArgType.toString().equals(new NoType().toString()))

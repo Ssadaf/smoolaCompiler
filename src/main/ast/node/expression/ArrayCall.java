@@ -52,8 +52,10 @@ public class ArrayCall extends Expression {
             Type instanceType = instance.typeCheck(symTable);
             if (!instanceType.toString().equals(new ArrayType().toString()) && !instanceType.toString().equals(new NoType().toString()) )
                 throw new TypeError("Line:" + this.getLine() +":Instance of array call must be an array");
-
-            return new IntType();
+            if(indexType.toString().equals(new NoType().toString()) || instanceType.toString().equals(new NoType().toString()) )
+                return new NoType();
+            else
+                return new IntType();
         }catch (TypeError err){
             System.out.println(err.getMessage());
             return new NoType();
