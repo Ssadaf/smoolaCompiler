@@ -9,7 +9,7 @@ class Test1 extends h{
     var i1: Test1;
     var j1: Test5;
     var arr : int[];
-    def method1(): string{
+    def method1(a:int, b:int): string{
         var j: string;
         var classIns : Test2;
         i1 = arr[2+i1];
@@ -19,6 +19,7 @@ class Test1 extends h{
         j = "hello world!";
         i1 = j1;
         j1 = i1;
+        i1 = i1.method1(1, j1);
         return j;
 
     }
