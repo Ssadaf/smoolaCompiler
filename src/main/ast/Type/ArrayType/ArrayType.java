@@ -8,6 +8,8 @@ import symbolTable.SymbolTable;
 
 public class ArrayType extends Type {
     private int size;
+
+
     @Override
     public String toString() {
         return "int[]";

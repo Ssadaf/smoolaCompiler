@@ -192,7 +192,7 @@ grammar Smoola;
 		        $syn_expr.setLine($ctx.start.getLine());}
         |	val = CONST_STR { $syn_expr = new StringValue( $val.text, new StringType() );
                 $syn_expr.setLine($ctx.start.getLine());}
-        |   'new ' 'int' '[' size = CONST_NUM ']' {NewArray newArr = new NewArray(); newArr.setExpression(new IntValue( $size.int, new IntType() ));
+        |   'new ' 'int' '[' size = CONST_NUM ']' {NewArray newArr = new NewArray(); newArr.setSize($size.int); newArr.setExpression(new IntValue( $size.int, new IntType() ));
                 $syn_expr = newArr; $syn_expr.setLine($ctx.start.getLine());}
         |   'new ' className = ID '(' ')' { $syn_expr = new NewClass( new Identifier($className.text) );
                 $syn_expr.setLine($ctx.start.getLine());}

@@ -33,8 +33,12 @@ class Test1 extends h{
 class Test2 extends Test1{
     var i2:string;
     var b:boolean;
+    var w: int[];
+    var y: int[];
     def meth(): string{
-        while(b){
+        w = new int[100];
+        y = new int[10];
+        while(w == y){
             a = !b;
         }
         return 1;

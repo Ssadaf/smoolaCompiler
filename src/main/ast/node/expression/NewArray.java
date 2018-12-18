@@ -11,6 +11,7 @@ import symbolTable.SymbolTable;
 
 public class NewArray extends Expression {
     private Expression expression;
+    private int size;
 
     public Expression getExpression() {
         return expression;
@@ -20,6 +21,13 @@ public class NewArray extends Expression {
         this.expression = expression;
     }
 
+    public int getSize(){
+        return size;
+    }
+
+    public void setSize(int size){
+        this.size = size;
+    }
     @Override
     public String toString() {
         return "NewArray";
@@ -35,7 +43,9 @@ public class NewArray extends Expression {
             if(! expressionType.toString().equals(new IntType().toString()) && !expressionType.toString().equals(new NoType().toString()) )
                 throw new TypeError("Line:" + this.getLine() +":New Array expression type must be integer");
 
-            return new ArrayType();
+            ArrayType retVal =  new ArrayType();
+            retVal.setSize(size);
+            return retVal;
         }catch (TypeError err){
             TypeCheckVisitorImpl.hasTypeError = true;
             System.out.println(err.getMessage());

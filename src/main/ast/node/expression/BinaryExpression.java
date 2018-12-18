@@ -72,9 +72,20 @@ public class BinaryExpression extends Expression {
                 else
                     return new IntType();
             }
-            else if( binaryOperator.equals(BinaryOperator.lt) || binaryOperator.equals(BinaryOperator.gt)
-                || binaryOperator.equals(BinaryOperator.eq) || binaryOperator.equals(BinaryOperator.neq)) {
-
+            else if(binaryOperator.equals(BinaryOperator.eq) || binaryOperator.equals(BinaryOperator.neq)){
+                Type leftType = left.typeCheck(symTable);
+                Type rightType = right.typeCheck(symTable);
+//                System.out.println(((ArrayType)leftType).getSize() + " " + ((ArrayType)rightType).getSize());
+//                System.out.println(left + " " + right);
+                if(!leftType.toString().equals(rightType.toString()) && !rightType.toString().equals((new NoType().toString())) && !leftType.toString().equals((new NoType().toString())))
+                    throw new TypeError("Line:" + this.getLine() + ":unsupported operand type for " + binaryOperator.toString());
+                if(leftType.toString().equals(new ArrayType().toString())){
+                    if(((ArrayType)leftType).getSize() != ((ArrayType)rightType).getSize())
+                        throw new TypeError("Line:" + this.getLine() + ":array operands of " + binaryOperator.toString() + " must have same size");
+                }
+                return new BooleanType();
+            }
+            else if( binaryOperator.equals(BinaryOperator.lt) || binaryOperator.equals(BinaryOperator.gt)) {
                 Type leftType = left.typeCheck(symTable);
                 Type rightType = right.typeCheck(symTable);
                 if( (!leftType.toString().equals(new IntType().toString())) && !leftType.toString().equals(new NoType().toString())
@@ -105,8 +116,7 @@ public class BinaryExpression extends Expression {
                     throw new TypeError("Line:" + this.getLine() + ":" + "unsupported operand type for assign");
                 if(!leftType.toString().equals(new String("ArrayCall")) && !left.toString().split(" ")[0].equals("Identifier") && !leftType.toString().equals(new NoType().toString()))
                     throw new TypeError("Line:" + this.getLine() + ":left side of assignment must be a valid lvalue" );
-
-                if(left.toString().equals((new NoType().toString())) || rightType.toString().equals(new NoType().toString()))
+                if(leftType.toString().equals((new NoType().toString())) || rightType.toString().equals(new NoType().toString()))
                     return new NoType();
                 else
                     return leftType;
