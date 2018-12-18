@@ -6,6 +6,7 @@ import ast.Type.PrimitiveType.BooleanType;
 import ast.Type.PrimitiveType.IntType;
 import ast.Type.PrimitiveType.StringType;
 import ast.Type.Type;
+import ast.Type.TypeError;
 import ast.Type.UserDefinedType.UserDefinedType;
 import ast.node.Program;
 import ast.node.declaration.ClassDeclaration;
@@ -60,6 +61,7 @@ public class TypeCheckVisitorImpl implements Visitor{
 //            if(((UserDefinedType)supr).getClassType().equals(new NoType()) && !sub.toString().equals(new NoType()))
 //                return false;
 //        }
+
         if(sub.toString().equals(new NoType().toString()))
             return true;
         else if(!supr.isUserDefined())

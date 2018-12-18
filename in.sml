@@ -5,7 +5,7 @@ class b {
 }
 
 
-class Test1 extends h{
+class Test1 extends Test5{
     var i1: Test1;
     var j1: Test5;
     var arr : int[];
@@ -60,3 +60,4 @@ class Test5 extends Test4{
                 return j;
         }
 }
+

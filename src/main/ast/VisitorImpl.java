@@ -36,6 +36,7 @@ public class VisitorImpl implements Visitor {
     private HashMap <String, SymbolTable> classSymbolTables = new HashMap<String, SymbolTable>();
     private HashMap <String, SymbolTable> methodSymbolTables = new HashMap<String, SymbolTable>();
     private HashMap <String, ClassDeclaration> classDecs = new HashMap<String, ClassDeclaration>();
+    private int classLine = 0;
 
     private void updateClass(String classToCheck, Map<String, String> relation) {
         String parentOfClassToCheck = relation.get(classToCheck);
@@ -63,11 +64,37 @@ public class VisitorImpl implements Visitor {
         methodSymbolTables.get(methodName).updateSymbolTables(classSymbolTables.get(ClassName));
     }
 
+    private boolean isCyclic(String className){
+        String parentToCheck;
+        String childToCheck = className;
+        HashMap <String, String> relation = duplicateHandler.getRelations();
+        while(true)
+        {
+            if(relation.containsKey(childToCheck)) {
+                parentToCheck = relation.get(childToCheck);
+                if(parentToCheck.equals(className)){
+                    hasError = true;
+                    System.out.println("Line:" + classLine + ":inheritance cycle detected for " + className + " -abort");
+                    return true;
+                }
+                if(parentToCheck.equals("Object"))
+                    return false;
+                childToCheck = parentToCheck;
+            }
+            else
+                return false;
+        }
+    }
+
+
     private Program createCompleteSymbolTable(Program program){
         Map<String, String> relation = duplicateHandler.getRelations();
-        for (String className: relation.keySet()) {
-            updateClass(className, relation);
-        }
+            for (String className: relation.keySet()) {
+                if(!isCyclic(className))
+                    updateClass(className, relation);
+                else
+                    break;
+            }
 //        for (String key: classSymbolTables.keySet()){
 //                System.out.println("****** " + key);
 //                program.getClassSymbolTables().get(key).printAllSymbolTableItems();
@@ -134,6 +161,7 @@ public class VisitorImpl implements Visitor {
     public void visit(ClassDeclaration classDeclaration) {
         output.add(classDeclaration.toString());
         SymbolTableClassItem currClass;
+        classLine = classDeclaration.getLine();
 
         try{
             currClass = new SymbolTableClassItem(classDeclaration.getName().getName());
