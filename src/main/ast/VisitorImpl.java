@@ -111,8 +111,9 @@ public class VisitorImpl implements Visitor {
     }
 
     @Override
-    public void visit(MethodCallInMain methodCallInMain) {
-        //TODO: implement appropriate visit functionality
+    public void visit(InMainMethodCall inMainMethodCall) {
+        output.add(inMainMethodCall.toString());
+
     }
 
     @Override

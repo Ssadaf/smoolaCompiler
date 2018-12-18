@@ -36,12 +36,12 @@ public interface Visitor {
     void visit(BooleanValue value);
     void visit(IntValue value);
     void visit(StringValue value);
+    void visit(InMainMethodCall inMainMethodCall);
 
     //Statements
     void visit(Assign assign);
     void visit(Block block);
     void visit(Conditional conditional);
-    void visit(MethodCallInMain methodCallInMain);
     void visit(While loop);
     void visit(Write write);
 

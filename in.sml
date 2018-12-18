@@ -5,7 +5,8 @@ class b {
 }
 
 
-class Test1 extends Test5{
+class Test1 extends h{
+
     var i1: Test1;
     var j1: Test5;
     var arr : int[];
@@ -20,6 +21,7 @@ class Test1 extends Test5{
         i1 = j1;
         j1 = i1;
         i1 = i1.method1(1, j1);
+        i1 = this.method2(1, 3);
         return j;
 
     }

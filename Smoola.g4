@@ -13,6 +13,7 @@ grammar Smoola;
     import ast.Type.PrimitiveType.*;
     import ast.Type.UserDefinedType.*;
 }
+
     program returns [Program prog]:
         {$prog = new Program();}
          mainClass{$prog.setMainClass($mainClass.syn_classDec);}

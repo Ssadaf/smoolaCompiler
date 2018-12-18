@@ -29,11 +29,12 @@ import java.util.Stack;
 public class TypeCheckVisitorImpl implements Visitor{
     private boolean hasError = false;
     private HashMap<String, ClassDeclaration> classDecs;
-    private UserDefinedType currClassType = new UserDefinedType();
+    public static UserDefinedType currClassType = new UserDefinedType();
     private HashMap<String, SymbolTable> methodSymbolTables;
     public static HashMap<String, SymbolTable> classSymbolTables;
     public static HashMap<String, String> relation = new HashMap<String, String>();
     public static boolean hasTypeError = false;
+    private boolean inMain = false;
 
     public static boolean checkRelationIsParent(String child, String parent)
     {
@@ -77,8 +78,13 @@ public class TypeCheckVisitorImpl implements Visitor{
     }
 
     @Override
-    public void visit(MethodCallInMain methodCallInMain) {
-        //TODO: implement appropriate visit functionality
+    public void visit(InMainMethodCall inMainMethodCall) {
+        if(!inMain) {
+            hasTypeError = true;
+            System.out.println("Line:" + inMainMethodCall.getLine() + ":method call as a statement is not allowed out of main");
+        }
+        else
+            inMainMethodCall.typeCheck(SymbolTable.top);
     }
 
     @Override
@@ -90,7 +96,9 @@ public class TypeCheckVisitorImpl implements Visitor{
 
         ClassDeclaration mainClass = program.getMainClass();
         if(mainClass != null){
+            inMain = true;
             mainClass.accept(this);
+            inMain = false;
         }
         List<ClassDeclaration> classes = program.getClasses();
         if(classes != null)
@@ -226,15 +234,11 @@ public class TypeCheckVisitorImpl implements Visitor{
 
     @Override
     public void visit(MethodCall methodCall) {
-//        methodCall.getInstance().accept(this);
-//
-        //System.out.println("%%%%%%%%");
-//        methodCall.getMethodName().accept(this);
 
         methodCall.typeCheck(SymbolTable.top);
-        ArrayList<Expression> args = methodCall.getArgs();
-        for(int i = 0; i < args.size(); i++)
-            args.get(i).accept(this);
+//        ArrayList<Expression> args = methodCall.getArgs();
+//        for(int i = 0; i < args.size(); i++)
+//            args.get(i).accept(this);
     }
 
     @Override
@@ -249,7 +253,6 @@ public class TypeCheckVisitorImpl implements Visitor{
 
     @Override
     public void visit(This instance) {
-        ////check later
     }
 
     @Override
