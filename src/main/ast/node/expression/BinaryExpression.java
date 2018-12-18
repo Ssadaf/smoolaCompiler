@@ -6,6 +6,7 @@ import ast.Type.PrimitiveType.BooleanType;
 import ast.Type.PrimitiveType.IntType;
 import ast.Type.Type;
 import ast.Type.TypeError;
+import ast.TypeCheckVisitorImpl;
 import ast.Visitor;
 import symbolTable.SymbolTable;
 
@@ -54,6 +55,7 @@ public class BinaryExpression extends Expression {
         visitor.visit(this);
     }
 
+
     @Override
     public Type typeCheck(SymbolTable symTable) {
         try {
@@ -95,10 +97,25 @@ public class BinaryExpression extends Expression {
                 else
                     return new BooleanType();
             }
+            else if( binaryOperator.equals(BinaryOperator.assign)) {
+                Type leftType = left.typeCheck(symTable);
+                Type rightType = right.typeCheck(symTable);
+
+                if(!TypeCheckVisitorImpl.isSubType(rightType, leftType))
+                    throw new TypeError("Line:" + this.getLine() + ":" + "unsupported operand type for assign");
+                if(!leftType.toString().equals(new String("ArrayCall")) && !left.toString().split(" ")[0].equals("Identifier") && !leftType.toString().equals(new NoType().toString()))
+                    throw new TypeError("Line:" + this.getLine() + ":left side of assignment must be a valid lvalue" );
+
+                if(left.toString().equals((new NoType().toString())) || rightType.toString().equals(new NoType().toString()))
+                    return new NoType();
+                else
+                    return leftType;
+            }
             else{
                 return new NoType();
             }
         }catch (TypeError err){
+            TypeCheckVisitorImpl.hasTypeError = true;
             System.out.println(err.getMessage());
             return new NoType();
         }

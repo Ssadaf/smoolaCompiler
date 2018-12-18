@@ -2,6 +2,7 @@ package ast.node.expression;
 
 import ast.Type.ArrayType.ArrayType;
 import ast.Type.PrimitiveType.IntType;
+import ast.TypeCheckVisitorImpl;
 import ast.Visitor;
 import ast.Type.*;
 import symbolTable.SymbolTable;
@@ -57,6 +58,7 @@ public class ArrayCall extends Expression {
             else
                 return new IntType();
         }catch (TypeError err){
+            TypeCheckVisitorImpl.hasTypeError = true;
             System.out.println(err.getMessage());
             return new NoType();
         }

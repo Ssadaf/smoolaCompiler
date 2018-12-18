@@ -5,6 +5,7 @@ import ast.Type.PrimitiveType.BooleanType;
 import ast.Type.PrimitiveType.IntType;
 import ast.Type.Type;
 import ast.Type.TypeError;
+import ast.TypeCheckVisitorImpl;
 import ast.Visitor;
 import symbolTable.SymbolTable;
 
@@ -70,6 +71,7 @@ public class UnaryExpression extends Expression {
                 return new NoType();
             }
         }catch (TypeError err){
+            TypeCheckVisitorImpl.hasTypeError = true;
             System.out.println(err.getMessage());
             return new NoType();
         }

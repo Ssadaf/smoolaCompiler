@@ -3,6 +3,7 @@ package ast.Type.UserDefinedType;
 import ast.Type.Type;
 import ast.node.declaration.ClassDeclaration;
 import ast.node.expression.Identifier;
+import symbolTable.SymbolTable;
 
 public class UserDefinedType extends Type {
     private ClassDeclaration classDeclaration;
@@ -32,9 +33,16 @@ public class UserDefinedType extends Type {
 
     @Override
     public String toString() {
+//        System.out.println(classDeclaration + " ####");
+//        System.out.println(")()()()( " + classDeclaration.getName().getName());
         return classDeclaration.getName().getName();
     }
 
     @Override
     public boolean isUserDefined() {return true;}
+
+    @Override
+    public Type typeCheck(SymbolTable symTable) {
+        return this;
+    }
 }

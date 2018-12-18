@@ -1,6 +1,10 @@
 package ast.Type.ArrayType;
 
+import ast.Type.NoType;
+import ast.Type.PrimitiveType.IntType;
 import ast.Type.Type;
+import ast.Type.TypeError;
+import symbolTable.SymbolTable;
 
 public class ArrayType extends Type {
     private int size;
@@ -19,4 +23,9 @@ public class ArrayType extends Type {
 
     @Override
     public boolean isUserDefined() {return false;}
+
+    @Override
+    public Type typeCheck(SymbolTable symTable) {
+        return this;
+    }
 }

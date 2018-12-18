@@ -3,6 +3,7 @@ package ast.node.expression;
 import ast.Type.NoType;
 import ast.Type.Type;
 import ast.Type.TypeError;
+import ast.TypeCheckVisitorImpl;
 import ast.Visitor;
 import symbolTable.SymbolTable;
 
@@ -38,6 +39,7 @@ public class NewClass extends Expression {
             else
                 return className.getType();
         }catch (TypeError err){
+            TypeCheckVisitorImpl.hasTypeError = true;
             System.out.println(err.getMessage());
             return new NoType();
         }

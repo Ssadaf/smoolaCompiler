@@ -3,6 +3,7 @@ package ast.node.expression;
 import ast.Type.NoType;
 import ast.Type.Type;
 import ast.Type.TypeError;
+import ast.TypeCheckVisitorImpl;
 import ast.Visitor;
 import symbolTable.SymbolTable;
 import symbolTable.SymbolTableVariableItemBase;
@@ -40,6 +41,7 @@ public class Identifier extends Expression {
             return ((SymbolTableVariableItemBase) symTable.getInCurrentScope(name)).getType();
         }
         catch (TypeError err) {
+            TypeCheckVisitorImpl.hasTypeError = true;
             System.out.println(err.getMessage());
             return new NoType();
         }

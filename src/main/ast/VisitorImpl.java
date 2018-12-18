@@ -194,7 +194,7 @@ public class VisitorImpl implements Visitor {
         try{
             if(hasMethodDuplication)
                 throw new ItemAlreadyExistsException();
-            currMethod = new SymbolTableMethodItem(methodDeclaration.getName().getName(), argTypes);
+            currMethod = new SymbolTableMethodItem(methodDeclaration.getName().getName(), argTypes, methodDeclaration.getReturnType());
             SymbolTable.top.put(currMethod);
         }catch (ItemAlreadyExistsException err){
             int num =1;
@@ -203,7 +203,7 @@ public class VisitorImpl implements Visitor {
 
             while(true) {
                 try {
-                    currMethod = new SymbolTableMethodItem(("Temporary-" + methodDeclaration.getName().getName() + num), argTypes);
+                    currMethod = new SymbolTableMethodItem(("Temporary-" + methodDeclaration.getName().getName() + num), argTypes, methodDeclaration.getReturnType());
                     SymbolTable.top.put(currMethod);
                 } catch (ItemAlreadyExistsException secErr) {num++; continue;}
                 break;

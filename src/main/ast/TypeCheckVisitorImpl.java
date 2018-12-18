@@ -18,10 +18,7 @@ import ast.node.expression.Value.IntValue;
 import ast.node.expression.Value.StringValue;
 import ast.node.statement.*;
 //import sun.jvm.hotspot.debugger.cdbg.Sym;
-import symbolTable.ItemAlreadyExistsException;
-import symbolTable.SymbolTable;
-import symbolTable.SymbolTableClassItem;
-import symbolTable.SymbolTableMethodItem;
+import symbolTable.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -32,10 +29,12 @@ public class TypeCheckVisitorImpl implements Visitor{
     private boolean hasError = false;
     private HashMap<String, ClassDeclaration> classDecs;
     private UserDefinedType currClassType = new UserDefinedType();
-    private HashMap<String, SymbolTable> methodSymbolTables, classSymbolTables;
-    private HashMap<String, String> relation = new HashMap<String, String>();
+    private HashMap<String, SymbolTable> methodSymbolTables;
+    public static HashMap<String, SymbolTable> classSymbolTables;
+    public static HashMap<String, String> relation = new HashMap<String, String>();
+    public static boolean hasTypeError = false;
 
-    public boolean checkRelationIsParent(String child, String parent)
+    public static boolean checkRelationIsParent(String child, String parent)
     {
         String parentToCheck;
         String childToCheck = child;
@@ -54,17 +53,22 @@ public class TypeCheckVisitorImpl implements Visitor{
         }
     }
 
-    private boolean isSubType(Type sub, Type supr){
-//        System.out.println("SUB----- " + sub);
-//        System.out.println("SUPER----- " + supr );
-        if(supr.toString().equals(new NoType()) && !sub.toString().equals(new NoType()))
-            return false;
+    public static boolean isSubType(Type sub, Type supr){
+//        System.out.println("SUB----- " + sub.toString());
+//        System.out.println("SUPER----- " + supr.toString() );
+//        if(supr.isUserDefined()) {
+//            if(((UserDefinedType)supr).getClassType().equals(new NoType()) && !sub.toString().equals(new NoType()))
+//                return false;
+//        }
         if(sub.toString().equals(new NoType().toString()))
             return true;
         else if(!supr.isUserDefined())
-            return (sub.toString() == supr.toString());
+            return (sub.toString().equals( supr.toString()) );
         else if(sub.isUserDefined()) {
-            return checkRelationIsParent(sub.toString(), supr.toString());
+            if( checkRelationIsParent(sub.toString(), supr.toString()) || sub.toString().equals(supr.toString()))
+                return true;
+            else
+                return false;
         }
         else
             return false;
@@ -91,6 +95,11 @@ public class TypeCheckVisitorImpl implements Visitor{
         {
             for (int i = 0; i < classes.size(); i++)
                 classes.get(i).accept(this);
+        }
+
+        if(!hasTypeError){
+            for(int i = 0; i < output.size(); i++)
+                System.out.println(output.get(i));
         }
         SymbolTable.pop();
     }
@@ -119,6 +128,23 @@ public class TypeCheckVisitorImpl implements Visitor{
     public void visit(MethodDeclaration methodDeclaration) {
         ArrayList<VarDeclaration> args = methodDeclaration.getArgs();
 
+        if(methodDeclaration.getReturnType().isUserDefined()) {
+            UserDefinedType methRetType = (UserDefinedType) methodDeclaration.getReturnType();
+
+            if(classDecs.containsKey(methRetType.getClassType())) {
+                ((UserDefinedType) methodDeclaration.getReturnType()).setClassDeclaration(classDecs.get(methRetType.getClassType()));
+                try{
+                    ((UserDefinedType)((SymbolTableMethodItem)SymbolTable.top.get(methodDeclaration.toString())).getReturnType()).setClassDeclaration(classDecs.get(methRetType.getClassType()));
+                }catch(ItemNotFoundException notFound){
+
+                }
+            }
+            else {
+                System.out.println("Line:" + methodDeclaration.getLine() + ":class " + methRetType.getClassType() + " is not declared");
+                hasTypeError = true;
+            }
+        }
+
         SymbolTable.push(methodSymbolTables.get(methodDeclaration.getName().getName() + "@" + methodDeclaration.getClassName()));
 
         ArrayList<Type> argTypes = new ArrayList<Type>();
@@ -135,7 +161,9 @@ public class TypeCheckVisitorImpl implements Visitor{
         for(int i = 0; i < body.size(); i++)
             body.get(i).accept(this);
 
-        if(!isSubType(methodDeclaration.getReturnValue().typeCheck(SymbolTable.top), methodDeclaration.getReturnType())){
+        Type retType = methodDeclaration.getReturnValue().typeCheck(SymbolTable.top);
+        if( !isSubType(retType, methodDeclaration.getReturnType())){
+            hasTypeError = true;
             System.out.println("Line:" + methodDeclaration.getReturnValue().getLine() + ":" + methodDeclaration.getName().getName() + " return type must be " + methodDeclaration.getReturnType().toString());
         }
 
@@ -152,8 +180,10 @@ public class TypeCheckVisitorImpl implements Visitor{
 
             if(classDecs.containsKey(varType.getClassType()))
                 varType.setClassDeclaration(classDecs.get(varType.getClassType()));
-            else
-                System.out.println("Line:" + varDeclaration.getLine() + ":class " + varType.getClassType() + " is not declared" );
+            else {
+                hasTypeError = true;
+                System.out.println("Line:" + varDeclaration.getLine() + ":class " + varType.getClassType() + " is not declared");
+            }
         }
         //varDeclaration.getIdentifier().accept(this);
     }
@@ -167,14 +197,13 @@ public class TypeCheckVisitorImpl implements Visitor{
 
     @Override
     public void visit(BinaryExpression binaryExpression) {
+        //if( binaryExpression.getRight() == null )
+         //   binaryExpression.getLeft().accept(this);
 
-        if( binaryExpression.getRight() == null )
-            return;
-
-        //binaryExpression.getLeft().accept(this);
+        binaryExpression.getLeft().accept(this);
 
         binaryExpression.typeCheck(SymbolTable.top);
-        //binaryExpression.getRight().accept(this);
+        binaryExpression.getRight().accept(this);
     }
 
     @Override
@@ -186,17 +215,21 @@ public class TypeCheckVisitorImpl implements Visitor{
     @Override
     public void visit(Length length) {
         Type expressionType = length.getExpression().typeCheck(SymbolTable.top);
-        if(!expressionType.toString().equals(new ArrayType().toString()) && !expressionType.toString().equals(new NoType().toString()) )
+        if(!expressionType.toString().equals(new ArrayType().toString()) && !expressionType.toString().equals(new NoType().toString()) ) {
             System.out.println("Line:" + length.getLine() + ":length method call is only valid on arrays");
+            hasTypeError = true;
+        }
         //length.getExpression().accept(this);
     }
 
     @Override
     public void visit(MethodCall methodCall) {
-        methodCall.getInstance().accept(this);
+//        methodCall.getInstance().accept(this);
+//
+        //System.out.println("%%%%%%%%");
+//        methodCall.getMethodName().accept(this);
 
-        methodCall.getMethodName().accept(this);
-
+        methodCall.typeCheck(SymbolTable.top);
         ArrayList<Expression> args = methodCall.getArgs();
         for(int i = 0; i < args.size(); i++)
             args.get(i).accept(this);
@@ -239,16 +272,30 @@ public class TypeCheckVisitorImpl implements Visitor{
 
     @Override
     public void visit(Assign assign) {
-        if(!isSubType(assign.getrValue().typeCheck(SymbolTable.top), assign.getlValue().typeCheck(SymbolTable.top))){
-            System.out.println("Line:" + assign.getLine() + ":" + "unsupported operand type for assign");
+        //System.out.println("@#@#@#@ " + assign.getrValue() + " " + assign.getrValue());
+        Type rType = assign.getrValue().typeCheck(SymbolTable.top);
+        Type lType = assign.getlValue().typeCheck(SymbolTable.top);
+        //if(assign.getrValue()==null)
+          //  assign.getlValue().accept(this);
+
+        if(!isSubType(rType, lType)){
+            hasTypeError = true;
+            System.out.println("Line:" + assign.getLine() + ":unsupported operand type for assign");
+        }
+        //System.out.println("______________ " + assign.getlValue().toString());
+        if(!assign.getlValue().toString().equals(new String("ArrayCall")) && !assign.getlValue().toString().split(" ")[0].equals("Identifier") && !lType.toString().equals(new NoType().toString())){
+            System.out.println("Line:" + assign.getLine() + ":left side of assignment must be a valid lvalue" );
+            hasTypeError = true;
         }
     }
 
     @Override
     public void visit(Block block) {
         ArrayList<Statement> body = block.getBody();
-        for(int i = 0; i < body.size(); i++)
+        for(int i = 0; i < body.size(); i++) {
             body.get(i).accept(this);
+
+        }
     }
 
     @Override
@@ -257,11 +304,15 @@ public class TypeCheckVisitorImpl implements Visitor{
 
         Type expressionType = conditional.getExpression().typeCheck(SymbolTable.top);
         if(expressionType.isUserDefined() && ((UserDefinedType)expressionType).getClassDeclaration()!=null)
-            if (!expressionType.toString().equals(new BooleanType().toString()))
+            if (!expressionType.toString().equals(new BooleanType().toString())) {
+                hasTypeError = true;
                 System.out.println("Line:" + conditional.getLine() + ":condition type must be boolean");
+            }
 
-        else if (!expressionType.toString().equals(new NoType().toString()))
-            System.out.println("Line:" + conditional.getLine() + ":condition type must be boolean");
+        else if (!expressionType.toString().equals(new NoType().toString())) {
+                System.out.println("Line:" + conditional.getLine() + ":condition type must be boolean");
+                hasTypeError = true;
+            }
 
         conditional.getConsequenceBody().accept(this);
         if(conditional.getAlternativeBody() != null)
@@ -273,8 +324,10 @@ public class TypeCheckVisitorImpl implements Visitor{
         //loop.getCondition().accept(this);
 
         Type conditionType = loop.getCondition().typeCheck(SymbolTable.top);
-        if(! conditionType.toString().equals(new BooleanType().toString()) && !conditionType.toString().equals(new NoType().toString()) )
-            System.out.println("Line:" + loop.getLine() +":condition type must be boolean");
+        if(! conditionType.toString().equals(new BooleanType().toString()) && !conditionType.toString().equals(new NoType().toString()) ) {
+            System.out.println("Line:" + loop.getLine() + ":condition type must be boolean");
+            hasTypeError = true;
+        }
 
         loop.getBody().accept(this);
     }
@@ -284,8 +337,10 @@ public class TypeCheckVisitorImpl implements Visitor{
         //write.getArg().accept(this);
 
         Type writeArgType = write.getArg().typeCheck(SymbolTable.top);
-        if(!writeArgType.toString().equals(new IntType().toString()) && !writeArgType.toString().equals(new StringType().toString()) && !writeArgType.toString().equals(new ArrayType().toString()) && !writeArgType.toString().equals(new NoType().toString()))
+        if(!writeArgType.toString().equals(new IntType().toString()) && !writeArgType.toString().equals(new StringType().toString()) && !writeArgType.toString().equals(new ArrayType().toString()) && !writeArgType.toString().equals(new NoType().toString())) {
             System.out.println("Line:" + write.getLine() +":unsupported type for writeln");
+            hasTypeError = true;
+        }
     }
 
 }

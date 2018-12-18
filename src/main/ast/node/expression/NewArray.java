@@ -5,6 +5,7 @@ import ast.Type.NoType;
 import ast.Type.PrimitiveType.IntType;
 import ast.Type.Type;
 import ast.Type.TypeError;
+import ast.TypeCheckVisitorImpl;
 import ast.Visitor;
 import symbolTable.SymbolTable;
 
@@ -36,6 +37,7 @@ public class NewArray extends Expression {
 
             return new ArrayType();
         }catch (TypeError err){
+            TypeCheckVisitorImpl.hasTypeError = true;
             System.out.println(err.getMessage());
             return new NoType();
         }

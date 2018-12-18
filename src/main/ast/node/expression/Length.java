@@ -5,6 +5,7 @@ import ast.Type.NoType;
 import ast.Type.PrimitiveType.IntType;
 import ast.Type.Type;
 import ast.Type.TypeError;
+import ast.TypeCheckVisitorImpl;
 import ast.Visitor;
 import symbolTable.SymbolTable;
 
@@ -43,6 +44,7 @@ public class Length extends Expression {
             else
                 return new IntType();
         }catch (TypeError err){
+            TypeCheckVisitorImpl.hasTypeError = true;
             System.out.println(err.getMessage());
             return new NoType();
         }

@@ -1,5 +1,7 @@
 package ast.Type;
 
+import symbolTable.SymbolTable;
+
 public class NoType extends Type{
     @Override
     public String toString() {
@@ -8,4 +10,9 @@ public class NoType extends Type{
 
     @Override
     public boolean isUserDefined() {return false;}
+
+    @Override
+    public Type typeCheck(SymbolTable symTable) {
+        return this;
+    }
 }

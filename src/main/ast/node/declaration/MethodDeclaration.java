@@ -3,6 +3,7 @@ package ast.node.declaration;
 import ast.Type.NoType;
 import ast.Type.Type;
 import ast.Type.TypeError;
+import ast.TypeCheckVisitorImpl;
 import ast.Visitor;
 import ast.node.expression.Expression;
 import ast.node.expression.Identifier;
@@ -89,11 +90,13 @@ public class MethodDeclaration extends Declaration {
     @Override
     public Type typeCheck(SymbolTable symTable){
         try{
-            if(returnValue.typeCheck(symTable) != returnType){
+            Type retType = returnValue.typeCheck(symTable);
+            if(!retType.toString().equals(returnType.toString()) && !TypeCheckVisitorImpl.isSubType(retType, returnType)){
                 throw new TypeError("Line:" + this.getLine() + ":" + name.getName() + " return type must be " + returnType.toString());
             }
             return returnType;
         }catch(TypeError err){
+            TypeCheckVisitorImpl.hasTypeError = true;
             System.out.println(err.getMessage());
             return new NoType();
         }
