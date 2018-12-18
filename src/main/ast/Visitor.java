@@ -5,8 +5,6 @@ import ast.node.declaration.*;
 import ast.node.expression.*;
 import ast.node.expression.Value.*;
 import ast.node.statement.*;
-import symbolTable.SymbolTable;
-import ast.node.Program;
 
 import java.util.ArrayList;
 

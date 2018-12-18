@@ -6,12 +6,10 @@ import ast.Type.PrimitiveType.BooleanType;
 import ast.Type.PrimitiveType.IntType;
 import ast.Type.PrimitiveType.StringType;
 import ast.Type.Type;
-import ast.Type.TypeError;
 import ast.Type.UserDefinedType.UserDefinedType;
 import ast.node.Program;
 import ast.node.declaration.ClassDeclaration;
 import ast.node.declaration.MethodDeclaration;
-import ast.node.declaration.ObjectDeclaration;
 import ast.node.declaration.VarDeclaration;
 import ast.node.expression.*;
 import ast.node.expression.Value.BooleanValue;
@@ -24,7 +22,6 @@ import symbolTable.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Stack;
 
 public class TypeCheckVisitorImpl implements Visitor{
     private boolean hasError = false;
@@ -85,6 +82,7 @@ public class TypeCheckVisitorImpl implements Visitor{
         }
         else
             inMainMethodCall.typeCheck(SymbolTable.top);
+        inMainMethodCall.getExpr().accept(this);
     }
 
     @Override
@@ -170,7 +168,6 @@ public class TypeCheckVisitorImpl implements Visitor{
         ArrayList<Statement> body = methodDeclaration.getBody();
         for(int i = 0; i < body.size(); i++)
             body.get(i).accept(this);
-
         Type retType = methodDeclaration.getReturnValue().typeCheck(SymbolTable.top);
         if( !isSubType(retType, methodDeclaration.getReturnType())){
             hasTypeError = true;

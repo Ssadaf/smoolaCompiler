@@ -1,8 +1,6 @@
 package ast;
 
 import ast.Type.PrimitiveType.IntType;
-import ast.Type.UserDefinedType.UserDefinedType;
-import ast.node.Node;
 import ast.node.Program;
 import ast.node.declaration.ClassDeclaration;
 import ast.node.declaration.MethodDeclaration;
@@ -18,7 +16,6 @@ import symbolTable.SymbolTableVariableItemBase;
 import symbolTable.SymbolTableClassItem;
 import symbolTable.SymbolTableMethodItem;
 import symbolTable.ItemAlreadyExistsException;
-import symbolTable.ItemNotFoundException;
 import ast.Type.*;
 
 import java.util.HashMap;

@@ -79,7 +79,7 @@ grammar Smoola;
 
     ;
     statementAssignment returns [Statement syn_stmt]:
-        expressionAssignment ';' {$syn_stmt = ($expressionAssignment.syn_expr.getRight() == null ? new Statement() :(new Assign($expressionAssignment.syn_expr.getLeft(), $expressionAssignment.syn_expr.getRight())));
+        expressionAssignment ';' { $syn_stmt = ($expressionAssignment.syn_expr.getRight() == null ? (new InMainMethodCall($expressionAssignment.syn_expr.getLeft())) :(new Assign($expressionAssignment.syn_expr.getLeft(), $expressionAssignment.syn_expr.getRight())));
         $syn_stmt.setLine($ctx.start.getLine());}
     ;
     expression returns[ Expression syn_expr]:

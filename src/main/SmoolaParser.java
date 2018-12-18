@@ -1,4 +1,4 @@
-// Generated from /Users/yasaman/Desktop/smoolaCompiler/Smoola.g4 by ANTLR 4.7
+// Generated from /home/sadaf/Documents/Compiler/smoolaCompiler/Smoola.g4 by ANTLR 4.7
 
     import ast.*;
     import ast.node.*;
@@ -1019,7 +1019,7 @@ public class SmoolaParser extends Parser {
 			((StatementAssignmentContext)_localctx).expressionAssignment = expressionAssignment();
 			setState(243);
 			match(T__8);
-			((StatementAssignmentContext)_localctx).syn_stmt =  (((StatementAssignmentContext)_localctx).expressionAssignment.syn_expr.getRight() == null ? new Statement() :(new Assign(((StatementAssignmentContext)_localctx).expressionAssignment.syn_expr.getLeft(), ((StatementAssignmentContext)_localctx).expressionAssignment.syn_expr.getRight())));
+			 ((StatementAssignmentContext)_localctx).syn_stmt =  (((StatementAssignmentContext)_localctx).expressionAssignment.syn_expr.getRight() == null ? (new InMainMethodCall(((StatementAssignmentContext)_localctx).expressionAssignment.syn_expr.getLeft())) :(new Assign(((StatementAssignmentContext)_localctx).expressionAssignment.syn_expr.getLeft(), ((StatementAssignmentContext)_localctx).expressionAssignment.syn_expr.getRight())));
 			        _localctx.syn_stmt.setLine(_localctx.start.getLine());
 			}
 		}

@@ -1,5 +1,7 @@
 class b {
     def main() : int {
+        2+3;
+        this.main();
         return arr[i];
     }
 }
@@ -22,8 +24,8 @@ class Test1 extends h{
         j1 = i1;
         i1 = i1.method1(1, j1);
         i1 = this.method2(1, 3);
+        i1.method1(1, 3);
         return j;
-
     }
 }
 
