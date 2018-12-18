@@ -136,6 +136,22 @@ public class TypeCheckVisitorImpl implements Visitor{
     public void visit(MethodDeclaration methodDeclaration) {
         ArrayList<VarDeclaration> args = methodDeclaration.getArgs();
 
+        if(inMain){
+            if(!methodDeclaration.getName().getName().equals("main") ){
+                System.out.println("Line:" + methodDeclaration.getLine() + ": method name in main class must be <main>");
+                hasTypeError = true;
+            }
+//            if(args.size()!=0){
+//                System.out.println("Line:" + methodDeclaration.getLine() + ": main method must not have any argument");
+//                hasTypeError = true;
+//            }
+//            if( ! methodDeclaration.getReturnType().toString().equals(new IntType().toString())){
+//                System.out.println("Line:" + methodDeclaration.getLine() + ": main method return type must be int");
+//                hasTypeError = true;
+//            }
+
+        }
+
         if(methodDeclaration.getReturnType().isUserDefined()) {
             UserDefinedType methRetType = (UserDefinedType) methodDeclaration.getReturnType();
 

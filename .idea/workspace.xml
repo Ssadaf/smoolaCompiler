@@ -7,16 +7,8 @@
   <component name="ChangeListManager">
     <list default="true" id="ae5c788d-9d2e-41cc-8043-ccfbc100ab68" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Smoola.g4" beforeDir="false" afterPath="$PROJECT_DIR$/Smoola.g4" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/in.sml" beforeDir="false" afterPath="$PROJECT_DIR$/in.sml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/SmoolaBaseListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/SmoolaBaseListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/SmoolaLexer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/SmoolaLexer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/SmoolaListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/SmoolaListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/SmoolaParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/SmoolaParser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/ast/TypeCheckVisitorImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/ast/TypeCheckVisitorImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/ast/Visitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/ast/Visitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/ast/VisitorImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/ast/VisitorImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/ast/node/expression/InMainMethodCall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/ast/node/statement/InMainMethodCall.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -106,19 +98,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TypeCheckVisitorImpl.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="TypeCheckVisitorImpl.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/ast/TypeCheckVisitorImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="355">
-              <caret line="169" column="66" selection-start-line="169" selection-start-column="66" selection-end-line="169" selection-end-column="66" />
+            <state relative-caret-position="446">
+              <caret line="150" column="15" selection-start-line="143" selection-start-column="13" selection-end-line="150" selection-end-column="15" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1250#1266#0" expanded="true" />
                 <element signature="e#5831#5837#0" expanded="true" />
-                <element signature="e#9220#9221#0" expanded="true" />
-                <element signature="e#9271#9272#0" expanded="true" />
-                <element signature="e#9329#9330#0" expanded="true" />
-                <element signature="e#9380#9381#0" expanded="true" />
+                <element signature="e#9558#9559#0" expanded="true" />
+                <element signature="e#9609#9610#0" expanded="true" />
+                <element signature="e#9667#9668#0" expanded="true" />
+                <element signature="e#9718#9719#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -159,20 +151,8 @@
       <file leaf-file-name="in.sml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/in.sml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="475">
-              <caret line="25" column="25" selection-start-line="25" selection-start-column="25" selection-end-line="25" selection-end-column="25" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Smoola.g4" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Smoola.g4">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="81" column="34" selection-start-line="81" selection-start-column="34" selection-end-line="81" selection-end-column="34" />
-              <folding>
-                <element signature="e#17#351#1" expanded="true" />
-              </folding>
+            <state relative-caret-position="19">
+              <caret line="1" column="19" selection-start-line="1" selection-start-column="19" selection-end-line="1" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -198,7 +178,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="InMainMethodCall.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Smoola.g4" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Smoola.g4">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="217">
+              <caret line="26" column="25" selection-start-line="26" selection-start-column="17" selection-end-line="26" selection-end-column="25" />
+              <folding>
+                <element signature="e#17#351#1" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="InMainMethodCall.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/ast/node/statement/InMainMethodCall.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="133">
@@ -221,10 +213,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>newc</find>
-      <find>arraycall</find>
-      <find>system</find>
-      <find>unsupported opera</find>
       <find>intValue</find>
       <find>booleanValue</find>
       <find>binary</find>
@@ -248,9 +236,13 @@
       <find>relation is in</find>
       <find>this</find>
       <find>curr</find>
-      <find>This</find>
       <find>System</find>
       <find>null</find>
+      <find>methodde</find>
+      <find>methodDec</find>
+      <find>inMain</find>
+      <find>args</find>
+      <find>This</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -302,12 +294,12 @@
         <option value="$PROJECT_DIR$/src/main/ast/Visitor.java" />
         <option value="$PROJECT_DIR$/src/main/ast/node/expression/This.java" />
         <option value="$PROJECT_DIR$/src/main/ast/node/expression/MethodCall.java" />
-        <option value="$PROJECT_DIR$/in.sml" />
         <option value="$PROJECT_DIR$/src/main/ast/node/expression/InMainMethodCall.java" />
         <option value="$PROJECT_DIR$/src/main/ast/VisitorImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/ast/TypeCheckVisitorImpl.java" />
         <option value="$PROJECT_DIR$/Smoola.g4" />
         <option value="$PROJECT_DIR$/src/main/ast/node/statement/InMainMethodCall.java" />
+        <option value="$PROJECT_DIR$/in.sml" />
+        <option value="$PROJECT_DIR$/src/main/ast/TypeCheckVisitorImpl.java" />
       </list>
     </option>
   </component>
@@ -966,6 +958,33 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/ast/node/statement/InMainMethodCall.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="20" column="46" selection-start-line="20" selection-start-column="46" selection-end-line="20" selection-end-column="46" />
+          <folding>
+            <element signature="e#621#622#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Smoola.g4">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="26" column="25" selection-start-line="26" selection-start-column="17" selection-end-line="26" selection-end-column="25" />
+          <folding>
+            <element signature="e#17#351#1" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/in.sml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="1" column="19" selection-start-line="1" selection-start-column="19" selection-end-line="1" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/ast/VisitorImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="184">
@@ -985,45 +1004,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/in.sml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="25" column="25" selection-start-line="25" selection-start-column="25" selection-end-line="25" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/ast/TypeCheckVisitorImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="355">
-          <caret line="169" column="66" selection-start-line="169" selection-start-column="66" selection-end-line="169" selection-end-column="66" />
+        <state relative-caret-position="446">
+          <caret line="150" column="15" selection-start-line="143" selection-start-column="13" selection-end-line="150" selection-end-column="15" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1250#1266#0" expanded="true" />
             <element signature="e#5831#5837#0" expanded="true" />
-            <element signature="e#9220#9221#0" expanded="true" />
-            <element signature="e#9271#9272#0" expanded="true" />
-            <element signature="e#9329#9330#0" expanded="true" />
-            <element signature="e#9380#9381#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Smoola.g4">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="81" column="34" selection-start-line="81" selection-start-column="34" selection-end-line="81" selection-end-column="34" />
-          <folding>
-            <element signature="e#17#351#1" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/ast/node/statement/InMainMethodCall.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="20" column="46" selection-start-line="20" selection-start-column="46" selection-end-line="20" selection-end-column="46" />
-          <folding>
-            <element signature="e#621#622#0" expanded="true" />
+            <element signature="e#9558#9559#0" expanded="true" />
+            <element signature="e#9609#9610#0" expanded="true" />
+            <element signature="e#9667#9668#0" expanded="true" />
+            <element signature="e#9718#9719#0" expanded="true" />
           </folding>
         </state>
       </provider>
