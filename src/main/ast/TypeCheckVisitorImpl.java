@@ -300,6 +300,9 @@ public class TypeCheckVisitorImpl implements Visitor{
             hasTypeError = true;
             System.out.println("Line:" + assign.getLine() + ":unsupported operand type for assign");
         }
+        if(rType.toString().equals(new ArrayType().toString()) && lType.toString().equals(new ArrayType().toString())){
+            ((ArrayType)lType).setSize( ((ArrayType)rType).getSize() );
+        }
         //System.out.println("______________ " + assign.getlValue().toString());
         if(!assign.getlValue().toString().equals(new String("ArrayCall")) && !assign.getlValue().toString().split(" ")[0].equals("Identifier") && !lType.toString().equals(new NoType().toString())){
             System.out.println("Line:" + assign.getLine() + ":left side of assignment must be a valid lvalue" );
