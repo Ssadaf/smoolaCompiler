@@ -7,10 +7,8 @@
   <component name="ChangeListManager">
     <list default="true" id="ae5c788d-9d2e-41cc-8043-ccfbc100ab68" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Smoola.g4" beforeDir="false" afterPath="$PROJECT_DIR$/Smoola.g4" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/in.sml" beforeDir="false" afterPath="$PROJECT_DIR$/in.sml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/ast/TypeCheckVisitorImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/ast/TypeCheckVisitorImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/ast/node/expression/MethodCall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/ast/node/expression/MethodCall.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/ast/node/expression/NewClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/ast/node/expression/NewClass.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -74,17 +72,21 @@
       <file leaf-file-name="MethodCall.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/ast/node/expression/MethodCall.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="164">
-              <caret line="68" selection-start-line="68" selection-end-line="68" />
+            <state relative-caret-position="266">
+              <caret line="60" column="16" selection-start-line="60" selection-start-column="16" selection-end-line="60" selection-end-column="16" />
+              <folding>
+                <element signature="e#1328#1329#0" expanded="true" />
+                <element signature="e#1363#1364#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NewClass.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="NewClass.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/ast/node/expression/NewClass.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="47" column="51" selection-start-line="47" selection-start-column="51" selection-end-line="47" selection-end-column="51" />
+            <state relative-caret-position="233">
+              <caret line="46" column="18" selection-start-line="46" selection-start-column="18" selection-end-line="46" selection-end-column="18" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#589#590#0" expanded="true" />
@@ -97,8 +99,8 @@
       <file leaf-file-name="UserDefinedType.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/ast/Type/UserDefinedType/UserDefinedType.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="164">
-              <caret line="37" selection-start-line="37" selection-end-line="37" />
+            <state relative-caret-position="288">
+              <caret line="17" column="18" selection-start-line="17" selection-start-column="18" selection-end-line="17" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -106,10 +108,12 @@
       <file leaf-file-name="TypeCheckVisitorImpl.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/ast/TypeCheckVisitorImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="250" lean-forward="true" selection-start-line="250" selection-end-line="250" />
+            <state relative-caret-position="266">
+              <caret line="265" column="42" selection-start-line="265" selection-start-column="42" selection-end-line="265" selection-end-column="42" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#10225#10226#0" expanded="true" />
+                <element signature="e#10276#10277#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -124,11 +128,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="in.sml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="in.sml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/in.sml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
-              <caret line="3" selection-start-line="3" selection-end-line="3" />
+            <state relative-caret-position="48">
+              <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -136,7 +140,7 @@
       <file leaf-file-name="VisitorImpl.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/ast/VisitorImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="294">
+            <state relative-caret-position="150">
               <caret line="259" column="51" selection-start-line="259" selection-start-column="51" selection-end-line="259" selection-end-column="51" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -182,9 +186,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>newcl</find>
-      <find>accept</find>
-      <find>isSubType</find>
       <find>updateClass</find>
       <find>iscycle</find>
       <find>methodc</find>
@@ -210,8 +211,11 @@
       <find>'new '</find>
       <find>setClassDe</find>
       <find>setClassDeclaration</find>
-      <find>newClass</find>
+      <find>methodDeclaration</find>
       <find>methodCall</find>
+      <find>setClassDec</find>
+      <find>methodC</find>
+      <find>newClass</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -266,9 +270,9 @@
         <option value="$PROJECT_DIR$/src/main/ast/node/expression/BinaryExpression.java" />
         <option value="$PROJECT_DIR$/Smoola.g4" />
         <option value="$PROJECT_DIR$/src/main/ast/node/expression/MethodCall.java" />
-        <option value="$PROJECT_DIR$/src/main/ast/node/expression/NewClass.java" />
-        <option value="$PROJECT_DIR$/src/main/ast/TypeCheckVisitorImpl.java" />
         <option value="$PROJECT_DIR$/in.sml" />
+        <option value="$PROJECT_DIR$/src/main/ast/TypeCheckVisitorImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/ast/node/expression/NewClass.java" />
       </list>
     </option>
   </component>
@@ -487,18 +491,18 @@
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.329235" />
       <window_info anchor="bottom" id="Tool Output" order="7" weight="0.32784638" />
-      <window_info anchor="bottom" id="Messages" order="12" weight="0.20164609" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.2013809" />
       <window_info anchor="right" id="Palette&#9;" order="6" />
       <window_info id="Image Layers" order="1" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="7" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.35097814" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.35097814" />
       <window_info anchor="bottom" id="Version Control" order="10" weight="0.329235" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.23868313" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.23820484" />
       <window_info id="Capture Tool" order="4" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="6" sideWeight="0.8317308" visible="true" weight="0.21528165" />
+      <window_info content_ui="combo" id="Project" order="6" sideWeight="0.8317308" weight="0.21528165" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32829374" />
       <window_info anchor="bottom" id="ANTLR Preview" order="11" weight="0.32784638" />
       <window_info id="Structure" order="0" side_tool="true" weight="0.25" />
@@ -516,16 +520,16 @@
       <window_info anchor="right" id="Database" order="8" />
     </layout>
     <layout-to-restore>
-      <window_info id="Designer" order="3" />
+      <window_info id="Designer" order="2" />
       <window_info anchor="right" id="Palette" order="3" />
-      <window_info id="Image Layers" order="2" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.35116598" />
+      <window_info id="Image Layers" order="1" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.35097814" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info id="UI Designer" order="4" />
-      <window_info id="Favorites" order="6" sideWeight="0.16826923" side_tool="true" weight="0.17310444" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.23868313" />
-      <window_info id="Capture Tool" order="5" />
+      <window_info id="UI Designer" order="3" />
+      <window_info id="Favorites" order="5" sideWeight="0.16826923" side_tool="true" weight="0.17310444" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.23820484" />
+      <window_info id="Capture Tool" order="4" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Tool Output" order="7" weight="0.32784638" />
@@ -536,13 +540,13 @@
       <window_info anchor="bottom" id="Version Control" order="10" weight="0.329235" />
       <window_info anchor="right" id="Maven Projects" order="7" />
       <window_info anchor="bottom" id="ANTLR Preview" order="11" weight="0.32784638" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.8317308" visible="true" weight="0.21528165" />
+      <window_info content_ui="combo" id="Project" order="6" sideWeight="0.8317308" visible="true" weight="0.21528165" />
       <window_info anchor="right" id="Database" order="8" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.329235" />
       <window_info anchor="right" id="Palette&#9;" order="6" />
       <window_info anchor="right" id="Theme Preview" order="5" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Structure" order="0" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32829374" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
@@ -872,18 +876,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/ast/VisitorImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="259" column="51" selection-start-line="259" selection-start-column="51" selection-end-line="259" selection-end-column="51" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#13769#13770#0" expanded="true" />
-            <element signature="e#13816#13817#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/ast/Type/NoType.java">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -910,44 +902,62 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/ast/node/expression/MethodCall.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
-          <caret line="68" selection-start-line="68" selection-end-line="68" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/ast/node/expression/NewClass.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="47" column="51" selection-start-line="47" selection-start-column="51" selection-end-line="47" selection-end-column="51" />
+        <state relative-caret-position="266">
+          <caret line="60" column="16" selection-start-line="60" selection-start-column="16" selection-end-line="60" selection-end-column="16" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#589#590#0" expanded="true" />
-            <element signature="e#620#621#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/ast/Type/UserDefinedType/UserDefinedType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
-          <caret line="37" selection-start-line="37" selection-end-line="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/ast/TypeCheckVisitorImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="250" lean-forward="true" selection-start-line="250" selection-end-line="250" />
-          <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#1328#1329#0" expanded="true" />
+            <element signature="e#1363#1364#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/in.sml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
+        <state relative-caret-position="48">
+          <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/ast/VisitorImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="259" column="51" selection-start-line="259" selection-start-column="51" selection-end-line="259" selection-end-column="51" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#13769#13770#0" expanded="true" />
+            <element signature="e#13816#13817#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/ast/TypeCheckVisitorImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="265" column="42" selection-start-line="265" selection-start-column="42" selection-end-line="265" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#10225#10226#0" expanded="true" />
+            <element signature="e#10276#10277#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/ast/Type/UserDefinedType/UserDefinedType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="17" column="18" selection-start-line="17" selection-start-column="18" selection-end-line="17" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/ast/node/expression/NewClass.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="233">
+          <caret line="46" column="18" selection-start-line="46" selection-start-column="18" selection-end-line="46" selection-end-column="18" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#589#590#0" expanded="true" />
+            <element signature="e#620#621#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

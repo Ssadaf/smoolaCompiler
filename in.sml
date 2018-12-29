@@ -1,6 +1,6 @@
 class b {
     def main() : int {
-        new b().main();
+        new b().m();
         2+3;
         return arr[i];
     }
@@ -20,7 +20,7 @@ class Test1 extends h{
         writeln(j.length);
         classIns = new SWS();
         j = "hello world!";
-        i1 = j1;
+        i1 = new Test1();
         j1 = i1;
         i1 = i1.method1(1, j1);
         i1 = this.method2(1, 3);

@@ -44,8 +44,9 @@ public class NewClass extends Expression {
         try {
             if(!symTable.hasItem(this.getClassName().getName() + "-classDec"))
                 throw new TypeError("Line:" + this.getLine() + ":class " + this.getClassName().getName() + " is not declared");
-            else
+            else {
                 return classType.typeCheck(symTable);
+            }
         }catch (TypeError err){
             TypeCheckVisitorImpl.hasTypeError = true;
             System.out.println(err.getMessage());

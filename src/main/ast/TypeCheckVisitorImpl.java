@@ -247,7 +247,9 @@ public class TypeCheckVisitorImpl implements Visitor{
 
     @Override
     public void visit(MethodCall methodCall) {
-        methodCall.getInstance().accept(this);
+        if(methodCall.getInstance().toString().equals(new NewClass(new Identifier("")).toString()))
+            ((NewClass)methodCall.getInstance()).accept(this);
+
 
         methodCall.typeCheck(SymbolTable.top);
 //        ArrayList<Expression> args = methodCall.getArgs();
@@ -262,8 +264,7 @@ public class TypeCheckVisitorImpl implements Visitor{
 
     @Override
     public void visit(NewClass newClass) {
-        System.out.println("New class");
-        newClass.getClassType().setClassDeclaration(classDecs.get(newClass.getClassName()));
+        newClass.getClassType().setClassDeclaration(classDecs.get(newClass.getClassType().getClassType().split(" ")[1]));
         newClass.typeCheck(SymbolTable.top);
     }
 
