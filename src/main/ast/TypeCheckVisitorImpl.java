@@ -293,11 +293,6 @@ public class TypeCheckVisitorImpl implements Visitor{
         Type rType = assign.getrValue().typeCheck(SymbolTable.top);
         Type lType = assign.getlValue().typeCheck(SymbolTable.top);
 
-        if(rType.toString().equals(new MethodCall(null, null ).toString())){
-            System.out.println("hereeeee");
-            assign.getrValue().accept(this);
-        }
-
         //if(assign.getrValue()==null)
           //  assign.getlValue().accept(this);
 
