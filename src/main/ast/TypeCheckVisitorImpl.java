@@ -25,7 +25,7 @@ import java.util.List;
 
 public class TypeCheckVisitorImpl implements Visitor{
     private boolean hasError = false;
-    private HashMap<String, ClassDeclaration> classDecs;
+    public static HashMap<String, ClassDeclaration> classDecs;
     public static UserDefinedType currClassType = new UserDefinedType();
     private HashMap<String, SymbolTable> methodSymbolTables;
     public static HashMap<String, SymbolTable> classSymbolTables;
@@ -247,8 +247,6 @@ public class TypeCheckVisitorImpl implements Visitor{
 
     @Override
     public void visit(MethodCall methodCall) {
-        if(methodCall.getInstance().toString().equals(new NewClass(new Identifier("")).toString()))
-            ((NewClass)methodCall.getInstance()).accept(this);
 
 
         methodCall.typeCheck(SymbolTable.top);
@@ -263,10 +261,7 @@ public class TypeCheckVisitorImpl implements Visitor{
     }
 
     @Override
-    public void visit(NewClass newClass) {
-        newClass.getClassType().setClassDeclaration(classDecs.get(newClass.getClassType().getClassType().split(" ")[1]));
-        newClass.typeCheck(SymbolTable.top);
-    }
+    public void visit(NewClass newClass) { newClass.typeCheck(SymbolTable.top); }
 
     @Override
     public void visit(This instance) {
@@ -297,6 +292,12 @@ public class TypeCheckVisitorImpl implements Visitor{
         //System.out.println("@#@#@#@ " + assign.getrValue() + " " + assign.getrValue());
         Type rType = assign.getrValue().typeCheck(SymbolTable.top);
         Type lType = assign.getlValue().typeCheck(SymbolTable.top);
+
+        if(rType.toString().equals(new MethodCall(null, null ).toString())){
+            System.out.println("hereeeee");
+            assign.getrValue().accept(this);
+        }
+
         //if(assign.getrValue()==null)
           //  assign.getlValue().accept(this);
 
@@ -328,16 +329,16 @@ public class TypeCheckVisitorImpl implements Visitor{
         //conditional.getExpression().accept(this);
 
         Type expressionType = conditional.getExpression().typeCheck(SymbolTable.top);
-        if(expressionType.isUserDefined() && ((UserDefinedType)expressionType).getClassDeclaration()!=null)
+        if(expressionType.isUserDefined() && ((UserDefinedType)expressionType).getClassDeclaration()!=null) {
             if (!expressionType.toString().equals(new BooleanType().toString())) {
                 hasTypeError = true;
                 System.out.println("Line:" + conditional.getLine() + ":condition type must be boolean");
             }
-
-        else if (!expressionType.toString().equals(new NoType().toString())) {
+        }
+        else if (!expressionType.toString().equals(new BooleanType().toString()) && !expressionType.toString().equals(new NoType().toString())) {
                 System.out.println("Line:" + conditional.getLine() + ":condition type must be boolean");
                 hasTypeError = true;
-            }
+        }
 
         conditional.getConsequenceBody().accept(this);
         if(conditional.getAlternativeBody() != null)

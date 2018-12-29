@@ -16,17 +16,18 @@ class Test1 extends h{
         var j: string;
         var classIns : Test2;
         i1 = arr[2+i1];
+        arr[2] = new b().main();
         writeln(arr.length);
         writeln(j.length);
         classIns = new SWS();
         j = "hello world!";
-        i1 = new Test1();
+        #i1 = new Test1();
         j1 = i1;
         i1 = i1.method1(1, j1);
         i1 = this.method2(1, 3);
         i1.method1(1, 3);
         writeln("sadaf");
-        return j;
+        return new Test2().meth();
     }
 }
 
@@ -49,7 +50,7 @@ class Test2 extends Test1{
 class Test3 extends Test2{
     var i : Test19;
     def m():int{
-        if(i)then{
+        if(1)then{
             #b=i.a();
             b=ss+2;
             }
