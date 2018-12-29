@@ -66,6 +66,7 @@ public class MethodCall extends Expression {
                 if(symTable.hasItem( ((UserDefinedType)instanceType).getName()+ "-classDec"))
                     throw new TypeError("Line:" + this.getLine() +":class "+instanceType.toString()+" is not declared");
             try{
+
                 if(instanceType.toString().equals(new NoType().toString()))
                     return new NoType();
                 if(!instanceType.isUserDefined())

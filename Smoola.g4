@@ -195,7 +195,8 @@ grammar Smoola;
         |   'new ' 'int' '[' size = CONST_NUM ']' {NewArray newArr = new NewArray(); newArr.setSize($size.int); newArr.setExpression(new IntValue( $size.int, new IntType() ));
                 $syn_expr = newArr; $syn_expr.setLine($ctx.start.getLine());}
         |   'new ' className = ID '(' ')' { $syn_expr = new NewClass( new Identifier($className.text) );
-                $syn_expr.setLine($ctx.start.getLine());}
+                $syn_expr.setLine($ctx.start.getLine());
+                }
         |   'this' { $syn_expr = new This();
                 $syn_expr.setLine($ctx.start.getLine());}
         |   'true' { $syn_expr = new BooleanValue( true, new BooleanType() );

@@ -1,7 +1,7 @@
 class b {
     def main() : int {
+        new b().main();
         2+3;
-        this.main();
         return arr[i];
     }
 }
