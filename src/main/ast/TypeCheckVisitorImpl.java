@@ -108,6 +108,8 @@ public class TypeCheckVisitorImpl implements Visitor{
         if(!hasTypeError){
             for(int i = 0; i < output.size(); i++)
                 System.out.println(output.get(i));
+            Visitor jasminVisitor = new JasminVisitor();
+            program.accept(jasminVisitor);
         }
         SymbolTable.pop();
     }
