@@ -18,13 +18,34 @@ import symbolTable.SymbolTableMethodItem;
 import symbolTable.ItemAlreadyExistsException;
 import ast.Type.*;
 
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
+import java.io.*;
 import java.util.ArrayList;
 
 
-public class JasminVisitor implements Visitor {
+public class JasminVisitorImpl implements Visitor {
+
+    private String outputPath = "../../../output/";
+
+    @Override
+    public void visit(Program program) {
+
+        ClassDeclaration mainClass = program.getMainClass();
+        if(mainClass != null)
+            mainClass.accept(this);
+
+        List <ClassDeclaration> classes = program.getClasses();
+        if(classes != null)
+        {
+            for (int i = 0; i < classes.size(); i++)
+                classes.get(i).accept(this);
+        }
+    }
 
     @Override
     public void visit(InMainMethodCall inMainMethodCall) {
@@ -32,12 +53,19 @@ public class JasminVisitor implements Visitor {
     }
 
     @Override
-    public void visit(Program program) {
-
-    }
-
-    @Override
     public void visit(ClassDeclaration classDeclaration) {
+
+        try {
+            PrintWriter out = new PrintWriter(outputPath + classDeclaration.getName().getName() + ".j");
+            out.println(".class public " + classDeclaration.getName().getName() );
+            if(classDeclaration.getParentName().getName().equals("Object"))
+                out.println(".super java/lang/Object" + "\n");
+            else
+                out.println(".super " + classDeclaration.getParentName().getName() + "\n");
+        }catch(Exception ex){
+
+        }
+
 
     }
 
