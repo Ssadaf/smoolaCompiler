@@ -278,6 +278,7 @@ public class VisitorImpl implements Visitor {
             }
         }
         hasVariableDuplication = false;
+        varDeclaration.setIndex(variableIndex);
         variableIndex ++;
         varDeclaration.getIdentifier().accept(this);
     }

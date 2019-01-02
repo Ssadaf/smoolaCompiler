@@ -7,6 +7,7 @@ import ast.node.expression.Identifier;
 public class VarDeclaration extends Declaration {
     private Identifier identifier;
     private Type type;
+    private int index;
 
     public VarDeclaration(Identifier identifier, Type type) {
         this.identifier = identifier;
@@ -28,6 +29,10 @@ public class VarDeclaration extends Declaration {
     public void setType(Type type) {
         this.type = type;
     }
+
+    public int getIndex(){return index;}
+
+    public void setIndex(int ind){index = ind;}
 
     @Override
     public String toString() {
