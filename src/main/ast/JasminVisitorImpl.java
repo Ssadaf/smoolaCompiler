@@ -176,14 +176,18 @@ public class JasminVisitorImpl implements Visitor {
 
     @Override
     public void visit(BinaryExpression binaryExpression) {
-        if(binaryExpression.getBinaryOperator().equals(BinaryOperator.add) ||
-           binaryExpression.getBinaryOperator().equals(BinaryOperator.sub) ||
-           binaryExpression.getBinaryOperator().equals(BinaryOperator.mult) ||
-           binaryExpression.getBinaryOperator().equals(BinaryOperator.div)) {
+        if (binaryExpression.getBinaryOperator().equals(BinaryOperator.add) ||
+                binaryExpression.getBinaryOperator().equals(BinaryOperator.sub) ||
+                binaryExpression.getBinaryOperator().equals(BinaryOperator.mult) ||
+                binaryExpression.getBinaryOperator().equals(BinaryOperator.div)) {
             binaryExpression.getRight().accept(this);
         }
         binaryExpression.getLeft().accept(this);
-        if(binaryExpression.getBinaryOperator().equals(BinaryOperator.add))
+        if (binaryExpression.getBinaryOperator().equals(BinaryOperator.gt) ||
+                binaryExpression.getBinaryOperator().equals(BinaryOperator.lt)) {
+            binaryExpression.getRight().accept(this);
+        }
+        if (binaryExpression.getBinaryOperator().equals(BinaryOperator.add))
             out.println("   iadd");
         else if (binaryExpression.getBinaryOperator().equals(BinaryOperator.sub))
             out.println("   isub");
@@ -191,18 +195,56 @@ public class JasminVisitorImpl implements Visitor {
             out.println("   imult");
         else if (binaryExpression.getBinaryOperator().equals(BinaryOperator.div))
             out.println("   idiv");
+        else if (binaryExpression.getBinaryOperator().equals(BinaryOperator.and)) {
+            int zeroLabel = labelCount++;
+            int endLabel = labelCount++;
+            out.println("   ifeq AND_ISZERO_" + zeroLabel);
+            binaryExpression.getRight().accept(this);
+            out.println("   ifeq AND_ISZERO_" + zeroLabel);
+            out.println("   iconst_1");
+            out.println("   goto AND_END_" + endLabel);
+            out.println("AND_ISZERO_" + zeroLabel + ":");
+            out.println("   iconst_0");
+            out.println("AND_END_" + endLabel + ":");
+        } else if (binaryExpression.getBinaryOperator().equals(BinaryOperator.or)) {
+            int oneLabel = labelCount++;
+            int endLabel = labelCount++;
+            out.println("   ifne OR_ISONE_" + oneLabel);
+            binaryExpression.getRight().accept(this);
+            out.println("   ifne OR_ISONE_" + oneLabel);
+            out.println("   iconst_0");
+            out.println("   goto OR_END_" + endLabel);
+            out.println("OR_ISONE_" + oneLabel + ":");
+            out.println("   iconst_1");
+            out.println("OR_END_" + endLabel + ":");
+        }
+        else if (binaryExpression.getBinaryOperator().equals(BinaryOperator.lt)) {
+            out.println("   if_icmpge LT_FALSE_" + labelCount);
+            out.println("   iconst_1");
+            out.println("   goto LT_END_" + (labelCount + 1));
+            out.println("LT_FALSE_" + labelCount + ":");
+            labelCount++;
+            out.println("   iconst_0");
+            out.println("LT_END_" + labelCount + ":");
+            labelCount++;
+        }
+        else if (binaryExpression.getBinaryOperator().equals(BinaryOperator.gt)) {
+            out.println("   if_icmple GT_FALSE_"+labelCount);
+            out.println("   iconst_1");
+            out.println("   goto GT_END_"+(labelCount+1) );
+            out.println("GT_FALSE_"+labelCount+":");
+            labelCount ++;
+            out.println("   iconst_0");
+            out.println("GT_END_"+labelCount+":");
+            labelCount ++;
+        }
 //        TODO
-//        else if (binaryExpression.getBinaryOperator().equals(BinaryOperator.and)) {
-//            out.println("   iand");
+//        else if (binaryExpression.getBinaryOperator().equals(BinaryOperator.eq)) {
+//            //if
+//            out.println("");
 //        }
-//        else if (binaryExpression.getBinaryOperator().equals(BinaryOperator.or)) {
-//        }
-//            out.println("   ior");
-//        else if (binaryExpression.getBinaryOperator().equals(BinaryOperator.eq))
+//        else if (binaryExpression.getBinaryOperator().equals(BinaryOperator.neq))
 //            out.println("   i");
-//        else if (binaryExpression.getBinaryOperator().equals(BinaryOperator.gt))
-//            out.println("   i");
-
     }
 
     @Override
@@ -243,19 +285,23 @@ public class JasminVisitorImpl implements Visitor {
        if(unaryExpression.getUnaryOperator().equals(UnaryOperator.minus))
            out.println("    ineg");
        if(unaryExpression.getUnaryOperator().equals(UnaryOperator.not)) {
-           out.println("    ifne not_notZero");
+           out.println("    ifne NOT_NOTZERO_"+labelCount);
            out.println("    iconst_1");
-           out.println("    goto not_end");
-           out.println("not_notZero"+labelCount+":");
+           out.println("    goto NOT_END_"+(labelCount+1) );
+           out.println("NOT_NOTZERO_"+labelCount+":");
            labelCount ++;
-           out.println("    iconst_0"+labelCount+":");
-           out.println("not_end:");
+           out.println("    iconst_0");
+           out.println("NOT_END_"+labelCount+":");
            labelCount ++;
        }
     }
 
     @Override
     public void visit(BooleanValue value) {
+        if(value.getConstant())
+            out.println("   iconst_" + 1);
+        else
+            out.println("   iconst_" + 0);
 
     }
 

@@ -13,7 +13,7 @@ public class BooleanValue extends Value {
         this.type = type;
     }
 
-    public boolean isConstant() {
+    public boolean getConstant() {
         return constant;
     }
 
