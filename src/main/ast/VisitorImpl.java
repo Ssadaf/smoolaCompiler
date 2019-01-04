@@ -209,6 +209,7 @@ public class VisitorImpl implements Visitor {
 
     @Override
     public void visit(MethodDeclaration methodDeclaration) {
+        variableIndex = 1;
         output.add(methodDeclaration.toString());
 
         SymbolTableMethodItem currMethod;
