@@ -34,6 +34,7 @@ public class JasminVisitorImpl implements Visitor {
     private HashMap<String, SymbolTable> methodSymbolTables;
     public static HashMap<String, SymbolTable> classSymbolTables;
     private boolean inMain = false;
+    private int labelCount = 1;
 
 
     private String outputPath = "output/";
@@ -107,6 +108,12 @@ public class JasminVisitorImpl implements Visitor {
             ArrayList<VarDeclaration> vars = classDeclaration.getVarDeclarations();
             for(int i = 0; i < vars.size(); i++)
                 vars.get(i).accept(this);
+            out.println("; default constructor\n" +
+                    ".method public <init>()V\n" +
+                    "   aload_0\n" +
+                    "   invokespecial java/lang/Object/<init>()V\n" +
+                    "   return\n" +
+                    ".end method\n");
             ArrayList<MethodDeclaration> meths = classDeclaration.getMethodDeclarations();
             for(int i = 0; i < meths.size(); i++)
                 meths.get(i).accept(this);
@@ -239,9 +246,11 @@ public class JasminVisitorImpl implements Visitor {
            out.println("    ifne not_notZero");
            out.println("    iconst_1");
            out.println("    goto not_end");
-           out.println("not_notZero:");
-           out.println("    iconst_0");
+           out.println("not_notZero"+labelCount+":");
+           labelCount ++;
+           out.println("    iconst_0"+labelCount+":");
            out.println("not_end:");
+           labelCount ++;
        }
     }
 
