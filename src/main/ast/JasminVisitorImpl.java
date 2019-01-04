@@ -60,6 +60,8 @@ public class JasminVisitorImpl implements Visitor {
             result += "Ljava/lang/String;";
         else if(varType.toString().equals(new UserDefinedType().toString()))
             result += (((UserDefinedType)varType).getClassType() + ";");
+        else
+            result += "V";
         return result;
     }
 
@@ -140,8 +142,17 @@ public class JasminVisitorImpl implements Visitor {
         for (int i = 0; i < body.size(); i++)
             body.get(i).accept(this);
 
-        out.println(".end method");
+        if(!inMain)
+            methodDeclaration.getReturnValue().accept(this);
 
+        if(retSign.equals("V") || inMain)
+            out.println("   return\n");
+        else if(retSign.equals("I") || retSign.equals("Z"))
+            out.println("   ireturn\n");
+        else
+            out.println("   areturn\n");
+
+        out.println(".end method");
 
         SymbolTable.pop();
     }
@@ -242,11 +253,15 @@ public class JasminVisitorImpl implements Visitor {
 
     @Override
     public void visit(IntValue value) {
-        out.println("iconst_"+value.getConstant());
+        if(value.getConstant() >= 0 && value.getConstant() <= 5)
+            out.println("   iconst_" + value.getConstant());
+        else
+            out.println("   bipush " + value.getConstant());
     }
 
     @Override
     public void visit(StringValue value) {
+        out.println("   ldc " + value.getConstant());
     }
 
     @Override
@@ -271,6 +286,16 @@ public class JasminVisitorImpl implements Visitor {
 
     @Override
     public void visit(Write write) {
-
+        out.println("   getstatic java/lang/System/out Ljava/io/PrintStream;");
+        write.getArg().accept(this);
+        Type argType = write.getArgType();
+        if(argType.toString().equals(new IntType().toString()))
+            out.println("   invokevirtual java/io/PrintStream/println(I)V");
+        else if(argType.toString().equals(new StringType().toString()))
+            out.println("   invokevirtual java/io/PrintStream/println(Ljava/lang/String;)V");
+        else if(argType.toString().equals(new ArrayType().toString())) {
+            out.println("   invokestatic java/util/Arrays/toString([I)Ljava/lang/String;");
+            out.println("   invokevirtual java/io/PrintStream/println(Ljava/lang/String;)V");
+        }
     }
 }
