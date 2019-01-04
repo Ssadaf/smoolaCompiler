@@ -229,6 +229,7 @@ public class TypeCheckVisitorImpl implements Visitor{
 
         binaryExpression.typeCheck(SymbolTable.top);
         binaryExpression.getRight().accept(this);
+
     }
 
     @Override

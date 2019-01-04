@@ -30,10 +30,6 @@ public class VarDeclaration extends Declaration {
         this.type = type;
     }
 
-    public int getIndex(){return index;}
-
-    public void setIndex(int ind){index = ind;}
-
     @Override
     public String toString() {
         return "VarDeclaration";
