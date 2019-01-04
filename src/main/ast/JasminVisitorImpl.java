@@ -176,13 +176,13 @@ public class JasminVisitorImpl implements Visitor {
 
     @Override
     public void visit(BinaryExpression binaryExpression) {
-        binaryExpression.getLeft().accept(this);
         if(binaryExpression.getBinaryOperator().equals(BinaryOperator.add) ||
            binaryExpression.getBinaryOperator().equals(BinaryOperator.sub) ||
            binaryExpression.getBinaryOperator().equals(BinaryOperator.mult) ||
            binaryExpression.getBinaryOperator().equals(BinaryOperator.div)) {
             binaryExpression.getRight().accept(this);
         }
+        binaryExpression.getLeft().accept(this);
         if(binaryExpression.getBinaryOperator().equals(BinaryOperator.add))
             out.println("   iadd");
         else if (binaryExpression.getBinaryOperator().equals(BinaryOperator.sub))
