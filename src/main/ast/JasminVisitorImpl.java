@@ -136,7 +136,6 @@ public class JasminVisitorImpl implements Visitor {
         out.println("   .limit stack 1000" + '\n');
         for (int i = args.size() - 1; i >= 0; i--) {
             out.println("   iload" + (i + 1));
-//            out.println("   istore"+args.get(i).getIndex() );
         }
         ArrayList<Statement> body = methodDeclaration.getBody();
         for (int i = 0; i < body.size(); i++)
@@ -170,11 +169,11 @@ public class JasminVisitorImpl implements Visitor {
 
     @Override
     public void visit(BinaryExpression binaryExpression) {
+        binaryExpression.getLeft().accept(this);
         if(binaryExpression.getBinaryOperator().equals(BinaryOperator.add) ||
            binaryExpression.getBinaryOperator().equals(BinaryOperator.sub) ||
            binaryExpression.getBinaryOperator().equals(BinaryOperator.mult) ||
            binaryExpression.getBinaryOperator().equals(BinaryOperator.div)) {
-            binaryExpression.getLeft().accept(this);
             binaryExpression.getRight().accept(this);
         }
         if(binaryExpression.getBinaryOperator().equals(BinaryOperator.add))
