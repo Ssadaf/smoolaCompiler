@@ -184,7 +184,9 @@ public class JasminVisitorImpl implements Visitor {
         }
         binaryExpression.getLeft().accept(this);
         if (binaryExpression.getBinaryOperator().equals(BinaryOperator.gt) ||
-                binaryExpression.getBinaryOperator().equals(BinaryOperator.lt)) {
+                binaryExpression.getBinaryOperator().equals(BinaryOperator.lt) ||
+                binaryExpression.getBinaryOperator().equals(BinaryOperator.eq) ||
+                binaryExpression.getBinaryOperator().equals(BinaryOperator.neq)) {
             binaryExpression.getRight().accept(this);
         }
         if (binaryExpression.getBinaryOperator().equals(BinaryOperator.add))
@@ -217,8 +219,7 @@ public class JasminVisitorImpl implements Visitor {
             out.println("OR_ISONE_" + oneLabel + ":");
             out.println("   iconst_1");
             out.println("OR_END_" + endLabel + ":");
-        }
-        else if (binaryExpression.getBinaryOperator().equals(BinaryOperator.lt)) {
+        } else if (binaryExpression.getBinaryOperator().equals(BinaryOperator.lt)) {
             out.println("   if_icmpge LT_FALSE_" + labelCount);
             out.println("   iconst_1");
             out.println("   goto LT_END_" + (labelCount + 1));
@@ -227,24 +228,35 @@ public class JasminVisitorImpl implements Visitor {
             out.println("   iconst_0");
             out.println("LT_END_" + labelCount + ":");
             labelCount++;
-        }
-        else if (binaryExpression.getBinaryOperator().equals(BinaryOperator.gt)) {
-            out.println("   if_icmple GT_FALSE_"+labelCount);
+        } else if (binaryExpression.getBinaryOperator().equals(BinaryOperator.gt)) {
+            out.println("   if_icmple GT_FALSE_" + labelCount);
             out.println("   iconst_1");
-            out.println("   goto GT_END_"+(labelCount+1) );
-            out.println("GT_FALSE_"+labelCount+":");
-            labelCount ++;
+            out.println("   goto GT_END_" + (labelCount + 1));
+            out.println("GT_FALSE_" + labelCount + ":");
+            labelCount++;
             out.println("   iconst_0");
-            out.println("GT_END_"+labelCount+":");
-            labelCount ++;
+            out.println("GT_END_" + labelCount + ":");
+            labelCount++;
+        } else if (binaryExpression.getBinaryOperator().equals(BinaryOperator.eq)) {
+            out.println("   if_icmpne EQ_FALSE_" + labelCount);
+            out.println("   iconst_1");
+            out.println("   goto EQ_END_" + (labelCount + 1));
+            out.println("EQ_FALSE_" + labelCount + ":");
+            labelCount++;
+            out.println("   iconst_0");
+            out.println("EQ_END_" + labelCount + ":");
+            labelCount++;
+        } else if (binaryExpression.getBinaryOperator().equals(BinaryOperator.neq)) {
+            out.println("   if_icmpeq NEQ_FALSE_" + labelCount);
+            out.println("   iconst_1");
+            out.println("   goto NEQ_END_" + (labelCount + 1));
+            out.println("NEQ_FALSE_" + labelCount + ":");
+            labelCount++;
+            out.println("   iconst_0");
+            out.println("NEQ_END_" + labelCount + ":");
+            labelCount++;
         }
-//        TODO
-//        else if (binaryExpression.getBinaryOperator().equals(BinaryOperator.eq)) {
-//            //if
-//            out.println("");
-//        }
-//        else if (binaryExpression.getBinaryOperator().equals(BinaryOperator.neq))
-//            out.println("   i");
+        //TODO : assign in BinaryExpression
     }
 
     @Override
@@ -256,7 +268,7 @@ public class JasminVisitorImpl implements Visitor {
 
     @Override
     public void visit(Length length) {
-        length.getExpression().accept();
+        length.getExpression().accept(this);
         out.println("   arraylength");
     }
 
@@ -321,6 +333,29 @@ public class JasminVisitorImpl implements Visitor {
 
     @Override
     public void visit(Assign assign) {
+        Type lValType = assign.getlValue().getType();
+        if(!lValType.toString().equals(new ArrayCall(null, null).toString()))
+            assign.getrValue().accept(this);
+        if(lValType.toString().equals(new Identifier(null).toString())) {
+            try {
+                SymbolTableVariableItemBase item = (SymbolTableVariableItemBase) SymbolTable.top.get(((Identifier) assign.getlValue()).getName());
+                Type rValType = assign.getrValue().getType();
+                if (rValType.toString().equals(new IntValue(0, null).getType()) || rValType.toString().equals(new BooleanValue(false, null).getType()))
+                    out.println("   istore " + item.getIndex());
+                else
+                    out.println("   astore " + item.getIndex());
+            } catch (ItemNotFoundException ex) {}
+        }
+        else if(lValType.toString().equals(new ArrayCall(null, null).toString())){
+            try {
+                SymbolTableVariableItemBase item = (SymbolTableVariableItemBase) SymbolTable.top.get(((Identifier)(((ArrayCall)assign.getlValue()).getInstance())).getName());
+                Type rValType = assign.getrValue().getType();
+                out.println("   aload " + item.getIndex());
+                (((ArrayCall)assign.getlValue()).getIndex()).accept(this);
+                assign.getrValue().accept(this);
+                out.println("   iastore");
+            }catch(ItemNotFoundException ex) {}
+        }
 
     }
 
