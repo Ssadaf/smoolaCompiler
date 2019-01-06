@@ -38,7 +38,9 @@ public class Identifier extends Expression {
             if (!symTable.hasItem(this.getName())) {
                 throw new TypeError("Line:" + this.getLine() + ":variable " + this.getName() + " is not declared");
             }
-            return ((SymbolTableVariableItemBase) symTable.getInCurrentScope(name)).getType();
+            Type retType = ((SymbolTableVariableItemBase) symTable.getInCurrentScope(name)).getType();
+            this.setType(retType);
+            return retType;
         }
         catch (TypeError err) {
             TypeCheckVisitorImpl.hasTypeError = true;

@@ -237,7 +237,7 @@ public class TypeCheckVisitorImpl implements Visitor{
     @Override
     public void visit(Identifier identifier) {
         SymbolTable currSymbolTable = SymbolTable.top;
-        identifier.setType(identifier.typeCheck(currSymbolTable));
+
     }
 
     @Override

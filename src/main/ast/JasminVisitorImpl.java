@@ -148,8 +148,9 @@ public class JasminVisitorImpl implements Visitor {
         for (int i = 0; i < body.size(); i++)
             body.get(i).accept(this);
 
-        if(!inMain)
+        if(!inMain) {
             methodDeclaration.getReturnValue().accept(this);
+        }
 
         if(retSign.equals("V") || inMain)
             out.println("   return\n");
@@ -265,16 +266,17 @@ public class JasminVisitorImpl implements Visitor {
         try {
             SymbolTableVariableItemBase item = (SymbolTableVariableItemBase) SymbolTable.top.get(identifier.getName());
             if(!item.isField()) {
-                if(identifier.getType().toString().equals(new IntValue(0, null).toString()) || identifier.getType().toString().equals(new BooleanValue(false, null).toString()))
+                if(identifier.getType().toString().equals(new IntValue(0, null).toString()) || identifier.getType().toString().equals(new BooleanValue(false, null).toString())) {
                     out.println("   iload " + item.getIndex());
-                else
+                }
+                else {
                     out.println("   aload " + item.getIndex());
+                }
             }
 //            TODO:
 //            else
 //                out.println("   getfield " + );
         }catch(ItemNotFoundException ex){
-
         }
     }
 
