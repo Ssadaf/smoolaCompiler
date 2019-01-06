@@ -218,6 +218,7 @@ public class TypeCheckVisitorImpl implements Visitor{
         //arrayCall.getInstance().accept(this);
         //arrayCall.getIndex().accept(this);
         arrayCall.typeCheck(SymbolTable.top);
+        arrayCall.setType(new IntType());
     }
 
     @Override
@@ -227,7 +228,8 @@ public class TypeCheckVisitorImpl implements Visitor{
 
         binaryExpression.getLeft().accept(this);
 
-        binaryExpression.typeCheck(SymbolTable.top);
+        Type retType = binaryExpression.typeCheck(SymbolTable.top);
+        binaryExpression.setType(retType);
         binaryExpression.getRight().accept(this);
 
     }
@@ -235,7 +237,7 @@ public class TypeCheckVisitorImpl implements Visitor{
     @Override
     public void visit(Identifier identifier) {
         SymbolTable currSymbolTable = SymbolTable.top;
-
+        identifier.setType(identifier.typeCheck(currSymbolTable));
     }
 
     @Override
@@ -245,6 +247,7 @@ public class TypeCheckVisitorImpl implements Visitor{
             System.out.println("Line:" + length.getLine() + ":length method call is only valid on arrays");
             hasTypeError = true;
         }
+        length.setType(new IntType());
         //length.getExpression().accept(this);
     }
 
@@ -252,7 +255,8 @@ public class TypeCheckVisitorImpl implements Visitor{
     public void visit(MethodCall methodCall) {
 
 
-        methodCall.typeCheck(SymbolTable.top);
+        Type retType = methodCall.typeCheck(SymbolTable.top);
+        methodCall.setType(retType);
 //        ArrayList<Expression> args = methodCall.getArgs();
 //        for(int i = 0; i < args.size(); i++)
 //            args.get(i).accept(this);
@@ -260,34 +264,42 @@ public class TypeCheckVisitorImpl implements Visitor{
 
     @Override
     public void visit(NewArray newArray) {
-        newArray.typeCheck(SymbolTable.top);
+
+        Type retType = newArray.typeCheck(SymbolTable.top);
+        newArray.setType(retType);
     }
 
     @Override
-    public void visit(NewClass newClass) { newClass.typeCheck(SymbolTable.top); }
+    public void visit(NewClass newClass) {
+        Type retType = newClass.typeCheck(SymbolTable.top);
+        newClass.setType(retType);
+    }
 
     @Override
     public void visit(This instance) {
+        instance.setType(currClassType);
     }
 
     @Override
     public void visit(UnaryExpression unaryExpression) {
         //unaryExpression.getValue().accept(this);
-        unaryExpression.typeCheck(SymbolTable.top);
+        Type retType = unaryExpression.typeCheck(SymbolTable.top);
+        unaryExpression.setType(retType);
     }
 
     @Override
     public void visit(BooleanValue value) {
-
+        value.setType(new BooleanType());
     }
 
     @Override
     public void visit(IntValue value) {
-
+        value.setType(new IntType());
     }
 
     @Override
     public void visit(StringValue value) {
+        value.setType(new StringType());
     }
 
     @Override

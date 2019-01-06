@@ -5,4 +5,13 @@ class b {
     }
 }
 
+class test {
+     var x : int;
+
+     def testmeth( a : int) : int {
+        a = a * x;
+        return a;
+     }
+}
+
 
