@@ -10,8 +10,8 @@
 
 .method public static main([Ljava/lang/String;)V
 
-   .limit locals 1000
-   .limit stack 1000
+   .limit locals 500
+   .limit stack 100
 
    getstatic java/lang/System/out Ljava/io/PrintStream;
    iconst_4

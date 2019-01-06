@@ -16,6 +16,7 @@ import ast.node.expression.Value.IntValue;
 import ast.node.expression.Value.StringValue;
 import ast.node.statement.*;
 import com.sun.xml.internal.bind.v2.TODO;
+import sun.jvm.hotspot.debugger.cdbg.Sym;
 import symbolTable.*;
 import ast.Type.*;
 
@@ -139,10 +140,10 @@ public class JasminVisitorImpl implements Visitor {
             out.println(".method public static " + methodDeclaration.getName().getName() + "([Ljava/lang/String;)V\n");
         else
             out.println(".method public " + methodDeclaration.getName().getName() + "(" + argTypesSigns + ")" + retSign + "\n");
-        out.println("   .limit locals 1000");
-        out.println("   .limit stack 1000" + '\n');
+        out.println("   .limit locals 500");
+        out.println("   .limit stack 100" + '\n');
         for (int i = args.size() - 1; i >= 0; i--) {
-            out.println("   iload" + (i + 1));
+            out.println("   iload " + (i + 1));
         }
         ArrayList<Statement> body = methodDeclaration.getBody();
         for (int i = 0; i < body.size(); i++)
@@ -261,9 +262,21 @@ public class JasminVisitorImpl implements Visitor {
 
     @Override
     public void visit(Identifier identifier) {
-        int index = findIndexInSymTable(identifier, SymbolTable.top);
-        out.println("   iload_"+index);
 
+        try {
+            SymbolTableVariableItemBase item = (SymbolTableVariableItemBase) SymbolTable.top.get(identifier.getName());
+            if(!item.isField()) {
+                if(identifier.getType().toString().equals(new IntValue(0, null).toString()) || identifier.getType().toString().equals(new BooleanValue(false, null).toString()))
+                    out.println("   iload " + item.getIndex());
+                else
+                    out.println("   aload " + item.getIndex());
+            }
+//            TODO:
+//            else
+//                out.println("   getfield " + );
+        }catch(ItemNotFoundException ex){
+
+        }
     }
 
     @Override
@@ -279,12 +292,19 @@ public class JasminVisitorImpl implements Visitor {
 
     @Override
     public void visit(NewArray newArray) {
-
+        int size = newArray.getSize();
+        if(size <= 5 && size >= 0)
+            out.println("   iconst_" + size);
+        else
+            out.println("   bipush " + size);
+        out.println("   newarray int");
     }
 
     @Override
     public void visit(NewClass newClass) {
-
+        out.println("   new " + newClass.getClassName().getName());
+        out.println("   dup");
+        out.println("   invokespecial " + newClass.getClassName().getName() + "/<init>()V");
     }
 
     @Override
