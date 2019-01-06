@@ -110,12 +110,12 @@ public class JasminVisitorImpl implements Visitor {
             ArrayList<VarDeclaration> vars = classDeclaration.getVarDeclarations();
             for(int i = 0; i < vars.size(); i++)
                 vars.get(i).accept(this);
-            out.println("; default constructor\n" +
-                    ".method public <init>()V\n" +
-                    "   aload_0\n" +
-                    "   invokespecial java/lang/Object/<init>()V\n" +
-                    "   return\n" +
-                    ".end method\n");
+            out.println("; default constructor");
+            out.println(".method public <init>()V");
+            out.println("   aload_0");
+            out.println("   invokespecial java/lang/Object/<init>()V");
+            out.println("   return");
+            out.println(".end method");
             ArrayList<MethodDeclaration> meths = classDeclaration.getMethodDeclarations();
             for(int i = 0; i < meths.size(); i++)
                 meths.get(i).accept(this);
@@ -169,7 +169,7 @@ public class JasminVisitorImpl implements Visitor {
     @Override
     public void visit(VarDeclaration varDeclaration) {
         Type varType = varDeclaration.getType();
-        out.println(".field protected " + varDeclaration.getIdentifier().getName() + getTypeSign(varType));
+        out.println(".field protected " + varDeclaration.getIdentifier().getName() +" "+ getTypeSign(varType));
     }
 
     @Override
@@ -197,7 +197,7 @@ public class JasminVisitorImpl implements Visitor {
         else if (binaryExpression.getBinaryOperator().equals(BinaryOperator.sub))
             out.println("   isub");
         else if (binaryExpression.getBinaryOperator().equals(BinaryOperator.mult))
-            out.println("   imult");
+            out.println("   imul");
         else if (binaryExpression.getBinaryOperator().equals(BinaryOperator.div))
             out.println("   idiv");
         else if (binaryExpression.getBinaryOperator().equals(BinaryOperator.and)) {
