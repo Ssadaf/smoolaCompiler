@@ -9,7 +9,12 @@ class test {
      var x : int[];
      var sth : test;
      def testmeth( a : int) : int {
-       a = 50;
+       if(false) then
+           a = 5;
+       else
+           a = 3;
+       while(a > 0)
+           a = a -1;
        a = (-a) * 3;
        x = new int[10];
        writeln(x.length);

@@ -311,7 +311,7 @@ public class JasminVisitorImpl implements Visitor {
 
     @Override
     public void visit(This instance) {
-
+        out.println("   aload_0");
     }
 
     @Override
@@ -383,17 +383,32 @@ public class JasminVisitorImpl implements Visitor {
 
     @Override
     public void visit(Block block) {
-
+        int size = block.getBody().size();
+        ArrayList<Statement> body= block.getBody();
+        for(int i=0; i<size; i++)
+            body.get(i).accept(this);
     }
 
     @Override
     public void visit(Conditional conditional) {
-
+        conditional.getExpression().accept(this);
+        int elseLabel = labelCount ++;
+        int endLabel = labelCount ++;
+        out.println("   ifeq COND_ELSE_" + elseLabel);
+        conditional.getConsequenceBody().accept(this);
+        out.println("   goto COND_END_" + endLabel);
+        out.println("COND_ELSE_" + elseLabel + ":");
+        conditional.getAlternativeBody().accept(this);
+        out.println("COND_END_" + endLabel + ":");
     }
 
     @Override
     public void visit(While loop) {
-
+        loop.getCondition().accept(this);
+        out.println("   ifeq WHILE_END_" + labelCount);
+        loop.getBody().accept(this);
+        out.println("WHILE_END_" + labelCount+":");
+        labelCount ++;
     }
 
     @Override

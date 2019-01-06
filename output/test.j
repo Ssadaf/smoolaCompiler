@@ -15,7 +15,26 @@
    .limit stack 100
 
    iload 1
-   bipush 50
+   iconst_0
+   ifeq COND_ELSE_1
+   iconst_5
+   goto COND_END_2
+COND_ELSE_1:
+   iconst_3
+COND_END_2:
+   aload 1
+   iconst_0
+   if_icmple GT_FALSE_3
+   iconst_1
+   goto GT_END_4
+GT_FALSE_3:
+   iconst_0
+GT_END_4:
+   ifeq WHILE_END_5
+   iconst_1
+   aload 1
+   isub
+WHILE_END_5:
    iconst_3
    aload 1
     ineg
