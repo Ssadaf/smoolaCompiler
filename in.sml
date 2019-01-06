@@ -6,12 +6,14 @@ class b {
 }
 
 class test {
-     var x : int;
-
+     var x : int[];
+     var sth : test;
      def testmeth( a : int) : int {
-       a = a * x;
+       a = 50;
+       a = (-a) * 3;
+       x = new int[10];
+       writeln(x.length);
+       sth = new test();
        return 1;
      }
 }
-
-

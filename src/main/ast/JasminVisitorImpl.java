@@ -60,7 +60,7 @@ public class JasminVisitorImpl implements Visitor {
             result += "I";
         else if(varType.toString().equals(new StringType().toString()))
             result += "Ljava/lang/String;";
-        else if(varType.toString().equals(new UserDefinedType().toString()))
+        else if(varType.isUserDefined())
             result += (((UserDefinedType)varType).getClassType() + ";");
         else
             result += "V";
