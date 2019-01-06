@@ -15,7 +15,10 @@
    .limit stack 100
 
    iload 1
+   getfield int/
    aload 1
+   imult
+   iconst_1
    ireturn
 
 .end method

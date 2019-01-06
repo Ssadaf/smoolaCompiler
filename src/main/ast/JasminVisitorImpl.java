@@ -32,6 +32,7 @@ import java.util.ArrayList;
 public class JasminVisitorImpl implements Visitor {
     public static HashMap<String, ClassDeclaration> classDecs;
     private HashMap<String, SymbolTable> methodSymbolTables;
+    public static UserDefinedType currClassType = new UserDefinedType();
     public static HashMap<String, SymbolTable> classSymbolTables;
     private boolean inMain = false;
     private int labelCount = 1;
@@ -94,6 +95,7 @@ public class JasminVisitorImpl implements Visitor {
 
     @Override
     public void visit(ClassDeclaration classDeclaration) {
+        currClassType.setClassDeclaration(classDeclaration);
         SymbolTable.push(classSymbolTables.get(classDeclaration.getName().getName()));
 
         try {
@@ -273,9 +275,8 @@ public class JasminVisitorImpl implements Visitor {
                     out.println("   aload " + item.getIndex());
                 }
             }
-//            TODO:
-//            else
-//                out.println("   getfield " + );
+            else
+                out.println("   getfield " + currClassType.getName().getName() + "/" + identifier.getName() + " " + identifier.getType());
         }catch(ItemNotFoundException ex){
         }
     }
