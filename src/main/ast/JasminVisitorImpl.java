@@ -256,7 +256,8 @@ public class JasminVisitorImpl implements Visitor {
 
     @Override
     public void visit(Length length) {
-
+        length.getExpression().accept();
+        out.println("   arraylength");
     }
 
     @Override
