@@ -276,7 +276,7 @@ public class JasminVisitorImpl implements Visitor {
                 }
             }
             else
-                out.println("   getfield " + currClassType.getName().getName() + "/" + identifier.getName() + " " + identifier.getType());
+                out.println("   getfield " + currClassType.getClassType() + "/" + identifier.getName() + " " + identifier.getType().toString());
         }catch(ItemNotFoundException ex){
         }
     }

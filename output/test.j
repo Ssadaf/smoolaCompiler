@@ -15,7 +15,7 @@
    .limit stack 100
 
    iload 1
-   getfield int/
+   getfield null/x int
    aload 1
    imult
    iconst_1
