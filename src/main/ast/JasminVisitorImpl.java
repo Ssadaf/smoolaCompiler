@@ -90,7 +90,6 @@ public class JasminVisitorImpl implements Visitor {
 
     @Override
     public void visit(InMainMethodCall inMainMethodCall) {
-
     }
 
     @Override
@@ -319,7 +318,15 @@ public class JasminVisitorImpl implements Visitor {
         ArrayList<Expression> methArgs= methodCall.getArgs();
         for(int i=0; i<methArgs.size(); ++i)
             methArgs.get(i).accept(this);
-        out.println("   invokevirtual " + methodCall.getInstance().getType().toString() + "/"+methodCall.getMethodName().getName());
+        try {
+            SymbolTableMethodItem item = (SymbolTableMethodItem) SymbolTable.top.get(methodCall.getMethodName().getName() + "-methodDec");
+            String argTypesSigns = "";
+            ArrayList<Type> argTypes = item.getArgTypes();
+            for (int i = 0; i < argTypes.size(); i++) {
+                argTypesSigns += getTypeSign(argTypes.get(i));
+            }
+            out.println("   invokevirtual " + methodCall.getInstance().getType().toString() + "/" + methodCall.getMethodName().getName() + "(" + argTypesSigns + ")" + getTypeSign(item.getReturnType()));
+        }catch (ItemNotFoundException ex){}
     }
 
     @Override

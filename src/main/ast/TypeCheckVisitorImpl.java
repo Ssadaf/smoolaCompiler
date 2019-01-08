@@ -27,7 +27,7 @@ public class TypeCheckVisitorImpl implements Visitor{
     private boolean hasError = false;
     public static HashMap<String, ClassDeclaration> classDecs;
     public static UserDefinedType currClassType = new UserDefinedType();
-    private HashMap<String, SymbolTable> methodSymbolTables;
+    public static HashMap<String, SymbolTable> methodSymbolTables;
     public static HashMap<String, SymbolTable> classSymbolTables;
     public static HashMap<String, String> relation = new HashMap<String, String>();
     public static boolean hasTypeError = false;
