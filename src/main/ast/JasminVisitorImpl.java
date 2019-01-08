@@ -284,7 +284,6 @@ public class JasminVisitorImpl implements Visitor {
                     out.println("   aload " + item.getIndex());
                 }
             }
-            //TODO: currClass -> wrong!
             else
                 out.println("   getfield " + currClassType.getClassType() + "/" + identifier.getName() + " " + getTypeSign(identifier.getType()));
         }catch(ItemNotFoundException ex){
