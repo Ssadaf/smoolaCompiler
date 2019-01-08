@@ -200,7 +200,6 @@ public class TypeCheckVisitorImpl implements Visitor{
     public void visit(VarDeclaration varDeclaration) {
 
         if(varDeclaration.getType().isUserDefined()) {
-
             UserDefinedType varType = (UserDefinedType) varDeclaration.getType();
 
             if(classDecs.containsKey(varType.getClassType()))
@@ -210,6 +209,7 @@ public class TypeCheckVisitorImpl implements Visitor{
                 System.out.println("Line:" + varDeclaration.getLine() + ":class " + varType.getClassType() + " is not declared");
             }
         }
+        varDeclaration.getIdentifier().setType(varDeclaration.getType());
         //varDeclaration.getIdentifier().accept(this);
     }
 

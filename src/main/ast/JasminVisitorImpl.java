@@ -115,7 +115,6 @@ public class JasminVisitorImpl implements Visitor {
             out.println("   invokespecial java/lang/Object/<init>()V\n");
             for(int i = 0; i < vars.size(); i++) {
                 out.println("   aload 0");
-                //System.out.println("HELLLLLLLLL " + vars.get(i).getIdentifier().getType());
                 if(vars.get(i).getIdentifier().getType().toString().equals(new IntValue(0, null).toString()) || vars.get(i).getIdentifier().getType().toString().equals(new BooleanValue(false, null).toString())) {
                     out.println("   iload 0");
                 }
