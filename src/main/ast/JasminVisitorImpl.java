@@ -118,10 +118,10 @@ public class JasminVisitorImpl implements Visitor {
             out.println("   invokespecial java/lang/" + classDeclaration.getParentName().getName() + "/<init>()V\n");
             for(int i = 0; i < vars.size(); i++) {
                 out.println("   aload 0");
-                if(vars.get(i).getIdentifier().getType().toString().equals(new IntValue(0, null).toString()) || vars.get(i).getIdentifier().getType().toString().equals(new BooleanValue(false, null).toString())) {
+                if(vars.get(i).getIdentifier().getType().toString().equals(new IntValue(0, null).getType().toString()) || vars.get(i).getIdentifier().getType().toString().equals(new BooleanValue(false, null).getType().toString())) {
                     out.println("   iconst_0");
                 }
-                else if(vars.get(i).getIdentifier().getType().toString().equals(new StringValue(null, null).toString())){
+                else if(vars.get(i).getIdentifier().getType().toString().equals(new StringValue(null, null).getType().toString())){
                     out.println("   ldc ");
                 }
                 out.println("   putfield " + currClassType.getClassType() + "/" + vars.get(i).getIdentifier().getName() + " " + getTypeSign(vars.get(i).getIdentifier().getType()));
@@ -183,12 +183,12 @@ public class JasminVisitorImpl implements Visitor {
         try{
             SymbolTableVariableItemBase item = (SymbolTableVariableItemBase) SymbolTable.top.get(varDeclaration.getIdentifier().getName());
             if(!item.isField()){
-                if(varDeclaration.getIdentifier().getType().toString().equals(new IntValue(0, null).toString()) || varDeclaration.getIdentifier().getType().toString().equals(new BooleanValue(false, null).toString())) {
+                if(varDeclaration.getIdentifier().getType().toString().equals(new IntValue(0, null).getType().toString()) || varDeclaration.getIdentifier().getType().toString().equals(new BooleanValue(false, null).getType().toString())) {
                     out.println("   iconst_0");
                     out.println("   istore " + item.getIndex());
 
                 }
-                else if(varDeclaration.getIdentifier().getType().toString().equals(new StringValue(null, null).toString())){
+                else if(varDeclaration.getIdentifier().getType().toString().equals(new StringValue(null, null).getType().toString())){
                     out.println("   ldc ");
                     out.println("   astore " + item.getIndex());
                 }
@@ -424,20 +424,20 @@ public class JasminVisitorImpl implements Visitor {
     public void visit(Assign assign) {
         Type lValType = assign.getlValue().getType();
 
-        if(lValType.toString().equals(new Identifier(null).toString())) {
+        if(assign.getlValue().equals(new Identifier(null).toString())) {
             try {
                 assign.getrValue().accept(this);
                 SymbolTableVariableItemBase item = (SymbolTableVariableItemBase) SymbolTable.top.get(((Identifier) assign.getlValue()).getName());
                 Type rValType = assign.getrValue().getType();
                 if(item.isField())
                     out.println("   putfield "+currClassType.getClassType()+"/"+((Identifier) assign.getlValue()).getName()+" "+getTypeSign(lValType));
-                else if (rValType.toString().equals(new IntValue(0, null).getType()) || rValType.toString().equals(new BooleanValue(false, null).getType()))
+                else if (rValType.toString().equals(new IntValue(0, null).getType().toString()) || rValType.toString().equals(new BooleanValue(false, null).getType().toString()))
                     out.println("   istore " + item.getIndex());
                 else
                     out.println("   astore " + item.getIndex());
             } catch (ItemNotFoundException ex) {}
         }
-        else if(lValType.toString().equals(new ArrayCall(null, null).toString())){
+        else if(assign.getlValue().toString().equals(new ArrayCall(null, null).toString())){
             try {
                 SymbolTableVariableItemBase item = (SymbolTableVariableItemBase) SymbolTable.top.get(((Identifier)(((ArrayCall)assign.getlValue()).getInstance())).getName());
                 Type rValType = assign.getrValue().getType();
