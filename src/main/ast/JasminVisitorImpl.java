@@ -90,6 +90,7 @@ public class JasminVisitorImpl implements Visitor {
 
     @Override
     public void visit(InMainMethodCall inMainMethodCall) {
+        (inMainMethodCall.getExpr()).accept(this);
     }
 
     @Override

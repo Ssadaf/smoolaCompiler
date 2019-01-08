@@ -1,6 +1,8 @@
 .class public test
 .super java/lang/Object
 
+.field protected x [I
+.field protected sth test;
 ; default constructor
 .method public <init>()V
    .limit locals 500
@@ -23,10 +25,8 @@
    iload 1
    iconst_0
    ifeq COND_ELSE_1
-   iconst_5
    goto COND_END_2
 COND_ELSE_1:
-   iconst_3
 COND_END_2:
    aload 1
    iconst_0
@@ -37,23 +37,11 @@ GT_FALSE_3:
    iconst_0
 GT_END_4:
    ifeq WHILE_END_5
-   iconst_1
-   aload 1
-   isub
 WHILE_END_5:
-   iconst_3
-   aload 1
-    ineg
-   imul
-   bipush 10
-   newarray int
    getstatic java/lang/System/out Ljava/io/PrintStream;
    getfield test/x [I
    arraylength
    invokevirtual java/io/PrintStream/println(I)V
-   new test
-   dup
-   invokespecial test/<init>()V
    iconst_1
    ireturn
 
