@@ -198,7 +198,9 @@ public class JasminVisitorImpl implements Visitor {
 
     @Override
     public void visit(ArrayCall arrayCall) {
-
+        arrayCall.getInstance().accept(this);
+        arrayCall.getIndex().accept(this);
+        out.println("   iastore");
     }
 
     @Override
@@ -313,7 +315,11 @@ public class JasminVisitorImpl implements Visitor {
 
     @Override
     public void visit(MethodCall methodCall) {
-
+        methodCall.getInstance().accept(this);
+        ArrayList<Expression> methArgs= methodCall.getArgs();
+        for(int i=0; i<methArgs.size(); ++i)
+            methArgs.get(i).accept(this);
+        out.println("   invokevirtual " + methodCall.getInstance().getType().toString() + "/"+methodCall.getMethodName().getName());
     }
 
     @Override
