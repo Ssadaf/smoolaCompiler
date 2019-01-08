@@ -108,15 +108,18 @@ public class JasminVisitorImpl implements Visitor {
             else
                 out.println(".super " + classDeclaration.getParentName().getName() + "\n");
             ArrayList<VarDeclaration> vars = classDeclaration.getVarDeclarations();
-
+            for(int i = 0; i < vars.size(); i++)
+                out.println(".field protected " + vars.get(i).getIdentifier().getName() +" "+ getTypeSign(vars.get(i).getType()));
             out.println("; default constructor");
             out.println(".method public <init>()V");
+            out.println("   .limit locals 500");
+            out.println("   .limit stack 100" + '\n');
             out.println("   aload_0");
-            out.println("   invokespecial java/lang/Object/<init>()V\n");
+            out.println("   invokespecial java/lang/" + classDeclaration.getParentName().getName() + "/<init>()V\n");
             for(int i = 0; i < vars.size(); i++) {
                 out.println("   aload 0");
                 if(vars.get(i).getIdentifier().getType().toString().equals(new IntValue(0, null).toString()) || vars.get(i).getIdentifier().getType().toString().equals(new BooleanValue(false, null).toString())) {
-                    out.println("   iload 0");
+                    out.println("   iconst_0");
                 }
                 else if(vars.get(i).getIdentifier().getType().toString().equals(new StringValue(null, null).toString())){
                     out.println("   ldc ");
@@ -177,8 +180,20 @@ public class JasminVisitorImpl implements Visitor {
 
     @Override
     public void visit(VarDeclaration varDeclaration) {
-        Type varType = varDeclaration.getType();
-        out.println(".field protected " + varDeclaration.getIdentifier().getName() +" "+ getTypeSign(varType));
+        try{
+            SymbolTableVariableItemBase item = (SymbolTableVariableItemBase) SymbolTable.top.get(varDeclaration.getIdentifier().getName());
+            if(!item.isField()){
+                if(varDeclaration.getIdentifier().getType().toString().equals(new IntValue(0, null).toString()) || varDeclaration.getIdentifier().getType().toString().equals(new BooleanValue(false, null).toString())) {
+                    out.println("   iconst_0");
+                    out.println("   istore " + item.getIndex());
+
+                }
+                else if(varDeclaration.getIdentifier().getType().toString().equals(new StringValue(null, null).toString())){
+                    out.println("   ldc ");
+                    out.println("   astore " + item.getIndex());
+                }
+            }
+        }catch(ItemNotFoundException ex){}
     }
 
     @Override
