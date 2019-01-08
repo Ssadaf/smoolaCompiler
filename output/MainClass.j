@@ -27,13 +27,16 @@
    dup
    invokespecial A/<init>()V
    bipush 6
+   invokevirtual A/calculateFactorial(I)I
    invokevirtual java/io/PrintStream/println(I)V
    new B
    dup
    invokespecial B/<init>()V
+   invokevirtual B/binaryExprCheck()I
    new FakeMain
    dup
    invokespecial FakeMain/<init>()V
+   invokevirtual FakeMain/fakeMain()I
    return
 
 .end method
