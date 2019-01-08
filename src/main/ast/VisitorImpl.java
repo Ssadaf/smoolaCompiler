@@ -34,7 +34,7 @@ public class VisitorImpl implements Visitor {
     private HashMap <String, SymbolTable> methodSymbolTables = new HashMap<String, SymbolTable>();
     private HashMap <String, ClassDeclaration> classDecs = new HashMap<String, ClassDeclaration>();
     private int classLine = 0;
-    private boolean processArgs = false;
+    private boolean processField = false;
 
     private void updateClass(String classToCheck, Map<String, String> relation) {
         String parentOfClassToCheck = relation.get(classToCheck);
@@ -186,6 +186,7 @@ public class VisitorImpl implements Visitor {
         if(parent != null && parent.getName() != "Object")
             parent.accept(this);
 
+        processField = true;
         ArrayList<VarDeclaration> vars = classDeclaration.getVarDeclarations();
         duplicateHandler.addRelation(classDeclaration.getName(), classDeclaration.getParentName());
         for(int i = 0; i < vars.size(); i++) {
@@ -194,6 +195,7 @@ public class VisitorImpl implements Visitor {
             hasVariableDuplication = duplicateHandler.checkVariableDuplication(currVarInfo);
             vars.get(i).accept(this);
         }
+        processField = false;
 
         ArrayList<MethodDeclaration> meths = classDeclaration.getMethodDeclarations();
         for(int i = 0; i < meths.size(); i++) {
@@ -242,11 +244,9 @@ public class VisitorImpl implements Visitor {
         SymbolTable currSymbolTable = new SymbolTable(SymbolTable.top);
         SymbolTable.push(currSymbolTable);
 
-        processArgs = true;
         methodDeclaration.getName().accept(this);
         for(int i = 0; i < args.size(); i++)
             args.get(i).accept(this);
-        processArgs = false;
         ArrayList<VarDeclaration> localVars = methodDeclaration.getLocalVars();
         for(int i = 0; i < localVars.size(); i++)
             localVars.get(i).accept(this);
@@ -268,7 +268,7 @@ public class VisitorImpl implements Visitor {
             if(hasVariableDuplication)
                 throw new ItemAlreadyExistsException();
             currVar = new SymbolTableVariableItemBase(varDeclaration.getIdentifier().getName(), varDeclaration.getType(), variableIndex);
-            if(!processArgs)
+            if(processField)
                 currVar.setAsField();
             SymbolTable.top.put(currVar);
         }catch(ItemAlreadyExistsException err){
