@@ -105,12 +105,12 @@ public class TypeCheckVisitorImpl implements Visitor{
                 classes.get(i).accept(this);
         }
 
-        if(!hasTypeError){
+        //if(!hasTypeError){
             for(int i = 0; i < output.size(); i++)
                 System.out.println(output.get(i));
             Visitor jasminVisitor = new JasminVisitorImpl();
             program.accept(jasminVisitor);
-        }
+        //}
         SymbolTable.pop();
     }
 

@@ -193,7 +193,8 @@ public class JasminVisitorImpl implements Visitor {
                     out.println("   astore " + item.getIndex());
                 }
             }
-        }catch(ItemNotFoundException ex){}
+        }catch(ItemNotFoundException ex){
+        }
     }
 
     @Override
