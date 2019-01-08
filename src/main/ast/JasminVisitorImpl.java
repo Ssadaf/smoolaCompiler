@@ -393,10 +393,10 @@ public class JasminVisitorImpl implements Visitor {
     @Override
     public void visit(Assign assign) {
         Type lValType = assign.getlValue().getType();
-        if(!lValType.toString().equals(new ArrayCall(null, null).toString()))
-            assign.getrValue().accept(this);
+
         if(lValType.toString().equals(new Identifier(null).toString())) {
             try {
+                assign.getrValue().accept(this);
                 SymbolTableVariableItemBase item = (SymbolTableVariableItemBase) SymbolTable.top.get(((Identifier) assign.getlValue()).getName());
                 Type rValType = assign.getrValue().getType();
                 if (rValType.toString().equals(new IntValue(0, null).getType()) || rValType.toString().equals(new BooleanValue(false, null).getType()))
