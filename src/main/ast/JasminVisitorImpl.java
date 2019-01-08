@@ -290,19 +290,19 @@ public class JasminVisitorImpl implements Visitor {
         else if(binaryExpression.getBinaryOperator().equals(BinaryOperator.assign)){
             Type lValType = binaryExpression.getLeft().getType();
 
-            if(lValType.toString().equals(new Identifier(null).toString())) {
+            if(binaryExpression.getLeft().toString().equals(new Identifier(null).toString())) {
                 try {
                     binaryExpression.getRight().accept(this);
                     out.println("   dup");
                     SymbolTableVariableItemBase item = (SymbolTableVariableItemBase) SymbolTable.top.get(((Identifier) binaryExpression.getLeft()).getName());
                     Type rValType = binaryExpression.getRight().getType();
-                    if (rValType.toString().equals(new IntValue(0, null).getType()) || rValType.toString().equals(new BooleanValue(false, null).getType()))
+                    if (rValType.toString().equals(new IntValue(0, null).getType().toString()) || rValType.toString().equals(new BooleanValue(false, null).getType().toString()))
                         out.println("   istore " + item.getIndex());
                     else
                         out.println("   astore " + item.getIndex());
                 } catch (ItemNotFoundException ex) {}
             }
-            else if(lValType.toString().equals(new ArrayCall(null, null).toString())){
+            else if(binaryExpression.getLeft().toString().equals(new ArrayCall(null, null).toString())){
                 try {
                     SymbolTableVariableItemBase item = (SymbolTableVariableItemBase) SymbolTable.top.get(((Identifier)(((ArrayCall)binaryExpression.getLeft()).getInstance())).getName());
                     Type rValType = binaryExpression.getRight().getType();
@@ -323,7 +323,7 @@ public class JasminVisitorImpl implements Visitor {
         try {
             SymbolTableVariableItemBase item = (SymbolTableVariableItemBase) SymbolTable.top.get(identifier.getName());
             if(!item.isField()) {
-                if(identifier.getType().toString().equals(new IntValue(0, null).toString()) || identifier.getType().toString().equals(new BooleanValue(false, null).toString())) {
+                if(identifier.getType().toString().equals(new IntValue(0, null).getType().toString()) || identifier.getType().toString().equals(new BooleanValue(false, null).getType().toString())) {
                     out.println("   iload " + item.getIndex());
                 }
                 else {
