@@ -428,8 +428,10 @@ public class JasminVisitorImpl implements Visitor {
                 assign.getrValue().accept(this);
                 SymbolTableVariableItemBase item = (SymbolTableVariableItemBase) SymbolTable.top.get(((Identifier) assign.getlValue()).getName());
                 Type rValType = assign.getrValue().getType();
-                if (rValType.toString().equals(new IntValue(0, null).getType()) || rValType.toString().equals(new BooleanValue(false, null).getType()))
-                    out.println("   istore " + item.getIndex());
+                if (rValType.toString().equals(new IntValue(0, null).getType()) || rValType.toString().equals(new BooleanValue(false, null).getType())) {
+                    if(!item.isField())
+                        out.println("   istore " + item.getIndex());
+                }
                 else
                     out.println("   astore " + item.getIndex());
             } catch (ItemNotFoundException ex) {}

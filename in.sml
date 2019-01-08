@@ -1,24 +1,62 @@
-class b {
-    def main() : int {
-       # writeln(10 + 2 * 3 + 4);
-        return 1;
+class MainClass
+{
+    def main() : int
+    {
+
+        writeln("Hello This is a test");
+        writeln("Factorial of 6 is :");
+        writeln(new A().calculateFactorial(6));
+        new B().binaryExprCheck();
+        new FakeMain().fakeMain();
+        return 0;
     }
 }
+class FakeMain
+{
+    def fakeMain() : int
+    {
+        var arr : int[];
+        arr = new int[10];
+        writeln("Sorted : ");
+        writeln(arr);
+        return 0;
+    }
+}
+class A
+{
+    var fact : int;
+    def calculateFactorial(input : int) : int
+    {
+        var i : int;
+        i = input;
+        fact = 1;
+        while(i <> 0)
+        {
+            fact = fact * i;
+            i = i - 1;
+        }
+        return fact;
+    }
 
-class test {
-     var x : int[];
-     var sth : test;
-     def testmeth( a : int) : int {
-       if(false) then
-           a = 5;
-       else
-           a = 3;
-       while(a > 0)
-           a = a -1;
-       a = (-a) * 3;
-       x = new int[10];
-       writeln(x.length);
-       sth = new test();
-       return 1;
-     }
+}
+class B extends A
+{
+    def binaryExprCheck() : int
+    {
+        var x : int;
+        var y : int;
+        var b : boolean;
+
+        x = fact + 12 * 123 + x / 12;
+        if( (y == fact) && b ) then
+        {
+            writeln("It's ok");
+        }
+        else
+        {
+            writeln("It's not ok");
+        }
+
+        return 0;
+    }
 }
