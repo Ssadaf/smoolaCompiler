@@ -303,7 +303,7 @@ public class JasminVisitorImpl implements Visitor {
             }
             else if(lValType.toString().equals(new ArrayCall(null, null).toString())){
                 try {
-                    SymbolTableVariableItemBase item = (SymbolTableVariableItemBase) SymbolTable.top.get(((Identifier)(((ArrayCall)assign.getlValue()).getInstance())).getName());
+                    SymbolTableVariableItemBase item = (SymbolTableVariableItemBase) SymbolTable.top.get(((Identifier)(((ArrayCall)binaryExpression.getLeft()).getInstance())).getName());
                     Type rValType = binaryExpression.getRight().getType();
                     out.println("   aload " + item.getIndex());
                     (((ArrayCall)binaryExpression.getLeft()).getIndex()).accept(this);
