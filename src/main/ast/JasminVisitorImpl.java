@@ -52,13 +52,13 @@ public class JasminVisitorImpl implements Visitor {
 
     String getTypeSign(Type varType){
         String result = "";
-        if(varType.toString().equals(new ArrayType().toString()))
+        if(varType instanceof ArrayType)
             result = result + "[I";
-        else if(varType.toString().equals(new BooleanType().toString()))
+        else if(varType instanceof BooleanType)
             result += "Z";
-        else if(varType.toString().equals(new IntType().toString()))
+        else if(varType instanceof IntType)
             result += "I";
-        else if(varType.toString().equals(new StringType().toString()))
+        else if(varType instanceof StringType)
             result += "Ljava/lang/String;";
         else if(varType.isUserDefined())
             result += (((UserDefinedType)varType).getClassType() + ";");
@@ -118,10 +118,10 @@ public class JasminVisitorImpl implements Visitor {
             out.println("   invokespecial java/lang/" + classDeclaration.getParentName().getName() + "/<init>()V\n");
             for(int i = 0; i < vars.size(); i++) {
                 out.println("   aload 0");
-                if(vars.get(i).getIdentifier().getType().toString().equals(new IntValue(0, null).getType().toString()) || vars.get(i).getIdentifier().getType().toString().equals(new BooleanValue(false, null).getType().toString())) {
+                if(vars.get(i).getIdentifier().getType() instanceof IntType || vars.get(i).getIdentifier().getType() instanceof BooleanType) {
                     out.println("   iconst_0");
                 }
-                else if(vars.get(i).getIdentifier().getType().toString().equals(new StringValue(null, null).getType().toString())){
+                else if(vars.get(i).getIdentifier().getType() instanceof StringType){
                     out.println("   ldc ");
                 }
                 out.println("   putfield " + currClassType.getClassType() + "/" + vars.get(i).getIdentifier().getName() + " " + getTypeSign(vars.get(i).getIdentifier().getType()));
@@ -183,12 +183,12 @@ public class JasminVisitorImpl implements Visitor {
         try{
             SymbolTableVariableItemBase item = (SymbolTableVariableItemBase) SymbolTable.top.get(varDeclaration.getIdentifier().getName());
             if(!item.isField()){
-                if(varDeclaration.getIdentifier().getType().toString().equals(new IntValue(0, null).getType().toString()) || varDeclaration.getIdentifier().getType().toString().equals(new BooleanValue(false, null).getType().toString())) {
+                if(varDeclaration.getIdentifier().getType() instanceof IntType || varDeclaration.getIdentifier().getType() instanceof BooleanType) {
                     out.println("   iconst_0");
                     out.println("   istore " + item.getIndex());
 
                 }
-                else if(varDeclaration.getIdentifier().getType().toString().equals(new StringValue(null, null).getType().toString())){
+                else if(varDeclaration.getIdentifier().getType() instanceof StringType){
                     out.println("   ldc ");
                     out.println("   astore " + item.getIndex());
                 }
@@ -290,7 +290,7 @@ public class JasminVisitorImpl implements Visitor {
         else if(binaryExpression.getBinaryOperator().equals(BinaryOperator.assign)){
             Type lValType = binaryExpression.getLeft().getType();
 
-            if(binaryExpression.getLeft().toString().equals(new Identifier(null).toString())) {
+            if(binaryExpression.getLeft() instanceof Identifier) {
                 try {
                     binaryExpression.getRight().accept(this);
                     out.println("   dup");
@@ -302,7 +302,7 @@ public class JasminVisitorImpl implements Visitor {
                         out.println("   astore " + item.getIndex());
                 } catch (ItemNotFoundException ex) {}
             }
-            else if(binaryExpression.getLeft().toString().equals(new ArrayCall(null, null).toString())){
+            else if(binaryExpression.getLeft() instanceof ArrayCall){
                 try {
                     SymbolTableVariableItemBase item = (SymbolTableVariableItemBase) SymbolTable.top.get(((Identifier)(((ArrayCall)binaryExpression.getLeft()).getInstance())).getName());
                     Type rValType = binaryExpression.getRight().getType();
@@ -323,7 +323,7 @@ public class JasminVisitorImpl implements Visitor {
         try {
             SymbolTableVariableItemBase item = (SymbolTableVariableItemBase) SymbolTable.top.get(identifier.getName());
             if(!item.isField()) {
-                if(identifier.getType().toString().equals(new IntValue(0, null).getType().toString()) || identifier.getType().toString().equals(new BooleanValue(false, null).getType().toString())) {
+                if(identifier.getType() instanceof IntType || identifier.getType() instanceof BooleanType) {
                     out.println("   iload " + item.getIndex());
                 }
                 else {
@@ -425,20 +425,20 @@ public class JasminVisitorImpl implements Visitor {
     public void visit(Assign assign) {
         Type lValType = assign.getlValue().getType();
 
-        if(assign.getlValue().equals(new Identifier(null).toString())) {
+        if(assign.getlValue() instanceof Identifier) {
             try {
                 assign.getrValue().accept(this);
                 SymbolTableVariableItemBase item = (SymbolTableVariableItemBase) SymbolTable.top.get(((Identifier) assign.getlValue()).getName());
                 Type rValType = assign.getrValue().getType();
                 if(item.isField())
                     out.println("   putfield "+currClassType.getClassType()+"/"+((Identifier) assign.getlValue()).getName()+" "+getTypeSign(lValType));
-                else if (rValType.toString().equals(new IntValue(0, null).getType().toString()) || rValType.toString().equals(new BooleanValue(false, null).getType().toString()))
+                else if ((rValType instanceof IntType) || (rValType instanceof BooleanType))
                     out.println("   istore " + item.getIndex());
                 else
                     out.println("   astore " + item.getIndex());
             } catch (ItemNotFoundException ex) {}
         }
-        else if(assign.getlValue().toString().equals(new ArrayCall(null, null).toString())){
+        else if(assign.getlValue() instanceof ArrayCall){
             try {
                 SymbolTableVariableItemBase item = (SymbolTableVariableItemBase) SymbolTable.top.get(((Identifier)(((ArrayCall)assign.getlValue()).getInstance())).getName());
                 Type rValType = assign.getrValue().getType();
@@ -461,7 +461,10 @@ public class JasminVisitorImpl implements Visitor {
 
     @Override
     public void visit(Conditional conditional) {
+        System.out.println("****");
+        System.out.println("@@@@ " + conditional.getExpression().getType());
         conditional.getExpression().accept(this);
+        System.out.println("%$^$#^#@%@%");
         int elseLabel = labelCount ++;
         int endLabel = labelCount ++;
         out.println("   ifeq COND_ELSE_" + elseLabel);
@@ -486,11 +489,11 @@ public class JasminVisitorImpl implements Visitor {
         out.println("   getstatic java/lang/System/out Ljava/io/PrintStream;");
         write.getArg().accept(this);
         Type argType = write.getArgType();
-        if(argType.toString().equals(new IntType().toString()))
+        if(argType instanceof IntType)
             out.println("   invokevirtual java/io/PrintStream/println(I)V");
-        else if(argType.toString().equals(new StringType().toString()))
+        else if(argType instanceof StringType)
             out.println("   invokevirtual java/io/PrintStream/println(Ljava/lang/String;)V");
-        else if(argType.toString().equals(new ArrayType().toString())) {
+        else if(argType instanceof ArrayType) {
             out.println("   invokestatic java/util/Arrays/toString([I)Ljava/lang/String;");
             out.println("   invokevirtual java/io/PrintStream/println(Ljava/lang/String;)V");
         }
