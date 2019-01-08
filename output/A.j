@@ -21,6 +21,8 @@
    .limit stack 100
 
    iload 1
+   iconst_0
+   istore 2
    iload 1
    istore 2
    iconst_1

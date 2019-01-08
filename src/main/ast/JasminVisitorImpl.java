@@ -158,6 +158,9 @@ public class JasminVisitorImpl implements Visitor {
         for (int i = args.size() - 1; i >= 0; i--) {
             out.println("   iload " + (i + 1));
         }
+        ArrayList<VarDeclaration> vars = methodDeclaration.getLocalVars();
+        for(int i = 0; i<vars.size(); i++)
+            vars.get(i).accept(this);
         ArrayList<Statement> body = methodDeclaration.getBody();
         for (int i = 0; i < body.size(); i++)
             body.get(i).accept(this);
@@ -461,10 +464,8 @@ public class JasminVisitorImpl implements Visitor {
 
     @Override
     public void visit(Conditional conditional) {
-        System.out.println("****");
-        System.out.println("@@@@ " + conditional.getExpression().getType());
+
         conditional.getExpression().accept(this);
-        System.out.println("%$^$#^#@%@%");
         int elseLabel = labelCount ++;
         int endLabel = labelCount ++;
         out.println("   ifeq COND_ELSE_" + elseLabel);
