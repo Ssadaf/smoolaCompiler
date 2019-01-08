@@ -20,6 +20,9 @@
    newarray int
    astore 1
    getstatic java/lang/System/out Ljava/io/PrintStream;
+   ldc "Sorted : "
+   invokevirtual java/io/PrintStream/println(Ljava/lang/String;)V
+   getstatic java/lang/System/out Ljava/io/PrintStream;
    aload 1
    invokestatic java/util/Arrays/toString([I)Ljava/lang/String;
    invokevirtual java/io/PrintStream/println(Ljava/lang/String;)V
