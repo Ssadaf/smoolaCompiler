@@ -18,7 +18,7 @@ public class NewClass extends Expression {
         classType.setClassType(className.toString());
     }
 
-    public UserDefinedType getClassType(){
+    public UserDefinedType getType(){
         return classType;
     }
 

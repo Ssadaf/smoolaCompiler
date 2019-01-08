@@ -75,7 +75,7 @@ public class SymbolTable {
 
 	public void printAllSymbolTableItems(){
 		for (String key: items.keySet()) {
-			System.out.println(key + " " + items.get(key).name);
+			System.out.println(key );
 		}
 	}
 }

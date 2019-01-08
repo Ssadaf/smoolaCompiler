@@ -348,19 +348,27 @@ public class JasminVisitorImpl implements Visitor {
 
     @Override
     public void visit(MethodCall methodCall) {
+        System.out.println("#####################################");
         methodCall.getInstance().accept(this);
         ArrayList<Expression> methArgs= methodCall.getArgs();
         for(int i=0; i<methArgs.size(); ++i)
             methArgs.get(i).accept(this);
         try {
-            SymbolTableMethodItem item = (SymbolTableMethodItem) SymbolTable.top.get(methodCall.getMethodName().getName() + "-methodDec");
+//            SymbolTable.top.printAllSymbolTableItems();
+            System.out.println(methodCall.getInstance().getType().toString());
+            System.out.println();
+//            SymbolTableMethodItem item = (SymbolTableMethodItem) SymbolTable.top.get(methodCall.getMethodName().getName() + "-methodDec");
+            SymbolTableMethodItem item;
+            item = (SymbolTableMethodItem) classSymbolTables.get(methodCall.getInstance().getType().toString()).get(methodCall.getMethodName().getName() + "-methDec");
             String argTypesSigns = "";
             ArrayList<Type> argTypes = item.getArgTypes();
             for (int i = 0; i < argTypes.size(); i++) {
                 argTypesSigns += getTypeSign(argTypes.get(i));
             }
             out.println("   invokevirtual " + methodCall.getInstance().getType().toString() + "/" + methodCall.getMethodName().getName() + "(" + argTypesSigns + ")" + getTypeSign(item.getReturnType()));
-        }catch (ItemNotFoundException ex){}
+        }catch (ItemNotFoundException ex){
+            System.out.println(ex.toString());
+        }
     }
 
     @Override
