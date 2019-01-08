@@ -286,6 +286,34 @@ public class JasminVisitorImpl implements Visitor {
             labelCount++;
         }
         //TODO : assign in BinaryExpression
+        else if(binaryExpression.getBinaryOperator().equals(BinaryOperator.assign)){
+            Type lValType = binaryExpression.getLeft().getType();
+
+            if(lValType.toString().equals(new Identifier(null).toString())) {
+                try {
+                    binaryExpression.getRight().accept(this);
+                    out.println("   dup");
+                    SymbolTableVariableItemBase item = (SymbolTableVariableItemBase) SymbolTable.top.get(((Identifier) binaryExpression.getLeft()).getName());
+                    Type rValType = binaryExpression.getRight().getType();
+                    if (rValType.toString().equals(new IntValue(0, null).getType()) || rValType.toString().equals(new BooleanValue(false, null).getType()))
+                        out.println("   istore " + item.getIndex());
+                    else
+                        out.println("   astore " + item.getIndex());
+                } catch (ItemNotFoundException ex) {}
+            }
+            else if(lValType.toString().equals(new ArrayCall(null, null).toString())){
+                try {
+                    SymbolTableVariableItemBase item = (SymbolTableVariableItemBase) SymbolTable.top.get(((Identifier)(((ArrayCall)assign.getlValue()).getInstance())).getName());
+                    Type rValType = binaryExpression.getRight().getType();
+                    out.println("   aload " + item.getIndex());
+                    (((ArrayCall)binaryExpression.getLeft()).getIndex()).accept(this);
+                    binaryExpression.getRight().accept(this);
+                    out.println("   dup_x2");
+                    out.println("   iastore");
+                }catch(ItemNotFoundException ex) {}
+            }
+        }
+
     }
 
     @Override
