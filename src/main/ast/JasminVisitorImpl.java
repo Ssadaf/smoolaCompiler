@@ -95,7 +95,7 @@ public class JasminVisitorImpl implements Visitor {
 
     @Override
     public void visit(ClassDeclaration classDeclaration) {
-        currClassType.setClassDeclaration(classDeclaration);
+        currClassType.setClassType(classDeclaration.getName().getName());
         SymbolTable.push(classSymbolTables.get(classDeclaration.getName().getName()));
 
         try {
@@ -108,12 +108,22 @@ public class JasminVisitorImpl implements Visitor {
             else
                 out.println(".super " + classDeclaration.getParentName().getName() + "\n");
             ArrayList<VarDeclaration> vars = classDeclaration.getVarDeclarations();
-            for(int i = 0; i < vars.size(); i++)
-                vars.get(i).accept(this);
+
             out.println("; default constructor");
             out.println(".method public <init>()V");
             out.println("   aload_0");
-            out.println("   invokespecial java/lang/Object/<init>()V");
+            out.println("   invokespecial java/lang/Object/<init>()V\n");
+            for(int i = 0; i < vars.size(); i++) {
+                out.println("   aload 0");
+                //System.out.println("HELLLLLLLLL " + vars.get(i).getIdentifier().getType());
+                if(vars.get(i).getIdentifier().getType().toString().equals(new IntValue(0, null).toString()) || vars.get(i).getIdentifier().getType().toString().equals(new BooleanValue(false, null).toString())) {
+                    out.println("   iload 0");
+                }
+                else if(vars.get(i).getIdentifier().getType().toString().equals(new StringValue(null, null).toString())){
+                    out.println("   ldc ");
+                }
+                out.println("   putfield " + currClassType.getClassType() + "/" + vars.get(i).getIdentifier().getName() + " " + getTypeSign(vars.get(i).getIdentifier().getType()));
+            }
             out.println("   return");
             out.println(".end method");
             ArrayList<MethodDeclaration> meths = classDeclaration.getMethodDeclarations();
@@ -275,8 +285,9 @@ public class JasminVisitorImpl implements Visitor {
                     out.println("   aload " + item.getIndex());
                 }
             }
+            //TODO: currClass -> wrong!
             else
-                out.println("   getfield " + currClassType.getClassType() + "/" + identifier.getName() + " " + identifier.getType().toString());
+                out.println("   getfield " + currClassType.getClassType() + "/" + identifier.getName() + " " + getTypeSign(identifier.getType()));
         }catch(ItemNotFoundException ex){
         }
     }
