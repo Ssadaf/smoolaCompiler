@@ -36,6 +36,7 @@ public class Length extends Expression {
     @Override
     public Type typeCheck(SymbolTable symTable) {
         try {
+            this.setType(new IntType());
             Type exprType = expression.typeCheck(symTable);
             if(! exprType.toString().equals(new ArrayType().toString()) && exprType.toString().equals(new NoType()) )
                 throw new TypeError("Line:" + this.getLine() +":Length can only be called on Arrays");

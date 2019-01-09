@@ -84,6 +84,7 @@ public class MethodCall extends Expression {
                 if(!args.get(i).typeCheck(symTable).toString().equals(methArgsType.get(i).toString()))
                     throw new TypeError("Line:" + this.getLine() + ":incompatible argument type of " + args.get(i).toString() + " for calling " + methItem.getName());
             }
+            this.setType(methItem.getReturnType());
             return methItem.getReturnType();
 
         }catch (TypeError err){

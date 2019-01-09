@@ -46,7 +46,9 @@ public class NewClass extends Expression {
                 throw new TypeError("Line:" + this.getLine() + ":class " + this.getClassName().getName() + " is not declared");
             else {
                 classType.setClassDeclaration(TypeCheckVisitorImpl.classDecs.get(classType.getClassType().split(" ")[1]));
-                return classType.typeCheck(symTable);
+                Type ret = classType.typeCheck(symTable);
+                this.setType(ret);
+                return ret;
             }
         }catch (TypeError err){
             TypeCheckVisitorImpl.hasTypeError = true;

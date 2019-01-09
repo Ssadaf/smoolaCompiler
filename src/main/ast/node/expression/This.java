@@ -26,6 +26,8 @@ public class This extends Expression {
 
     @Override
     public Type typeCheck(SymbolTable symTable) {
-        return TypeCheckVisitorImpl.currClassType;
+        Type ret = TypeCheckVisitorImpl.currClassType;
+        this.setType(ret);
+        return ret;
     }
 }

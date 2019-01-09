@@ -46,6 +46,7 @@ public class ArrayCall extends Expression {
     @Override
     public Type typeCheck(SymbolTable symTable) {
         try {
+            this.setType(new IntType());
             Type indexType = index.typeCheck(symTable);
             if(!indexType.toString().equals(new IntType().toString()) && !indexType.toString().equals(new NoType().toString()) )
                 throw new TypeError("Line:" + this.getLine() +":Index of array call must be an integer");

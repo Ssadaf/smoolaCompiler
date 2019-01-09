@@ -16,6 +16,7 @@ import ast.node.expression.Value.IntValue;
 import ast.node.expression.Value.StringValue;
 import ast.node.statement.*;
 import com.sun.xml.internal.bind.v2.TODO;
+import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 import symbolTable.*;
 import ast.Type.*;
 
@@ -419,7 +420,6 @@ public class JasminVisitorImpl implements Visitor {
     @Override
     public void visit(Assign assign) {
         Type lValType = assign.getlValue().getType();
-
         if(assign.getlValue() instanceof Identifier) {
             try {
                 SymbolTableVariableItemBase item = (SymbolTableVariableItemBase) SymbolTable.top.get(((Identifier) assign.getlValue()).getName());
@@ -427,8 +427,10 @@ public class JasminVisitorImpl implements Visitor {
                     out.println("   aload_0");
                 assign.getrValue().accept(this);
                 Type rValType = assign.getrValue().getType();
+                System.out.println("***" + assign.getrValue());
+                System.out.println(rValType);
                 if(item.isField())
-                    out.println("   putfield "+currClassType.getClassType()+"/"+((Identifier) assign.getlValue()).getName()+" "+getTypeSign(lValType));
+                    out.println("   putfield " + currClassType.getClassType() + "/" + ((Identifier) assign.getlValue()).getName() + " " + getTypeSign(lValType));
                 else if ((rValType instanceof IntType) || (rValType instanceof BooleanType))
                     out.println("   istore " + item.getIndex());
                 else

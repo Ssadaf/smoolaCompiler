@@ -22,8 +22,6 @@
 
    iconst_0
    istore 2
-   iconst_0
-   istore 3
    iload 1
    istore 2
    aload_0

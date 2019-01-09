@@ -45,6 +45,7 @@ public class NewArray extends Expression {
 
             ArrayType retVal =  new ArrayType();
             retVal.setSize(size);
+            this.setType(retVal);
             return retVal;
         }catch (TypeError err){
             TypeCheckVisitorImpl.hasTypeError = true;

@@ -47,6 +47,7 @@ public class UnaryExpression extends Expression {
     @Override
     public Type typeCheck(SymbolTable symTable) {
         try {
+            this.setType(new NoType());
             if(unaryOperator.equals(UnaryOperator.minus)){
 
                 Type valueType = value.typeCheck(symTable);
@@ -54,8 +55,10 @@ public class UnaryExpression extends Expression {
                     throw new TypeError("Line:" + this.getLine() + ":unsupported operand type for " + unaryOperator.toString());
                 if(valueType.toString().equals(new NoType().toString()))
                     return new NoType();
-                else
+                else {
+                    this.setType(new IntType());
                     return new IntType();
+                }
             }
             else if( unaryOperator.equals(UnaryOperator.not) ) {
 
@@ -64,8 +67,10 @@ public class UnaryExpression extends Expression {
                     throw new TypeError("Line:" + this.getLine() + ":unsupported operand type for " + unaryOperator.toString());
                 if(valueType.toString().equals(new NoType().toString()))
                     return new NoType();
-                else
+                else {
+                    this.setType(new BooleanType());
                     return new BooleanType();
+                }
             }
             else{
                 return new NoType();
