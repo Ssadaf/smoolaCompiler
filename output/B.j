@@ -7,7 +7,7 @@
    .limit stack 100
 
    aload_0
-   invokespecial java/lang/A/<init>()V
+   invokespecial A/<init>()V
 
    return
 .end method

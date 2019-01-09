@@ -116,16 +116,24 @@ public class JasminVisitorImpl implements Visitor {
             out.println("   .limit locals 500");
             out.println("   .limit stack 100" + '\n');
             out.println("   aload_0");
-            out.println("   invokespecial java/lang/" + classDeclaration.getParentName().getName() + "/<init>()V\n");
+            if(classDeclaration.getParentName().getName().equals("Object"))
+                out.println("   invokespecial java/lang/" + classDeclaration.getParentName().getName() + "/<init>()V\n");
+            else
+                out.println("   invokespecial " + classDeclaration.getParentName().getName() + "/<init>()V\n");
+
+
             for(int i = 0; i < vars.size(); i++) {
-                out.println("   aload 0");
                 if(vars.get(i).getIdentifier().getType() instanceof IntType || vars.get(i).getIdentifier().getType() instanceof BooleanType) {
+                    out.println("   aload 0");
                     out.println("   iconst_0");
+                    out.println("   putfield " + currClassType.getClassType() + "/" + vars.get(i).getIdentifier().getName() + " " + getTypeSign(vars.get(i).getIdentifier().getType()));
                 }
                 else if(vars.get(i).getIdentifier().getType() instanceof StringType){
+                    out.println("   aload 0");
                     out.println("   ldc ");
+                    out.println("   putfield " + currClassType.getClassType() + "/" + vars.get(i).getIdentifier().getName() + " " + getTypeSign(vars.get(i).getIdentifier().getType()));
                 }
-                out.println("   putfield " + currClassType.getClassType() + "/" + vars.get(i).getIdentifier().getName() + " " + getTypeSign(vars.get(i).getIdentifier().getType()));
+
             }
             out.println("   return");
             out.println(".end method");
@@ -203,7 +211,7 @@ public class JasminVisitorImpl implements Visitor {
     public void visit(ArrayCall arrayCall) {
         arrayCall.getInstance().accept(this);
         arrayCall.getIndex().accept(this);
-        out.println("   iastore");
+        out.println("   iaload");
     }
 
     @Override

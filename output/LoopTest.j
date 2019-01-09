@@ -13,8 +13,6 @@
    invokespecial java/lang/Object/<init>()V
 
    aload 0
-   putfield LoopTest/sortedArray [I
-   aload 0
    iconst_0
    putfield LoopTest/a I
    aload 0
