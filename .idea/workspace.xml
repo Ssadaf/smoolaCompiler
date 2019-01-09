@@ -6,8 +6,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ae5c788d-9d2e-41cc-8043-ccfbc100ab68" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/in.sml" beforeDir="false" afterPath="$PROJECT_DIR$/in.sml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/ast/JasminVisitorImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/ast/JasminVisitorImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/ast/TypeCheckVisitorImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/ast/TypeCheckVisitorImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/ast/node/expression/BinaryExpression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/ast/node/expression/BinaryExpression.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -41,29 +44,29 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="g4" value="2549" />
-          <entry key="java" value="14593" />
-          <entry key="sml" value="1124" />
+          <entry key="java" value="14969" />
+          <entry key="sml" value="1203" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="ANTLR v4 grammar file" value="2549" />
-          <entry key="JAVA" value="14593" />
-          <entry key="PLAIN_TEXT" value="1124" />
+          <entry key="JAVA" value="14969" />
+          <entry key="PLAIN_TEXT" value="1203" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="g4" value="7" />
+          <entry key="g4" value="8" />
           <entry key="gitignore" value="2" />
-          <entry key="java" value="205" />
+          <entry key="java" value="206" />
           <entry key="sml" value="14" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="ANTLR v4 grammar file" value="7" />
-          <entry key="JAVA" value="205" />
+          <entry key="ANTLR v4 grammar file" value="8" />
+          <entry key="JAVA" value="206" />
           <entry key="PLAIN_TEXT" value="16" />
         </counts>
       </usages-collector>
@@ -74,20 +77,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/in.sml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="35" column="20" selection-start-line="35" selection-start-column="20" selection-end-line="35" selection-end-column="27" />
+            <state relative-caret-position="372">
+              <caret line="44" column="10" selection-start-line="44" selection-start-column="10" selection-end-line="44" selection-end-column="10" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/ast/JasminVisitorImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="93">
-              <caret line="295" column="61" lean-forward="true" selection-start-line="295" selection-start-column="61" selection-end-line="295" selection-end-column="61" />
+            <state relative-caret-position="19">
+              <caret line="437" column="61" selection-start-line="437" selection-start-column="61" selection-end-line="437" selection-end-column="61" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#16762#16763#0" expanded="true" />
@@ -136,10 +139,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/ast/VisitorImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
+            <state relative-caret-position="-221">
               <caret line="32" column="59" selection-start-line="32" selection-start-column="42" selection-end-line="32" selection-end-column="59" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#1083#1104#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -148,11 +152,29 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/ast/TypeCheckVisitorImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1050">
-              <caret line="91" column="25" selection-start-line="91" selection-start-column="8" selection-end-line="91" selection-end-column="25" />
+            <state relative-caret-position="279">
+              <caret line="232" selection-start-line="232" selection-end-line="233" selection-end-column="53" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/ast/node/expression/BinaryExpression.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="82" column="28" selection-start-line="82" selection-start-column="28" selection-end-line="82" selection-end-column="28" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Smoola.g4">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="19" column="43" selection-start-line="19" selection-start-column="43" selection-end-line="19" selection-end-column="43" />
             </state>
           </provider>
         </entry>
@@ -162,34 +184,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="930">
               <caret line="66" column="50" selection-start-line="66" selection-start-column="50" selection-end-line="66" selection-end-column="50" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/ast/node/expression/Identifier.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="18" selection-start-line="18" selection-end-line="18" />
-              <folding>
-                <element signature="e#433#434#0" expanded="true" />
-                <element signature="e#650#651#0" expanded="true" />
-                <element signature="e#685#686#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/symbolTable/SymbolTableVariableItemBase.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="435">
-              <caret line="39" selection-start-line="39" selection-end-line="39" />
-              <folding>
-                <element signature="e#422#423#0" expanded="true" />
-                <element signature="e#456#457#0" expanded="true" />
-                <element signature="e#763#764#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -205,7 +199,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>StringValue</find>
       <find>processArgs</find>
       <find>processNonField</find>
       <find>pro</find>
@@ -234,6 +227,7 @@
       <find>assign</find>
       <find>NEQ</find>
       <find>ifeq</find>
+      <find>binar</find>
       <find>getfield</find>
     </findStrings>
     <replaceStrings>
@@ -281,7 +275,6 @@
         <option value="$PROJECT_DIR$/src/main/ast/node/expression/InMainMethodCall.java" />
         <option value="$PROJECT_DIR$/src/main/ast/Type/ArrayType/ArrayType.java" />
         <option value="$PROJECT_DIR$/src/main/ast/node/expression/NewArray.java" />
-        <option value="$PROJECT_DIR$/src/main/ast/node/expression/BinaryExpression.java" />
         <option value="$PROJECT_DIR$/Smoola.g4" />
         <option value="$PROJECT_DIR$/src/main/ast/node/expression/MethodCall.java" />
         <option value="$PROJECT_DIR$/src/main/ast/JasminVisitor.java" />
@@ -292,11 +285,12 @@
         <option value="$PROJECT_DIR$/src/main/ast/node/expression/Identifier.java" />
         <option value="$PROJECT_DIR$/src/main/ast/node/statement/InMainMethodCall.java" />
         <option value="$PROJECT_DIR$/src/main/ast/VisitorImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/ast/TypeCheckVisitorImpl.java" />
         <option value="$PROJECT_DIR$/src/main/symbolTable/SymbolTable.java" />
         <option value="$PROJECT_DIR$/src/main/ast/node/expression/NewClass.java" />
-        <option value="$PROJECT_DIR$/in.sml" />
+        <option value="$PROJECT_DIR$/src/main/ast/TypeCheckVisitorImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/ast/node/expression/BinaryExpression.java" />
         <option value="$PROJECT_DIR$/src/main/ast/JasminVisitorImpl.java" />
+        <option value="$PROJECT_DIR$/in.sml" />
       </list>
     </option>
   </component>
@@ -343,6 +337,14 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="ast" type="462c0819:PsiDirectoryNode" />
               <item name="node" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="smoolaCompiler" type="b2602c69:ProjectViewProjectNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="ast" type="462c0819:PsiDirectoryNode" />
+              <item name="node" type="462c0819:PsiDirectoryNode" />
+              <item name="expression" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="smoolaCompiler" type="b2602c69:ProjectViewProjectNode" />
@@ -465,7 +467,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="125232000" />
+    <option name="totallyTimeSpent" value="127902000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -556,7 +558,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/ast/JasminVisitorImpl.java</url>
-          <line>496</line>
+          <line>495</line>
           <properties />
           <option name="timeStamp" value="100" />
         </line-breakpoint>
@@ -647,13 +649,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/ast/node/expression/BinaryExpression.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1896">
-          <caret line="103" column="71" selection-start-line="103" selection-start-column="71" selection-end-line="103" selection-end-column="71" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/ast/node/expression/Length.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="624">
@@ -690,13 +685,6 @@
       </provider>
     </entry>
     <entry file="jar:///usr/lib/jvm/java-8-openjdk-amd64/jre/lib/rt.jar!/java/io/PrintWriter.class" />
-    <entry file="file://$PROJECT_DIR$/Smoola.g4">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="19" column="43" selection-start-line="19" selection-start-column="43" selection-end-line="19" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/symbolTable/SymbolTableClassItem.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="96">
@@ -757,17 +745,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="14" column="18" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/symbolTable/SymbolTableMethodItem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="11" column="32" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="32" />
-          <folding>
-            <element signature="e#711#712#0" expanded="true" />
-            <element signature="e#755#756#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -837,16 +814,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/ast/VisitorImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="32" column="59" selection-start-line="32" selection-start-column="42" selection-end-line="32" selection-end-column="59" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/ast/node/statement/Write.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="264">
@@ -885,16 +852,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/ast/TypeCheckVisitorImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1050">
-          <caret line="91" column="25" selection-start-line="91" selection-start-column="8" selection-end-line="91" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/ast/node/expression/MethodCall.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1128">
@@ -926,17 +883,42 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/in.sml">
+    <entry file="file://$PROJECT_DIR$/src/main/ast/TypeCheckVisitorImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="35" column="20" selection-start-line="35" selection-start-column="20" selection-end-line="35" selection-end-column="27" />
+        <state relative-caret-position="279">
+          <caret line="232" selection-start-line="232" selection-end-line="233" selection-end-column="53" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/symbolTable/SymbolTableMethodItem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="11" column="32" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="32" />
+          <folding>
+            <element signature="e#711#712#0" expanded="true" />
+            <element signature="e#755#756#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/ast/VisitorImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-221">
+          <caret line="32" column="59" selection-start-line="32" selection-start-column="42" selection-end-line="32" selection-end-column="59" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1083#1104#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/ast/JasminVisitorImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="93">
-          <caret line="295" column="61" lean-forward="true" selection-start-line="295" selection-start-column="61" selection-end-line="295" selection-end-column="61" />
+        <state relative-caret-position="19">
+          <caret line="437" column="61" selection-start-line="437" selection-start-column="61" selection-end-line="437" selection-end-column="61" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#16762#16763#0" expanded="true" />
@@ -944,6 +926,27 @@
             <element signature="e#17997#17998#0" expanded="true" />
             <element signature="e#18057#18058#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/ast/node/expression/BinaryExpression.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="82" column="28" selection-start-line="82" selection-start-column="28" selection-end-line="82" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Smoola.g4">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="19" column="43" selection-start-line="19" selection-start-column="43" selection-end-line="19" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/in.sml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="372">
+          <caret line="44" column="10" selection-start-line="44" selection-start-column="10" selection-end-line="44" selection-end-column="10" />
         </state>
       </provider>
     </entry>

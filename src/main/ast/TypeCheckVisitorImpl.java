@@ -230,6 +230,8 @@ public class TypeCheckVisitorImpl implements Visitor{
 
         Type retType = binaryExpression.typeCheck(SymbolTable.top);
         binaryExpression.setType(retType);
+        binaryExpression.getLeft().setType(retType);
+        binaryExpression.getRight().setType(retType);
         binaryExpression.getRight().accept(this);
 
     }

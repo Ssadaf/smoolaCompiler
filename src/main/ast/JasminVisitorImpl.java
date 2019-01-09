@@ -287,7 +287,6 @@ public class JasminVisitorImpl implements Visitor {
             out.println("NEQ_END_" + labelCount + ":");
             labelCount++;
         }
-        //TODO : assign in BinaryExpression
         else if(binaryExpression.getBinaryOperator().equals(BinaryOperator.assign)){
             Type lValType = binaryExpression.getLeft().getType();
 
@@ -297,7 +296,7 @@ public class JasminVisitorImpl implements Visitor {
                     out.println("   dup");
                     SymbolTableVariableItemBase item = (SymbolTableVariableItemBase) SymbolTable.top.get(((Identifier) binaryExpression.getLeft()).getName());
                     Type rValType = binaryExpression.getRight().getType();
-                    if (lValType instanceof IntType || lValType instanceof BooleanType)
+                    if (rValType instanceof IntType || rValType instanceof BooleanType)
                         out.println("   istore " + item.getIndex());
                     else
                         out.println("   astore " + item.getIndex());
@@ -439,7 +438,7 @@ public class JasminVisitorImpl implements Visitor {
                 Type rValType = assign.getrValue().getType();
                 if(item.isField())
                     out.println("   putfield "+currClassType.getClassType()+"/"+((Identifier) assign.getlValue()).getName()+" "+getTypeSign(lValType));
-                else if ((lValType instanceof IntType) || (lValType instanceof BooleanType))
+                else if ((rValType instanceof IntType) || (rValType instanceof BooleanType))
                     out.println("   istore " + item.getIndex());
                 else
                     out.println("   astore " + item.getIndex());
