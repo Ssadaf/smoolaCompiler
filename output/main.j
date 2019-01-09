@@ -1,4 +1,4 @@
-.class public MainClass
+.class public main
 .super java/lang/Object
 
 ; default constructor
@@ -16,13 +16,10 @@
    .limit locals 500
    .limit stack 100
 
-   new Three
+   new Test
    dup
-   invokespecial Three/<init>()V
-   iconst_1
-   iconst_2
-   invokevirtual Three/threeMethod(II)Two;
-   invokevirtual Two/twoMethod()I
+   invokespecial Test/<init>()V
+   invokevirtual Test/main()I
    return
 
 .end method

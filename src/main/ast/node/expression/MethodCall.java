@@ -77,6 +77,13 @@ public class MethodCall extends Expression {
                 throw new TypeError("Line:" + this.getLine() +":there is no method named "+methodName.getName()+" in class "+ instanceType);
             }
             SymbolTableMethodItem methItem = (SymbolTableMethodItem) item;
+            if(methItem.getReturnType().isUserDefined()) {
+                UserDefinedType methRetType = (UserDefinedType) methItem.getReturnType();
+
+                if (TypeCheckVisitorImpl.classDecs.containsKey(methRetType.getClassType())) {
+                    ((UserDefinedType) methItem.getReturnType()).setClassDeclaration(TypeCheckVisitorImpl.classDecs.get(methRetType.getClassType()));
+                }
+            }
             ArrayList<Type> methArgsType = methItem.getArgTypes();
             if(args.size() != methArgsType.size())
                 throw new TypeError("Line:" + this.getLine() + ":invalid count of arguments for method call " + methItem.getName());

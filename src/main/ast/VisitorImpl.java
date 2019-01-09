@@ -150,6 +150,7 @@ public class VisitorImpl implements Visitor {
 
 
         if(!hasError) {
+
             Visitor typeVisitor = new TypeCheckVisitorImpl();
             program.accept(typeVisitor);
         }
