@@ -142,7 +142,6 @@ public class JasminVisitorImpl implements Visitor {
                 meths.get(i).accept(this);
             out.close();
         }catch(Exception ex){
-            System.out.println(classDeclaration);
             System.out.println(ex.toString());
         }
 
@@ -205,7 +204,6 @@ public class JasminVisitorImpl implements Visitor {
                 }
             }
         }catch(ItemNotFoundException ex){
-            System.out.println(varDeclaration);
             System.out.println(ex.toString());
         }
     }
@@ -304,7 +302,6 @@ public class JasminVisitorImpl implements Visitor {
                     else
                         out.println("   astore " + item.getIndex());
                 } catch (ItemNotFoundException ex) {
-                    System.out.println(binaryExpression);
                     System.out.println(ex.toString());
                 }
             }
@@ -318,7 +315,6 @@ public class JasminVisitorImpl implements Visitor {
                     out.println("   dup_x2");
                     out.println("   iastore");
                 }catch(ItemNotFoundException ex) {
-                    System.out.println(binaryExpression);
                     System.out.println(ex.toString());
                 }
             }
@@ -344,7 +340,6 @@ public class JasminVisitorImpl implements Visitor {
                 out.println("   getfield " + currClassType.getClassType() + "/" + identifier.getName() + " " + getTypeSign(identifier.getType()));
             }
         }catch(ItemNotFoundException ex){
-            System.out.println(identifier);
             System.out.println(ex.toString());
         }
     }
@@ -363,7 +358,7 @@ public class JasminVisitorImpl implements Visitor {
             methArgs.get(i).accept(this);
         try {
             SymbolTableMethodItem item;
-            item = (SymbolTableMethodItem) classSymbolTables.get(methodCall.getInstance().getType().toString()).get(methodCall.getMethodName().getName() + "-methodDec");
+            item = (SymbolTableMethodItem) classSymbolTables.get(methodCall.getInstance().getType().toString()+"-classDec").get(methodCall.getMethodName().getName() + "-methodDec");
             String argTypesSigns = "";
             ArrayList<Type> argTypes = item.getArgTypes();
             for (int i = 0; i < argTypes.size(); i++) {
@@ -371,7 +366,6 @@ public class JasminVisitorImpl implements Visitor {
             }
             out.println("   invokevirtual " + methodCall.getInstance().getType().toString() + "/" + methodCall.getMethodName().getName() + "(" + argTypesSigns + ")" + getTypeSign(item.getReturnType()));
         }catch (ItemNotFoundException ex){
-            System.out.println(methodCall.getMethodName());
             System.out.println(ex.toString());
         }
     }
@@ -454,7 +448,6 @@ public class JasminVisitorImpl implements Visitor {
                 else
                     out.println("   astore " + item.getIndex());
             } catch (ItemNotFoundException ex) {
-                System.out.println(assign);
                 System.out.println(ex.toString());
             }
         }
@@ -467,7 +460,6 @@ public class JasminVisitorImpl implements Visitor {
                 assign.getrValue().accept(this);
                 out.println("   iastore");
             }catch(ItemNotFoundException ex) {
-                System.out.println(assign);
                 System.out.println(ex.toString());
             }
         }

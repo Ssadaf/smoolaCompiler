@@ -2,7 +2,7 @@ class MainClass
 {
     def main() : int
     {
-
+        new Test().main();
         return 0;
     }
 }
