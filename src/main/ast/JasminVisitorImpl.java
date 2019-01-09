@@ -130,7 +130,7 @@ public class JasminVisitorImpl implements Visitor {
                 }
                 else if(vars.get(i).getIdentifier().getType() instanceof StringType){
                     out.println("   aload 0");
-                    out.println("   ldc ");
+                    out.println("   ldc 0");
                     out.println("   putfield " + currClassType.getClassType() + "/" + vars.get(i).getIdentifier().getName() + " " + getTypeSign(vars.get(i).getIdentifier().getType()));
                 }
 
@@ -199,7 +199,7 @@ public class JasminVisitorImpl implements Visitor {
 
                 }
                 else if(varDeclaration.getIdentifier().getType() instanceof StringType){
-                    out.println("   ldc ");
+                    out.println("   ldc 0");
                     out.println("   astore " + item.getIndex());
                 }
             }
@@ -358,7 +358,10 @@ public class JasminVisitorImpl implements Visitor {
             methArgs.get(i).accept(this);
         try {
             SymbolTableMethodItem item;
-            item = (SymbolTableMethodItem) classSymbolTables.get(methodCall.getInstance().getType().toString()+"-classDec").get(methodCall.getMethodName().getName() + "-methodDec");
+            if(methodCall.getInstance() instanceof This)
+                item = (SymbolTableMethodItem) SymbolTable.top.get(methodCall.getMethodName().getName() + "-methodDec");
+            else
+                item = (SymbolTableMethodItem) classSymbolTables.get(methodCall.getInstance().getType().toString()).get(methodCall.getMethodName().getName() + "-methodDec");
             String argTypesSigns = "";
             ArrayList<Type> argTypes = item.getArgTypes();
             for (int i = 0; i < argTypes.size(); i++) {
@@ -366,6 +369,13 @@ public class JasminVisitorImpl implements Visitor {
             }
             out.println("   invokevirtual " + methodCall.getInstance().getType().toString() + "/" + methodCall.getMethodName().getName() + "(" + argTypesSigns + ")" + getTypeSign(item.getReturnType()));
         }catch (ItemNotFoundException ex){
+            if(methodCall.getInstance() instanceof This) {
+                System.out.println("****");
+                System.out.println(methodCall.getMethodName().getName());
+                System.out.println("()()()#");
+                classSymbolTables.get(methodCall.getInstance().getType().toString()).printAllSymbolTableItems();
+                System.out.println("****");
+            }
             System.out.println(ex.toString());
         }
     }

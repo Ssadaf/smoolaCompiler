@@ -23,20 +23,20 @@
    invokevirtual java/io/PrintStream/println(Ljava/lang/String;)V
    iload 2
    iload 1
-   if_icmpne EQ_FALSE_1
+   if_icmpne EQ_FALSE_27
    iconst_1
-   goto EQ_END_2
-EQ_FALSE_1:
+   goto EQ_END_28
+EQ_FALSE_27:
    iconst_0
-EQ_END_2:
-   ifeq COND_ELSE_3
+EQ_END_28:
+   ifeq COND_ELSE_29
    getstatic java/lang/System/out Ljava/io/PrintStream;
    ldc "\t###### Passed ######"
    invokevirtual java/io/PrintStream/println(Ljava/lang/String;)V
    iconst_1
    istore 4
-   goto COND_END_4
-COND_ELSE_3:
+   goto COND_END_30
+COND_ELSE_29:
    getstatic java/lang/System/out Ljava/io/PrintStream;
    ldc "\t$$$$$$ Failed $$$$$$"
    invokevirtual java/io/PrintStream/println(Ljava/lang/String;)V
@@ -54,7 +54,7 @@ COND_ELSE_3:
    invokevirtual java/io/PrintStream/println(I)V
    iconst_0
    istore 4
-COND_END_4:
+COND_END_30:
    getstatic java/lang/System/out Ljava/io/PrintStream;
    ldc ""
    invokevirtual java/io/PrintStream/println(Ljava/lang/String;)V
@@ -74,20 +74,20 @@ COND_END_4:
    invokevirtual java/io/PrintStream/println(Ljava/lang/String;)V
    iload 1
    iload 2
-   if_icmpne EQ_FALSE_5
+   if_icmpne EQ_FALSE_31
    iconst_1
-   goto EQ_END_6
-EQ_FALSE_5:
+   goto EQ_END_32
+EQ_FALSE_31:
    iconst_0
-EQ_END_6:
-   ifeq COND_ELSE_7
+EQ_END_32:
+   ifeq COND_ELSE_33
    getstatic java/lang/System/out Ljava/io/PrintStream;
    ldc "\t###### Passed ######"
    invokevirtual java/io/PrintStream/println(Ljava/lang/String;)V
    iconst_1
    istore 4
-   goto COND_END_8
-COND_ELSE_7:
+   goto COND_END_34
+COND_ELSE_33:
    getstatic java/lang/System/out Ljava/io/PrintStream;
    ldc "\t$$$$$$ Failed $$$$$$"
    invokevirtual java/io/PrintStream/println(Ljava/lang/String;)V
@@ -103,7 +103,7 @@ COND_ELSE_7:
    iload 1
    iconst_0
    istore 4
-COND_END_8:
+COND_END_34:
    getstatic java/lang/System/out Ljava/io/PrintStream;
    ldc ""
    invokevirtual java/io/PrintStream/println(Ljava/lang/String;)V
