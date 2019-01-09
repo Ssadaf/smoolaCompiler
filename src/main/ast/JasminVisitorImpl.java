@@ -62,7 +62,7 @@ public class JasminVisitorImpl implements Visitor {
         else if(varType instanceof StringType)
             result += "Ljava/lang/String;";
         else if(varType.isUserDefined())
-            result += (((UserDefinedType)varType).getClassType() + ";");
+            result += ("L"+((UserDefinedType)varType).getClassType() + ";");
         else
             result += "V";
         return result;
@@ -160,11 +160,8 @@ public class JasminVisitorImpl implements Visitor {
         String retSign = getTypeSign(methodDeclaration.getReturnType());
         if(inMain)
             out.println(".method public static " + methodDeclaration.getName().getName() + "([Ljava/lang/String;)V\n");
-        else if(methodDeclaration.getReturnType().isUserDefined())
-            out.println(".method public " + methodDeclaration.getName().getName() + "(" + argTypesSigns + ")" + "L" + retSign + "\n");
         else
             out.println(".method public " + methodDeclaration.getName().getName() + "(" + argTypesSigns + ")" + retSign + "\n");
-
         out.println("   .limit locals 500");
         out.println("   .limit stack 100" + '\n');
 
@@ -372,12 +369,7 @@ public class JasminVisitorImpl implements Visitor {
             for (int i = 0; i < argTypes.size(); i++) {
                 argTypesSigns += getTypeSign(argTypes.get(i));
             }
-
-            if(item.getReturnType().isUserDefined())
-                out.println("   invokevirtual " + methodCall.getInstance().getType().toString() + "/" + methodCall.getMethodName().getName() + "(" + argTypesSigns + ")" + "L" + getTypeSign(item.getReturnType()));
-            else
-                out.println("   invokevirtual " + methodCall.getInstance().getType().toString() + "/" + methodCall.getMethodName().getName() + "(" + argTypesSigns + ")" + getTypeSign(item.getReturnType()));
-
+            out.println("   invokevirtual " + methodCall.getInstance().getType().toString() + "/" + methodCall.getMethodName().getName() + "(" + argTypesSigns + ")" + getTypeSign(item.getReturnType()));
         }catch (ItemNotFoundException ex){
             if(methodCall.getInstance() instanceof This) {
                 System.out.println("****");
