@@ -104,7 +104,7 @@ class LoopTest
             j = 0;
             while ( j < size - i - 1 )
             {
-                if( arr[j] < arr [j+1] ) then
+                if( arr[j] < arr [j+1] )then
                 {
                     a = arr[j];
                     b = arr[j+1];
@@ -116,10 +116,6 @@ class LoopTest
                 j = j + 1;
             }
 
-            if(!swapped) then
-            {
-                i = size + 1; # to break !
-            }
             i = i + 1;
         }
         sortedArray = arr;

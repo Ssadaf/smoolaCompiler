@@ -427,8 +427,6 @@ public class JasminVisitorImpl implements Visitor {
                     out.println("   aload_0");
                 assign.getrValue().accept(this);
                 Type rValType = assign.getrValue().getType();
-                System.out.println("***" + assign.getrValue());
-                System.out.println(rValType);
                 if(item.isField())
                     out.println("   putfield " + currClassType.getClassType() + "/" + ((Identifier) assign.getlValue()).getName() + " " + getTypeSign(lValType));
                 else if ((rValType instanceof IntType) || (rValType instanceof BooleanType))
@@ -468,7 +466,8 @@ public class JasminVisitorImpl implements Visitor {
         conditional.getConsequenceBody().accept(this);
         out.println("   goto COND_END_" + endLabel);
         out.println("COND_ELSE_" + elseLabel + ":");
-        conditional.getAlternativeBody().accept(this);
+        if(conditional.getAlternativeBody() != null)
+            conditional.getAlternativeBody().accept(this);
         out.println("COND_END_" + endLabel + ":");
     }
 
@@ -477,11 +476,11 @@ public class JasminVisitorImpl implements Visitor {
         int startLabel = labelCount++;
         out.println("WHILE_START_" + startLabel + ":");
         loop.getCondition().accept(this);
-        out.println("   ifeq WHILE_END_" + labelCount);
+        int endLabel = labelCount++;
+        out.println("   ifeq WHILE_END_" + endLabel);
         loop.getBody().accept(this);
         out.println("   goto WHILE_START_" + startLabel );
-        out.println("WHILE_END_" + labelCount+":");
-        labelCount ++;
+        out.println("WHILE_END_" + endLabel +":");
     }
 
     @Override
