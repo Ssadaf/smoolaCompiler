@@ -32,12 +32,12 @@ class A
         var n : int;
         i = input;
         fact = 1;
-        n = 1 + 2 + 3;
         while(i <> 0)
         {
             fact = fact * i;
             i = i - 1;
         }
+
         return fact;
     }
 

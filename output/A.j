@@ -29,12 +29,6 @@
    aload_0
    iconst_1
    putfield A/fact I
-   iconst_1
-   iconst_2
-   iadd
-   iconst_3
-   iadd
-   istore 3
 WHILE_START_1:
    iload 2
    iconst_0
@@ -55,7 +49,7 @@ NEQ_END_3:
    iconst_1
    isub
    istore 2
-   goto WHILE_START_3
+   goto WHILE_START_1
 WHILE_END_4:
    aload_0
    getfield A/fact I

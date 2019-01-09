@@ -5,7 +5,12 @@
     <bookmark url="file://$PROJECT_DIR$/Smoola.g4" line="69" mnemonic="4" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ae5c788d-9d2e-41cc-8043-ccfbc100ab68" name="Default" comment="" />
+    <list default="true" id="ae5c788d-9d2e-41cc-8043-ccfbc100ab68" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/in.sml" beforeDir="false" afterPath="$PROJECT_DIR$/in.sml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/ast/JasminVisitorImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/ast/JasminVisitorImpl.java" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -72,20 +77,38 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
-      <file leaf-file-name="in.sml" pinned="false" current-in-tab="false">
+      <file leaf-file-name="in.sml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/in.sml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="384">
-              <caret line="34" selection-start-line="34" selection-end-line="34" />
+            <state relative-caret-position="285">
+              <caret line="29" column="5" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="JasminVisitorImpl.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="workspace.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="371">
+              <caret line="1062" column="10" selection-start-line="1062" selection-start-column="10" selection-end-line="1062" selection-end-column="10" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="workspace.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/.idea/workspace.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="26208">
+              <caret line="1092" column="14" selection-start-line="1092" selection-start-column="14" selection-end-line="1092" selection-end-column="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="JasminVisitorImpl.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/ast/JasminVisitorImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="314">
-              <caret line="190" column="17" lean-forward="true" selection-start-line="190" selection-start-column="17" selection-end-line="190" selection-end-column="17" />
+            <state relative-caret-position="3888">
+              <caret line="190" column="17" selection-start-line="190" selection-start-column="17" selection-end-line="190" selection-end-column="17" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#16036#16037#0" expanded="true" />
@@ -121,8 +144,8 @@
       <file leaf-file-name="TypeCheckVisitorImpl.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/ast/TypeCheckVisitorImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="218" column="22" lean-forward="true" selection-start-line="218" selection-start-column="22" selection-end-line="218" selection-end-column="22" />
+            <state relative-caret-position="4728">
+              <caret line="218" column="22" selection-start-line="218" selection-start-column="22" selection-end-line="218" selection-end-column="22" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -133,8 +156,8 @@
       <file leaf-file-name="BinaryExpression.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/ast/node/expression/BinaryExpression.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="874">
-              <caret line="115" column="36" lean-forward="true" selection-start-line="115" selection-start-column="36" selection-end-line="115" selection-end-column="36" />
+            <state relative-caret-position="2184">
+              <caret line="115" column="36" selection-start-line="115" selection-start-column="36" selection-end-line="115" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -258,8 +281,8 @@
         <option value="$PROJECT_DIR$/src/main/ast/node/expression/NewClass.java" />
         <option value="$PROJECT_DIR$/src/main/ast/TypeCheckVisitorImpl.java" />
         <option value="$PROJECT_DIR$/src/main/ast/node/expression/BinaryExpression.java" />
-        <option value="$PROJECT_DIR$/in.sml" />
         <option value="$PROJECT_DIR$/src/main/ast/JasminVisitorImpl.java" />
+        <option value="$PROJECT_DIR$/in.sml" />
       </list>
     </option>
   </component>
@@ -280,15 +303,19 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="AndroidView" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="smoolaCompiler" type="b2602c69:ProjectViewProjectNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="smoolaCompiler" type="b2602c69:ProjectViewProjectNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name=".idea" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="smoolaCompiler" type="b2602c69:ProjectViewProjectNode" />
@@ -337,15 +364,11 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="symbolTable" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="smoolaCompiler" type="b2602c69:ProjectViewProjectNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="output" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -494,6 +517,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="64" y="-11" width="1857" height="1092" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.329235" />
@@ -504,58 +528,37 @@
       <window_info anchor="right" id="Capture Analysis" order="5" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="8" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.03912543" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.30264673" />
       <window_info anchor="bottom" id="Version Control" order="10" weight="0.329235" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.2013809" />
-      <window_info id="Capture Tool" order="4" />
-      <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="6" sideWeight="0.8317308" visible="true" weight="0.17847183" />
-      <window_info anchor="bottom" id="ANTLR Preview" order="11" weight="0.55138123" />
-      <window_info id="Structure" order="0" side_tool="true" weight="0.25" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info id="UI Designer" order="3" />
-      <window_info anchor="right" id="Theme Preview" order="6" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39638555" />
-      <window_info id="Favorites" order="5" sideWeight="0.16826923" side_tool="true" weight="0.17310444" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="6" sideWeight="0.8317308" visible="true" weight="0.29397875" />
-      <window_info id="Favorites" order="5" sideWeight="0.16826923" side_tool="true" weight="0.17310444" />
-      <window_info anchor="right" id="Coverage" order="4" side_tool="true" weight="0.3297568" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.17710844" />
-      <window_info id="Structure" order="0" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Tool Output" order="7" weight="0.32686085" />
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Palette&#9;" order="7" />
-      <window_info anchor="right" id="Maven Projects" order="8" />
-      <window_info anchor="bottom" id="Database Changes" order="13" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39638555" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info id="Image Layers" order="1" />
-      <window_info anchor="right" id="Theme Preview" order="6" />
-      <window_info anchor="right" id="Database" order="9" />
       <window_info id="Capture Tool" order="4" />
-      <window_info anchor="bottom" id="Version Control" order="10" weight="0.329235" />
-      <window_info anchor="right" id="Capture Analysis" order="5" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.329235" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info id="UI Designer" order="3" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32829374" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.30361447" />
-      <window_info anchor="bottom" id="ANTLR Preview" order="11" weight="0.55138123" />
-      <window_info anchor="bottom" id="Messages" order="12" weight="0.2" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info id="Designer" order="2" />
+      <window_info content_ui="combo" id="Project" order="6" sideWeight="0.8317308" visible="true" weight="0.29894033" />
+      <window_info anchor="bottom" id="ANTLR Preview" order="11" weight="0.55138123" />
+      <window_info id="Structure" order="0" side_tool="true" weight="0.25" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info id="UI Designer" order="3" />
+      <window_info anchor="right" id="Theme Preview" order="6" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39638555" />
+      <window_info id="Favorites" order="5" sideWeight="0.16826923" side_tool="true" weight="0.17310444" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32829374" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="right" id="Database" order="9" />
+      <window_info anchor="right" id="Coverage" order="4" side_tool="true" weight="0.3297568" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Database Changes" order="13" show_stripe_button="false" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
     <layout-to-restore>
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info anchor="right" id="Palette" order="3" />
       <window_info id="Image Layers" order="1" />
       <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.30361447" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" id="Coverage" order="4" side_tool="true" weight="0.3297568" />
       <window_info id="UI Designer" order="3" />
       <window_info id="Favorites" order="5" sideWeight="0.16826923" side_tool="true" weight="0.17310444" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.17710844" />
@@ -578,7 +581,6 @@
       <window_info anchor="right" id="Theme Preview" order="6" />
       <window_info id="Structure" order="0" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="right" id="Coverage" order="4" side_tool="true" weight="0.3297568" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32829374" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39638555" />
     </layout-to-restore>
@@ -607,6 +609,13 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/ast/node/expression/UnaryExpression.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1064">
@@ -830,9 +839,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="816">
           <caret line="56" selection-start-line="56" selection-end-line="56" />
-          <folding>
-            <element signature="e#1518#1519#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -854,11 +860,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="696">
           <caret line="39" selection-start-line="39" selection-end-line="39" />
-          <folding>
-            <element signature="e#422#423#0" expanded="true" />
-            <element signature="e#456#457#0" expanded="true" />
-            <element signature="e#763#764#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -895,8 +896,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/ast/TypeCheckVisitorImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="218" column="22" lean-forward="true" selection-start-line="218" selection-start-column="22" selection-end-line="218" selection-end-column="22" />
+        <state relative-caret-position="4728">
+          <caret line="218" column="22" selection-start-line="218" selection-start-column="22" selection-end-line="218" selection-end-column="22" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -923,8 +924,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/ast/node/expression/BinaryExpression.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="874">
-          <caret line="115" column="36" lean-forward="true" selection-start-line="115" selection-start-column="36" selection-end-line="115" selection-end-column="36" />
+        <state relative-caret-position="2184">
+          <caret line="115" column="36" selection-start-line="115" selection-start-column="36" selection-end-line="115" selection-end-column="36" />
         </state>
       </provider>
     </entry>
@@ -942,25 +943,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/in.sml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
-          <caret line="34" selection-start-line="34" selection-end-line="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/output/B.j" />
-    <entry file="file://$PROJECT_DIR$/src/output/A.j">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="19" column="6" lean-forward="true" selection-start-line="19" selection-start-column="6" selection-end-line="19" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/ast/JasminVisitorImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="314">
-          <caret line="190" column="17" lean-forward="true" selection-start-line="190" selection-start-column="17" selection-end-line="190" selection-end-column="17" />
+        <state relative-caret-position="3888">
+          <caret line="190" column="17" selection-start-line="190" selection-start-column="17" selection-end-line="190" selection-end-column="17" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#16036#16037#0" expanded="true" />
@@ -968,6 +954,20 @@
             <element signature="e#17271#17272#0" expanded="true" />
             <element signature="e#17331#17332#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="371">
+          <caret line="1062" column="10" selection-start-line="1062" selection-start-column="10" selection-end-line="1062" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/in.sml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="29" column="5" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
         </state>
       </provider>
     </entry>
