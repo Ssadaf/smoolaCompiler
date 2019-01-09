@@ -376,7 +376,7 @@ public class TypeCheckVisitorImpl implements Visitor{
 
         Type writeArgType = write.getArg().typeCheck(SymbolTable.top);
         write.setArgType(writeArgType);
-        if(!writeArgType.toString().equals(new IntType().toString()) && !writeArgType.toString().equals(new StringType().toString()) && !writeArgType.toString().equals(new ArrayType().toString()) && !writeArgType.toString().equals(new NoType().toString())) {
+        if(!writeArgType.toString().equals(new BooleanType().toString()) && !writeArgType.toString().equals(new IntType().toString()) && !writeArgType.toString().equals(new StringType().toString()) && !writeArgType.toString().equals(new ArrayType().toString()) && !writeArgType.toString().equals(new NoType().toString())) {
             System.out.println("Line:" + write.getLine() +":unsupported type for writeln");
             hasTypeError = true;
         }

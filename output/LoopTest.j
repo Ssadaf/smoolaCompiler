@@ -114,12 +114,12 @@ LT_END_21:
    ifeq WHILE_END_22
    aload 1
    iload 3
-   iastore
+   iaload
    aload 1
    iload 3
    iconst_1
    iadd
-   iastore
+   iaload
    if_icmpge LT_FALSE_23
    iconst_1
    goto LT_END_24
@@ -130,14 +130,14 @@ LT_END_24:
    aload_0
    aload 1
    iload 3
-   iastore
+   iaload
    putfield LoopTest/a I
    aload_0
    aload 1
    iload 3
    iconst_1
    iadd
-   iastore
+   iaload
    putfield LoopTest/b I
    aload_0
    invokevirtual LoopTest/swapAB()I

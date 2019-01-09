@@ -142,6 +142,7 @@ public class JasminVisitorImpl implements Visitor {
                 meths.get(i).accept(this);
             out.close();
         }catch(Exception ex){
+            System.out.println(classDeclaration);
             System.out.println(ex.toString());
         }
 
@@ -204,6 +205,8 @@ public class JasminVisitorImpl implements Visitor {
                 }
             }
         }catch(ItemNotFoundException ex){
+            System.out.println(varDeclaration);
+            System.out.println(ex.toString());
         }
     }
 
@@ -300,7 +303,10 @@ public class JasminVisitorImpl implements Visitor {
                         out.println("   istore " + item.getIndex());
                     else
                         out.println("   astore " + item.getIndex());
-                } catch (ItemNotFoundException ex) {}
+                } catch (ItemNotFoundException ex) {
+                    System.out.println(binaryExpression);
+                    System.out.println(ex.toString());
+                }
             }
             else if(binaryExpression.getLeft() instanceof ArrayCall){
                 try {
@@ -311,7 +317,10 @@ public class JasminVisitorImpl implements Visitor {
                     binaryExpression.getRight().accept(this);
                     out.println("   dup_x2");
                     out.println("   iastore");
-                }catch(ItemNotFoundException ex) {}
+                }catch(ItemNotFoundException ex) {
+                    System.out.println(binaryExpression);
+                    System.out.println(ex.toString());
+                }
             }
         }
 
@@ -335,6 +344,8 @@ public class JasminVisitorImpl implements Visitor {
                 out.println("   getfield " + currClassType.getClassType() + "/" + identifier.getName() + " " + getTypeSign(identifier.getType()));
             }
         }catch(ItemNotFoundException ex){
+            System.out.println(identifier);
+            System.out.println(ex.toString());
         }
     }
 
@@ -360,6 +371,7 @@ public class JasminVisitorImpl implements Visitor {
             }
             out.println("   invokevirtual " + methodCall.getInstance().getType().toString() + "/" + methodCall.getMethodName().getName() + "(" + argTypesSigns + ")" + getTypeSign(item.getReturnType()));
         }catch (ItemNotFoundException ex){
+            System.out.println(methodCall.getMethodName());
             System.out.println(ex.toString());
         }
     }
@@ -441,7 +453,10 @@ public class JasminVisitorImpl implements Visitor {
                     out.println("   istore " + item.getIndex());
                 else
                     out.println("   astore " + item.getIndex());
-            } catch (ItemNotFoundException ex) {}
+            } catch (ItemNotFoundException ex) {
+                System.out.println(assign);
+                System.out.println(ex.toString());
+            }
         }
         else if(assign.getlValue() instanceof ArrayCall){
             try {
@@ -451,7 +466,10 @@ public class JasminVisitorImpl implements Visitor {
                 (((ArrayCall)assign.getlValue()).getIndex()).accept(this);
                 assign.getrValue().accept(this);
                 out.println("   iastore");
-            }catch(ItemNotFoundException ex) {}
+            }catch(ItemNotFoundException ex) {
+                System.out.println(assign);
+                System.out.println(ex.toString());
+            }
         }
 
     }

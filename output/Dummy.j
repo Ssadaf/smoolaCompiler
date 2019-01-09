@@ -1,4 +1,4 @@
-.class public MainClass
+.class public Dummy
 .super java/lang/Object
 
 ; default constructor
@@ -10,12 +10,4 @@
    invokespecial java/lang/Object/<init>()V
 
    return
-.end method
-.method public static main([Ljava/lang/String;)V
-
-   .limit locals 500
-   .limit stack 100
-
-   return
-
 .end method
