@@ -155,9 +155,7 @@ public class JasminVisitorImpl implements Visitor {
             out.println(".method public " + methodDeclaration.getName().getName() + "(" + argTypesSigns + ")" + retSign + "\n");
         out.println("   .limit locals 500");
         out.println("   .limit stack 100" + '\n');
-        for (int i = args.size() - 1; i >= 0; i--) {
-            out.println("   iload " + (i + 1));
-        }
+
         ArrayList<VarDeclaration> vars = methodDeclaration.getLocalVars();
         for(int i = 0; i<vars.size(); i++)
             vars.get(i).accept(this);
@@ -433,8 +431,10 @@ public class JasminVisitorImpl implements Visitor {
 
         if(assign.getlValue() instanceof Identifier) {
             try {
-                assign.getrValue().accept(this);
                 SymbolTableVariableItemBase item = (SymbolTableVariableItemBase) SymbolTable.top.get(((Identifier) assign.getlValue()).getName());
+                if(item.isField())
+                    out.println("   aload_0");
+                assign.getrValue().accept(this);
                 Type rValType = assign.getrValue().getType();
                 if(item.isField())
                     out.println("   putfield "+currClassType.getClassType()+"/"+((Identifier) assign.getlValue()).getName()+" "+getTypeSign(lValType));
@@ -481,9 +481,12 @@ public class JasminVisitorImpl implements Visitor {
 
     @Override
     public void visit(While loop) {
+        out.println("WHILE_START_" + labelCount + ":");
+        labelCount ++;
         loop.getCondition().accept(this);
         out.println("   ifeq WHILE_END_" + labelCount);
         loop.getBody().accept(this);
+        out.println("   goto WHILE_START_" + (labelCount - 1) + ":");
         out.println("WHILE_END_" + labelCount+":");
         labelCount ++;
     }

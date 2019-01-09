@@ -20,11 +20,11 @@
    .limit locals 500
    .limit stack 100
 
-   iload 1
    iconst_0
    istore 2
    iload 1
    istore 2
+   aload_0
    iconst_1
    putfield A/fact I
    iload 2
@@ -36,6 +36,7 @@ NEQ_FALSE_1:
    iconst_0
 NEQ_END_2:
    ifeq WHILE_END_3
+   aload_0
    iload 2
    getfield A/fact I
    imul
