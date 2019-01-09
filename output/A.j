@@ -27,15 +27,16 @@
    aload_0
    iconst_1
    putfield A/fact I
+WHILE_START_1:
    iload 2
    iconst_0
-   if_icmpeq NEQ_FALSE_1
+   if_icmpeq NEQ_FALSE_2
    iconst_1
-   goto NEQ_END_2
-NEQ_FALSE_1:
+   goto NEQ_END_3
+NEQ_FALSE_2:
    iconst_0
-NEQ_END_2:
-   ifeq WHILE_END_3
+NEQ_END_3:
+   ifeq WHILE_END_4
    aload_0
    iload 2
    getfield A/fact I
@@ -45,7 +46,8 @@ NEQ_END_2:
    iload 2
    isub
    astore 2
-WHILE_END_3:
+   goto WHILE_START_3:
+WHILE_END_4:
    getfield A/fact I
    ireturn
 

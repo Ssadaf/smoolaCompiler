@@ -332,6 +332,7 @@ public class JasminVisitorImpl implements Visitor {
                 }
             }
             else {
+                out.println("   aload_0");
                 out.println("   getfield " + currClassType.getClassType() + "/" + identifier.getName() + " " + getTypeSign(identifier.getType()));
             }
         }catch(ItemNotFoundException ex){
