@@ -11,7 +11,7 @@
 
    return
 .end method
-.method public threeMethod(II)Two;
+.method public threeMethod(II)LTwo;
 
    .limit locals 500
    .limit stack 100

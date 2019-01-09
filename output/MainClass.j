@@ -21,7 +21,7 @@
    invokespecial Three/<init>()V
    iconst_1
    iconst_2
-   invokevirtual Three/threeMethod(II)Two;
+   invokevirtual Three/threeMethod(II)LTwo;
    invokevirtual Two/twoMethod()I
    return
 
