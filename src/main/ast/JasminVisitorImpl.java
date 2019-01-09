@@ -218,7 +218,9 @@ public class JasminVisitorImpl implements Visitor {
     @Override
     public void visit(BinaryExpression binaryExpression) {
         binaryExpression.getLeft().accept(this);
-        if (!binaryExpression.getBinaryOperator().equals(BinaryOperator.assign)) {
+        if (!binaryExpression.getBinaryOperator().equals(BinaryOperator.assign) &&
+                !binaryExpression.getBinaryOperator().equals(BinaryOperator.and) &&
+                !binaryExpression.getBinaryOperator().equals(BinaryOperator.or)) {
             binaryExpression.getRight().accept(this);
         }
         if (binaryExpression.getBinaryOperator().equals(BinaryOperator.add))
