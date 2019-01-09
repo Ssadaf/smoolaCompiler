@@ -477,7 +477,7 @@ public class JasminVisitorImpl implements Visitor {
         loop.getCondition().accept(this);
         out.println("   ifeq WHILE_END_" + labelCount);
         loop.getBody().accept(this);
-        out.println("   goto WHILE_START_" + (labelCount - 1) + ":");
+        out.println("   goto WHILE_START_" + (labelCount - 1) );
         out.println("WHILE_END_" + labelCount+":");
         labelCount ++;
     }

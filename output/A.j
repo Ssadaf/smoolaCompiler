@@ -55,7 +55,7 @@ NEQ_END_3:
    iconst_1
    isub
    istore 2
-   goto WHILE_START_3:
+   goto WHILE_START_3
 WHILE_END_4:
    aload_0
    getfield A/fact I
