@@ -218,8 +218,7 @@ public class JasminVisitorImpl implements Visitor {
     @Override
     public void visit(BinaryExpression binaryExpression) {
         binaryExpression.getLeft().accept(this);
-        if (!binaryExpression.getBinaryOperator().equals(BinaryOperator.assign) &&
-                !binaryExpression.getBinaryOperator().equals(BinaryOperator.and) &&
+        if (!binaryExpression.getBinaryOperator().equals(BinaryOperator.and) &&
                 !binaryExpression.getBinaryOperator().equals(BinaryOperator.or)) {
             binaryExpression.getRight().accept(this);
         }
@@ -295,7 +294,6 @@ public class JasminVisitorImpl implements Visitor {
 
             if(binaryExpression.getLeft() instanceof Identifier) {
                 try {
-                    binaryExpression.getRight().accept(this);
                     out.println("   dup");
                     SymbolTableVariableItemBase item = (SymbolTableVariableItemBase) SymbolTable.top.get(((Identifier) binaryExpression.getLeft()).getName());
                     Type rValType = binaryExpression.getRight().getType();

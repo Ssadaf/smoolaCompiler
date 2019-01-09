@@ -1,4 +1,4 @@
-.class public MainClass
+.class public BabyTest
 .super java/lang/Object
 
 ; default constructor
@@ -11,15 +11,12 @@
 
    return
 .end method
-.method public static main([Ljava/lang/String;)V
+.method public test()I
 
    .limit locals 500
    .limit stack 100
 
-   new Test
-   dup
-   invokespecial Test/<init>()V
-   invokevirtual Test/main2()I
-   return
+   iconst_0
+   ireturn
 
 .end method

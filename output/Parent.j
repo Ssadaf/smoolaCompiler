@@ -1,7 +1,8 @@
-.class public Two
+.class public Parent
 .super java/lang/Object
 
-.field protected a I
+.field protected expect LExpect;
+.field protected parentField I
 ; default constructor
 .method public <init>()V
    .limit locals 500
@@ -12,18 +13,19 @@
 
    aload 0
    iconst_0
-   putfield Two/a I
+   putfield Parent/parentField I
    return
 .end method
-.method public twoMethod()I
+.method public parentMethod()I
 
    .limit locals 500
    .limit stack 100
 
-   getstatic java/lang/System/out Ljava/io/PrintStream;
-   ldc "good boy"
-   invokevirtual java/io/PrintStream/println(Ljava/lang/String;)V
-   iconst_0
+   aload_0
+   bipush 127
+   putfield Parent/parentField I
+   aload_0
+   getfield Parent/parentField I
    ireturn
 
 .end method
