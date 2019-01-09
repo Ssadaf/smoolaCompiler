@@ -30,7 +30,7 @@ class A
     {
         var i : int;
         i = input;
-        fact = 1;
+        fact = 1 * 2 / 2;
         while(i <> 0)
         {
             fact = fact * i;

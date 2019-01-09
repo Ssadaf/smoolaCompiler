@@ -25,7 +25,11 @@
    iload 1
    istore 2
    aload_0
+   iconst_2
+   iconst_2
    iconst_1
+   imul
+   idiv
    putfield A/fact I
 WHILE_START_1:
    iload 2
@@ -39,15 +43,17 @@ NEQ_END_3:
    ifeq WHILE_END_4
    aload_0
    iload 2
+   aload_0
    getfield A/fact I
    imul
    putfield A/fact I
    iconst_1
    iload 2
    isub
-   astore 2
+   istore 2
    goto WHILE_START_3:
 WHILE_END_4:
+   aload_0
    getfield A/fact I
    ireturn
 

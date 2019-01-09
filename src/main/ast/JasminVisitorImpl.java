@@ -297,7 +297,7 @@ public class JasminVisitorImpl implements Visitor {
                     out.println("   dup");
                     SymbolTableVariableItemBase item = (SymbolTableVariableItemBase) SymbolTable.top.get(((Identifier) binaryExpression.getLeft()).getName());
                     Type rValType = binaryExpression.getRight().getType();
-                    if (rValType.toString().equals(new IntValue(0, null).getType().toString()) || rValType.toString().equals(new BooleanValue(false, null).getType().toString()))
+                    if (lValType instanceof IntType || lValType instanceof BooleanType)
                         out.println("   istore " + item.getIndex());
                     else
                         out.println("   astore " + item.getIndex());
@@ -439,7 +439,7 @@ public class JasminVisitorImpl implements Visitor {
                 Type rValType = assign.getrValue().getType();
                 if(item.isField())
                     out.println("   putfield "+currClassType.getClassType()+"/"+((Identifier) assign.getlValue()).getName()+" "+getTypeSign(lValType));
-                else if ((rValType instanceof IntType) || (rValType instanceof BooleanType))
+                else if ((lValType instanceof IntType) || (lValType instanceof BooleanType))
                     out.println("   istore " + item.getIndex());
                 else
                     out.println("   astore " + item.getIndex());

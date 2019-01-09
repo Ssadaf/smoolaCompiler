@@ -28,11 +28,13 @@
    bipush 123
    bipush 12
    imul
+   aload_0
    getfield B/fact I
    iadd
    iadd
-   astore 1
+   istore 1
    iload 2
+   aload_0
    getfield B/fact I
    if_icmpne EQ_FALSE_5
    iconst_1
