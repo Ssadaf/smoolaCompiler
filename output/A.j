@@ -39,6 +39,7 @@ NEQ_FALSE_2:
 NEQ_END_3:
    ifeq WHILE_END_4
    iload 4
+   iconst_1
    ifeq AND_ISZERO_4
    iconst_1
    ifeq AND_ISZERO_4
@@ -49,13 +50,13 @@ AND_ISZERO_4:
 AND_END_5:
    istore 3
    aload_0
-   iload 2
    aload_0
    getfield A/fact I
+   iload 2
    imul
    putfield A/fact I
-   iconst_1
    iload 2
+   iconst_1
    isub
    istore 2
    goto WHILE_START_5:

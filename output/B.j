@@ -22,15 +22,15 @@
    istore 2
    iconst_0
    istore 3
-   bipush 12
-   iload 1
-   idiv
-   bipush 123
-   bipush 12
-   imul
    aload_0
    getfield B/fact I
+   bipush 12
+   bipush 123
+   imul
    iadd
+   iload 1
+   bipush 12
+   idiv
    iadd
    istore 1
    iload 2
@@ -42,6 +42,7 @@
 EQ_FALSE_7:
    iconst_0
 EQ_END_8:
+   iload 3
    ifeq AND_ISZERO_9
    iload 3
    ifeq AND_ISZERO_9
