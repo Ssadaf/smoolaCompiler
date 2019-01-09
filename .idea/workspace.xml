@@ -6,10 +6,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ae5c788d-9d2e-41cc-8043-ccfbc100ab68" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/ast/JasminVisitorImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/ast/JasminVisitorImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/in.sml" beforeDir="false" afterPath="$PROJECT_DIR$/in.sml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -73,44 +75,35 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
-      <file pinned="false" current-in-tab="false">
+      <file leaf-file-name="in.sml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/in.sml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="372">
-              <caret line="44" column="10" selection-start-line="44" selection-start-column="10" selection-end-line="44" selection-end-column="10" />
+            <state relative-caret-position="408">
+              <caret line="35" selection-start-line="34" selection-end-line="35" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file leaf-file-name="JasminVisitorImpl.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/ast/JasminVisitorImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="89">
-              <caret line="210" column="80" selection-start-line="210" selection-start-column="80" selection-end-line="210" selection-end-column="80" />
+            <state relative-caret-position="308">
+              <caret line="218" column="35" lean-forward="true" selection-start-line="218" selection-start-column="35" selection-end-line="218" selection-end-column="35" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#16762#16763#0" expanded="true" />
-                <element signature="e#16803#16804#0" expanded="true" />
-                <element signature="e#17997#17998#0" expanded="true" />
-                <element signature="e#18057#18058#0" expanded="true" />
+                <element signature="e#16036#16037#0" expanded="true" />
+                <element signature="e#16077#16078#0" expanded="true" />
+                <element signature="e#17271#17272#0" expanded="true" />
+                <element signature="e#17331#17332#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/ast/node/expression/NewClass.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="18" column="5" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
+      <file leaf-file-name="Expression.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/ast/node/expression/Expression.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
+            <state relative-caret-position="192">
               <caret line="11" selection-start-line="11" selection-end-line="11" />
               <folding>
                 <element signature="e#243#244#0" expanded="true" />
@@ -119,37 +112,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/symbolTable/SymbolTableMethodItem.java">
+      <file leaf-file-name="MethodCall.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/ast/node/expression/MethodCall.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="11" column="32" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="32" />
-              <folding>
-                <element signature="e#711#712#0" expanded="true" />
-                <element signature="e#755#756#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="1128">
+              <caret line="74" column="130" selection-start-line="74" selection-start-column="130" selection-end-line="74" selection-end-column="130" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/ast/VisitorImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-221">
-              <caret line="32" column="59" selection-start-line="32" selection-start-column="42" selection-end-line="32" selection-end-column="59" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1083#1104#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
+      <file leaf-file-name="TypeCheckVisitorImpl.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/ast/TypeCheckVisitorImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="279">
-              <caret line="232" selection-start-line="232" selection-end-line="233" selection-end-column="53" />
+            <state relative-caret-position="150">
+              <caret line="218" column="22" lean-forward="true" selection-start-line="218" selection-start-column="22" selection-end-line="218" selection-end-column="22" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -157,29 +133,52 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file leaf-file-name="BinaryExpression.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/ast/node/expression/BinaryExpression.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="82" column="28" selection-start-line="82" selection-start-column="28" selection-end-line="82" selection-end-column="28" />
+            <state relative-caret-position="874">
+              <caret line="115" column="36" lean-forward="true" selection-start-line="115" selection-start-column="36" selection-end-line="115" selection-end-column="36" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Smoola.g4">
+      <file leaf-file-name="NewClass.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/ast/node/expression/NewClass.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="19" column="43" selection-start-line="19" selection-start-column="43" selection-end-line="19" selection-end-column="43" />
+            <state relative-caret-position="336">
+              <caret line="20" column="30" selection-start-line="20" selection-start-column="30" selection-end-line="20" selection-end-column="30" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file leaf-file-name="UserDefinedType.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/ast/Type/UserDefinedType/UserDefinedType.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="96">
+              <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SymbolTable.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/symbolTable/SymbolTable.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="930">
-              <caret line="66" column="50" selection-start-line="66" selection-start-column="50" selection-end-line="66" selection-end-column="50" />
+            <state relative-caret-position="1704">
+              <caret line="77" column="35" selection-start-line="77" selection-start-column="35" selection-end-line="77" selection-end-column="35" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SymbolTableVariableItemBase.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/symbolTable/SymbolTableVariableItemBase.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="696">
+              <caret line="39" selection-start-line="39" selection-end-line="39" />
+              <folding>
+                <element signature="e#422#423#0" expanded="true" />
+                <element signature="e#456#457#0" expanded="true" />
+                <element signature="e#763#764#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -195,7 +194,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>processNonField</find>
       <find>pro</find>
       <find>vardec</find>
       <find>varDec</find>
@@ -225,6 +223,7 @@
       <find>binar</find>
       <find>getfield</find>
       <find>binaryEx</find>
+      <find>binaryExpression</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -285,8 +284,8 @@
         <option value="$PROJECT_DIR$/src/main/ast/node/expression/NewClass.java" />
         <option value="$PROJECT_DIR$/src/main/ast/TypeCheckVisitorImpl.java" />
         <option value="$PROJECT_DIR$/src/main/ast/node/expression/BinaryExpression.java" />
-        <option value="$PROJECT_DIR$/in.sml" />
         <option value="$PROJECT_DIR$/src/main/ast/JasminVisitorImpl.java" />
+        <option value="$PROJECT_DIR$/in.sml" />
       </list>
     </option>
   </component>
@@ -309,6 +308,7 @@
     <panes>
       <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -346,13 +346,27 @@
               <item name="smoolaCompiler" type="b2602c69:ProjectViewProjectNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="ast" type="462c0819:PsiDirectoryNode" />
+              <item name="Type" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="smoolaCompiler" type="b2602c69:ProjectViewProjectNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="ast" type="462c0819:PsiDirectoryNode" />
+              <item name="Type" type="462c0819:PsiDirectoryNode" />
+              <item name="UserDefinedType" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="smoolaCompiler" type="b2602c69:ProjectViewProjectNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="symbolTable" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -387,29 +401,54 @@
       <module name="smoolaCompiler" />
       <option name="PROGRAM_PARAMETERS" value="in.sml" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <method v="2">
+      <method>
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <method v="2">
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
+      <method>
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
       <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
       <properties />
       <listeners />
-      <method v="2">
+      <method>
         <option name="Make" enabled="true" />
       </method>
     </configuration>
@@ -475,72 +514,95 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="551" y="0" width="889" height="900" extended-state="6" />
+    <frame x="64" y="-11" width="1857" height="1092" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Structure" order="0" side_tool="true" weight="0.25" />
-      <window_info id="Image Layers" order="1" />
-      <window_info id="Designer" order="2" />
-      <window_info id="UI Designer" order="3" />
-      <window_info id="Capture Tool" order="4" />
-      <window_info id="Favorites" order="5" sideWeight="0.16826923" side_tool="true" weight="0.17310444" />
-      <window_info content_ui="combo" id="Project" order="6" sideWeight="0.8317308" visible="true" weight="0.29397875" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32829374" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.30361447" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39638555" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.329235" />
       <window_info anchor="bottom" id="Tool Output" order="7" weight="0.32686085" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.17710844" />
-      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="10" weight="0.329235" />
-      <window_info anchor="bottom" id="ANTLR Preview" order="11" weight="0.55138123" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.2" />
-      <window_info anchor="bottom" id="Database Changes" order="13" show_stripe_button="false" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Coverage" order="4" side_tool="true" weight="0.3297568" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info id="Image Layers" order="1" />
       <window_info anchor="right" id="Capture Analysis" order="5" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="right" id="Maven Projects" order="8" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.30379745" />
+      <window_info anchor="bottom" id="Version Control" order="10" weight="0.329235" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.2013809" />
+      <window_info id="Capture Tool" order="4" />
+      <window_info id="Designer" order="2" />
+      <window_info content_ui="combo" id="Project" order="6" sideWeight="0.8317308" weight="0.17847183" />
+      <window_info anchor="bottom" id="ANTLR Preview" order="11" weight="0.55138123" />
+      <window_info id="Structure" order="0" side_tool="true" weight="0.25" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info id="UI Designer" order="3" />
       <window_info anchor="right" id="Theme Preview" order="6" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39638555" />
+      <window_info id="Favorites" order="5" sideWeight="0.16826923" side_tool="true" weight="0.17310444" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info content_ui="combo" id="Project" order="6" sideWeight="0.8317308" visible="true" weight="0.29397875" />
+      <window_info id="Favorites" order="5" sideWeight="0.16826923" side_tool="true" weight="0.17310444" />
+      <window_info anchor="right" id="Coverage" order="4" side_tool="true" weight="0.3297568" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.17710844" />
+      <window_info id="Structure" order="0" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Tool Output" order="7" weight="0.32686085" />
+      <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="Maven Projects" order="8" />
+      <window_info anchor="bottom" id="Database Changes" order="13" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39638555" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info id="Image Layers" order="1" />
+      <window_info anchor="right" id="Theme Preview" order="6" />
       <window_info anchor="right" id="Database" order="9" />
+      <window_info id="Capture Tool" order="4" />
+      <window_info anchor="bottom" id="Version Control" order="10" weight="0.329235" />
+      <window_info anchor="right" id="Capture Analysis" order="5" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.329235" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info id="UI Designer" order="3" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32829374" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.30361447" />
+      <window_info anchor="bottom" id="ANTLR Preview" order="11" weight="0.55138123" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.2" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info id="Designer" order="2" />
     </layout>
     <layout-to-restore>
-      <window_info id="Structure" order="0" side_tool="true" weight="0.25" />
-      <window_info id="Image Layers" order="1" />
-      <window_info id="Designer" order="2" />
-      <window_info id="UI Designer" order="3" />
-      <window_info id="Capture Tool" order="4" />
-      <window_info id="Favorites" order="5" sideWeight="0.16826923" side_tool="true" weight="0.17310444" />
-      <window_info content_ui="combo" id="Project" order="6" sideWeight="0.8317308" visible="true" weight="0.17233686" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32829374" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3475259" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.3981588" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.329235" />
-      <window_info anchor="bottom" id="Tool Output" order="7" weight="0.32686085" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.20598389" />
-      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="10" weight="0.329235" />
-      <window_info anchor="bottom" id="ANTLR Preview" order="11" weight="0.55138123" />
-      <window_info anchor="bottom" id="Messages" order="12" weight="0.20023015" />
-      <window_info anchor="bottom" id="Database Changes" order="13" show_stripe_button="false" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info id="Designer" order="2" />
       <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="right" id="Theme Preview" order="5" />
-      <window_info anchor="right" id="Palette&#9;" order="6" />
-      <window_info anchor="right" id="Maven Projects" order="7" />
-      <window_info anchor="right" id="Database" order="8" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.30361447" />
+      <window_info id="Image Layers" order="1" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32829374" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="right" id="Coverage" order="4" side_tool="true" weight="0.3297568" />
+      <window_info id="UI Designer" order="3" />
+      <window_info id="Favorites" order="5" sideWeight="0.16826923" side_tool="true" weight="0.17310444" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.17710844" />
+      <window_info id="Capture Tool" order="4" />
+      <window_info anchor="right" id="Capture Analysis" order="5" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="bottom" id="Tool Output" order="7" weight="0.32686085" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.2" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Database Changes" order="13" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="10" weight="0.329235" />
+      <window_info anchor="right" id="Maven Projects" order="8" />
+      <window_info anchor="bottom" id="ANTLR Preview" order="11" weight="0.55138123" />
+      <window_info content_ui="combo" id="Project" order="6" sideWeight="0.8317308" visible="true" weight="0.29397875" />
+      <window_info anchor="right" id="Database" order="9" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.329235" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Theme Preview" order="6" />
+      <window_info id="Structure" order="0" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39638555" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -831,7 +893,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/symbolTable/SymbolTableVariableItemBase.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
+        <state relative-caret-position="696">
           <caret line="39" selection-start-line="39" selection-end-line="39" />
           <folding>
             <element signature="e#422#423#0" expanded="true" />
@@ -843,8 +905,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/symbolTable/SymbolTable.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="930">
-          <caret line="66" column="50" selection-start-line="66" selection-start-column="50" selection-end-line="66" selection-end-column="50" />
+        <state relative-caret-position="1704">
+          <caret line="77" column="35" selection-start-line="77" selection-start-column="35" selection-end-line="77" selection-end-column="35" />
         </state>
       </provider>
     </entry>
@@ -864,7 +926,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/ast/node/expression/Expression.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
+        <state relative-caret-position="192">
           <caret line="11" selection-start-line="11" selection-end-line="11" />
           <folding>
             <element signature="e#243#244#0" expanded="true" />
@@ -874,8 +936,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/ast/TypeCheckVisitorImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
-          <caret line="232" selection-start-line="232" selection-end-line="233" selection-end-column="53" />
+        <state relative-caret-position="150">
+          <caret line="218" column="22" lean-forward="true" selection-start-line="218" selection-start-column="22" selection-end-line="218" selection-end-column="22" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -886,10 +948,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="11" column="32" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="32" />
-          <folding>
-            <element signature="e#711#712#0" expanded="true" />
-            <element signature="e#755#756#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -906,8 +964,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/ast/node/expression/BinaryExpression.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="82" column="28" selection-start-line="82" selection-start-column="28" selection-end-line="82" selection-end-column="28" />
+        <state relative-caret-position="874">
+          <caret line="115" column="36" lean-forward="true" selection-start-line="115" selection-start-column="36" selection-end-line="115" selection-end-column="36" />
         </state>
       </provider>
     </entry>
@@ -918,31 +976,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/in.sml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="372">
-          <caret line="44" column="10" selection-start-line="44" selection-start-column="10" selection-end-line="44" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/ast/node/expression/NewClass.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="18" column="5" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
+        <state relative-caret-position="336">
+          <caret line="20" column="30" selection-start-line="20" selection-start-column="30" selection-end-line="20" selection-end-column="30" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/ast/JasminVisitorImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="89">
-          <caret line="210" column="80" selection-start-line="210" selection-start-column="80" selection-end-line="210" selection-end-column="80" />
+        <state relative-caret-position="308">
+          <caret line="218" column="35" lean-forward="true" selection-start-line="218" selection-start-column="35" selection-end-line="218" selection-end-column="35" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#16762#16763#0" expanded="true" />
-            <element signature="e#16803#16804#0" expanded="true" />
-            <element signature="e#17997#17998#0" expanded="true" />
-            <element signature="e#18057#18058#0" expanded="true" />
+            <element signature="e#16036#16037#0" expanded="true" />
+            <element signature="e#16077#16078#0" expanded="true" />
+            <element signature="e#17271#17272#0" expanded="true" />
+            <element signature="e#17331#17332#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/in.sml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="35" selection-start-line="34" selection-end-line="35" />
         </state>
       </provider>
     </entry>

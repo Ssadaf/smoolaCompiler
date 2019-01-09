@@ -29,12 +29,12 @@ class A
     def calculateFactorial(input : int) : int
     {
         var i : int;
-        var c : boolean;
-        var x : boolean;
+        var n : int;
         i = input;
+        fact = 1;
+        n = 1 + 2 + 3;
         while(i <> 0)
         {
-            c = x && true;
             fact = fact * i;
             i = i - 1;
         }
