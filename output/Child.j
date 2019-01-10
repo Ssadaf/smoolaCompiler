@@ -21,7 +21,7 @@
    .limit stack 100
 
    aload_0
-   invokevirtual SecondClass/parentMethod()I
+   invokevirtual Child/parentMethod()I
    ireturn
 
 .end method

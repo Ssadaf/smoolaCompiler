@@ -47,7 +47,7 @@
    invokevirtual java/io/PrintStream/println(Ljava/lang/String;)V
    aload_0
    iconst_1
-   invokevirtual SecondClass/notTest(Z)Z
+   invokevirtual UnaryOperatorTest/notTest(Z)Z
    istore 2
    aload_0
    getfield UnaryOperatorTest/expect LExpect;
@@ -58,7 +58,7 @@
    istore 1
    aload_0
    iconst_0
-   invokevirtual SecondClass/notTest(Z)Z
+   invokevirtual UnaryOperatorTest/notTest(Z)Z
    istore 2
    iload 1
    ifeq AND_ISZERO_35
@@ -78,7 +78,7 @@ AND_END_36:
    aload_0
    aload_0
    getfield UnaryOperatorTest/tempBool Z
-   invokevirtual SecondClass/notTest(Z)Z
+   invokevirtual UnaryOperatorTest/notTest(Z)Z
    istore 2
    aload_0
    getfield UnaryOperatorTest/expect LExpect;
@@ -89,7 +89,7 @@ AND_END_36:
    istore 1
    aload_0
    iconst_1
-   invokevirtual SecondClass/minusTest(I)I
+   invokevirtual UnaryOperatorTest/minusTest(I)I
    istore 3
    iload 1
    ifeq AND_ISZERO_37
@@ -109,7 +109,7 @@ AND_END_38:
    istore 1
    aload_0
    iconst_0
-   invokevirtual SecondClass/minusTest(I)I
+   invokevirtual UnaryOperatorTest/minusTest(I)I
    istore 3
    iload 1
    ifeq AND_ISZERO_39
@@ -129,7 +129,7 @@ AND_END_40:
    aload_0
    aload_0
    getfield UnaryOperatorTest/tempInt I
-   invokevirtual SecondClass/minusTest(I)I
+   invokevirtual UnaryOperatorTest/minusTest(I)I
    istore 3
    iload 1
    ifeq AND_ISZERO_41

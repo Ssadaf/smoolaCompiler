@@ -115,12 +115,12 @@ COND_ELSE_139:
    iload 1
    iconst_1
    isub
-   invokevirtual SecondClass/recursiveFibo(I)I
+   invokevirtual Fibo/recursiveFibo(I)I
    aload_0
    iload 1
    iconst_2
    isub
-   invokevirtual SecondClass/recursiveFibo(I)I
+   invokevirtual Fibo/recursiveFibo(I)I
    iadd
    istore 2
 COND_END_140:

@@ -25,7 +25,7 @@
    istore 2
    iconst_0
    istore 3
-   ldc 0
+   ldc "" 
    astore 4
    iconst_0
    istore 5

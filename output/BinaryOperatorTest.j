@@ -44,7 +44,7 @@
    iconst_1
     ineg
    iconst_1
-   invokevirtual SecondClass/addTest(II)I
+   invokevirtual BinaryOperatorTest/addTest(II)I
    putfield BinaryOperatorTest/resultInt I
    aload_0
    getfield BinaryOperatorTest/expect LExpect;
@@ -58,7 +58,7 @@
    aload_0
    iload 1
    iload 1
-   invokevirtual SecondClass/addTest(II)I
+   invokevirtual BinaryOperatorTest/addTest(II)I
    putfield BinaryOperatorTest/resultInt I
    iload 3
    ifeq AND_ISZERO_45
@@ -80,7 +80,7 @@ AND_END_46:
    aload_0
    iload 1
    bipush 23
-   invokevirtual SecondClass/addTest(II)I
+   invokevirtual BinaryOperatorTest/addTest(II)I
    putfield BinaryOperatorTest/resultInt I
    iload 3
    ifeq AND_ISZERO_47
@@ -102,7 +102,7 @@ AND_END_48:
    aload_0
    iconst_3
    iconst_0
-   invokevirtual SecondClass/subTest(II)I
+   invokevirtual BinaryOperatorTest/subTest(II)I
    putfield BinaryOperatorTest/resultInt I
    iload 3
    ifeq AND_ISZERO_49
@@ -124,7 +124,7 @@ AND_END_50:
    aload_0
    iload 1
    iload 1
-   invokevirtual SecondClass/subTest(II)I
+   invokevirtual BinaryOperatorTest/subTest(II)I
    putfield BinaryOperatorTest/resultInt I
    iload 3
    ifeq AND_ISZERO_51
@@ -146,7 +146,7 @@ AND_END_52:
    aload_0
    iload 1
    bipush 23
-   invokevirtual SecondClass/subTest(II)I
+   invokevirtual BinaryOperatorTest/subTest(II)I
    putfield BinaryOperatorTest/resultInt I
    iload 3
    ifeq AND_ISZERO_53
@@ -169,7 +169,7 @@ AND_END_54:
    aload_0
    iconst_3
    iconst_0
-   invokevirtual SecondClass/multTest(II)I
+   invokevirtual BinaryOperatorTest/multTest(II)I
    putfield BinaryOperatorTest/resultInt I
    iload 3
    ifeq AND_ISZERO_55
@@ -193,7 +193,7 @@ AND_END_56:
    aload_0
    iload 1
    iload 1
-   invokevirtual SecondClass/multTest(II)I
+   invokevirtual BinaryOperatorTest/multTest(II)I
    putfield BinaryOperatorTest/resultInt I
    iload 3
    ifeq AND_ISZERO_57
@@ -216,7 +216,7 @@ AND_END_58:
    iload 1
    iconst_2
     ineg
-   invokevirtual SecondClass/multTest(II)I
+   invokevirtual BinaryOperatorTest/multTest(II)I
    putfield BinaryOperatorTest/resultInt I
    iload 3
    ifeq AND_ISZERO_59
@@ -239,7 +239,7 @@ AND_END_60:
    aload_0
    iconst_3
    iconst_1
-   invokevirtual SecondClass/divTest(II)I
+   invokevirtual BinaryOperatorTest/divTest(II)I
    putfield BinaryOperatorTest/resultInt I
    iload 3
    ifeq AND_ISZERO_61
@@ -261,7 +261,7 @@ AND_END_62:
    aload_0
    iload 1
    iload 1
-   invokevirtual SecondClass/divTest(II)I
+   invokevirtual BinaryOperatorTest/divTest(II)I
    putfield BinaryOperatorTest/resultInt I
    iload 3
    ifeq AND_ISZERO_63
@@ -283,7 +283,7 @@ AND_END_64:
    aload_0
    iconst_0
    iload 1
-   invokevirtual SecondClass/divTest(II)I
+   invokevirtual BinaryOperatorTest/divTest(II)I
    putfield BinaryOperatorTest/resultInt I
    iload 3
    ifeq AND_ISZERO_65
@@ -305,7 +305,7 @@ AND_END_66:
    aload_0
    iconst_1
    iconst_1
-   invokevirtual SecondClass/andTest(ZZ)Z
+   invokevirtual BinaryOperatorTest/andTest(ZZ)Z
    putfield BinaryOperatorTest/resultBool Z
    iload 3
    ifeq AND_ISZERO_67
@@ -327,7 +327,7 @@ AND_END_68:
    aload_0
    iload 2
    iload 2
-   invokevirtual SecondClass/andTest(ZZ)Z
+   invokevirtual BinaryOperatorTest/andTest(ZZ)Z
    putfield BinaryOperatorTest/resultBool Z
    iload 3
    ifeq AND_ISZERO_69
@@ -349,7 +349,7 @@ AND_END_70:
    aload_0
    iconst_0
    iload 2
-   invokevirtual SecondClass/andTest(ZZ)Z
+   invokevirtual BinaryOperatorTest/andTest(ZZ)Z
    putfield BinaryOperatorTest/resultBool Z
    iload 3
    ifeq AND_ISZERO_71
@@ -371,7 +371,7 @@ AND_END_72:
    aload_0
    iload 2
    iconst_0
-   invokevirtual SecondClass/orTest(ZZ)Z
+   invokevirtual BinaryOperatorTest/orTest(ZZ)Z
    putfield BinaryOperatorTest/resultBool Z
    iload 3
    ifeq AND_ISZERO_73
@@ -399,7 +399,7 @@ AND_END_74:
 NOT_NOTZERO_75:
     iconst_0
 NOT_END_76:
-   invokevirtual SecondClass/orTest(ZZ)Z
+   invokevirtual BinaryOperatorTest/orTest(ZZ)Z
    putfield BinaryOperatorTest/resultBool Z
    iload 3
    ifeq AND_ISZERO_77
@@ -427,7 +427,7 @@ AND_END_78:
 NOT_NOTZERO_79:
     iconst_0
 NOT_END_80:
-   invokevirtual SecondClass/orTest(ZZ)Z
+   invokevirtual BinaryOperatorTest/orTest(ZZ)Z
    putfield BinaryOperatorTest/resultBool Z
    iload 3
    ifeq AND_ISZERO_81
@@ -449,7 +449,7 @@ AND_END_82:
    aload_0
    iload 2
    iconst_1
-   invokevirtual SecondClass/eqTest(ZZ)Z
+   invokevirtual BinaryOperatorTest/eqTest(ZZ)Z
    putfield BinaryOperatorTest/resultBool Z
    iload 3
    ifeq AND_ISZERO_83
@@ -477,7 +477,7 @@ AND_END_84:
 NOT_NOTZERO_85:
     iconst_0
 NOT_END_86:
-   invokevirtual SecondClass/eqTest(ZZ)Z
+   invokevirtual BinaryOperatorTest/eqTest(ZZ)Z
    putfield BinaryOperatorTest/resultBool Z
    iload 3
    ifeq AND_ISZERO_87
@@ -499,7 +499,7 @@ AND_END_88:
    aload_0
    iconst_0
    iload 2
-   invokevirtual SecondClass/eqTest(ZZ)Z
+   invokevirtual BinaryOperatorTest/eqTest(ZZ)Z
    putfield BinaryOperatorTest/resultBool Z
    iload 3
    ifeq AND_ISZERO_89
@@ -521,7 +521,7 @@ AND_END_90:
    aload_0
    iload 2
    iconst_1
-   invokevirtual SecondClass/neqTest(ZZ)Z
+   invokevirtual BinaryOperatorTest/neqTest(ZZ)Z
    putfield BinaryOperatorTest/resultBool Z
    iload 3
    ifeq AND_ISZERO_91
@@ -549,7 +549,7 @@ AND_END_92:
 NOT_NOTZERO_93:
     iconst_0
 NOT_END_94:
-   invokevirtual SecondClass/neqTest(ZZ)Z
+   invokevirtual BinaryOperatorTest/neqTest(ZZ)Z
    putfield BinaryOperatorTest/resultBool Z
    iload 3
    ifeq AND_ISZERO_95
@@ -571,7 +571,7 @@ AND_END_96:
    aload_0
    iconst_0
    iload 2
-   invokevirtual SecondClass/neqTest(ZZ)Z
+   invokevirtual BinaryOperatorTest/neqTest(ZZ)Z
    putfield BinaryOperatorTest/resultBool Z
    iload 3
    ifeq AND_ISZERO_97
@@ -594,7 +594,7 @@ AND_END_98:
    iconst_1
     ineg
    iconst_1
-   invokevirtual SecondClass/ltTest(II)Z
+   invokevirtual BinaryOperatorTest/ltTest(II)Z
    putfield BinaryOperatorTest/resultBool Z
    iload 3
    ifeq AND_ISZERO_99
@@ -618,7 +618,7 @@ AND_END_100:
    iconst_1
    isub
    iload 1
-   invokevirtual SecondClass/ltTest(II)Z
+   invokevirtual BinaryOperatorTest/ltTest(II)Z
    putfield BinaryOperatorTest/resultBool Z
    iload 3
    ifeq AND_ISZERO_101
@@ -640,7 +640,7 @@ AND_END_102:
    aload_0
    bipush 20
    iload 1
-   invokevirtual SecondClass/ltTest(II)Z
+   invokevirtual BinaryOperatorTest/ltTest(II)Z
    putfield BinaryOperatorTest/resultBool Z
    iload 3
    ifeq AND_ISZERO_103
@@ -663,7 +663,7 @@ AND_END_104:
    iconst_1
     ineg
    iconst_1
-   invokevirtual SecondClass/gtTest(II)Z
+   invokevirtual BinaryOperatorTest/gtTest(II)Z
    putfield BinaryOperatorTest/resultBool Z
    iload 3
    ifeq AND_ISZERO_105
@@ -687,7 +687,7 @@ AND_END_106:
    iconst_1
    isub
    iload 1
-   invokevirtual SecondClass/gtTest(II)Z
+   invokevirtual BinaryOperatorTest/gtTest(II)Z
    putfield BinaryOperatorTest/resultBool Z
    iload 3
    ifeq AND_ISZERO_107
@@ -709,7 +709,7 @@ AND_END_108:
    aload_0
    bipush 20
    iload 1
-   invokevirtual SecondClass/gtTest(II)Z
+   invokevirtual BinaryOperatorTest/gtTest(II)Z
    putfield BinaryOperatorTest/resultBool Z
    iload 3
    ifeq AND_ISZERO_109

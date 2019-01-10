@@ -18,7 +18,7 @@
    iconst_0
    putfield FirstClass/intField I
    aload 0
-   ldc 0
+   ldc ""
    putfield FirstClass/stringField Ljava/lang/String;
    aload 0
    iconst_0

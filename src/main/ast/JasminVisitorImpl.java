@@ -35,6 +35,7 @@ public class JasminVisitorImpl implements Visitor {
     private HashMap<String, SymbolTable> methodSymbolTables;
     public static UserDefinedType currClassType = new UserDefinedType();
     public static HashMap<String, SymbolTable> classSymbolTables;
+    String thisClass;
     private boolean inMain = false;
     private int labelCount = 1;
 
@@ -96,6 +97,7 @@ public class JasminVisitorImpl implements Visitor {
 
     @Override
     public void visit(ClassDeclaration classDeclaration) {
+        thisClass = classDeclaration.getName().getName();
         currClassType.setClassType(classDeclaration.getName().getName());
         SymbolTable.push(classSymbolTables.get(classDeclaration.getName().getName()));
 
@@ -130,7 +132,7 @@ public class JasminVisitorImpl implements Visitor {
                 }
                 else if(vars.get(i).getIdentifier().getType() instanceof StringType){
                     out.println("   aload 0");
-                    out.println("   ldc 0");
+                    out.println("   ldc \"\"");
                     out.println("   putfield " + currClassType.getClassType() + "/" + vars.get(i).getIdentifier().getName() + " " + getTypeSign(vars.get(i).getIdentifier().getType()));
                 }
 
@@ -199,7 +201,7 @@ public class JasminVisitorImpl implements Visitor {
 
                 }
                 else if(varDeclaration.getIdentifier().getType() instanceof StringType){
-                    out.println("   ldc 0");
+                    out.println("   ldc \"\" ");
                     out.println("   astore " + item.getIndex());
                 }
             }
@@ -368,15 +370,11 @@ public class JasminVisitorImpl implements Visitor {
             for (int i = 0; i < argTypes.size(); i++) {
                 argTypesSigns += getTypeSign(argTypes.get(i));
             }
-            out.println("   invokevirtual " + methodCall.getInstance().getType().toString() + "/" + methodCall.getMethodName().getName() + "(" + argTypesSigns + ")" + getTypeSign(item.getReturnType()));
+            if(methodCall.getInstance() instanceof This)
+                out.println("   invokevirtual " + thisClass + "/" + methodCall.getMethodName().getName() + "(" + argTypesSigns + ")" + getTypeSign(item.getReturnType()));
+            else
+                out.println("   invokevirtual " + methodCall.getInstance().getType().toString() + "/" + methodCall.getMethodName().getName() + "(" + argTypesSigns + ")" + getTypeSign(item.getReturnType()));
         }catch (ItemNotFoundException ex){
-            if(methodCall.getInstance() instanceof This) {
-                System.out.println("****");
-                System.out.println(methodCall.getMethodName().getName());
-                System.out.println("()()()#");
-                classSymbolTables.get(methodCall.getInstance().getType().toString()).printAllSymbolTableItems();
-                System.out.println("****");
-            }
             System.out.println(ex.toString());
         }
     }
@@ -466,7 +464,12 @@ public class JasminVisitorImpl implements Visitor {
             try {
                 SymbolTableVariableItemBase item = (SymbolTableVariableItemBase) SymbolTable.top.get(((Identifier)(((ArrayCall)assign.getlValue()).getInstance())).getName());
                 Type rValType = assign.getrValue().getType();
-                out.println("   aload " + item.getIndex());
+                if(item.isField()) {
+                    out.println("   aload_0");
+                    out.println("   getfield " + currClassType.getClassType() + "/" + (((Identifier)(((ArrayCall)assign.getlValue()).getInstance())).getName()) + " [I");
+                }
+                else
+                    out.println("   aload " + item.getIndex());
                 (((ArrayCall)assign.getlValue()).getIndex()).accept(this);
                 assign.getrValue().accept(this);
                 out.println("   iastore");

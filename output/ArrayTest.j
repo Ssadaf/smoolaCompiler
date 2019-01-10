@@ -38,15 +38,18 @@
    dup
    invokespecial Expect/<init>()V
    putfield ArrayTest/expect LExpect;
-   aload 3
+   aload_0
+   getfield ArrayTest/classArray [I
    iconst_0
    bipush 13
    iastore
-   aload 3
+   aload_0
+   getfield ArrayTest/classArray [I
    iconst_1
    bipush 26
    iastore
-   aload 3
+   aload_0
+   getfield ArrayTest/classArray [I
    iconst_2
    bipush 39
    iastore
@@ -60,7 +63,8 @@
    bipush 13
     ineg
    iastore
-   aload 3
+   aload_0
+   getfield ArrayTest/classArray [I
    iconst_0
    aload 1
    iconst_1
